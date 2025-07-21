@@ -1,0 +1,224 @@
+name: Build and Publish
+
+on:
+  # push:
+  #   branches:
+  #     - main
+  workflow_dispatch:
+    inputs:
+      branch:
+        description: Specify which branch to build and publish.
+        required: true
+        default: main
+      projects:
+        description: Projects to build separated by commas. Ex. cdk, button
+        required: false
+        default: cdk
+      publish-all:
+        description: Publish all packages
+        default: 'no'
+        type: choice
+        options:
+          - 'yes'
+          - 'no'
+
+env:
+  repository: '{ "url": "https://github.com/mmctech/proxima-atlas" }'
+  scope: '@mmctech'
+  registry_url: 'https://npm.pkg.github.com'
+  pkg_prefix: "atlas-"
+
+jobs:
+  build:
+    runs-on: ubuntu-22.04
+    timeout-minutes: 30
+    permissions:
+      contents: read
+      packages: write
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.branch }}
+      # Setup .npmrc file to publish to GitHub Packages
+      - name: Setup node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20.x'
+          registry-url: ${{ env.registry_url }}
+          # Defaults to the user or organization that owns the workflow file
+          scope: ${{ env.scope }}
+          always-auth: 'true'
+
+      - name: Check if the projects exist
+        if: ${{ inputs.publish-all != 'yes' }}
+        run: |
+
+          # All project libraries from angular.json separated by commas
+          all_prjs=$(cicd/get-all-prjs.sh)
+
+          # List of projects from the workflow input
+          prjs=$(echo "${{ inputs.projects }}" | tr -d ' ')
+          if [[ "${prjs}" == "" ]]; then
+            echo "No projects to build!!"
+            exit 1
+          fi
+
+          # Read the variable into an array
+          IFS=',' read -r -a all_prjs_array <<< "$all_prjs"
+          IFS=',' read -r -a prjs_array <<< "$prjs"
+
+          for prj in "${prjs_array[@]}"; do
+            found=false
+            for all_prj in "${all_prjs_array[@]}"; do
+              if [[ "${prj}" == "${all_prj}" ]]; then
+                found=true
+                break
+              fi
+            done
+            if [[ "$found" == "false" ]]; then
+              echo "Project \"${prj}\" doesn't exist in angular.json file"
+              exit 1
+            fi
+          done
+
+      - name: Add scope to packages
+        env:
+          PUBLISH_CONFIG_VALUE: '{ "${{ env.scope }}:registry": "${{ env.registry_url }}" }'
+          REPOSITORY_VALUE: ${{ env.repository }}
+          SCOPE_VALUE: ${{ env.scope }}
+        run: |
+          prj_dir="projects"
+
+          for project in "$prj_dir"/*; do
+              pkg_json="$project/package.json"
+
+              if [ -f "$pkg_json" ]; then
+                  echo "Adding scope $scope to $pkg_json"
+
+                  # Add/update package scope
+                  jq --arg scope "$SCOPE_VALUE" 'if .name | test("^@") then .name |= sub("^@[^/]+/"; $scope + "/") else .name |= $scope + "/" + . end' $pkg_json > tmp.json && mv tmp.json $pkg_json
+
+                  # Add/update repository and publishConfig attributes
+                  jq --argjson publish_config "$PUBLISH_CONFIG_VALUE" --argjson repository "$REPOSITORY_VALUE" '. + { "publishConfig": $publish_config } | . + { "repository": $repository } ' $pkg_json > tmp.json && mv tmp.json $pkg_json
+              fi
+          done
+
+      - name: Check if the packages are already published
+        id: check-published
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          # Array containing already published packages
+          pkg_already_pub=()  # Packages already published. ex. @mmctech/atlas-cdk@5.0.0
+          pkg_not_pub=()      # Packages not published.
+          prj_not_pub=()      # Project not published. Ex: cdk, button
+
+          projects=$(echo "${{ inputs.projects }}" | tr -d ' ')
+
+          if [ "${{ inputs.publish-all }}" == "yes" ]; then
+              projects=$(cicd/get-all-prjs.sh)
+          fi
+
+          # Read the variable into an array using the new IFS
+          IFS=','
+          read -r -a projects_array <<< "$projects"
+
+          for project in "${projects_array[@]}"; do
+              echo "Checking if $project is published"
+              IFS=' '
+              read -r -a is_published <<< "$(cicd/is-pkg-published.sh "$project" )"
+              if [ "${is_published[1]}" == "true" ]; then
+                  pkg_already_pub+=("${is_published[0]}")
+              else
+                  pkg_not_pub+=("${is_published[0]}")
+                  prj_not_pub+=("$project")
+              fi
+          done
+
+          # Serialize the array into a string (space-separated)
+          pkg_already_pub_str="${pkg_already_pub[@]}"
+          pkg_not_pub_str="${pkg_not_pub[@]}"
+          prj_not_pub_str="${prj_not_pub[@]}"
+
+          echo "pkg_already_pub_str=${pkg_already_pub_str}" >> $GITHUB_ENV
+          echo "pkg_not_pub_str=${pkg_not_pub_str}" >> $GITHUB_ENV
+          echo "prj_not_pub_str=${prj_not_pub_str}" >> $GITHUB_ENV
+
+      - name: Install packages
+        id: install-packages
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: yarn install
+        if: ${{ env.prj_not_pub_str != '' }}
+
+      - name: Build packages
+        id: build-packages
+        if: ${{ steps.install-packages.conclusion == 'success' }}
+        run: |
+          # Deserializing array
+          IFS=' ' read -r -a prj_not_pub <<< "$prj_not_pub_str"
+
+          for project in "${prj_not_pub[@]}"; do
+            echo "Building ${project}"
+            if [ "$project" == "cdk" ]; then
+              yarn build:core
+            else
+              yarn build:component:$project
+            fi
+          done
+
+      - name: Publish packages
+        if: ${{ steps.build-packages.conclusion == 'success' }}
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PKG_PREFIX: ${{ env.pkg_prefix }}
+        run: |
+          pkg_pub=()  # Packages published. ex. @mmctech/atlas-cdk@5.0.0
+
+          # Deserializing array
+          IFS=' ' read -r -a prj_not_pub <<< "$prj_not_pub_str"
+
+          for project in "${prj_not_pub[@]}"; do
+            echo "publishing ${project}"
+
+            # Get package name and version to add to pkg_pub array
+            pkg_name=$(cat dist/${PKG_PREFIX}${project}/package.json | jq -r ".name")
+            pkg_version=$(cat dist/${PKG_PREFIX}${project}/package.json | jq -r ".version")
+
+            (cd dist/${PKG_PREFIX}${project} && yarn publish)
+
+            pkg_pub+=("${pkg_name}@${pkg_version}")
+
+          done
+
+          # Serialize the array into a string (space-separated)
+          pkg_pub_str="${pkg_pub[@]}"
+
+          echo "pkg_pub_str=${pkg_pub_str}" >> $GITHUB_ENV
+
+      - name: Create Summary
+        run: |
+          # Deserializing array
+          IFS=' ' read -r -a pkg_already_pub <<< "$pkg_already_pub_str"
+          IFS=' ' read -r -a pkg_pub <<< "$pkg_pub_str"
+
+          # Initialize an associative array to store package statuses
+          declare -A package_status
+
+          # Populate the associative array with the package statuses
+          for package in "${pkg_pub[@]}"; do
+            package_status["$package"]=":rocket: published"
+          done
+
+          for package in "${pkg_already_pub[@]}"; do
+            package_status["$package"]=":warning: already published"
+          done
+
+          # Generate the Markdown table
+          echo "| Package Name | Status |"  >> $GITHUB_STEP_SUMMARY
+          echo "|--------------|--------|"  >> $GITHUB_STEP_SUMMARY
+
+          for package in "${!package_status[@]}"; do
+            echo "| $package | ${package_status[$package]} |" >> $GITHUB_STEP_SUMMARY
+          done

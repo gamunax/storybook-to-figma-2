@@ -1,0 +1,58 @@
+.css-zgt7u1 {
+  padding: 0;
+}
+
+.toggle-btn {
+  background: #fbfbfb;
+  border: 1px solid #e8eae9;
+  border-radius: 2em;
+  cursor: pointer;
+  display: inline-block;
+  height: 2em;
+  outline: 0;
+  padding: 2px;
+  position: relative;
+  transition: all 0.3s ease;
+  user-select: none;
+  vertical-align: middle;
+  width: 4em;
+}
+
+.toggle-btn:focus::after,
+.toggle-btn:active::after {
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1), 0 4px 0 rgba(0, 0, 0, 0.08),
+    inset 0px 0px 0px 1.5px #9c9c9c;
+}
+
+.toggle-btn::after {
+  background: #fbfbfb;
+  border-radius: 2em;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1), 0 4px 0 rgba(0, 0, 0, 0.08);
+  content: "";
+  display: block;
+  height: 100%;
+  left: 0;
+  position: relative;
+  transition: all 0.3s ease;
+  width: 50%;
+}
+
+.toggle-btn.toggle-btn-on::after {
+  left: 50%;
+}
+
+.toggle-btn.toggle-btn-on {
+  background: rgb(11, 65, 173);
+}
+
+.toggle-btn.toggle-btn-on:active {
+  box-shadow: none;
+}
+
+.toggle-input {
+  display: none;
+}
+
+.toggle-label {
+  margin: 0 2px;
+}

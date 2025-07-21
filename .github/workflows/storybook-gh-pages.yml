@@ -1,0 +1,33 @@
+name: Deploy Stoybook to GitHub Pages
+
+on:
+  workflow_dispatch:  # Allows you to run this workflow manually from the Actions tab
+
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    environment: github-pages
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Install dependencies
+        run: yarn install --ignore-engines
+
+      - name: Build App
+        run: yarn build
+
+      - name: Build Storybook
+        env:
+         NODE_OPTIONS: --max-old-space-size=8192
+        run: yarn build-storybook
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          deploy_key: ${{ secrets.ACTIONS_DEPLOY_KEY }}
+          publish_branch: gh-pages
+          publish_dir: ./storybook-static/mercer
+          destination_dir: storybook

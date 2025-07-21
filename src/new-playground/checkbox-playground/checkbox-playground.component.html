@@ -1,0 +1,424 @@
+<div class="container padding-y-9 padding-x-9 page-bg">
+  <!-- Chip Component Demo Header -->
+  <h2>Checkbox Component Demo</h2>
+  <div class="header">
+    <atlas-theming-helper>
+      <label>Custom theme</label>
+    </atlas-theming-helper>
+  </div>
+  <div>
+    <div class="section">
+      <h3>size medium</h3>
+      <div class="checkbox-group">
+        <div class="checkbox-container">
+          <atlas-checkbox
+            [action]="actions.primary"
+            [disabled]="false"
+            [isChecked]="true"
+            [indeterminate]="false"
+            checkboxCustomClass=""
+            labelCustomClass=""
+            labelTypography="typographyStyles-body-medium"
+            disabledColor="text-disabled"
+            checkboxId="haloCheckbox"
+            checkboxName="haloCheckbox"
+            [size]="iconSizes.medium"
+          >
+            brand
+          </atlas-checkbox>
+        </div>
+        <div class="checkbox-container">
+          <atlas-checkbox
+            [action]="actions.default"
+            [disabled]="false"
+            [isChecked]="true"
+            [indeterminate]="false"
+            checkboxCustomClass=""
+            labelCustomClass=""
+            labelTypography="typographyStyles-body-medium"
+            disabledColor="text-disabled"
+            checkboxId="haloCheckbox2"
+            checkboxName="haloCheckbox"
+            [size]="iconSizes.medium"
+          >
+            neutral
+          </atlas-checkbox>
+        </div>
+        <div class="checkbox-container">
+          <atlas-checkbox
+            [action]="actions.warning"
+            [disabled]="false"
+            [isChecked]="true"
+            [indeterminate]="false"
+            checkboxCustomClass=""
+            labelCustomClass=""
+            labelTypography="typographyStyles-body-medium"
+            disabledColor="text-disabled"
+            checkboxId="haloCheckbox3"
+            checkboxName="haloCheckbox"
+            [size]="iconSizes.medium"
+          >
+            caution
+          </atlas-checkbox>
+        </div>
+        <div class="checkbox-container">
+          <atlas-checkbox
+            [action]="actions.error"
+            [disabled]="false"
+            [isChecked]="true"
+            [indeterminate]="false"
+            checkboxCustomClass=""
+            labelCustomClass=""
+            labelTypography="typographyStyles-body-medium"
+            disabledColor="text-disabled"
+            checkboxId="haloCheckbox4"
+            checkboxName="haloCheckbox"
+            [size]="iconSizes.medium"
+          >
+            danger
+          </atlas-checkbox>
+        </div>
+        <div class="checkbox-container">
+          <atlas-checkbox
+            [action]="actions.success"
+            [disabled]="false"
+            [isChecked]="true"
+            [indeterminate]="false"
+            checkboxCustomClass=""
+            labelCustomClass=""
+            labelTypography="typographyStyles-body-medium"
+            disabledColor="text-disabled"
+            checkboxId="haloCheckbox5"
+            checkboxName="haloCheckbox"
+            [size]="iconSizes.medium"
+          >
+            success
+          </atlas-checkbox>
+        </div>
+        <div class="checkbox-container">
+          <atlas-checkbox
+            [action]="actions.info"
+            [disabled]="false"
+            [isChecked]="true"
+            [indeterminate]="false"
+            checkboxCustomClass=""
+            labelCustomClass=""
+            labelTypography="typographyStyles-body-medium"
+            disabledColor="text-disabled"
+            checkboxId="haloCheckbox6"
+            checkboxName="haloCheckbox"
+            [size]="iconSizes.medium"
+          >
+            info
+          </atlas-checkbox>
+        </div>
+      </div>
+    </div>
+    <div class="section">
+      <h3>size small</h3>
+      <div class="checkbox-group">
+        <div class="checkbox-container">
+          <atlas-checkbox
+            [action]="actions.primary"
+            [disabled]="false"
+            [isChecked]="true"
+            [indeterminate]="false"
+            checkboxCustomClass=""
+            labelCustomClass=""
+            labelTypography="typographyStyles-body-medium"
+            disabledColor="text-disabled"
+            checkboxId="haloCheckbox01"
+            checkboxName="haloCheckbox"
+            [size]="iconSizes.small"
+          >
+            brand
+          </atlas-checkbox>
+        </div>
+        <div class="checkbox-container">
+          <atlas-checkbox
+            [action]="actions.default"
+            [disabled]="false"
+            [isChecked]="true"
+            [indeterminate]="false"
+            checkboxCustomClass=""
+            labelCustomClass=""
+            labelTypography="typographyStyles-body-medium"
+            disabledColor="text-disabled"
+            checkboxId="haloCheckbox22"
+            checkboxName="haloCheckbox"
+            [size]="iconSizes.small"
+          >
+            neutral
+          </atlas-checkbox>
+        </div>
+        <div class="checkbox-container">
+          <atlas-checkbox
+            [action]="actions.warning"
+            [disabled]="false"
+            [isChecked]="true"
+            [indeterminate]="false"
+            checkboxCustomClass=""
+            labelCustomClass=""
+            labelTypography="typographyStyles-body-medium"
+            disabledColor="text-disabled"
+            checkboxId="haloCheckbox33"
+            checkboxName="haloCheckbox"
+            [size]="iconSizes.small"
+          >
+            caution
+          </atlas-checkbox>
+        </div>
+        <div class="checkbox-container">
+          <atlas-checkbox
+            [action]="actions.error"
+            [disabled]="false"
+            [isChecked]="true"
+            [indeterminate]="false"
+            checkboxCustomClass=""
+            labelCustomClass=""
+            labelTypography="typographyStyles-body-medium"
+            disabledColor="text-disabled"
+            checkboxId="haloCheckbox44"
+            checkboxName="haloCheckbox"
+            [size]="iconSizes.small"
+          >
+            danger
+          </atlas-checkbox>
+        </div>
+        <div class="checkbox-container">
+          <atlas-checkbox
+            [action]="actions.success"
+            [disabled]="false"
+            [isChecked]="true"
+            [indeterminate]="false"
+            checkboxCustomClass=""
+            labelCustomClass=""
+            labelTypography="typographyStyles-body-medium"
+            disabledColor="text-disabled"
+            checkboxId="haloCheckbox55"
+            checkboxName="haloCheckbox"
+            [size]="iconSizes.small"
+          >
+            success
+          </atlas-checkbox>
+        </div>
+        <div class="checkbox-container">
+          <atlas-checkbox
+            [action]="actions.info"
+            [disabled]="false"
+            [isChecked]="true"
+            [indeterminate]="false"
+            checkboxCustomClass=""
+            labelCustomClass=""
+            labelTypography="typographyStyles-body-medium"
+            disabledColor="text-disabled"
+            checkboxId="haloCheckbox66"
+            checkboxName="haloCheckbox"
+            [size]="iconSizes.small"
+          >
+            info
+          </atlas-checkbox>
+        </div>
+      </div>
+    </div>
+    <div class="section">
+      <h3>size disabled</h3>
+      <div class="checkbox-group">
+        <div class="checkbox-container">
+          <atlas-checkbox
+            [action]="actions.primary"
+            [disabled]="true"
+            [isChecked]="true"
+            [indeterminate]="false"
+            checkboxCustomClass=""
+            labelCustomClass=""
+            labelTypography="typographyStyles-body-medium"
+            disabledColor="text-disabled"
+            checkboxId="haloCheckbox"
+            checkboxName="haloCheckbox"
+            [size]="iconSizes.small"
+          >
+            brand
+          </atlas-checkbox>
+        </div>
+        <div class="checkbox-container">
+          <atlas-checkbox
+            [action]="actions.default"
+            [disabled]="true"
+            [isChecked]="true"
+            [indeterminate]="false"
+            checkboxCustomClass=""
+            labelCustomClass=""
+            labelTypography="typographyStyles-body-medium"
+            disabledColor="text-disabled"
+            checkboxId="haloCheckbox2"
+            checkboxName="haloCheckbox"
+            [size]="iconSizes.small"
+          >
+            neutral
+          </atlas-checkbox>
+        </div>
+        <div class="checkbox-container">
+          <atlas-checkbox
+            [action]="actions.warning"
+            [disabled]="true"
+            [isChecked]="true"
+            [indeterminate]="false"
+            checkboxCustomClass=""
+            labelCustomClass=""
+            labelTypography="typographyStyles-body-medium"
+            disabledColor="text-disabled"
+            checkboxId="haloCheckbox3"
+            checkboxName="haloCheckbox"
+            [size]="iconSizes.small"
+          >
+            caution
+          </atlas-checkbox>
+        </div>
+        <div class="checkbox-container">
+          <atlas-checkbox
+            [action]="actions.error"
+            [disabled]="true"
+            [isChecked]="true"
+            [indeterminate]="false"
+            checkboxCustomClass=""
+            labelCustomClass=""
+            labelTypography="typographyStyles-body-medium"
+            disabledColor="text-disabled"
+            checkboxId="haloCheckbox4"
+            checkboxName="haloCheckbox"
+            [size]="iconSizes.small"
+          >
+            danger
+          </atlas-checkbox>
+        </div>
+        <div class="checkbox-container">
+          <atlas-checkbox
+            [action]="actions.success"
+            [disabled]="true"
+            [isChecked]="true"
+            [indeterminate]="false"
+            checkboxCustomClass=""
+            labelCustomClass=""
+            labelTypography="typographyStyles-body-medium"
+            disabledColor="text-disabled"
+            checkboxId="haloCheckbox5"
+            checkboxName="haloCheckbox"
+            [size]="iconSizes.small"
+          >
+            success
+          </atlas-checkbox>
+        </div>
+        <div class="checkbox-container">
+          <atlas-checkbox
+            [action]="actions.info"
+            [disabled]="true"
+            [isChecked]="true"
+            [indeterminate]="false"
+            checkboxCustomClass=""
+            labelCustomClass=""
+            labelTypography="typographyStyles-body-medium"
+            disabledColor="text-disabled"
+            checkboxId="haloCheckbox6"
+            checkboxName="haloCheckbox"
+            [size]="iconSizes.small"
+          >
+            info
+          </atlas-checkbox>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h3>Indeterminate State</h3>
+      <div class="indeterminate-checkbox-group">
+        <div class="checkbox-container parent-checkbox">
+          <atlas-checkbox
+            [action]="actions.primary"
+            [isChecked]="parentChecked"
+            [indeterminate]="parentIndeterminate"
+            labelTypography="typographyStyles-body-medium"
+            checkboxId="parentCheckbox"
+            checkboxName="parentCheckbox"
+            [size]="iconSizes.medium"
+            (onChange)="onParentChange($event)"
+          >
+            Parent
+          </atlas-checkbox>
+        </div>
+        <div class="checkbox-container child-checkbox">
+          <atlas-checkbox
+            [action]="actions.default"
+            [isChecked]="child1Checked"
+            labelTypography="typographyStyles-body-small"
+            [checkboxId]="childCheckbox1"
+            [checkboxName]="childCheckbox1"
+            [size]="iconSizes.small"
+            (onChange)="onChildChange($event)"
+          >
+            Child 1
+          </atlas-checkbox>
+        </div>
+        <div class="checkbox-container child-checkbox">
+          <atlas-checkbox
+            [action]="actions.default"
+            [isChecked]="child2Checked"
+            labelTypography="typographyStyles-body-small"
+            [checkboxId]="childCheckbox2"
+            [checkboxName]="childCheckbox2"
+            [size]="iconSizes.small"
+            (onChange)="onChildChange($event)"
+          >
+            Child 2
+          </atlas-checkbox>
+        </div>
+      </div>
+    </div>
+    <div class="section">
+      <h3>Indeterminate State as list</h3>
+      <atlas-list>
+        <atlas-list-item [item]="{level: '1'}">
+          <atlas-checkbox
+            [action]="actions.primary"
+            [isChecked]="parentChecked"
+            [indeterminate]="parentIndeterminate"
+            labelTypography="typographyStyles-body-medium"
+            checkboxId="parentCheckbox"
+            checkboxName="parentCheckbox"
+            [size]="iconSizes.medium"
+            (onChange)="onParentChange($event)"
+          >
+            Parent
+          </atlas-checkbox>
+        </atlas-list-item>
+        <atlas-list-item [item]="{level: '2'}">
+          <atlas-checkbox
+            [action]="actions.default"
+            [isChecked]="child1Checked"
+            labelTypography="typographyStyles-body-small"
+            [checkboxId]="childCheckbox1"
+            [checkboxName]="childCheckbox1"
+            [size]="iconSizes.small"
+            (onChange)="onChildChange($event)"
+          >
+            Child 1
+          </atlas-checkbox>
+        </atlas-list-item>
+
+        <atlas-list-item [item]="{level: '2'}">
+          <atlas-checkbox
+            [action]="actions.default"
+            [isChecked]="child2Checked"
+            labelTypography="typographyStyles-body-small"
+            [checkboxId]="childCheckbox2"
+            [checkboxName]="childCheckbox2"
+            [size]="iconSizes.small"
+            (onChange)="onChildChange($event)"
+          >
+            Child 2
+          </atlas-checkbox>
+        </atlas-list-item>
+      </atlas-list>
+    </div>
+  </div>
+</div>

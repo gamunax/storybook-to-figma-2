@@ -1,0 +1,185 @@
+<div class="container padding-y-9 padding-x-9 page-bg">
+  <h2>pagination Component Demo</h2>
+  <div class="header">
+    <atlas-theming-helper>
+      <label>Custom theme</label>
+    </atlas-theming-helper>
+  </div>
+  <div>
+    <h2>pagination using Atlas v8^ attributes</h2>
+    <div class="section">
+      <h2>Button - brand</h2>
+      <div class="pagination-group">
+        <atlas-pagination
+          [maxSize]="5"
+          [paginationInfo]="paginationInfo"
+          [size]="paginationSizings.large"
+          [style]="styles.outlined"
+          [radius]="paginationRadius.round"
+          [color]="colors.brand"
+          [disabled]="false"
+          (selectedPageNumber)="onLoadPageNumberRequested($event)"
+        >
+        </atlas-pagination>
+      </div>
+    </div>
+    <div class="section">
+      <h2>Button - neutral</h2>
+      <div class="pagination-group">
+        <atlas-pagination
+          [maxSize]="5"
+          [paginationInfo]="paginationInfo"
+          [size]="paginationSizings.large"
+          [style]="styles['no-fill']"
+          [radius]="paginationRadius.round"
+          [color]="colors.neutral"
+          [disabled]="false"
+          (selectedPageNumber)="onLoadPageNumberRequested($event)"
+        >
+        </atlas-pagination>
+      </div>
+    </div>
+    <div class="section">
+      <h2>Button - brand - rounded</h2>
+      <div class="pagination-group">
+        <atlas-pagination
+          [maxSize]="5"
+          [paginationInfo]="paginationInfo"
+          [size]="paginationSizings.large"
+          [style]="styles.outlined"
+          [radius]="paginationRadius.rounded"
+          [color]="colors.brand"
+          [disabled]="false"
+          (selectedPageNumber)="onLoadPageNumberRequested($event)"
+        >
+        </atlas-pagination>
+      </div>
+    </div>
+    <div class="section">
+      <h2>Button - neutral - rounded</h2>
+      <div class="pagination-group">
+        <atlas-pagination
+          [maxSize]="5"
+          [paginationInfo]="paginationInfo"
+          [size]="paginationSizings.large"
+          [style]="styles['no-fill']"
+          [radius]="paginationRadius.rounded"
+          [color]="colors.neutral"
+          [disabled]="false"
+          (selectedPageNumber)="onLoadPageNumberRequested($event)"
+        >
+        </atlas-pagination>
+      </div>
+    </div>
+  </div>
+  <div>
+    <h2>pagination using atlas v7 attributes DEPRECATED.</h2>
+    <div class="section">
+      <h2>Button - primary</h2>
+      <div class="pagination-group">
+        <atlas-pagination
+          [maxSize]="5"
+          [paginationInfo]="paginationInfo"
+          [size]="paginationSizings.large"
+          [variant]="paginationVariants.outlined"
+          [radius]="paginationRadius.round"
+          [action]="actions.primary"
+          [disabled]="false"
+          (selectedPageNumber)="onLoadPageNumberRequested($event)"
+        >
+        </atlas-pagination>
+      </div>
+    </div>
+    <div class="section">
+      <h2>Button - default</h2>
+      <div class="pagination-group">
+        <atlas-pagination
+          [maxSize]="5"
+          [paginationInfo]="paginationInfo"
+          [size]="paginationSizings.large"
+          [variant]="paginationVariants.text"
+          [radius]="paginationRadius.round"
+          [action]="actions.default"
+          [disabled]="false"
+          (selectedPageNumber)="onLoadPageNumberRequested($event)"
+        >
+        </atlas-pagination>
+      </div>
+    </div>
+    <div class="section">
+      <h2>Button - primary - rounded - large</h2>
+      <div class="pagination-group">
+        <atlas-pagination
+          [maxSize]="5"
+          [paginationInfo]="paginationInfo"
+          [size]="paginationSizings.large"
+          [variant]="paginationVariants.outlined"
+          [radius]="paginationRadius.rounded"
+          [action]="actions.primary"
+          [disabled]="false"
+          (selectedPageNumber)="onLoadPageNumberRequested($event)"
+        >
+        </atlas-pagination>
+      </div>
+    </div>
+    <div class="section">
+      <h2>Button - primary - rounded - xlarge</h2>
+      <div class="pagination-group">
+        <atlas-pagination
+          [maxSize]="5"
+          [paginationInfo]="paginationInfo"
+          [size]="paginationSizings.xlarge"
+          [variant]="paginationVariants.text"
+          [radius]="paginationRadius.rounded"
+          [action]="actions.default"
+          [disabled]="false"
+          (selectedPageNumber)="onLoadPageNumberRequested($event)"
+        >
+        </atlas-pagination>
+      </div>
+    </div>
+  </div>
+  <div class="section">
+    <h2>Pagination Example with xLarge</h2>
+    <div class="pagination-group">
+    <atlas-pagination
+      [maxSize]="3"
+      [paginationInfo]="paginationInfo"
+      [size]="paginationSizings.xlarge"
+      [variant]="paginationVariants.text"
+      [radius]="paginationRadius.round"
+      [action]="actions.default"
+      [disabled]="false"
+      (paginationInfoRequest)="onLoadPaginationInfoRequest($event)"
+      (selectedPageNumber)="onLoadPageNumberRequested($event)"
+      [showLimitOptions]="true"
+      [limitOptions]="[5, 10, 15, 20]"
+    >
+    </atlas-pagination>
+    </div>
+    <div class="pagination-group">
+      <atlas-field>
+        <atlas-field-label>Total items</atlas-field-label>
+        <input
+          #input1
+          type="text"
+          atlasInput
+          [required]="true"
+          (input)="onChangeTotalPagination($event)"
+          [value]="paginationInfo.total.toString()"
+        />
+      </atlas-field>
+      <atlas-field>
+        <atlas-field-label>Go to Page</atlas-field-label>
+        <input
+          #input2
+          type="text"
+          atlasInput
+          [required]="true"
+          (input)="onLoadPageNumberRequestedDynamic($event)"
+          [value]="'1'"
+        />
+      </atlas-field>
+    </div>
+  </div>
+</div>

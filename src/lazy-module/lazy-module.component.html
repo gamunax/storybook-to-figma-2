@@ -1,0 +1,248 @@
+<h2>lazy-module works! Modal</h2>
+<atlas-modal
+  [title]="'Dialog Title'"
+  [content]="'Content'"
+  [autofocus]="false"
+  [okLabel]="'Ok'"
+  [cancelLabel]="'Cancel'"
+  (onCancelClick)="onCancelClick()"
+  (onOkClick)="onOkClick()"
+>
+  <atlas-button>Modal</atlas-button>
+</atlas-modal>
+
+<h2>Custom Dialog Modal</h2>
+<atlas-button (click)="openDialog()">Open dialog</atlas-button>
+
+<h2>Datepicker</h2>
+<atlas-field>
+  <input [Datepicker]="datepicker" atlasInput placeholder="Choose a date" />
+  <atlas-field-suffix>
+    <datepicker-toggle [datepicker]="datepicker"></datepicker-toggle>
+  </atlas-field-suffix>
+  <datepicker #datepicker> </datepicker>
+</atlas-field>
+
+<h2>Timepicker</h2>
+<atlas-field>
+  <input [Timepicker]="timepicker" atlasInput placeholder="Choose a time" #input />
+  <atlas-field-suffix>
+    <timepicker-toggle [timepicker]="timepicker"></timepicker-toggle>
+  </atlas-field-suffix>
+  <timepicker #timepicker [color]="actions.primary" [defaultTime]="input.value"></timepicker>
+</atlas-field>
+
+<h2>Tooltip</h2>
+<div style="padding: 100px 30vw">
+  <atlas-button
+    #tooltip="haloTooltip"
+    haloTooltip="Aliquam eget finibus ante, non facilisis lectus. Sed vitae dignissim est, vel aliquam tellus."
+    [haloTooltipPosition]="haloTooltipPosition.bottom"
+    [haloTooltipWithArrow]="true"
+    >Action
+  </atlas-button>
+</div>
+<atlas-button (onClick)="tooltip.show()">Show tooltip</atlas-button>
+<br />
+<br />
+<atlas-button (onClick)="tooltip.hide()">Hide tooltip</atlas-button>
+<br /><br />
+<atlas-button (onClick)="tooltip.toggle()">Toggle show/hide</atlas-button>
+<br />
+
+<h1>Progress Bar Circular</h1>
+<atlas-progress
+  [value]="valueProgress.value"
+  [variant]="variant"
+  [barStyle]="barStyle"
+  [labeled]="labeled"
+  [type]="type"
+>
+</atlas-progress>
+
+<atlas-field>
+  <atlas-field-label>value</atlas-field-label>
+  <input
+    type="text"
+    atlasInput
+    [disabled]="false"
+    [required]="true"
+    placeholder="15"
+    [value]="valueProgress.value"
+    [formControl]="valueProgress"
+  />
+</atlas-field>
+
+<atlas-button (onClick)="labeledChange()">Labeled</atlas-button>
+
+<h2>Popoover</h2>
+<atlas-button atlas-popover>
+  Open Popover
+  <atlas-popover-content popoverTitle="Popover" position="right" elevation="elevated" action="primary">
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facilis dicta recusandae fugiat repudiandae earum reprehenderit nobis obcaecati, neque dolorem minima vero facere libero aliquid commodi beatae, corrupti, voluptas labore cumque!
+    </p>
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facilis dicta recusandae fugiat repudiandae earum reprehenderit nobis obcaecati, neque dolorem minima vero facere libero aliquid commodi beatae, corrupti, voluptas labore cumque!
+    </p>
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facilis dicta recusandae fugiat repudiandae earum reprehenderit nobis obcaecati, neque dolorem minima vero facere libero aliquid commodi beatae, corrupti, voluptas labore cumque!
+    </p>
+  </atlas-popover-content>
+</atlas-button>
+<atlas-button atlas-popover>
+  Open Popover Top
+  <atlas-popover-content popoverTitle="Popover" position="top" elevation="elevated" action="primary">
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facilis dicta recusandae fugiat repudiandae earum reprehenderit nobis obcaecati, neque dolorem minima vero facere libero aliquid commodi beatae, corrupti, voluptas labore cumque!
+    </p>
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facilis dicta recusandae fugiat repudiandae earum reprehenderit nobis obcaecati, neque dolorem minima vero facere libero aliquid commodi beatae, corrupti, voluptas labore cumque!
+    </p>
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facilis dicta recusandae fugiat repudiandae earum reprehenderit nobis obcaecati, neque dolorem minima vero facere libero aliquid commodi beatae, corrupti, voluptas labore cumque!
+    </p>
+  </atlas-popover-content>
+</atlas-button>
+<atlas-button atlas-popover>
+  Open Popover Right
+  <atlas-popover-content popoverTitle="Popover" position="right" elevation="elevated" action="primary">
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facilis dicta recusandae fugiat repudiandae earum reprehenderit nobis obcaecati, neque dolorem minima vero facere libero aliquid commodi beatae, corrupti, voluptas labore cumque!
+    </p>
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facilis dicta recusandae fugiat repudiandae earum reprehenderit nobis obcaecati, neque dolorem minima vero facere libero aliquid commodi beatae, corrupti, voluptas labore cumque!
+    </p>
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facilis dicta recusandae fugiat repudiandae earum reprehenderit nobis obcaecati, neque dolorem minima vero facere libero aliquid commodi beatae, corrupti, voluptas labore cumque!
+    </p>
+  </atlas-popover-content>
+</atlas-button>
+<atlas-button atlas-popover>
+  Open Popover Left
+  <atlas-popover-content popoverTitle="Popover" position="left" elevation="elevated" action="primary">
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facilis dicta recusandae fugiat repudiandae earum reprehenderit nobis obcaecati, neque dolorem minima vero facere libero aliquid commodi beatae, corrupti, voluptas labore cumque!
+    </p>
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facilis dicta recusandae fugiat repudiandae earum reprehenderit nobis obcaecati, neque dolorem minima vero facere libero aliquid commodi beatae, corrupti, voluptas labore cumque!
+    </p>
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facilis dicta recusandae fugiat repudiandae earum reprehenderit nobis obcaecati, neque dolorem minima vero facere libero aliquid commodi beatae, corrupti, voluptas labore cumque!
+    </p>
+  </atlas-popover-content>
+</atlas-button>
+<atlas-button atlas-popover>
+  Open Popover Bottom
+  <atlas-popover-content popoverTitle="Popover" position="bottom" elevation="elevated" action="primary">
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facilis dicta recusandae fugiat repudiandae earum reprehenderit nobis obcaecati, neque dolorem minima vero facere libero aliquid commodi beatae, corrupti, voluptas labore cumque!
+    </p>
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facilis dicta recusandae fugiat repudiandae earum reprehenderit nobis obcaecati, neque dolorem minima vero facere libero aliquid commodi beatae, corrupti, voluptas labore cumque!
+    </p>
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facilis dicta recusandae fugiat repudiandae earum reprehenderit nobis obcaecati, neque dolorem minima vero facere libero aliquid commodi beatae, corrupti, voluptas labore cumque!
+    </p>
+  </atlas-popover-content>
+</atlas-button>
+
+<h2>Popover Dropdown</h2>
+<atlas-button atlas-popover>
+  Open Popover
+  <atlas-popover-content popoverTitle="Popover" position="right" [isDropdownVariant]="true" elevation="elevated" action="primary">
+    <form novalidate>
+      <div class="row">
+        <div class="small-12 column margin-bottom-2" style=" display: flex; justify-content: space-between; align-items:center; border-bottom: 1px solid #00A8C8">
+          <h4 style="float: left">Pay</h4>
+          <atlas-icon style="float: right" [icon]="'icon-chevron-up-24'"></atlas-icon>
+        </div>
+      </div>
+      <div class="row" style="margin: 0 0 1.5rem 0;">
+        <div class="small-6 column">
+          <fieldset>
+            <legend>Show Columns</legend>
+            <ul style="margin: 0; list-style: none;">
+              <li>
+                <atlas-checkbox id="checkbox1" [isChecked]="true" [action]="actions.primary">Actual Base Salary</atlas-checkbox>
+              </li>
+              <li>
+                <atlas-checkbox id="checkbox2" [isChecked]="false" [action]="actions.primary">Predicted Salary</atlas-checkbox>
+              </li>
+              <li>
+                <atlas-checkbox id="checkbox3" [isChecked]="false" [action]="actions.primary">Pre-Adjusted SD Level</atlas-checkbox>
+              </li>
+            </ul>
+          </fieldset>
+        </div>
+        <div class="small-6 column">
+          <fieldset>
+            <legend>Show Pay Increase as...</legend>
+            <ul style="margin: 0; list-style: none;">
+              <li>
+                <atlas-radio 
+                  [action]="actions.primary"
+                  radioName="radioTest"
+                  [value]="'Apples'"
+                  radioId="Apples"
+                >Apples</atlas-radio>
+              </li>
+              <li>
+                <atlas-radio 
+                  [action]="actions.primary"
+                  radioName="radioTest"
+                  [value]="'Orange'"
+                  radioId="Orange"
+                >Orange</atlas-radio>
+              </li>
+            </ul>
+          </fieldset>
+        </div>
+      </div>
+    </form>
+  </atlas-popover-content>
+</atlas-button>
+
+<h2>Popover Back Button</h2>
+<atlas-button atlas-popover>
+  Open Popover
+  <atlas-popover-content popoverTitle="Popover" position="right" [backButton]="indexTracker?.length > 0" (goBackEvent)="goBack()" elevation="elevated" action="primary">
+    <ul class="popover-back-button-example__list">
+      <li
+        class="popover-back-button-example__list--item"
+        (click)="file.subFiles?.length && goForward($event, idx)"
+        *ngFor="let file of currentList let idx = index"
+      >
+        <div>{{file.name}}</div>
+        <atlas-icon *ngIf="file.subFiles?.length" icon="icon-chevron-right-24" alt="go one level deeper"></atlas-icon>
+      </li>
+    </ul>
+  </atlas-popover-content>
+</atlas-button>
+
+<h2>Radio</h2>
+<atlas-radio
+  [action]="action"
+  radioName="radioTest"
+  [disabled]="false"
+  [value]="'Apples'"
+  radioId="Apples"
+  [(ngModel)]="model"
+  (onChange)="onChange($event)"
+  >Apples</atlas-radio>
+  <strong>{{model}}</strong>
+
+<h2>Checkbox</h2>
+<atlas-checkbox
+  [disabled]="false"
+  [action]="action"
+  [indeterminate]="true"
+  [isChecked]="isChecked"
+  (onChange)="onChange($event)"
+  >Label</atlas-checkbox
+>
+
+<h2>Filedrop</h2>
+<atlas-filedrop (canceledUpload)="onCanceledUpload()" (selectedFiles)="onSelectedFilesToUpload($event)"
+  [updateProgressInfo]="files"
+></atlas-filedrop>

@@ -1,0 +1,10 @@
+<ng-template #innerContent>
+  <atlas-icon [icon]="icon" [collection]="collection" [size]="iconSize"></atlas-icon>
+  <span class="legacy-side-nav__item-title">{{ itemTitle }}</span>
+</ng-template>
+<a [ngClass]="['legacy-side-nav__item', (active == true) ? 'legacy-side-nav__item-active' : '']" [routerLink]="link" [target]="linkTarget" *ngIf="!isExternalLink">
+  <ng-template [ngTemplateOutlet]="innerContent"></ng-template>
+</a>
+<a [ngClass]="['legacy-side-nav__item', (active == true) ? 'legacy-side-nav__item-active' : '']" [href]="link" [target]="linkTarget" *ngIf="isExternalLink">
+  <ng-template [ngTemplateOutlet]="innerContent"></ng-template>
+</a>

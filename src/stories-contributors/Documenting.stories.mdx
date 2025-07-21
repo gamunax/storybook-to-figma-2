@@ -1,0 +1,119 @@
+import { Meta } from '@storybook/addon-docs';
+import doc from 'projects/cdk/assets/docs/documenting_stories.png';
+import apiDoc from 'projects/cdk/assets/docs/documenting_api-doc.png';
+
+<Meta title="Contributors/Documenting" parameters={{ options: { isToolshown: true } }} />
+
+# Documenting 
+
+When documenting, keep in mind that the audience are not just `Developers` and `Designers`, but also `Delivery Leads`, `Business Analysts`, `Product Owners`, `Product Testers` and more.
+
+The goal of the documentation is that they can understand and use the design system effectively and efficiently.
+
+## Documentation areas
+
+Different documentation areas, helps different stakeholders, we are going to divide this areas in four: `Introduction`, `Examples`, `Design`, `API`.
+
+### Introduction
+
+The component `name`, a small `description` of what the component does and the component `state`.
+This will help different stakeholders to understand what is the purpose of the component.
+
+The component states are:
+
+- Experimental: When the component is not following all the standards or it's not ready for production yet. Breaking changes are expected. Experimental components can be deprecated.
+
+- Alpha: The component is not ready for production yet, the alpha components can be deprecated.
+
+- Beta : The component is not completely stable yet. Frequent updates are expected.
+
+- Deprecated: New adopters should not use deprecated components, if the adopters are using a deprecated cmoponent, they should migration instructions.
+Deprecated components should include migration instructions.
+
+- Stable: Components that are stable and productionr eady, all things are operational, the component is properly documented and follows standards.
+
+To inform about the state of the component, include a badge in the component stories in the following way:
+
+```ts
+export default {
+  title: 'Components/ComponentExample',
+  component: ComponentExample,
+  parameters: {
+    badges: [ BADGE.EXPERIMENTAL ], // include this badges parameter with the component state, EXPERIMENTAL indicates the component is still experimental.
+  ...
+```
+
+**Consumers**: The introduction is useful for everyone.
+
+### Examples
+
+Examples are useful to illustrate how the component behaves with different states and configurations.
+
+For showing examples we create `stories` for those different configurations, there is no need to create a story per configuration,
+but it's a good idea to illustrate scenarios that are commonly used.
+
+Check the documentation about [how to create stories](https://storybook.js.org/docs/angular/writing-stories/introduction).
+
+**Consumers**: The examples are useful for everyone.
+
+<img src={doc} alt="Stories" width="100%"/>
+
+### Design (optional but recommended)
+
+The design area should include links to designs and UX documentation. Do's and Don'ts of the component and other guidelines about how and when to use the component.
+
+**Consumers**: The design is useful for everyone.
+
+### API
+
+When developing a component we need to document every public method, property and the @Input's and @Output's.
+
+We use compodoc to generate static documentation based on comments in files.
+
+Every supported comment will generate documentation automatically.
+
+Example of supported comment:
+
+```ts
+/**
+ * Supported comment
+ */
+```
+
+Please note that these comment styles are not supported by compodoc:
+
+```ts
+/*
+ * unsupported comment
+ */
+
+/*
+  unsupported comment
+ */
+
+// unsupported comment
+```
+
+#### VSCode
+
+In VSCode, when documenting a function, you can press /** followed of enter, and it will generate a documentation structure with the params and return.
+
+Example of documenting a method with parameters:
+
+```ts
+/**
+ * This function calculates the sum of two values.
+ * @param a a value to sum
+ * @param b another value to sum
+ * @returns the result a+b
+ */
+sum(a: number, b: number): number {
+  return a + b;
+}
+```
+
+#### Storybook
+
+Your new commented spec should now be visible in the DOC tab in Storybook after rebuilding.
+
+<img src={apiDoc} alt="API Doc" width="100%"/>

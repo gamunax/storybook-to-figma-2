@@ -1,0 +1,435 @@
+import { Meta } from '@storybook/addon-docs';
+import { BADGES } from '.storybook/constants';
+import { ThemingServiceGlobal, defaultConfig } from "atlas-cdk";
+import { HoverableCode } from '../../.storybook/hoverable-code';
+
+<Meta title="Adopters/Design/Utils" parameters={{ badges: [ BADGES.BETA ], options: { isToolshown: true } }}/>
+ 
+
+# Utilities
+
+Our utility classes provide style sets for your application that are tied to our design token language. This helps create reuse and consistency throughout your end product.
+
+## Spacing
+
+Spacer classes allow you to apply any `$spacing` scale token values (seen below) to `margin` and `padding` in any direction (left, right, top, bottom, x axis and y axis) on particular elements. The class name format is `.PROPERTY-DIRECTION(s)-TOKEN`
+
+Basic:
+
+Set the `bottom` margin to `spacing.vertical-8` value in the active theme.
+
+```html
+    <div class="margin-bottom-8"></div>
+```
+
+Multi directional:
+Set the `x` axis (both left and right) padding to `spacing.horizontal-8` value in the active theme.
+
+```html
+    <div class="padding-x-8"></div>
+```
+
+
+## Spacing Scale
+
+This is the scale that is used applied across the spacing class values above. These can be used across your application CSS to maintain the theme scaling and rhythm.
+
+Base reference:
+```css
+--scale-content-spacing-base: 2px
+```
+
+
+<table>
+    <thead>
+        <tr>
+            <th>Token</th>
+            <th>Value</th>
+            <th>Usage</th>
+        </tr>
+    </thead>
+    <tbody>
+    
+                <tr>
+                    <td className="hoverable__cell">
+                        <HoverableCode>--spacing-base</HoverableCode>
+                    </td>
+                    <td>
+                        var(--scale-content-spacing-base)
+                    </td>
+                    <td>
+                        'CSS Variable'
+                    </td>
+                    
+                </tr>
+                 <tr>
+        <td className="hoverable__cell">
+            <HoverableCode>--spacing-vertical-2</HoverableCode>
+        </td>
+        <td>
+            calc(var(--spacing-base) * 2)
+        </td>
+        <td>
+            CSS Variable
+        </td>
+    </tr>
+    <tr>
+        <td className="hoverable__cell">
+            <HoverableCode>--spacing-vertical-3</HoverableCode>
+        </td>
+        <td>
+            calc(var(--spacing-base) * 3)
+        </td>
+        <td>
+            CSS Variable
+        </td>
+    </tr>
+    <tr>
+        <td className="hoverable__cell">
+            <HoverableCode>--spacing-vertical-4</HoverableCode>
+        </td>
+        <td>
+            calc(var(--spacing-base) * 4)
+        </td>
+        <td>
+            CSS Variable
+        </td>
+    </tr>
+    <tr>
+        <td className="hoverable__cell">
+            <HoverableCode>--spacing-vertical-5</HoverableCode>
+        </td>
+        <td>
+            calc(var(--spacing-base) * 5)
+        </td>
+        <td>
+            CSS Variable
+        </td>
+    </tr>
+    <tr>
+        <td className="hoverable__cell">
+            <HoverableCode>--spacing-vertical-6</HoverableCode>
+        </td>
+        <td>
+            calc(var(--spacing-base) * 6)
+        </td>
+        <td>
+            CSS Variable
+        </td>
+    </tr>
+    <tr>
+        <td className="hoverable__cell">
+            <HoverableCode>--spacing-vertical-7</HoverableCode>
+        </td>
+        <td>
+            calc(var(--spacing-base) * 7)
+        </td>
+        <td>
+            CSS Variable
+        </td>
+    </tr>
+    <tr>
+        <td className="hoverable__cell">
+            <HoverableCode>--spacing-vertical-8</HoverableCode>
+        </td>
+        <td>
+            calc(var(--spacing-base) * 8)
+        </td>
+        <td>
+            CSS Variable
+        </td>
+    </tr>
+    <tr>
+        <td className="hoverable__cell">
+            <HoverableCode>--spacing-vertical-9</HoverableCode>
+        </td>
+        <td>
+            calc(var(--spacing-base) * 9)
+        </td>
+        <td>
+            CSS Variable
+        </td>
+    </tr>
+    <tr>
+        <td className="hoverable__cell">
+            <HoverableCode>--spacing-vertical-10</HoverableCode>
+        </td>
+        <td>
+            calc(var(--spacing-base) * 10)
+        </td>
+        <td>
+            CSS Variable
+        </td>
+    </tr>
+    <tr>
+        <td className="hoverable__cell">
+            <HoverableCode>--spacing-vertical-11</HoverableCode>
+        </td>
+        <td>
+            calc(var(--spacing-base) * 11)
+        </td>
+        <td>
+            CSS Variable
+        </td>
+    </tr>
+    <tr>
+        <td className="hoverable__cell">
+            <HoverableCode>--spacing-vertical-12</HoverableCode>
+        </td>
+        <td>
+            calc(var(--spacing-base) * 12)
+        </td>
+        <td>
+            CSS Variable
+        </td>
+    </tr>
+
+    <tr>
+        <td className="hoverable__cell">
+            <HoverableCode>--spacing-horizontal-2</HoverableCode>
+        </td>
+        <td>
+            calc(var(--spacing-base) * 2)
+        </td>
+        <td>
+            CSS Variable
+        </td>
+    </tr>
+    <tr>
+        <td className="hoverable__cell">
+            <HoverableCode>--spacing-horizontal-3</HoverableCode>
+        </td>
+        <td>
+            calc(var(--spacing-base) * 3)
+        </td>
+        <td>
+            CSS Variable
+        </td>
+    </tr>
+    <tr>
+        <td className="hoverable__cell">
+            <HoverableCode>--spacing-horizontal-4</HoverableCode>
+        </td>
+        <td>
+            calc(var(--spacing-base) * 4)
+        </td>
+        <td>
+            CSS Variable
+        </td>
+    </tr>
+    <tr>
+        <td className="hoverable__cell">
+            <HoverableCode>--spacing-horizontal-5</HoverableCode>
+        </td>
+        <td>
+            calc(var(--spacing-base) * 5)
+        </td>
+        <td>
+            CSS Variable
+        </td>
+    </tr>
+    <tr>
+        <td className="hoverable__cell">
+            <HoverableCode>--spacing-horizontal-6</HoverableCode>
+        </td>
+        <td>
+            calc(var(--spacing-base) * 6)
+        </td>
+        <td>
+            CSS Variable
+        </td>
+    </tr>
+    <tr>
+        <td className="hoverable__cell">
+            <HoverableCode>--spacing-horizontal-7</HoverableCode>
+        </td>
+        <td>
+            calc(var(--spacing-base) * 7)
+        </td>
+        <td>
+            CSS Variable
+        </td>
+    </tr>
+    <tr>
+        <td className="hoverable__cell">
+            <HoverableCode>--spacing-horizontal-8</HoverableCode>
+        </td>
+        <td>
+            calc(var(--spacing-base) * 8)
+        </td>
+        <td>
+            CSS Variable
+        </td>
+    </tr>
+    <tr>
+        <td className="hoverable__cell">
+            <HoverableCode>--spacing-horizontal-9</HoverableCode>
+        </td>
+        <td>
+            calc(var(--spacing-base) * 9)
+        </td>
+        <td>
+            CSS Variable
+        </td>
+    </tr>
+    <tr>
+        <td className="hoverable__cell">
+            <HoverableCode>--spacing-horizontal-10</HoverableCode>
+        </td>
+        <td>
+            calc(var(--spacing-base) * 10)
+        </td>
+        <td>
+            CSS Variable
+        </td>
+    </tr>
+    <tr>
+        <td className="hoverable__cell">
+            <HoverableCode>--spacing-horizontal-11</HoverableCode>
+        </td>
+        <td>
+            calc(var(--spacing-base) * 11)
+        </td>
+        <td>
+            CSS Variable
+        </td>
+    </tr>
+    <tr>
+        <td className="hoverable__cell">
+            <HoverableCode>--spacing-horizontal-12</HoverableCode>
+        </td>
+        <td>
+            calc(var(--spacing-base) * 12)
+        </td>
+        <td>
+            CSS Variable
+        </td>
+    </tr>
+
+    <tr>
+        <td className="hoverable__cell">
+            <HoverableCode>--spacing-none</HoverableCode>
+        </td>
+        <td>
+            0
+        </td>
+        <td>
+            CSS Variable
+        </td>
+    </tr>
+
+    </tbody>
+</table>
+
+## Box Shadows Classes
+
+These classes can be used across your application.
+
+<table>
+    <thead>
+        <tr>
+            <th>Token</th>
+            <th>Description</th>
+            <th>Example</th>
+            <th>Usage</th>
+        </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td className="hoverable__cell">
+            <HoverableCode>box-shadow-elevation-flat</HoverableCode>
+        </td>
+        <td>
+            <HoverableCode>elevation flat</HoverableCode>
+        </td>
+        <td>
+            <div className='box-shadow-elevation-flat' style={{padding: '10px'}}>
+                class example
+            </div>
+        </td>
+        <td>
+            CSS Class
+        </td>
+    </tr>
+          <tr>
+        <td className="hoverable__cell">
+            <HoverableCode>box-shadow-elevation-xsmall</HoverableCode>
+        </td>
+        <td>
+            <HoverableCode>elevation xsmall</HoverableCode>
+        </td>
+        <td>
+            <div className='box-shadow-elevation-xsmall' style={{padding: '10px'}}>
+                class example
+            </div>
+        </td>
+        <td>
+            CSS Class
+        </td>
+    </tr>
+    <tr>
+        <td className="hoverable__cell">
+            <HoverableCode>box-shadow-elevation-raised</HoverableCode>
+        </td>
+        <td>
+            <HoverableCode>elevation small</HoverableCode>
+        </td>
+        <td>
+            <div className='box-shadow-elevation-raised' style={{padding: '10px'}}>
+                class example
+            </div>
+        </td>
+        <td>
+            CSS Class
+        </td>
+    </tr>
+    <tr>
+        <td className="hoverable__cell">
+            <HoverableCode>box-shadow-elevation-elevated</HoverableCode>
+        </td>
+           <td>
+            <HoverableCode>elevation medium</HoverableCode>
+        </td>
+        <td>
+            <div className='box-shadow-elevation-elevated' style={{padding: '10px'}}>
+                class example
+            </div>
+        </td>
+        <td>
+            CSS Class
+        </td>
+    </tr>
+    <tr>
+        <td className="hoverable__cell">
+            <HoverableCode>box-shadow-elevation-floating</HoverableCode>
+        </td>
+           <td>
+            <HoverableCode>elevation large</HoverableCode>
+        </td>
+        <td>
+            <div className='box-shadow-elevation-floating' style={{padding: '10px'}}>
+                class example
+            </div>
+        </td>
+        <td>
+            CSS Class
+        </td>
+    </tr>
+    <tr>
+        <td className="hoverable__cell">
+            <HoverableCode>box-shadow-elevation-lifted</HoverableCode>
+        </td>
+           <td>
+            <HoverableCode>elevation xlarge</HoverableCode>
+        </td>
+        <td>
+            <div className='box-shadow-elevation-lifted' style={{padding: '10px'}}>
+                class example
+            </div>
+        </td>
+        <td>
+            CSS Class
+        </td>
+    </tr>
+    </tbody>
+</table>

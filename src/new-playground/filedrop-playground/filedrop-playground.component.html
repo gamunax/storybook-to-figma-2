@@ -1,0 +1,60 @@
+<div class="container padding-y-9 padding-x-9 page-bg">
+
+  <h2>filedrop Component Demo</h2>
+  <div class="header">
+    <atlas-theming-helper>
+      <label>Custom theme</label>
+    </atlas-theming-helper>
+  </div>
+  <h2>filedrop with list</h2>
+   <div>
+    <div class="section">
+      <div class="filedrop-group">
+        <div class="filedrop-container">
+          <atlas-filedrop #fileDropSimple
+          (canceledUpload)="onCanceledUpload()"
+          (selectedFiles)="onSelectedFilesToUpload($event)"
+          [updateProgressInfo]="files"
+          [multipleFiles]="false"
+          [style]="styles.strong"
+          [accept]="'.png, .jpg, .jpeg, .gif, .pdf, .docx, .xlsx'"
+        ></atlas-filedrop>
+        </div>    
+      </div>
+    </div>
+
+  </div>
+
+  <div class="section" *ngIf="filesList.length">Show List
+    <div *ngFor="let item of filesList; let i = index" [ngClass]="['atlas-filedrop-content atlas-filedrop-content-uploaded box-shadow-elevation-raised']">
+      <atlas-icon [icon]="'icon-check-24'"></atlas-icon> 
+      <span style="margin: 0 14px; flex: 1">{{ item.file.name }}</span>
+      <atlas-icon-button [icon]="'icon-remove-24'" (onClick)="onDeleteFile(i)"></atlas-icon-button>
+    </div>
+  </div>
+
+  <h2>filedrop - multiple files</h2>
+  <div>
+    <div class="section">
+      <div class="filedrop-group">
+        <div class="filedrop-container">
+          <atlas-filedrop #fileDropMultiple
+          (canceledUpload)="onCanceledUpload()"
+          (selectedFiles)="onSelectedFilesToUploadMultiple($event)"
+          [updateProgressInfo]="files"
+          [multipleFiles]="true"
+          [style]="styles.strong"
+          [accept]="'.png, .jpg, .jpeg, .gif, .pdf, .docx, .xlsx'"
+        ></atlas-filedrop>
+        </div>    
+      </div>
+    </div>
+    <div class="section" *ngIf="fileListMultiple.length">Show List
+      <div *ngFor="let item of fileListMultiple; let i = index" [ngClass]="['atlas-filedrop-content atlas-filedrop-content-uploaded box-shadow-elevation-raised']">
+        <atlas-icon [icon]="'icon-check-24'"></atlas-icon> 
+        <span style="margin: 0 14px; flex: 1">{{ item.file.name }}</span>
+        <atlas-icon-button [icon]="'icon-remove-24'" (onClick)="onDeleteFileMultiple(i)"></atlas-icon-button>
+      </div>
+    </div>
+  </div>
+</div>

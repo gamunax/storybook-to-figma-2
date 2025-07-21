@@ -1,0 +1,107 @@
+<div class="container padding-y-9 padding-x-9 page-bg">
+  <!-- Chip Component Demo Header -->
+  <h2>switch Component Demo</h2>
+  <div class="header">
+    <atlas-theming-helper>
+      <label>Custom theme</label>
+    </atlas-theming-helper>
+  </div>
+  <div>
+    <div class="section">
+      <h3>size medium</h3>
+    <div class="switch-group">
+      <div class="switch-container">
+        <atlas-switch [action]="actions.default" (onClick)="changeSwitch($event)" [value]="switchV"> neutral </atlas-switch>
+      </div>
+      <div class="switch-container">
+        <atlas-switch [action]="actions.primary" (onClick)="changeSwitch($event)" [value]="switchV"> brand </atlas-switch>
+      </div>
+      <div class="switch-container">
+        <atlas-switch [action]="actions.warning" (onClick)="changeSwitch($event)" [value]="switchV"> caution </atlas-switch>
+      </div>
+      <div class="switch-container">
+        <atlas-switch [action]="actions.error" (onClick)="changeSwitch($event)" [value]="switchV"> danger </atlas-switch>
+      </div>
+      <div class="switch-container">
+        <atlas-switch [action]="actions.success" (onClick)="changeSwitch($event)" [value]="switchV"> success </atlas-switch>
+      </div>
+      <div class="switch-container">
+        <atlas-switch [action]="actions.info" (onClick)="changeSwitch($event)" [value]="switchV"> info </atlas-switch>
+      </div>
+    </div>
+  </div>
+  <div class="section">
+    <h3>size small</h3>
+    <div class="switch-group">
+      <div class="switch-container">
+        <atlas-switch [action]="actions.default" (onClick)="changeSwitch($event)" [value]="switchV" [size]="switchSizings.small"> neutral </atlas-switch>
+      </div>
+      <div class="switch-container">
+        <atlas-switch [action]="actions.primary" (onClick)="changeSwitch($event)" [value]="switchV" [size]="switchSizings.small"> brand </atlas-switch>
+      </div>
+      <div class="switch-container">
+        <atlas-switch [action]="actions.warning" (onClick)="changeSwitch($event)" [value]="switchV" [size]="switchSizings.small"> caution </atlas-switch>
+      </div>
+      <div class="switch-container">
+        <atlas-switch [action]="actions.error" (onClick)="changeSwitch($event)" [value]="switchV" [size]="switchSizings.small"> danger </atlas-switch>
+      </div>
+      <div class="switch-container">
+        <atlas-switch [action]="actions.success" (onClick)="changeSwitch($event)" [value]="switchV" [size]="switchSizings.small"> success </atlas-switch>
+      </div>
+      <div class="switch-container">
+        <atlas-switch [action]="actions.info" (onClick)="changeSwitch($event)" [value]="switchV" [size]="switchSizings.small"> info </atlas-switch>
+      </div>
+    </div>
+  </div>
+  <div class="section">
+    <h3>disabled</h3>
+    <div class="switch-group">
+      <div class="switch-container">
+        <atlas-switch [action]="actions.default" (onClick)="changeSwitch($event)" [value]="false" [size]="switchSizings.small" [disabled]="true"> neutral </atlas-switch>
+      </div>
+      <div class="switch-container">
+        <atlas-switch [action]="actions.primary" (onClick)="changeSwitch($event)" [value]="switchV" [size]="switchSizings.small" [disabled]="true"> brand </atlas-switch>
+      </div>
+      <div class="switch-container">
+        <atlas-switch [action]="actions.warning" (onClick)="changeSwitch($event)" [value]="false" [size]="switchSizings.small" [disabled]="true"> caution </atlas-switch>
+      </div>
+      <div class="switch-container">
+        <atlas-switch [action]="actions.error" (onClick)="changeSwitch($event)" [value]="switchV" [size]="switchSizings.small" [disabled]="true"> danger </atlas-switch>
+      </div>
+      <div class="switch-container">
+        <atlas-switch [action]="actions.success" (onClick)="changeSwitch($event)" [value]="false" [size]="switchSizings.small" [disabled]="true"> success </atlas-switch>
+      </div>
+      <div class="switch-container">
+        <atlas-switch [action]="actions.info" (onClick)="changeSwitch($event)" [value]="switchV" [size]="switchSizings.small" [disabled]="true"> info </atlas-switch>
+      </div>
+    </div>
+    <div>
+      <div class="section">
+        <h3>Switch Select All Case</h3>
+        <atlas-button (onClick)="changeSwitchTs()">Select All</atlas-button>
+
+      <div class="switch-group">
+        <div class="switch-container">
+          <atlas-switch [action]="actions.default" (onClick)="changeSwitch($event)" [value]="switchV" [stateValue]="switchTsValue"> neutral </atlas-switch>
+        </div>
+        <div class="switch-container">
+          <atlas-switch [action]="actions.primary" (onClick)="changeSwitch($event)" [value]="switchV" [stateValue]="switchTsValue"> brand </atlas-switch>
+        </div>
+        <div class="switch-container">
+          <atlas-switch [action]="actions.warning" (onClick)="changeSwitch($event)" [value]="switchV" [stateValue]="switchTsValue"> caution </atlas-switch>
+        </div>
+        <div class="switch-container">
+          <atlas-switch [action]="actions.error" (onClick)="changeSwitch($event)" [value]="switchV" [stateValue]="switchTsValue"> danger </atlas-switch>
+        </div>
+        <div class="switch-container">
+          <atlas-switch [action]="actions.success" (onClick)="changeSwitch($event)" [value]="switchV" [stateValue]="switchTsValue"> success </atlas-switch>
+        </div>
+        <div class="switch-container">
+          <atlas-switch [action]="actions.info" (onClick)="changeSwitch($event)" [value]="switchV" [stateValue]="switchTsValue"> info </atlas-switch>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  </div>
+</div>

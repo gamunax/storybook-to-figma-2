@@ -1,0 +1,50 @@
+<div class="container padding-y-9 padding-x-9 page-bg">
+
+  <h2>Snackbar Component Demo</h2>
+  <div class="header">
+    <atlas-theming-helper>
+      <label>Custom theme</label>
+    </atlas-theming-helper>
+  </div>
+  <div>
+    <h2>Open one snackbar at a time</h2>
+    <div class="section">
+      <div class="button-group">
+        <div class="button-container">
+          <atlas-button (onClick)="launchAlert1()" [action]="actions.warning" [size]="buttonSizings.medium" [variant]="buttonVariants.outlined">warning</atlas-button>
+        </div>
+        <div class="button-container">
+          <atlas-button (onClick)="launchAlert2()" [action]="actions.default" [size]="buttonSizings.medium" [variant]="buttonVariants.outlined">neutral</atlas-button>
+        </div>
+        <div class="button-container">
+          <atlas-button (onClick)="launchAlert3()" [action]="actions.error" [size]="buttonSizings.medium" [variant]="buttonVariants.outlined">danger</atlas-button>
+        </div>
+        <div class="button-container">
+          <atlas-button (onClick)="launchAlert4()" [action]="actions.success" [size]="buttonSizings.medium" [variant]="buttonVariants.outlined">success</atlas-button>
+        </div>
+        <div class="button-container">
+          <atlas-button (onClick)="launchAlert5()" [action]="actions.info" [size]="buttonSizings.medium" [variant]="buttonVariants.outlined">Info</atlas-button>
+        </div>
+      </div>
+    </div>
+    <div class="section">
+      <div class="snackbar-group">
+        <div class="snackbar-container">
+          <atlas-button (onClick)="launchSnackbar()">Old Launch</atlas-button>
+          <div class="button-label">old Snackbar</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="snackbar-group">
+        <div class="snackbar-container">
+          <atlas-button [action]="actions.primary" [variant]="buttonVariants.outlined" (onClick)="launchCustomSnackbar()">Custom Snackbar</atlas-button>
+          <div class="button-label">customizable Snackbar</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</div>

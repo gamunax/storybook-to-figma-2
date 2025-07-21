@@ -1,0 +1,12 @@
+{
+  "$schema": "../../node_modules/ng-packagr/ng-package.schema.json",
+  "dest": "../../dist/atlas-cdk",
+  "assets": ["./scss", "./assets"],
+  "lib": {
+    "styleIncludePaths": [
+      "../../dist/cdk/scss",
+      "../../node_modules"
+    ],
+    "entryFile": "src/public-api.ts"
+  }
+}

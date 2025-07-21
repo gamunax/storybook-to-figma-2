@@ -1,0 +1,130 @@
+<div class="container padding-y-9 padding-x-9 page-bg">
+  <h2>Datepicker Component Demo</h2>
+  <div class="header">
+    <atlas-theming-helper>
+      <label>Custom theme</label>
+    </atlas-theming-helper>
+  </div>
+  <h2>Datepicker</h2>
+
+  <div class="section">
+    <div class="datepicker-group">
+      <div class="datepicker-container">
+        <atlas-field>
+          <input [Datepicker]="picker" atlasInput placeholder="Choose a date" />
+          <atlas-field-suffix>
+            <datepicker-toggle [datepicker]="picker"></datepicker-toggle>
+          </atlas-field-suffix>
+          <datepicker #picker> </datepicker>
+        </atlas-field>
+      </div>
+    </div>
+  </div>
+  <h2>Datepicker min max uses</h2>
+  <div class="section">
+    <div class="datepicker-group">
+      <div class="datepicker-container">
+        <atlas-field>
+          <input min="2024-10-01" max="2024-10-10" [Datepicker]="picker1" atlasInput placeholder="Choose a date" />
+          <atlas-field-suffix>
+            <datepicker-toggle [datepicker]="picker1"></datepicker-toggle>
+          </atlas-field-suffix>
+          <datepicker #picker1> </datepicker>
+        </atlas-field>
+      </div>
+    </div>
+  </div>
+  <h2>Date range picker</h2>
+  <div class="section">
+    <div class="datepicker-group">
+      <div class="datepicker-container">
+        <atlas-field>
+          <date-range-input [formGroup]="form" [rangePicker]="rangePicker">
+            <input StartDate formControlName="start" />
+            <input EndDate formControlName="end" />
+          </date-range-input>
+          <atlas-field-suffix>
+            <datepicker-toggle [datepicker]="rangePicker" iconColor="primary"></datepicker-toggle>
+          </atlas-field-suffix>
+          <date-range-picker #rangePicker></date-range-picker>
+        </atlas-field>
+      </div>
+    </div>
+  </div>
+  <h2>Datepicker issues</h2>
+  <div class="section">
+    <div class="datepicker-group">
+      <div class="datepicker-container">
+        <atlas-field>
+          <atlas-field-label>TEST From{{ from }} to date::{{ todate }}</atlas-field-label>
+          <input
+            [value]="from"
+            atlasInput
+            [min]="'1900-01-01'"
+            [max]="todate"
+            [Datepicker]="pickerFrom"
+            placeholder="Day Month Year"
+          />
+          <atlas-field-suffix>
+            <datepicker-toggle [datepicker]="pickerFrom"></datepicker-toggle>
+          </atlas-field-suffix>
+          <datepicker #pickerFrom> </datepicker>
+        </atlas-field>
+        <atlas-field>
+          <atlas-field-label>TEST To{{ to }}</atlas-field-label>
+          <input
+            [value]="to"
+            atlasInput
+            [min]="from"
+            [max]="todate"
+            [Datepicker]="pickerTo"
+            placeholder="Day Month Year"
+          />
+          <atlas-field-suffix>
+            <datepicker-toggle [datepicker]="pickerTo"></datepicker-toggle>
+          </atlas-field-suffix>
+          <datepicker #pickerTo> </datepicker>
+        </atlas-field>
+      </div>
+    </div>
+  </div>
+  <h2>Datepicker issues 2</h2>
+  <div class="section">
+    <div class="datepicker-group">
+      <div class="datepicker-container">
+        <atlas-field>
+          <atlas-field-label>TEST From</atlas-field-label>
+          <input
+            [value]="from"
+            atlasInput
+            [min]="'1900-01-01'"
+            [max]="to"
+            [Datepicker]="pickerFrom1"
+            placeholder="Choose a date"
+            (dateChange)="onChangeFrom($event)"
+          />
+          <atlas-field-suffix>
+            <datepicker-toggle [datepicker]="pickerFrom1"></datepicker-toggle>
+          </atlas-field-suffix>
+          <datepicker #pickerFrom1> </datepicker>
+        </atlas-field>
+
+        <atlas-field>
+          <atlas-field-label>TEST To</atlas-field-label>
+          <input
+            [value]="to"
+            atlasInput
+            [min]="from"
+            [Datepicker]="pickerTo2"
+            placeholder="Choose a date"
+            (dateChange)="onChangeTo($event)"
+          />
+          <atlas-field-suffix>
+            <datepicker-toggle [datepicker]="pickerTo2"></datepicker-toggle>
+          </atlas-field-suffix>
+          <datepicker #pickerTo2> </datepicker>
+        </atlas-field>
+      </div>
+    </div>
+  </div>
+</div>

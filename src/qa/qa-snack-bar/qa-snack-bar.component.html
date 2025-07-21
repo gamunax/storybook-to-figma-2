@@ -1,0 +1,35 @@
+<div class="container">
+    <h1>Snack Bar Component Tests</h1>
+    <hr><br>
+    <h2>Base Snack Bar</h2>
+    <div class="row">
+        <atlas-snackbar *ngFor="let snackBar of baseSnackBar" style="margin:10px;" 
+            [variant]="snackBar.variant" 
+            [iconSize]="snackBar.iconSize"
+            [id]="snackBar.id">
+            <atlas-snackbar-content>
+                <div>
+                    Lorem ipsum dolor sit amet
+                </div>
+            </atlas-snackbar-content>
+            <atlas-snackbar-action></atlas-snackbar-action>
+        </atlas-snackbar>
+        <br>
+    </div>
+
+    <br>
+    <hr>
+    <h2>No Action snackBar</h2>
+
+    <div class="row">
+        <atlas-snackbar *ngFor="let snackBar of noActionSnackBar" style="margin: 10px;" 
+        [variant]="snackBar.variant"
+        [id]="snackBar.id">
+            <atlas-snackbar-content>
+                <div>
+                    Lorem ipsum dolor sit amet
+                </div>
+            </atlas-snackbar-content>
+        </atlas-snackbar>
+    </div>
+</div>

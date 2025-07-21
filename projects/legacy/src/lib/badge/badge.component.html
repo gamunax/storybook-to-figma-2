@@ -1,0 +1,5 @@
+<div [ngClass]="['mos-c-badge', 'mos-c-badge--' + size, 'mos-c-badge--border', 'mos-t-badge--' + theme, 'mos-t-badge--border-' + borderTheme, customClass, 'brighter-badge', color]"
+     [ngStyle]="BRIGHTER_BADGE_SIZES[brighterSize]"
+>
+  <ng-content></ng-content>
+</div>

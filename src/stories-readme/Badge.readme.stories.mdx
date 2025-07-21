@@ -1,0 +1,41 @@
+import { Meta, ArgsTable } from '@storybook/addon-docs';
+import { BadgeDirective } from 'atlas-badge';
+
+
+<Meta title="Adopters/Components/Badge/Readme" 
+parameters={{
+    options: {
+      isToolshown: true
+    },
+  }}
+/>
+
+# Badge
+
+A Badge is an indicator.  An indicator is a way of making a page element stand out to inform the user that there is something special about it that warrants the user’s attention. Often, the indicator will denote that there has been some change to the item represented by that element.
+
+## UX Documentation
+{false && (
+<iframe
+    src='https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Ffile%2F9BcqGFai3hbL8NEJJ1lg00%2FBadge---Foundations-0.0.2-Components-Documentation%3Fnode-id%3D13866%253A22999' 
+    allowFullScreen="true"
+    width='100%'
+    height='650px'
+    style={{border: 'none'}}
+></iframe>
+)}
+## Usage
+
+Import dependencies for Accordion library into your ```app.module.ts``` file
+
+```ts
+
+import { BadgeModule } from 'atlas-badge';
+
+```
+
+## API
+
+### Badge
+
+<ArgsTable of={ BadgeDirective } />

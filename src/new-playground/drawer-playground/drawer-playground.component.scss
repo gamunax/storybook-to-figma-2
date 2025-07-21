@@ -1,0 +1,54 @@
+.page-bg {
+  background: var(--semanticColor-layer-neutral-02);
+  color: var(--semanticColor-text-default);
+  z-index: -1;
+  padding: 2rem;
+
+  .drawer-wrapper {
+    position: relative;
+  }
+
+  .drawer-button-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  h2 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  h3 {
+    text-align: center;
+  }
+  .select {
+    color: var(--semanticColor-text-default);
+  }
+  /* Custom CSS for Header */
+  .header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+
+  .header atlas-theming-helper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+.list {
+  display: flex;
+  justify-content: flex-start;
+}
+.drawer-wrapper-content {
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  padding: 32px;
+  margin: 24px 0;
+  position: relative;
+  z-index: 3;
+}

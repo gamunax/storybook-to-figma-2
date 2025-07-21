@@ -1,0 +1,31 @@
+<div class="container padding-y-9 padding-x-9 page-bg">
+
+  <h2>slider Component Demo</h2>
+  <div class="header">
+    <atlas-theming-helper>
+      <label>Custom theme</label>
+    </atlas-theming-helper>
+  </div>
+  <h2>slider</h2>
+  <div>
+    <div class="section">
+      <div class="slider-group">
+        <div class="slider-container">
+          <atlas-slider [action]="actions.primary" [elevation]="boxShadows.raised" [tabindex]="5" [step]="5" (change)="inputSlider($event)">
+            <atlas-slider></atlas-slider>
+          </atlas-slider>
+        </div>    
+      </div>
+      <h2>slider disabled</h2>
+      <div class="slider-group">
+        <div class="slider-container">
+          <atlas-slider [action]="actions.primary" [elevation]="boxShadows.raised" [tabindex]="5" [step]="5" [disabled]="true">
+            <atlas-slider></atlas-slider>
+          </atlas-slider>
+        </div>    
+      </div>
+    </div>
+  </div>
+
+
+</div>

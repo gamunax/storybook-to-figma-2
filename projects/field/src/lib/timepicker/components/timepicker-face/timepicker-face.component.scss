@@ -1,0 +1,65 @@
+.clock-face {
+  &__inner {
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+  }
+}
+
+.clock-face__container {
+  margin-left: -2px;
+}
+
+.clock-face__hours {
+  border-radius: 50%;
+  margin: 8px;
+}
+
+.clock-face__minutes {
+  border-radius: 50%;
+  margin: 8px;
+}
+
+.clock-face__selected-number {
+  color: white;  
+}
+
+.clock-face__number {
+  left: calc(50% - 25px);
+  position: absolute;
+  text-align: center;
+  top: calc(50% - 125px);
+  transform-origin: 25px 100%;
+  width: 50px;
+  z-index: 2;
+
+  &--outer {
+    height: calc(290px / 2 - 20px);
+
+    >span {
+      font-size: 16px;
+    }
+  }
+
+  &--inner {
+    >span {
+      font-size: 14px;
+    }
+  }
+}
+
+@media (max-device-width: 1023px) and (orientation: landscape) {
+  .clock-face {
+    height: 250px;
+    width: 250px;
+  }
+}
+
+@media screen and (max-width: 360px) {
+  .clock-face {
+    height: 250px;
+    width: 250px;
+  }
+}

@@ -1,0 +1,15 @@
+<hr>
+<h1> List component tests </h1>
+<hr><br>
+<br/>
+<atlas-list>
+    <atlas-list-item *ngFor="let item of items;"
+        [item]="item"
+        [action]="actions.primary"
+        typography="typographyStyles-body-medium"
+        (select)="select(item.value)"
+    >
+    <atlas-icon style="margin-right: 34px;" [size]="isize.medium" [icon]="item.icon"></atlas-icon>
+     {{ item.label }} <h1 *ngIf="item.selected" class="typographyStyles-body-medium" style="margin-left:10px">(Selected)</h1>
+    </atlas-list-item>
+</atlas-list>

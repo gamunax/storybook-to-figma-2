@@ -1,0 +1,199 @@
+@use "sass:math";
+/// Emits the mixin's content nested under `$selector-context` if `$selector-context`
+/// is non-empty.
+/// @param selector-context The selector under which to nest the mixin's content.
+@mixin _cdk-optionally-nest-content($selector-context) {
+  @if ($selector-context == '') {
+    @content;
+  }
+  @else {
+    #{$selector-context} {
+      @content;
+    }
+  }
+}
+
+
+/// Applies styles for users in high contrast mode. Note that this only applies
+/// to Microsoft browsers. Chrome can be included by checking for the `html[hc]`
+/// attribute, however Chrome handles high contrast differently.
+///
+/// @param target Which kind of high contrast setting to target. Defaults to `active`, can be
+///    `white-on-black` or `black-on-white`.
+/// @param encapsulation Whether to emit styles for view encapsulation. Values are:
+///     * `on` - works for `Emulated`, `Native`, and `ShadowDom`
+///     * `off` - works for `None`
+///     * `any` - works for all encapsulation modes by emitting the CSS twice (default).
+@mixin cdk-high-contrast($target: active, $encapsulation: 'any') {
+  @if ($target != 'active' and $target != 'black-on-white' and $target != 'white-on-black') {
+    @error 'Unknown cdk-high-contrast value "#{$target}" provided. ' +
+           'Allowed values are "active", "black-on-white", and "white-on-black"';
+  }
+
+  @if ($encapsulation != 'on' and $encapsulation != 'off' and $encapsulation != 'any') {
+    @error 'Unknown cdk-high-contrast encapsulation "#{$encapsulation}" provided. ' +
+           'Allowed values are "on", "off", and "any"';
+  }
+
+  // If the selector context has multiple parts, such as `.section, .region`, just doing
+  // `.cdk-high-contrast-xxx #{&}` will only apply the parent selector to the first part of the
+  // context. We address this by nesting the selector context under .cdk-high-contrast.
+  @at-root {
+    $selector-context: #{&};
+
+    @if ($encapsulation != 'on') {
+      .cdk-high-contrast-#{$target} {
+        @include _cdk-optionally-nest-content($selector-context) {
+          @content;
+        }
+      }
+    }
+
+    @if ($encapsulation != 'off') {
+      .cdk-high-contrast-#{$target} :host {
+        @include _cdk-optionally-nest-content($selector-context) {
+          @content;
+        }
+      }
+    }
+  }
+}
+
+
+
+.calendar-body-range-start:not(calendar-body-in-comparison-range)::before,
+.calendar-body-range-start::after,
+.calendar-body-comparison-start:not(calendar-body-comparison-bridge-start)::before,
+.calendar-body-comparison-start::after,
+.calendar-body-preview-start .calendar-body-cell-preview {
+  [dir='rtl'] & {
+    left: 0;
+    border-radius: 0;
+    border-top-right-radius: var(--var-calendar-body-cell-radius);
+    border-bottom-right-radius: var(--var-calendar-body-cell-radius);
+  }
+}
+
+@mixin _calendar-body-range-right-radius {
+  // Since the range background isn't a perfect circle, we need to
+  // resize the end so that it aligns with the main circle.
+  width: var(--var-calendar-range-end-body-cell-size);
+  border-top-right-radius: var(--var-calendar-body-cell-radius);
+  border-bottom-right-radius: var(--var-calendar-body-cell-radius);
+}
+
+.calendar-body-range-end:not(calendar-body-in-comparison-range)::before,
+.calendar-body-range-end::after,
+.calendar-body-comparison-end:not(calendar-body-comparison-bridge-end)::before,
+.calendar-body-comparison-end::after,
+.calendar-body-preview-end .calendar-body-cell-preview {
+  @include _calendar-body-range-right-radius;
+
+  [dir='rtl'] & {
+    left: var(--var-calendar-body-cell-content-margin);
+    border-radius: 0;
+    border-top-left-radius: var(--var-calendar-body-cell-radius);
+    border-bottom-left-radius: var(--var-calendar-body-cell-radius);
+  }
+}
+
+// Styles necessary to make RTL work.
+[dir='rtl'] {
+  .calendar-body-comparison-bridge-start.calendar-body-range-end::after,
+  .calendar-body-comparison-bridge-end.calendar-body-range-start::after {
+    @include _calendar-body-range-right-radius;
+  }
+}
+
+// Prevents the extra overlap range indication from showing up when it's not supposed to.
+.calendar-body-comparison-start.calendar-body-range-end::after,
+.calendar-body-comparison-end.calendar-body-range-start::after {
+  // Note that the RTL selector here is redundant, but we need to keep it in order to
+  // raise the specificity since it can be overridden by some of the styles from above.
+  &, [dir='rtl'] & {
+    width: var(--var-calendar-body-cell-content-size);
+  }
+}
+
+.calendar-body-preview-start .calendar-body-cell-preview {
+  [dir='rtl'] & {
+    border-left: 0;
+    border-right: var(--var-calendar-body-cell-border);
+  }
+}
+
+.calendar-body-preview-end .calendar-body-cell-preview {
+  [dir='rtl'] & {
+    border-right: 0;
+    border-left: var(--var-calendar-body-cell-border);
+  }
+}
+
+.calendar-body-disabled {
+  cursor: default;
+
+  > .calendar-body-cell-content {
+    color: var(--semanticColor-text-disabled);
+  }
+}
+
+.calendar-body-cell-content {
+  @include cdk-high-contrast(active, off) {
+    border: none;
+  }
+}
+
+@include cdk-high-contrast(active, off) {
+  .datepicker-popup:not(:empty),
+  .calendar-body-selected {
+    outline: solid 1px;
+  }
+
+  .cdk-keyboard-focused .calendar-body-active,
+  .cdk-program-focused .calendar-body-active {
+    & > .calendar-body-cell-content:not(calendar-body-selected) {
+      outline: dotted 2px;
+    }
+  }
+}
+
+.date-range-input-separator {
+  color: var(--on-surface);
+  border-color: transparent;
+}
+
+.cdk-keyboard-focused .calendar-body-active,
+.cdk-program-focused .calendar-body-active {
+  & > .calendar-body-cell-content:not(calendar-body-selected) {
+    background: var(--semanticColor-background-brand-soft-hover);
+    color: var(--semanticColor-layer-neutral-00);
+  }
+}
+
+[dir='rtl'] {
+  .calendar-body-label {
+    text-align: right;
+  }
+}
+
+// Disable the hover styles on non-hover devices. Since this is more of a progressive
+// enhancement and not all desktop browsers support this kind of media query, we can't
+// use something like `@media (hover)`.
+@media (hover: none) {
+  .calendar-body-cell:not(calendar-body-disabled):hover {
+    & > .calendar-body-cell-content:not(calendar-body-selected) {
+      background-color: transparent;
+    }
+  }
+}
+
+.calendar-body-cell:not(calendar-body-disabled):hover,
+.cdk-keyboard-focused .calendar-body-active,
+.cdk-program-focused .calendar-body-active {
+  & > .calendar-body-cell-content {
+    &:not(calendar-body-selected):not(calendar-body-comparison-identical) {
+      background: var(--semanticColor-background-brand-strong-rest);
+      color: var(--semanticColor-text-inverse);
+    }
+  }
+}

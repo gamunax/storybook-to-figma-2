@@ -1,0 +1,30 @@
+<table class="calendar-table" role="presentation">
+  <thead class="calendar-table-header typographyStyles-label-large">
+    <tr>
+      <th scope="col"
+          *ngFor="let day of _weekdays"
+          class="calendar-table-header-day"
+          [attr.aria-label]="day.long"
+          Type="helper-text-lead">
+          {{day.narrow}}
+      </th>
+    </tr>
+  </thead>
+  <tbody calendar-body
+         [label]="_monthLabel"
+         [rows]="_weeks"
+         [todayValue]="_todayDate!"
+         [startValue]="_rangeStart!"
+         [endValue]="_rangeEnd!"
+         [comparisonStart]="_comparisonRangeStart"
+         [comparisonEnd]="_comparisonRangeEnd"
+         [previewStart]="_previewStart"
+         [previewEnd]="_previewEnd"
+         [isRange]="_isRange"
+         [labelMinRequiredCells]="3"
+         [activeCell]="_dateAdapter.getDate(activeDate) - 1"
+         (selectedValueChange)="_dateSelected($event)"
+         (previewChange)="_previewChanged($event)"
+         (keydown)="_handleCalendarBodyKeydown($event)">
+  </tbody>
+</table>

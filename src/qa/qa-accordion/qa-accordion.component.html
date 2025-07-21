@@ -1,0 +1,96 @@
+<div class="container">
+  <h1>Accordion Component Tests</h1>
+
+  <h2>Accordion item</h2>
+  <div class="row expanded collapse" *ngFor="let accordion of accordionItems">
+    <div class="column medium-8">
+      <atlas-accordion-item [disabled]="accordion.disabled" [expanded]="accordion.expanded" [id]="accordion.id"
+        (onExpand)="accordion.expanded = $event">
+        <atlas-accordion-heading>
+          <div class="padding-y-6">{{accordion.heading}}</div>
+        </atlas-accordion-heading>
+        <atlas-accordion-subheading>
+          <div class="padding-y-6">{{accordion.subheading}}</div>
+        </atlas-accordion-subheading>
+        <atlas-accordion-content *ngFor="let content of accordion.content">
+          <p class="padding-y-10 padding-x-8"> {{content}} </p>
+        </atlas-accordion-content>
+        <atlas-accordion-expand>
+          <div>
+            <atlas-icon-button [disabled]="accordion.disabled" [size]="accordion.iconSize"
+              [icon]="accordion.expanded ? 'icon-chevron-up-24' : 'icon-chevron-down-24'">
+            </atlas-icon-button>
+          </div>
+        </atlas-accordion-expand>
+      </atlas-accordion-item>
+      <br>
+    </div>
+  </div>
+
+  <hr><br>
+  <h2>Accordion groups</h2>
+  <div class="row expanded collapse">
+    <div class="column medium-8">
+      <atlas-accordion 
+        [expandedAll]="accordionGroup1.expandedAll" 
+        [id]="accordionGroup1.id">
+
+        <atlas-accordion-item *ngFor="let item of accordionItemsOne; let i = index"  
+              [expanded]="item.expanded" 
+              (onExpand)="item.expanded = $event"
+              [disabled]="item.disabled"
+              [id]="item.id"
+        >
+          <atlas-accordion-heading>
+            <div class="padding-y-6">{{ item.heading }}</div>
+          </atlas-accordion-heading>
+          <atlas-accordion-subheading>
+          <div class="padding-y-6">{{ item.subheading }}</div>  
+          </atlas-accordion-subheading>
+          <atlas-accordion-content>
+            <div class="padding-y-10 padding-x-8" [innerHTML]="item.content"></div>
+          </atlas-accordion-content>
+          <atlas-accordion-expand>
+            <div>
+              <atlas-icon-button [icon]="item.expanded ? 'icon-chevron-up-24' : 'icon-chevron-down-24'"></atlas-icon-button>
+            </div>
+          </atlas-accordion-expand>
+        </atlas-accordion-item>
+      </atlas-accordion>
+    </div>
+  </div>
+
+    <hr> <br>
+    <div class="row expanded collapse">
+      <div class="column medium-8">
+        <atlas-accordion 
+          [expandedAll]="accordionGroup2.expandedAll" 
+          [id]="accordionGroup2.id">
+  
+          <atlas-accordion-item *ngFor="let item of accordionItemsTwo; let i = index"  
+                [expanded]="item.expanded" 
+                (onExpand)="item.expanded = $event"
+                [disabled]="item.disabled"
+                [id]="item.id"
+          >
+            <atlas-accordion-heading>
+              <div class="padding-y-6">{{ item.heading }}</div>
+            </atlas-accordion-heading>
+            <atlas-accordion-subheading>
+            <div class="padding-y-6">{{ item.subheading }}</div>  
+            </atlas-accordion-subheading>
+            <atlas-accordion-content>
+              <div class="padding-y-10 padding-x-8" [innerHTML]="item.content"></div>
+            </atlas-accordion-content>
+            <atlas-accordion-expand>
+              <div>
+                <atlas-icon-button [icon]="item.expanded ? 'icon-chevron-up-24' : 'icon-chevron-down-24'"></atlas-icon-button>
+              </div>
+            </atlas-accordion-expand>
+          </atlas-accordion-item>
+        </atlas-accordion>
+      </div>
+    </div>
+
+
+</div>

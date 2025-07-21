@@ -1,0 +1,78 @@
+<label
+  *ngIf="_labelChildren?.length"
+  [ngClass]="[
+    'field-label typographyStyles-label-small',
+    _control.focused ? 'field-label-focus-' + (action ? action: color) : '',
+    shouldDisplayErrors ? 'field-label-error' : '',
+    _control.disabled ? 'field-label-disabled' : ''
+  ]"
+  [attr.for]="_control.id"
+  [id]="_labelId"
+>
+  <ng-content select="atlas-field-label"></ng-content>
+  <span
+    class="field-label-required"
+    aria-hidden="true"
+    *ngIf="!hideRequiredMarker && _control.required && !_control.disabled"
+    >*&#32;
+  </span>
+</label>
+
+<div
+  [ngClass]="
+  [
+  'typographyStyles-body-medium',
+  (variant ? variant : style) ? 'field-' + (variant ? variant : style) : 'field-outlined',
+  _control.focused ? 'field-' + (variant ? variant : style) + '-' + (action ? action: color)  + '-focus' : 'field-' + (variant ? variant : style) + '-inactive',
+  size && !typeTextArea ? 'field-size-' + size : '',
+  typeTextArea ? 'field-' + (variant ? variant : style) + '-textarea' : '',
+  (action ? action: color) ? 'field-' + (variant ? variant : style) + '-' + (action ? action: color)  : '',
+  shouldDisplayErrors ? 'field-invalid' : '',
+  _control.disabled ? 'field-' + (variant ? variant : style) + '-disabled' : '',]"
+  #connectionContainer
+  (click)="_control.containerClick && _control.containerClick($event)"
+>
+  <div
+    #fieldPrefix
+    [ngClass]="[
+    'field-prefix',
+    _control.disabled ? 'field-prefix-disabled' : '',
+  ]"
+    *ngIf="_fieldPrefixChildren?.length"
+  >
+    <ng-content select="atlas-field-prefix"></ng-content>
+  </div>
+  <div
+    [ngClass]="[
+    'field-infix',
+    _control.disabled ? 'field-infix-disabled' : '',
+    ]"
+    >
+    <ng-content></ng-content>
+  </div>
+  <div #fieldSuffix [ngClass]="[
+    'field-suffix',
+    _control.disabled ? 'field-suffix-disabled' : '',
+  ]" *ngIf="_fieldSuffixChildren?.length">
+    <ng-content select="atlas-field-suffix"></ng-content>
+  </div>
+</div>
+
+<div
+  *ngIf="shouldDisplayErrors || shouldDisplayHints"
+  class="typographyStyles-label-small"
+>
+  <div *ngIf="shouldDisplayErrors" class="field-error">
+    <ng-content select="atlas-field-error"></ng-content>
+  </div>
+  <div
+    *ngIf="shouldDisplayHints"
+    [ngClass]="[
+      'field-hint',
+      _control.disabled ? 'field-hint-disabled': '',
+    ]"
+  >
+    <ng-content select="atlas-field-hint"></ng-content>
+  </div>
+</div>
+

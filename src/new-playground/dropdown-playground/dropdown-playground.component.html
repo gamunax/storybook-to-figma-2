@@ -1,0 +1,150 @@
+<div class="container padding-y-9 padding-x-9 page-bg">
+
+  <h2>Dropdown template Demo</h2>
+  <div class="header">
+    <atlas-theming-helper>
+      <label>Custom theme</label>
+    </atlas-theming-helper>
+  </div>
+
+  <h2>Legacy dropdown example</h2>
+  <legacy-dropdown>
+    <legacy-dropdown-label>
+      <atlas-button> Dropdown</atlas-button>
+    </legacy-dropdown-label>
+    <legacy-dropdown-item>
+      <a href="#/">Link 1</a>
+    </legacy-dropdown-item>
+    <legacy-dropdown-item>
+      <a href="#/">Link 2</a>
+    </legacy-dropdown-item>
+    <legacy-dropdown-item>
+      <a href="#/">Link 3</a>
+    </legacy-dropdown-item>
+  </legacy-dropdown>
+
+  <h2>Legacy with arrow example</h2>
+  <legacy-dropdown maxHeight="350">
+    <legacy-dropdown-label>
+      <atlas-button [style]="'outlined'">Dropdown<atlas-icon style="margin-left: 8px"
+        [icon]="'icon-chevron-down-24'"
+      ></atlas-icon></atlas-button>
+    </legacy-dropdown-label>
+    <legacy-dropdown-item>
+      <a href="#/">Link 1</a>
+    </legacy-dropdown-item>
+    <legacy-dropdown-item>
+      <a href="#/">Link 2</a>
+    </legacy-dropdown-item>
+    <legacy-dropdown-item>
+      <a href="#/">Link 3</a>
+    </legacy-dropdown-item>
+    <legacy-dropdown-item>
+      <a href="#/">Link 3</a>
+    </legacy-dropdown-item>
+    <legacy-dropdown-item>
+      <a href="#/">Link 3</a>
+    </legacy-dropdown-item>
+  </legacy-dropdown>
+
+  <h2>Legacy with custom width example</h2>
+  <legacy-dropdown maxHeight="350">
+    <legacy-dropdown-label>
+      <atlas-button [style]="'outlined'">Dropdown<atlas-icon style="margin-left: 8px"
+        [icon]="'icon-chevron-down-24'"
+      ></atlas-icon></atlas-button>
+    </legacy-dropdown-label>
+    <legacy-dropdown-item>
+        <atlas-checkbox
+        [isChecked]="parentChecked"
+        [indeterminate]="parentIndeterminate"
+        labelTypography="typographyStyles-body-medium"
+        checkboxId="parentCheckbox"
+        checkboxName="parentCheckbox"
+        (onChange)="onParentChange($event)">
+        Select All
+      </atlas-checkbox>
+    </legacy-dropdown-item>
+    <legacy-dropdown-item>
+        <atlas-checkbox
+          [isChecked]="child1Checked"
+          labelTypography="typographyStyles-body-small"
+          [checkboxId]="childCheckbox1"
+          [checkboxName]="childCheckbox1"
+          (onChange)="onChildChange($event)">
+          Child 1
+        </atlas-checkbox>
+    </legacy-dropdown-item>
+    <legacy-dropdown-item>
+      <atlas-checkbox
+      [isChecked]="child2Checked"
+      labelTypography="typographyStyles-body-small"
+      [checkboxId]="childCheckbox2"
+      [checkboxName]="childCheckbox2"
+
+      (onChange)="onChildChange($event)">
+      Child 2
+    </atlas-checkbox>
+    </legacy-dropdown-item>
+  </legacy-dropdown>
+
+
+  <h2>Legacy with custom width example</h2>
+  <legacy-dropdown>
+    <legacy-dropdown-label>
+      <atlas-button [style]="'outlined'">Dropdown<atlas-icon style="margin-left: 8px"
+        [icon]="'icon-chevron-down-24'"
+      ></atlas-icon></atlas-button>
+    </legacy-dropdown-label>
+    <legacy-dropdown-item>
+      <a href="#/">
+        <span class="semanticTypography-font-size-title-small">Lorem ipsum dolor sit amet, consectetur amet, consectetur</span>
+        <span class="typographyStyles-label-small">Adipiscing elit, sed do eiusmod tempor</span>
+      </a>
+    </legacy-dropdown-item>
+    <legacy-dropdown-item>
+      <a href="#/">
+        <span class="semanticTypography-font-size-title-small">Lorem ipsum dolor sit amet, consectetur amet, consectetur</span>
+        <span class="typographyStyles-label-small">Adipiscing elit, sed do eiusmod tempor</span>
+      </a>
+    </legacy-dropdown-item>
+    <legacy-dropdown-item>
+      <a href="#/">
+        <span class="semanticTypography-font-size-title-small">Lorem ipsum dolor sit amet, consectetur amet, consectetur</span>
+        <span class="typographyStyles-label-small">Adipiscing elit, sed do eiusmod tempor</span>
+      </a>
+    </legacy-dropdown-item>
+  </legacy-dropdown>
+
+  <h2>Legacy dropdown with position right</h2>
+  <legacy-dropdown position="right">
+    <legacy-dropdown-label>
+      <atlas-button> Dropdown</atlas-button>
+    </legacy-dropdown-label>
+    <legacy-dropdown-item>
+      <a href="#/">Link 1</a>
+    </legacy-dropdown-item>
+    <legacy-dropdown-item>
+      <a href="#/">Link 2</a>
+    </legacy-dropdown-item>
+    <legacy-dropdown-item>
+      <a href="#/">Link 3</a>
+    </legacy-dropdown-item>
+  </legacy-dropdown>
+
+  <h2>Legacy dropdown with position left</h2>
+  <legacy-dropdown position="left">
+    <legacy-dropdown-label>
+      <atlas-button> Dropdown</atlas-button>
+    </legacy-dropdown-label>
+    <legacy-dropdown-item>
+      <a href="#/">Link 1</a>
+    </legacy-dropdown-item>
+    <legacy-dropdown-item>
+      <a href="#/">Link 2</a>
+    </legacy-dropdown-item>
+    <legacy-dropdown-item>
+      <a href="#/">Link 3</a>
+    </legacy-dropdown-item>
+  </legacy-dropdown>
+</div>

@@ -1,0 +1,77 @@
+
+  <div style="padding: 24px;">
+      <h1 class="typographyStyles-display-small" style="margin: 0; color: var(--semanticColor-text-default);">Data Uploads</h1>
+      <div 
+        style="margin: 8px 0 24px;">
+          <atlas-breadcrumb [collapsed]="false">
+            <atlas-breadcrumb-item *ngFor="let item of breadItems;" [active]="item.active" > 
+              <atlas-link>{{ item.label }}</atlas-link>         
+              <atlas-breadcrumb-item-separator>/</atlas-breadcrumb-item-separator>
+            </atlas-breadcrumb-item>
+          </atlas-breadcrumb>
+        </div>
+        <div class="row" style="
+        background: var(--semanticColor-layer-neutral-00);
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.16);
+        border-radius: 4px;
+        padding: 16px;  
+      ">    
+          <div class="column medium-6 shrink">
+              <atlas-field [action]="action">
+                  <atlas-field-label>File type</atlas-field-label>
+                  <atlas-select [placeholder]="'Select a File Type &nbsp;'">
+                    <atlas-option [value]="'DLL'">Dynamic Link Libraries (DLL)</atlas-option>
+                    <atlas-option [value]="'EXE'">Executable (EXE)</atlas-option>
+                  </atlas-select>
+                </atlas-field>
+          </div>
+          <div class="column medium-6 shrink">
+              <atlas-field>
+                  <atlas-field-label>&nbsp;</atlas-field-label>
+                  <input type="text" atlasInput placeholder="Search"/>
+                  <atlas-field-suffix>
+                      <atlas-icon
+                      [icon]="'icon-search-24'"
+                      [size]="iconSize">
+                      </atlas-icon>
+                  </atlas-field-suffix>
+              </atlas-field>
+          </div>
+          <div class="column medium-12">
+          <atlas-table [dense]="tableDense">
+              <thead atlas-table-header #header>
+                  <tr atlas-table-row>
+                      <th atlas-table-header-cell *ngFor="let col of columnDef" [columnDef]="col">
+                      {{ col.displayLabel }}
+                      </th>
+                  </tr>
+              </thead>
+              
+              <tbody atlas-table-body>
+                  <tr atlas-table-row *ngFor="let row of rows | sort:header.sortOption; let i = index">
+                  <td atlas-table-cell>
+                      <atlas-checkbox #chk
+                      [checkboxId]="'chk' + i"
+                      [isChecked]="row.checked"
+                      [action]="action"
+                    >
+                  </atlas-checkbox>
+                  </td>
+                  <td atlas-table-cell>
+                      {{ row.name }}
+                  </td>
+                  <td atlas-table-cell>
+                      {{ row.type }}
+                  </td>
+                  <td atlas-table-cell>
+                      {{ row.year }}
+                  </td>
+                  <td atlas-table-cell>
+                      {{ row.country }}
+                  </td>
+                  </tr>
+                  </tbody>
+              </atlas-table>
+          </div>
+      </div>
+  </div>

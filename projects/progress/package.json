@@ -1,0 +1,12 @@
+{
+  "name": "atlas-progress",
+  "version": "9.0.1",
+  "peerDependencies": {
+    "@angular/common": "^18.2.13",
+    "@angular/core": "^18.2.13",
+    "atlas-cdk": "^9.0.0"
+  },
+  "dependencies": {
+    "tslib": "^2.3.0"
+  }
+}

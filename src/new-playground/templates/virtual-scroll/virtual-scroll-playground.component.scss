@@ -1,0 +1,109 @@
+.page-bg {
+  background: var(--semanticColor-layer-neutral-02);
+  color: var(--semanticColor-text-default);
+  z-index: -1;
+  padding: 2rem;
+}
+
+.page-bg .select {
+  color: var(--semanticColor-text-default);
+}
+
+.section {
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+.section h3 {
+  margin-bottom: 20px;
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+.virtualscroll-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.virtualscroll-container {
+  display: inline-block;
+  margin: 10px;
+}
+
+
+/* Custom CSS for Header */
+.header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.header atlas-theming-helper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* TABLE WITH VIRTUAL SCROLLING STYLES */
+.virtual-table-wrapper {
+  height: 400px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+
+// Virtual scrolling viewport for the body
+.virtual-scroll-viewport {
+  flex: 1;
+  width: 100%;
+  overflow-y: auto;
+  overflow-x: hidden; // Hide horizontal scrollbar in the viewport itself
+  
+  .horizontal-scroll-container {
+    overflow-x: auto;
+    width: 100%;
+  }
+  
+}
+
+/* Loading indicator styles */
+.loading-indicator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  background-color: rgba(255, 255, 255, 0.9);
+  border-top: 1px solid #eee;
+  height: 40px;
+}
+
+.loading-spinner {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border: 2px solid rgba(0, 0, 0, 0.1);
+  border-top-color: #3498db;
+  border-radius: 50%;
+  animation: spin 1s ease-in-out infinite;
+  margin-right: 10px;
+}
+
+.loading-text {
+  font-size: 14px;
+  color: #666;
+}
+
+@keyframes spin {
+  to { 
+    transform: rotate(360deg); 
+  }
+}

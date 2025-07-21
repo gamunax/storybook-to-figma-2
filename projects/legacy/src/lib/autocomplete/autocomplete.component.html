@@ -1,0 +1,181 @@
+<div [ngClass]="['mos-c-autocomplete', _isFormV2Enabled ? 'mos-c-autocomplete--version2' : 'mos-c-autocomplete--default', theme?('mos-t-autocomplete--' + theme): '']"
+     [class.mos-c-autocomplete--focused]="_isFocused"
+     [class.mos-c-autocomplete--disabled]="isDisabled">
+  <div class="row" [class.collapse]="collapseRow">
+    <div class="small-12 columns">
+      <!-- Original Input Field -->
+      <ng-container *ngIf="!(isMultiField || version2)">
+        <ng-container *ngIf="_isFormV2Enabled">
+          <ng-container *ngTemplateOutlet="labelTemplate; context: { inputId: inputId }"></ng-container>
+        </ng-container>
+        <div class="mos-c-autocomplete__input-container"
+        [class.mos-c-autocomplete__input-focus]="clearButtonShown">
+          <input *ngIf="!textarea" [placeholder]="placeholder" type="text"
+            #input
+            class="mos-c-autocomplete__input"
+            [class.mos-c-autocomplete__input--disabled]="isDisabled"
+            [formControl]="control"
+            [attr.id]="_isFormV2Enabled ? inputId : data"
+            [readonly]="isReadOnly"
+            (keyup)="_handleKeyboardEvents($event); filter($event)"
+            (focus)="handleFocus($event)"
+            (focusout)="hideClearButton()"
+            (keyup.enter)="select(selectedIdx)"
+            (blur)="handleBlur()"
+            autocomplete="off">
+          <textarea *ngIf="textarea"
+            #input
+            [placeholder]="placeholder"
+            class="mos-c-autocomplete__input"
+            [class.mos-c-autocomplete__input--disabled]="isDisabled"
+            [formControl]="control"
+            [attr.id]="_isFormV2Enabled ? inputId : data"
+            [readonly]="isReadOnly"
+            (keyup)="_handleKeyboardEvents($event); filter($event)"
+            (focus)="handleFocus($event)"
+            (focusout)="hideClearButton()"
+            (keyup.enter)="select(selectedIdx)"
+            (blur)="handleBlur()"
+            autocomplete="off"></textarea>
+          <ng-container *ngTemplateOutlet="iconTemplate;"></ng-container>
+        </div>
+      </ng-container>
+      <!-- Multi-field/New Design Input Field -->
+      <ng-container *ngIf="isMultiField || version2">
+        <ng-container *ngTemplateOutlet="labelTemplate; context: { inputId: inputId }"></ng-container>
+        <div class="mos-c-autocomplete__input__container"
+          [class.mos-c-autocomplete__input__container--disabled]="isDisabled"
+          [class.mos-c-autocomplete__input__container--read-only]="isReadOnly"
+          [class.mos-c-autocomplete__input-focus]="clearButtonShown">
+          <input [placeholder]="placeholder" type="text" #input
+            class="mos-c-autocomplete__input"
+            [class.mos-c-autocomplete__input__multi]="isMultiField"
+            [class.mos-c-autocomplete__input__multi--toggle]="isMultiField && _fieldItems && !_isFocused"
+            [formControl]="control"
+            [attr.id]="inputId"
+            [readonly]="isReadOnly"
+            (keyup)="_handleKeyboardEvents($event); filter($event)"
+            (focus)="handleFocus($event)"
+            (focusout)="hideClearButton()"
+            (keyup.enter)="select(selectedIdx)"
+            (blur)="handleBlur()"
+            autocomplete="off">
+          <ng-container *ngTemplateOutlet="iconTemplate;"></ng-container>
+          <!-- Multi-field Display after selection -->
+          <div *ngIf="isMultiField && query && _fieldItems && !_isFocused"
+            class="mos-c-autocomplete__input__multi--display"
+            [class.mos-c-autocomplete__input__multi--display--border-bottom-hide]="isDisabled || isReadOnly"
+            (click)="!isDisabled && !isReadOnly && handleMultiFieldFocus()">
+            <div class="mos-c-autocomplete__input__multi--label">
+              {{query}}
+            </div>
+            <div *ngFor="let fieldName of fieldList; let lastField = last;"
+              class="mos-c-autocomplete__input__multi--fields"
+              [class.mos-u-text-right]="lastField">
+              {{_fieldItems[fieldName]}}
+            </div>
+          </div>
+        </div>
+      </ng-container>
+      <div class="mos-c-autocomplete__wrapper">
+        <div *ngIf="!_escapeDropdown" [class.mos-c-autocomplete__wrapper-inner]="_waiting || _isOpen && !isDisabled" [class.mos-c-autocomplete__wrapper-inner--textarea]="textarea">
+          <!-- Preloader -->
+          <div class="mos-c-autocomplete__container mos-u-display--flex mos-u-align-center--both"
+               [class.mos-c-autocomplete__container--box-shadow]="!_isFormV2Enabled && hasContainerShadow"
+               [class.mos-c-autocomplete__container--absolute]="isAbsoluteDropdown"
+               [style.height.px]="_containerHalfHeight"
+               *ngIf="_waiting && !isDisabled">
+            <legacy-preloader></legacy-preloader>
+          </div>
+          <!-- Dropdown -->
+          <div class="mos-c-autocomplete__container"
+               [class.mos-c-autocomplete__container--box-shadow]="!_isFormV2Enabled && hasContainerShadow"
+               [class.mos-c-autocomplete__container--absolute]="isAbsoluteDropdown"
+               [class.mos-c-autocomplete__container--new]="isMultiField || version2"
+               *ngIf="filteredList.length && _isOpen && !_waiting && !isDisabled">
+            <div #dropdown class="mos-c-autocomplete__list__container">
+              <ul class="mos-c-autocomplete__list">
+                <li *ngFor="let item of filteredList; let idx = index"
+                    [class.mos-c-autocomplete--selected]="idx == selectedIdx  && item.type !== 'action'"
+                    [class.mos-c-autocomplete--autoscroll-selected]="idx === autoScrollIdx && item.type !== 'action'">
+                  <a class="mos-c-autocomplete__list__item"
+                     [class.mos-c-autocomplete__group-header]="item.type === 'header'"
+                     [class.mos-c-autocomplete__action]="item.type === 'action'"
+                     [attr.tabindex]="idx + 1"
+                     (click)="select(idx, true)"
+                     (keyup.enter)="select(selectedIdx)"
+                     (focus)="selectedIdx=idx; resetBlur()"
+                     (blur)="handleBlur()">
+                    <!-- Default Item -->
+                    <div *ngIf="!isMultiField">
+                        <div class="flag">
+                            <img *ngIf="!!item?.flag" [src]="'/atlas-icons/' + item.flag.toLocaleLowerCase() + '.svg'" />
+                        </div>
+                      <atlas-icon *ngIf="!!item?.icon" [icon]="item.icon"></atlas-icon>
+                      {{ item.label || item }}
+                    </div>
+                    <!-- Multi-Field Items (with flex) -->
+                    <div *ngIf="isMultiField" class="mos-c-autocomplete__list__multi">
+                      <div class="mos-c-autocomplete__list__multi--label">
+                        {{item.label}}
+                      </div>
+                      <ng-container *ngIf="item.type !== 'header'">
+                        <div *ngFor="let fieldName of fieldList; let lastField = last;"
+                          class="mos-c-autocomplete__list__multi--fields"
+                          [class.mos-u-text-right]="lastField">
+                          {{item.fields[fieldName]}}
+                        </div>
+                      </ng-container>
+                    </div>
+                  </a>
+                </li>
+              </ul>
+            </div>
+            <!-- Dropdown Sticky Section-->
+            <div #sticky *ngIf="filteredList.length" class="mos-c-autocomplete__sticky-action__container" (mousedown)="stickyMouseDown($event)" (click)="stickyClick()">
+              <ng-content select="[sticky-action]"></ng-content>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <ng-content></ng-content>
+</div>
+
+<ng-template #labelTemplate let-inputId="inputId">
+  <label *ngIf="label"
+         [attr.for]="inputId"
+         class="mos-c-autocomplete__label"
+         [class.mos-u-font-weight--medium]="!_isFormV2Enabled">{{label}}<span *ngIf="_isRequired" class="mos-o-form-required-icon" [class.mos-c-autocomplete__required-icon]="_isFocused">*</span></label>
+</ng-template>
+
+<ng-template #iconTemplate>
+  <!-- Only Cancel Button -->
+  <div *ngIf="clearEnabled && !displayDropdownArrow && !(isReadOnly || isDisabled)" class="mos-c-autocomplete__input__clear-container">
+    <atlas-icon-button
+      class="mos-c-autocomplete__input-close"
+      [class.mos-c-autocomplete__input__multi__close]="isMultiField && _fieldItems"
+      type="button"
+      (click)="clearInput()"
+      icon="icon-remove-24"
+      collection="system"
+      alt="close">
+    </atlas-icon-button>
+  </div>
+  <!-- Only Arrow Icons -->
+  <div *ngIf="!clearEnabled && displayDropdownArrow && !(isReadOnly || isDisabled)" (click)="!isDisabled && !isReadOnly && handleMultiFieldFocus()" class="mos-c-autocomplete__input__arrow-container">
+    <atlas-icon *ngIf="!(_isOpen && clearButtonShown)" icon="icon-caret-down-24" collection="system"></atlas-icon>
+    <atlas-icon *ngIf="_isOpen && clearButtonShown" icon="icon-caret-up-24" collection="system"></atlas-icon>
+  </div>
+  <!-- Arrow Icon and Cancel Button -->
+  <div *ngIf="clearEnabled && displayDropdownArrow && !(isReadOnly || isDisabled)" class="mos-c-autocomplete__input__clear-container" (click)="!_isFormV2Enabled && _arrowClearClickEvent()">
+    <atlas-icon *ngIf="!_isOpen" class="mos-c-autocomplete__input-arrow" [class.mos-c-autocomplete__input--textarea]="textarea" icon="icon-caret-down-24" collection="system" (click)="handleFocus($event)"></atlas-icon>
+    <atlas-icon *ngIf="_isFormV2Enabled ? query.length : clearButtonShown" class="mos-c-autocomplete__input-close mos-c-autocomplete__input-close--icon" [class.mos-c-autocomplete__input--textarea]="textarea" [size]="closeIconSize" [icon]="_isFormV2Enabled ? 'icon-remove-circle-24' : 'icon-remove-24'" (click)="clearInput()" collection="system"></atlas-icon>
+    <atlas-icon *ngIf="_isOpen" class="mos-c-autocomplete__input-arrow-drop-up" [class.mos-c-autocomplete__input--textarea]="textarea" icon="icon-caret-up-24" collection="system" (click)="handleBlur()"></atlas-icon>
+  </div>
+  <!-- From v2 show arrow-down on disabled state -->
+  <div *ngIf="_isFormV2Enabled ? isDisabled : false">
+    <atlas-icon class="mos-c-autocomplete__input-arrow" icon="icon-caret-down-24" collection="system"></atlas-icon>
+  </div>
+</ng-template>

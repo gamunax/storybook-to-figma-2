@@ -1,0 +1,1376 @@
+import { Meta } from '@storybook/addon-docs';
+import Code from 'projects/cdk/assets/icons/code-brackets.svg';
+import Colors from 'projects/cdk/assets/icons/colors.svg';
+import Comments from 'projects/cdk/assets/icons/comments.svg';
+import Direction from 'projects/cdk/assets/icons/direction.svg';
+import Flow from 'projects/cdk/assets/icons/flow.svg';
+import Plugin from 'projects/cdk/assets/icons/plugin.svg';
+import Repo from 'projects/cdk/assets/icons/repo.svg';
+import StackAlt from 'projects/cdk/assets/icons/stackalt.svg';
+import { BADGES } from '.storybook/constants';
+import { withTheming } from '../../.storybook/halo-theming-addon';
+import { HoverableCode } from '../../.storybook/hoverable-code';
+import { ThemingServiceGlobal, defaultConfig } from "atlas-cdk";
+import { Source } from '@storybook/addon-docs';
+
+<Meta title="Adopters/Design/Typography" parameters={{ badges: [ BADGES.BETA ], options: { isToolshown: true } }} />
+
+<style>
+  {`
+    .token__declarations {
+        font-size: 10px;
+    }
+  `}
+</style>
+
+
+# Typography
+
+Halo typography is a customizable scale of font styles for your product. There are tokens and classes that are available for assignment to any element. We do not assign styles to elements so that we can continue to create heirarchy on our pages to maintain accessibility.
+
+
+Tokens are output into properties and values applied as CSS class rules.
+
+### **Typography Tokens**
+
+All typography tokens must now start with `typographyStyles-`.
+
+#### Example:
+- **Figma Token**: `display/medium`  
+- **Design System Token**: `typographyStyles-display-medium`
+
+
+## Scale
+
+Our type scale auto generates classes based on token input. 
+
+<table>
+    <thead>
+        <tr>
+            <th>Token</th>
+            <th>Example</th>
+            <th>Description</th>
+            <th>Usage</th>
+        </tr>
+    </thead>
+        {
+    <tbody>
+    
+            <tr>
+                <td className="hoverable__cell">
+                <HoverableCode>typographyStyles-display-large</HoverableCode>
+                </td>
+                <td className="typographyStyles-display-large">
+                Isn't it strange, the way time moves?
+                </td>
+                <td>
+                display-large
+                </td>
+                <td>
+                CSS Class
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell">
+                <HoverableCode>typographyStyles-display-medium</HoverableCode>
+                </td>
+                <td className="typographyStyles-display-medium">
+                Isn't it strange, the way time moves?
+                </td>
+                <td>
+                display-medium
+                </td>
+                <td>
+                CSS Class
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell">
+                <HoverableCode>typographyStyles-display-small</HoverableCode>
+                </td>
+                <td className="typographyStyles-display-small">
+                Isn't it strange, the way time moves?
+                </td>
+                <td>
+                display-small
+                </td>
+                <td>
+                CSS Class
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell">
+                <HoverableCode>typographyStyles-heading-small</HoverableCode>
+                </td>
+                <td className="typographyStyles-heading-small">
+                Isn't it strange, the way time moves?
+                </td>
+                <td>
+                heading-small
+                </td>
+                <td>
+                CSS Class
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell">
+                <HoverableCode>typographyStyles-title-small</HoverableCode>
+                </td>
+                <td className="typographyStyles-title-small">
+                Isn't it strange, the way time moves?
+                </td>
+                <td>
+                title-small
+                </td>
+                <td>
+                CSS Class
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell">
+                <HoverableCode>typographyStyles-heading-medium</HoverableCode>
+                </td>
+                <td className="typographyStyles-heading-medium">
+                Isn't it strange, the way time moves?
+                </td>
+                <td>
+                heading-medium
+                </td>
+                <td>
+                CSS Class
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell">
+                <HoverableCode>typographyStyles-body-largeAlt</HoverableCode>
+                </td>
+                <td className="typographyStyles-body-largeAlt">
+                Isn't it strange, the way time moves?
+                </td>
+                <td>
+                body-largeAlt
+                </td>
+                <td>
+                CSS Class
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell">
+                <HoverableCode>typographyStyles-body-mediumAlt</HoverableCode>
+                </td>
+                <td className="typographyStyles-body-mediumAlt">
+                Isn't it strange, the way time moves?
+                </td>
+                <td>
+                body-mediumAlt
+                </td>
+                <td>
+                CSS Class
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell">
+                <HoverableCode>typographyStyles-body-smallAlt</HoverableCode>
+                </td>
+                <td className="typographyStyles-body-smallAlt">
+                Isn't it strange, the way time moves?
+                </td>
+                <td>
+                body-smallAlt
+                </td>
+                <td>
+                CSS Class
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell">
+                <HoverableCode>typographyStyles-body-large</HoverableCode>
+                </td>
+                <td className="typographyStyles-body-large">
+                Isn't it strange, the way time moves?
+                </td>
+                <td>
+                body-large
+                </td>
+                <td>
+                CSS Class
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell">
+                <HoverableCode>typographyStyles-body-medium</HoverableCode>
+                </td>
+                <td className="typographyStyles-body-medium">
+                Isn't it strange, the way time moves?
+                </td>
+                <td>
+                body-medium
+                </td>
+                <td>
+                CSS Class
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell">
+                <HoverableCode>typographyStyles-body-small</HoverableCode>
+                </td>
+                <td className="typographyStyles-body-small">
+                Isn't it strange, the way time moves?
+                </td>
+                <td>
+                body-small
+                </td>
+                <td>
+                CSS Class
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell">
+                <HoverableCode>typographyStyles-mobile-display-large</HoverableCode>
+                </td>
+                <td className="typographyStyles-mobile-display-large">
+                Isn't it strange, the way time moves?
+                </td>
+                <td>
+                mobile-display-large
+                </td>
+                <td>
+                CSS Class
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell">
+                <HoverableCode>typographyStyles-mobile-display-medium</HoverableCode>
+                </td>
+                <td className="typographyStyles-mobile-display-medium">
+                Isn't it strange, the way time moves?
+                </td>
+                <td>
+                mobile-display-medium
+                </td>
+                <td>
+                CSS Class
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell">
+                <HoverableCode>typographyStyles-mobile-display-small</HoverableCode>
+                </td>
+                <td className="typographyStyles-mobile-display-small">
+                Isn't it strange, the way time moves?
+                </td>
+                <td>
+                mobile-display-small
+                </td>
+                <td>
+                CSS Class
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell">
+                <HoverableCode>typographyStyles-mobile-heading-small</HoverableCode>
+                </td>
+                <td className="typographyStyles-mobile-heading-small">
+                Isn't it strange, the way time moves?
+                </td>
+                <td>
+                mobile-heading-small
+                </td>
+                <td>
+                CSS Class
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell">
+                <HoverableCode>typographyStyles-mobile-title-small</HoverableCode>
+                </td>
+                <td className="typographyStyles-mobile-title-small">
+                Isn't it strange, the way time moves?
+                </td>
+                <td>
+                mobile-title-small
+                </td>
+                <td>
+                CSS Class
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell">
+                <HoverableCode>typographyStyles-mobile-heading-medium</HoverableCode>
+                </td>
+                <td className="typographyStyles-mobile-heading-medium">
+                Isn't it strange, the way time moves?
+                </td>
+                <td>
+                mobile-heading-medium
+                </td>
+                <td>
+                CSS Class
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell">
+                <HoverableCode>typographyStyles-button-large</HoverableCode>
+                </td>
+                <td className="typographyStyles-button-large">
+                Isn't it strange, the way time moves?
+                </td>
+                <td>
+                button-large
+                </td>
+                <td>
+                CSS Class
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell">
+                <HoverableCode>typographyStyles-button-medium</HoverableCode>
+                </td>
+                <td className="typographyStyles-button-medium">
+                Isn't it strange, the way time moves?
+                </td>
+                <td>
+                button-medium
+                </td>
+                <td>
+                CSS Class
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell">
+                <HoverableCode>typographyStyles-button-small</HoverableCode>
+                </td>
+                <td className="typographyStyles-button-small">
+                Isn't it strange, the way time moves?
+                </td>
+                <td>
+                button-small
+                </td>
+                <td>
+                CSS Class
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell">
+                <HoverableCode>typographyStyles-label-smallAlt</HoverableCode>
+                </td>
+                <td className="typographyStyles-label-smallAlt">
+                Isn't it strange, the way time moves?
+                </td>
+                <td>
+                label-smallAlt
+                </td>
+                <td>
+                CSS Class
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell">
+                <HoverableCode>typographyStyles-label-small</HoverableCode>
+                </td>
+                <td className="typographyStyles-label-small">
+                Isn't it strange, the way time moves?
+                </td>
+                <td>
+                label-small
+                </td>
+                <td>
+                CSS Class
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell">
+                <HoverableCode>typographyStyles-label-mediumAlt</HoverableCode>
+                </td>
+                <td className="typographyStyles-label-mediumAlt">
+                Isn't it strange, the way time moves?
+                </td>
+                <td>
+                label-mediumAlt
+                </td>
+                <td>
+                CSS Class
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell">
+                <HoverableCode>typographyStyles-label-medium</HoverableCode>
+                </td>
+                <td className="typographyStyles-label-medium">
+                Isn't it strange, the way time moves?
+                </td>
+                <td>
+                label-medium
+                </td>
+                <td>
+                CSS Class
+                </td>
+            </tr>
+   
+    </tbody>
+         }
+</table>
+
+## Family Tokens
+<table>
+    <thead>
+        <tr>
+            <th>Token</th>
+            <th>Example</th>
+            <th>Description</th>
+            <th>Default</th>
+            <th>Usage</th>
+        </tr>
+    </thead>
+{
+    <tbody>
+  
+                <tr >
+                    <td className="hoverable__cell">
+                        <HoverableCode>semanticTypography-font-family-display</HoverableCode>
+                    </td>
+                    <td style={{fontFamily: `var(--semanticTypography-font-family-display)`}}>
+                        Example
+                    </td>
+                    <td>
+                        -
+                    </td>
+                    <td>
+                        MMC Display
+                    </td>
+                    <td>
+                        CSS Variable
+                    </td>
+                    
+                </tr>
+                <tr >
+                    <td className="hoverable__cell">
+                        <HoverableCode>semanticTypography-font-family-plain</HoverableCode>
+                    </td>
+                    <td style={{fontFamily: `var(--semanticTypography-font-family-plain)`}}>
+                        Example
+                    </td>
+                    <td>
+                        -
+                    </td>
+                    <td>
+                        Noto Sans
+                    </td>
+                    <td>
+                        CSS Variable
+                    </td>
+                    
+                </tr>
+            
+   
+    </tbody>
+    }
+</table>
+
+## Size Tokens
+
+<table>
+    <thead>
+        <tr>
+            <th>Token</th>
+            <th>Example</th>
+            <th>Description</th>
+            <th>Default</th>
+            <th>Usage</th>
+        </tr>
+    </thead>
+    {
+    <tbody>
+  
+
+                <tr>
+                    <td className="hoverable__cell">
+                        <HoverableCode>semanticTypography-font-size-body-large</HoverableCode>
+                    </td>
+                    <td style={{fontSize: `var(--semanticTypography-font-size-body-large)`}}>
+                        Example
+                    </td>
+                    <td>
+                        -
+                    </td>
+                    <td>
+                        18px
+                    </td>
+                    <td>
+                        CSS Variable
+                    </td>
+                </tr>
+                <tr>
+                    <td className="hoverable__cell">
+                        <HoverableCode>semanticTypography-font-size-body-medium</HoverableCode>
+                    </td>
+                    <td style={{fontSize: `var(--semanticTypography-font-size-body-medium)`}}>
+                        Example
+                    </td>
+                    <td>
+                        -
+                    </td>
+                    <td>
+                        16px
+                    </td>
+                    <td>
+                        CSS Variable
+                    </td>
+                </tr>
+                <tr>
+                    <td className="hoverable__cell">
+                        <HoverableCode>semanticTypography-font-size-body-small</HoverableCode>
+                    </td>
+                    <td style={{fontSize: `var(--semanticTypography-font-size-body-small)`}}>
+                        Example
+                    </td>
+                    <td>
+                        -
+                    </td>
+                    <td>
+                        14px
+                    </td>
+                    <td>
+                        CSS Variable
+                    </td>
+                </tr>
+                <tr>
+                    <td className="hoverable__cell">
+                        <HoverableCode>semanticTypography-font-size-button-large</HoverableCode>
+                    </td>
+                    <td style={{fontSize: `var(--semanticTypography-font-size-button-large)`}}>
+                        Example
+                    </td>
+                    <td>
+                        -
+                    </td>
+                    <td>
+                        16px
+                    </td>
+                    <td>
+                        CSS Variable
+                    </td>
+                </tr>
+                <tr>
+                    <td className="hoverable__cell">
+                        <HoverableCode>semanticTypography-font-size-button-medium</HoverableCode>
+                    </td>
+                    <td style={{fontSize: `var(--semanticTypography-font-size-button-medium)`}}>
+                        Example
+                    </td>
+                    <td>
+                        -
+                    </td>
+                    <td>
+                        14px
+                    </td>
+                    <td>
+                        CSS Variable
+                    </td>
+                </tr>
+                <tr>
+                    <td className="hoverable__cell">
+                        <HoverableCode>semanticTypography-font-size-button-small</HoverableCode>
+                    </td>
+                    <td style={{fontSize: `var(--semanticTypography-font-size-button-small)`}}>
+                        Example
+                    </td>
+                    <td>
+                        -
+                    </td>
+                    <td>
+                        12px
+                    </td>
+                    <td>
+                        CSS Variable
+                    </td>
+                </tr>
+                <tr>
+                    <td className="hoverable__cell">
+                        <HoverableCode>semanticTypography-font-size-display-large</HoverableCode>
+                    </td>
+                    <td style={{fontSize: `var(--semanticTypography-font-size-display-large)`}}>
+                        Example
+                    </td>
+                    <td>
+                        -
+                    </td>
+                    <td>
+                        48px
+                    </td>
+                    <td>
+                        CSS Variable
+                    </td>
+                </tr>
+                <tr>
+                    <td className="hoverable__cell">
+                        <HoverableCode>semanticTypography-font-size-display-medium</HoverableCode>
+                    </td>
+                    <td style={{fontSize: `var(--semanticTypography-font-size-display-medium)`}}>
+                        Example
+                    </td>
+                    <td>
+                        -
+                    </td>
+                    <td>
+                        48px
+                    </td>
+                    <td>
+                        CSS Variable
+                    </td>
+                </tr>
+                <tr>
+                    <td className="hoverable__cell">
+                        <HoverableCode>semanticTypography-font-size-display-small</HoverableCode>
+                    </td>
+                    <td style={{fontSize: `var(--semanticTypography-font-size-display-small)`}}>
+                        Example
+                    </td>
+                    <td>
+                        -
+                    </td>
+                    <td>
+                        48px
+                    </td>
+                    <td>
+                        CSS Variable
+                    </td>
+                </tr>
+                <tr>
+                    <td className="hoverable__cell">
+                        <HoverableCode>semanticTypography-font-size-heading-large</HoverableCode>
+                    </td>
+                    <td style={{fontSize: `var(--semanticTypography-font-size-heading-large)`}}>
+                        Example
+                    </td>
+                    <td>
+                        -
+                    </td>
+                    <td>
+                        32px
+                    </td>
+                    <td>
+                        CSS Variable
+                    </td>
+                </tr>
+                <tr>
+                    <td className="hoverable__cell">
+                        <HoverableCode>semanticTypography-font-size-heading-medium</HoverableCode>
+                    </td>
+                    <td style={{fontSize: `var(--semanticTypography-font-size-heading-medium)`}}>
+                        Example
+                    </td>
+                    <td>
+                        -
+                    </td>
+                    <td>
+                        24px
+                    </td>
+                    <td>
+                        CSS Variable
+                    </td>
+                </tr>
+                <tr>
+                    <td className="hoverable__cell">
+                        <HoverableCode>semanticTypography-font-size-heading-small</HoverableCode>
+                    </td>
+                    <td style={{fontSize: `var(--semanticTypography-font-size-heading-small)`}}>
+                        Example
+                    </td>
+                    <td>
+                        -
+                    </td>
+                    <td>
+                        20px
+                    </td>
+                    <td>
+                        CSS Variable
+                    </td>
+                </tr>
+                <tr>
+                    <td className="hoverable__cell">
+                        <HoverableCode>semanticTypography-font-size-title-large</HoverableCode>
+                    </td>
+                    <td style={{fontSize: `var(--semanticTypography-font-size-title-large)`}}>
+                        Example
+                    </td>
+                    <td>
+                        -
+                    </td>
+                    <td>
+                        48px
+                    </td>
+                    <td>
+                        CSS Variable
+                    </td>
+                </tr>
+                <tr>
+                    <td className="hoverable__cell">
+                        <HoverableCode>semanticTypography-font-size-title-medium</HoverableCode>
+                    </td>
+                    <td style={{fontSize: `var(--semanticTypography-font-size-title-medium)`}}>
+                        Example
+                    </td>
+                    <td>
+                        -
+                    </td>
+                    <td>
+                        40px
+                    </td>
+                    <td>
+                        CSS Variable
+                    </td>
+                </tr>
+                <tr>
+                    <td className="hoverable__cell">
+                        <HoverableCode>semanticTypography-font-size-title-small</HoverableCode>
+                    </td>
+                    <td style={{fontSize: `var(--semanticTypography-font-size-title-small)`}}>
+                        Example
+                    </td>
+                    <td>
+                        -
+                    </td>
+                    <td>
+                        32px
+                    </td>
+                    <td>
+                        CSS Variable
+                    </td>
+                </tr>
+                
+                
+                    </tbody>
+                    }
+                </table>
+
+                ## Line Height Tokens
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Token</th>
+                            <th>Example</th>
+                            <th>Description</th>
+                            <th>Default</th>
+                            <th>Usage</th>
+                        </tr>
+                    </thead>
+                    {
+                    <tbody>
+                    <tr>
+                    <td className="hoverable__cell">
+                        <HoverableCode>semanticTypography-line-height-body-large</HoverableCode>
+                    </td>
+                    <td style={{lineHeight: `var(--semanticTypography-line-height-body-large)`}}>
+                        Example
+                    </td>
+                    <td>
+                        -
+                    </td>
+                    <td>
+                        28px
+                    </td>
+                    <td>
+                        CSS Variable
+                    </td>
+                </tr>
+                <tr>
+                    <td className="hoverable__cell">
+                        <HoverableCode>semanticTypography-line-height-body-medium</HoverableCode>
+                    </td>
+                    <td style={{lineHeight: `var(--semanticTypography-line-height-body-medium)`}}>
+                        Example
+                    </td>
+                    <td>
+                        -
+                    </td>
+                    <td>
+                        24px
+                    </td>
+                    <td>
+                        CSS Variable
+                    </td>
+                </tr>
+                <tr>
+                    <td className="hoverable__cell">
+                        <HoverableCode>semanticTypography-line-height-body-small</HoverableCode>
+                    </td>
+                    <td style={{lineHeight: `var(--semanticTypography-line-height-body-small)`}}>
+                        Example
+                    </td>
+                    <td>
+                        -
+                    </td>
+                    <td>
+                        20px
+                    </td>
+                    <td>
+                        CSS Variable
+                    </td>
+                </tr>
+                <tr>
+                    <td className="hoverable__cell">
+                        <HoverableCode>semanticTypography-line-height-button-large</HoverableCode>
+                    </td>
+                    <td style={{lineHeight: `var(--semanticTypography-line-height-button-large)`}}>
+                        Example
+                    </td>
+                    <td>
+                        -
+                    </td>
+                    <td>
+                        24px
+                    </td>
+                    <td>
+                        CSS Variable
+                    </td>
+                </tr>
+                <tr>
+                    <td className="hoverable__cell">
+                        <HoverableCode>semanticTypography-line-height-button-medium</HoverableCode>
+                    </td>
+                    <td style={{lineHeight: `var(--semanticTypography-line-height-button-medium)`}}>
+                        Example
+                    </td>
+                    <td>
+                        -
+                    </td>
+                    <td>
+                        24px
+                    </td>
+                    <td>
+                        CSS Variable
+                    </td>
+                </tr>
+                <tr>
+                    <td className="hoverable__cell">
+                        <HoverableCode>semanticTypography-line-height-button-small</HoverableCode>
+                    </td>
+                    <td style={{lineHeight: `var(--semanticTypography-line-height-button-small)`}}>
+                        Example
+                    </td>
+                    <td>
+                        -
+                    </td>
+                    <td>
+                        20px
+                    </td>
+                    <td>
+                        CSS Variable
+                    </td>
+                </tr>
+                <tr>
+                    <td className="hoverable__cell">
+                        <HoverableCode>semanticTypography-line-height-display-large</HoverableCode>
+                    </td>
+                    <td style={{lineHeight: `var(--semanticTypography-line-height-display-large)`}}>
+                        Example
+                    </td>
+                    <td>
+                        -
+                    </td>
+                    <td>
+                        56px
+                    </td>
+                    <td>
+                        CSS Variable
+                    </td>
+                </tr>
+                <tr>
+                    <td className="hoverable__cell">
+                        <HoverableCode>semanticTypography-line-height-display-medium</HoverableCode>
+                    </td>
+                    <td style={{lineHeight: `var(--semanticTypography-line-height-display-medium)`}}>
+                        Example
+                    </td>
+                    <td>
+                        -
+                    </td>
+                    <td>
+                        64px
+                    </td>
+                    <td>
+                        CSS Variable
+                    </td>
+                </tr>
+                <tr>
+                    <td className="hoverable__cell">
+                        <HoverableCode>semanticTypography-line-height-display-small</HoverableCode>
+                    </td>
+                    <td style={{lineHeight: `var(--semanticTypography-line-height-display-small)`}}>
+                        Example
+                    </td>
+                    <td>
+                        -
+                    </td>
+                    <td>
+                        52px
+                    </td>
+                    <td>
+                        CSS Variable
+                    </td>
+                </tr>
+                <tr>
+                    <td className="hoverable__cell">
+                        <HoverableCode>semanticTypography-line-height-heading-large</HoverableCode>
+                    </td>
+                    <td style={{lineHeight: `var(--semanticTypography-line-height-heading-large)`}}>
+                        Example
+                    </td>
+                    <td>
+                        -
+                    </td>
+                    <td>
+                        40px
+                    </td>
+                    <td>
+                        CSS Variable
+                    </td>
+                </tr>
+                <tr>
+                    <td className="hoverable__cell">
+                        <HoverableCode>semanticTypography-line-height-heading-medium</HoverableCode>
+                    </td>
+                    <td style={{lineHeight: `var(--semanticTypography-line-height-heading-medium)`}}>
+                        Example
+                    </td>
+                    <td>
+                        -
+                    </td>
+                    <td>
+                        32px
+                    </td>
+                    <td>
+                        CSS Variable
+                    </td>
+                </tr>
+                <tr>
+                    <td className="hoverable__cell">
+                        <HoverableCode>semanticTypography-line-height-heading-small</HoverableCode>
+                    </td>
+                    <td style={{lineHeight: `var(--semanticTypography-line-height-heading-small)`}}>
+                        Example
+                    </td>
+                    <td>
+                        -
+                    </td>
+                    <td>
+                        28px
+                    </td>
+                    <td>
+                        CSS Variable
+                    </td>
+                </tr>
+                <tr>
+                    <td className="hoverable__cell">
+                        <HoverableCode>semanticTypography-line-height-heading-large-mobile</HoverableCode>
+                    </td>
+                    <td style={{lineHeight: `var(--semanticTypography-line-height-heading-large-mobile)`}}>
+                        Example
+                    </td>
+                    <td>
+                        -
+                    </td>
+                    <td>
+                        40px
+                    </td>
+                    <td>
+                        CSS Variable
+                    </td>
+                </tr>
+                <tr>
+                    <td className="hoverable__cell">
+                        <HoverableCode>semanticTypography-line-height-heading-medium-mobile</HoverableCode>
+                    </td>
+                    <td style={{lineHeight: `var(--semanticTypography-line-height-heading-medium-mobile)`}}>
+                        Example
+                    </td>
+                    <td>
+                        -
+                    </td>
+                    <td>
+                        32px
+                    </td>
+                    <td>
+                        CSS Variable
+                    </td>
+                </tr>
+                <tr>
+                    <td className="hoverable__cell">
+                        <HoverableCode>semanticTypography-line-height-heading-small-mobile</HoverableCode>
+                    </td>
+                    <td style={{lineHeight: `var(--semanticTypography-line-height-heading-small-mobile)`}}>
+                        Example
+                    </td>
+                    <td>
+                        -
+                    </td>
+                    <td>
+                        24px
+                    </td>
+                    <td>
+                        CSS Variable
+                    </td>
+                </tr>
+                <tr>
+                    <td className="hoverable__cell">
+                        <HoverableCode>semanticTypography-line-height-label-large</HoverableCode>
+                    </td>
+                    <td style={{lineHeight: `var(--semanticTypography-line-height-label-large)`}}>
+                        Example
+                    </td>
+                    <td>
+                        -
+                    </td>
+                    <td>
+                        22px
+                    </td>
+                    <td>
+                        CSS Variable
+                    </td>
+                </tr>
+                <tr>
+                    <td className="hoverable__cell">
+                        <HoverableCode>semanticTypography-line-height-label-medium</HoverableCode>
+                    </td>
+                    <td style={{lineHeight: `var(--semanticTypography-line-height-label-medium)`}}>
+                        Example
+                    </td>
+                    <td>
+                        -
+                    </td>
+                    <td>
+                        18px
+                    </td>
+                    <td>
+                        CSS Variable
+                    </td>
+                </tr>
+                <tr>
+                    <td className="hoverable__cell">
+                        <HoverableCode>semanticTypography-line-height-label-small</HoverableCode>
+                    </td>
+                    <td style={{lineHeight: `var(--semanticTypography-line-height-label-small)`}}>
+                        Example
+                    </td>
+                    <td>
+                        -
+                    </td>
+                    <td>
+                        16px
+                    </td>
+                    <td>
+                        CSS Variable
+                    </td>
+                </tr>
+                <tr>
+                    <td className="hoverable__cell">
+                        <HoverableCode>semanticTypography-line-height-title-large</HoverableCode>
+                    </td>
+                    <td style={{lineHeight: `var(--semanticTypography-line-height-title-large)`}}>
+                        Example
+                    </td>
+                    <td>
+                        -
+                    </td>
+                    <td>
+                        56px
+                    </td>
+                    <td>
+                        CSS Variable
+                    </td>
+                </tr>
+                <tr>
+                    <td className="hoverable__cell">
+                        <HoverableCode>semanticTypography-line-height-title-medium</HoverableCode>
+                    </td>
+                    <td style={{lineHeight: `var(--semanticTypography-line-height-title-medium)`}}>
+                        Example
+                    </td>
+                    <td>
+                        -
+                    </td>
+                    <td>
+                        48px
+                    </td>
+                    <td>
+                        CSS Variable
+                    </td>
+                </tr>
+                <tr>
+                    <td className="hoverable__cell">
+                        <HoverableCode>semanticTypography-line-height-title-small</HoverableCode>
+                    </td>
+                    <td style={{lineHeight: `var(--semanticTypography-line-height-title-small)`}}>
+                        Example
+                    </td>
+                    <td>
+                        -
+                    </td>
+                    <td>
+                        40px
+                    </td>
+                    <td>
+                        CSS Variable
+                    </td>
+                </tr>
+                <tr>
+                    <td className="hoverable__cell">
+                        <HoverableCode>semanticTypography-line-height-title-large-mobile</HoverableCode>
+                    </td>
+                    <td style={{lineHeight: `var(--semanticTypography-line-height-title-large-mobile)`}}>
+                        Example
+                    </td>
+                    <td>
+                        -
+                    </td>
+                    <td>
+                        48px
+                    </td>
+                    <td>
+                        CSS Variable
+                    </td>
+                </tr>
+                <tr>
+                    <td className="hoverable__cell">
+                        <HoverableCode>semanticTypography-line-height-title-medium-mobile</HoverableCode>
+                    </td>
+                    <td style={{lineHeight: `var(--semanticTypography-line-height-title-medium-mobile)`}}>
+                        Example
+                    </td>
+                    <td>
+                        -
+                    </td>
+                    <td>
+                        40px
+                    </td>
+                    <td>
+                        CSS Variable
+                    </td>
+                </tr>
+                <tr>
+                    <td className="hoverable__cell">
+                        <HoverableCode>semanticTypography-line-height-title-small-mobile</HoverableCode>
+                    </td>
+                    <td style={{lineHeight: `var(--semanticTypography-line-height-title-small-mobile)`}}>
+                        Example
+                    </td>
+                    <td>
+                        -
+                    </td>
+                    <td>
+                        36px
+                    </td>
+                    <td>
+                        CSS Variable
+                    </td>
+                </tr>
+   
+        
+    </tbody>
+    }
+</table>
+
+## Weight Tokens
+<table>
+    <thead>
+        <tr>
+            <th>Token</th>
+            <th>Example</th>
+            <th>Description</th>
+            <th>Default</th>
+            <th>Usage</th>
+        </tr>
+    </thead>
+    {
+    <tbody>
+                <tr>
+                    <td className="hoverable__cell">
+                        <HoverableCode>semanticTypography-font-weight-body-alt</HoverableCode>
+                    </td>
+                    <td style={{fontWeight: `var(--semanticTypography-font-weight-body-alt)`}}>
+                        Example
+                    </td>
+                    <td>
+                        -
+                    </td>
+                    <td>
+                        semibold
+                    </td>
+                    <td>
+                        CSS Variable
+                    </td>
+                </tr>
+                <tr>
+                    <td className="hoverable__cell">
+                        <HoverableCode>semanticTypography-font-weight-body-default</HoverableCode>
+                    </td>
+                    <td style={{fontWeight: `var(--semanticTypography-font-weight-body-default)`}}>
+                        Example
+                    </td>
+                    <td>
+                        -
+                    </td>
+                    <td>
+                        regular
+                    </td>
+                    <td>
+                        CSS Variable
+                    </td>
+                </tr>
+                <tr>
+                    <td className="hoverable__cell">
+                        <HoverableCode>semanticTypography-font-weight-button-default</HoverableCode>
+                    </td>
+                    <td style={{fontWeight: `var(--semanticTypography-font-weight-button-default)`}}>
+                        Example
+                    </td>
+                    <td>
+                        -
+                    </td>
+                    <td>
+                        medium
+                    </td>
+                    <td>
+                        CSS Variable
+                    </td>
+                </tr>
+                <tr>
+                    <td className="hoverable__cell">
+                        <HoverableCode>semanticTypography-font-weight-display-alt</HoverableCode>
+                    </td>
+                    <td style={{fontWeight: `var(--semanticTypography-font-weight-display-alt)`}}>
+                        Example
+                    </td>
+                    <td>
+                        -
+                    </td>
+                    <td>
+                        regular
+                    </td>
+                    <td>
+                        CSS Variable
+                    </td>
+                </tr>
+                <tr>
+                    <td className="hoverable__cell">
+                        <HoverableCode>semanticTypography-font-weight-display-default</HoverableCode>
+                    </td>
+                    <td style={{fontWeight: `var(--semanticTypography-font-weight-display-default)`}}>
+                        Example
+                    </td>
+                    <td>
+                        -
+                    </td>
+                    <td>
+                        bold
+                    </td>
+                    <td>
+                        CSS Variable
+                    </td>
+                </tr>
+                <tr>
+                    <td className="hoverable__cell">
+                        <HoverableCode>semanticTypography-font-weight-heading-alt</HoverableCode>
+                    </td>
+                    <td style={{fontWeight: `var(--semanticTypography-font-weight-heading-alt)`}}>
+                        Example
+                    </td>
+                    <td>
+                        -
+                    </td>
+                    <td>
+                        light
+                    </td>
+                    <td>
+                        CSS Variable
+                    </td>
+                </tr>
+                <tr>
+                    <td className="hoverable__cell">
+                        <HoverableCode>semanticTypography-font-weight-heading-default</HoverableCode>
+                    </td>
+                    <td style={{fontWeight: `var(--semanticTypography-font-weight-heading-default)`}}>
+                        Example
+                    </td>
+                    <td>
+                        -
+                    </td>
+                    <td>
+                        semibold
+                    </td>
+                    <td>
+                        CSS Variable
+                    </td>
+                </tr>
+                <tr>
+                    <td className="hoverable__cell">
+                        <HoverableCode>semanticTypography-font-weight-label-alt</HoverableCode>
+                    </td>
+                    <td style={{fontWeight: `var(--semanticTypography-font-weight-label-alt)`}}>
+                        Example
+                    </td>
+                    <td>
+                        -
+                    </td>
+                    <td>
+                        medium
+                    </td>
+                    <td>
+                        CSS Variable
+                    </td>
+                </tr>
+                <tr>
+                    <td className="hoverable__cell">
+                        <HoverableCode>semanticTypography-font-weight-label-default</HoverableCode>
+                    </td>
+                    <td style={{fontWeight: `var(--semanticTypography-font-weight-label-default)`}}>
+                        Example
+                    </td>
+                    <td>
+                        -
+                    </td>
+                    <td>
+                        regular
+                    </td>
+                    <td>
+                        CSS Variable
+                    </td>
+                </tr>
+                <tr>
+                    <td className="hoverable__cell">
+                        <HoverableCode>semanticTypography-font-weight-title-alt</HoverableCode>
+                    </td>
+                    <td style={{fontWeight: `var(--semanticTypography-font-weight-title-alt)`}}>
+                        Example
+                    </td>
+                    <td>
+                        -
+                    </td>
+                    <td>
+                        light
+                    </td>
+                    <td>
+                        CSS Variable
+                    </td>
+                </tr>
+                <tr>
+                    <td className="hoverable__cell">
+                        <HoverableCode>semanticTypography-font-weight-title-default</HoverableCode>
+                    </td>
+                    <td style={{fontWeight: `var(--semanticTypography-font-weight-title-default)`}}>
+                        Example
+                    </td>
+                    <td>
+                        -
+                    </td>
+                    <td>
+                        semibold
+                    </td>
+                    <td>
+                        CSS Variable
+                    </td>
+                </tr>
+    </tbody>
+    }
+</table>

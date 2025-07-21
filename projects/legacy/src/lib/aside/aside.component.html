@@ -1,0 +1,9 @@
+<div class="legacy-c-aside">
+    <ng-content></ng-content>
+    <div *ngIf="_showAside" [@fade]="_showAside" class="legacy-c-aside--overlay" (click)="_handleOverlayClick($event)">
+    </div>
+    <div *ngIf="_showAside" [@slide]="_showAside" (@slide.done)="_emitAnimationEnd()"
+        class="legacy-c-aside--aside legacy-u-shadow-depth-4">
+        <ng-content select="[legacy-aside-content]"></ng-content>
+    </div>
+</div>

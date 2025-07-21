@@ -1,0 +1,44 @@
+<div class="container padding-y-9 padding-x-9 page-bg">
+  <h2>Bottom Navigation Component Demo</h2>
+  <div class="header">
+    <atlas-theming-helper>
+      <label>Custom theme</label>
+    </atlas-theming-helper>
+  </div>
+  <h2>Bottom Navigation with only icons</h2>
+  <div class="list">
+    <div class="list__section">
+      <div class="row">
+        <div class="column">
+          <atlas-bottom-navigation>
+            <atlas-bottom-navigation-action *ngFor="let nav of items">
+               <atlas-icon [icon]="nav.icon" 
+                  [size]="iconSizes.medium"
+                ></atlas-icon>
+            </atlas-bottom-navigation-action>
+          </atlas-bottom-navigation>
+        </div>
+      </div>
+    </div>
+  </div>
+  <h2>Bottom Navigation with items and badge</h2>
+  <div class="list">
+    <div class="list__section">
+      <div class="row">
+        <div class="column">
+          <atlas-bottom-navigation>
+            <atlas-bottom-navigation-action *ngFor="let nav of items">
+               <atlas-icon [icon]="nav.icon" 
+                  [size]="iconSizes.medium"
+                  [badgePosition]="badgePositions"
+                  [badgeMode]="badgeModes"
+                  [badge]="nav.badgeCount"
+                ></atlas-icon>
+               <atlas-field-label class="typographyStyles-body-small">{{nav.label}}</atlas-field-label> 
+            </atlas-bottom-navigation-action>
+          </atlas-bottom-navigation>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

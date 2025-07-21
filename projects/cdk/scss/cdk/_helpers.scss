@@ -1,0 +1,6 @@
+@mixin material-cdk-resets() {
+    // Required to not create extra space on the page for tooltips
+    .cdk-visually-hidden {
+        display: none;
+    }
+}

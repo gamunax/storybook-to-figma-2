@@ -1,0 +1,35 @@
+<div class="container">
+    <hr>
+    <h1>Avatar Component Tests</h1>
+    <hr>
+    <br>
+
+    <div class="row">
+        <div class="column" style="margin-left:20px;max-width:100px" *ngFor="let item of single">
+            <atlas-avatar 
+                [action]="item.action" 
+                [id]="item.id" 
+                [indicator]="item.indicator"
+                [indicatorAction]="item.iaction" 
+                [radius]="item.radius" 
+                [grouped]="item.grouped"
+                typography="typographyStyles-body-largeAlt" 
+                (onClick)="onClickQA($event)">
+                {{item.id}}
+            </atlas-avatar>
+        </div>
+
+        <div class="column" style="max-width:200px">
+            <atlas-avatar *ngFor="let item of grouped" 
+                [action]="item.action" 
+                [id]="item.id"
+                [indicator]="item.indicator" 
+                [indicatorAction]="item.iaction" 
+                [radius]="item.radius"
+                [grouped]="item.grouped" 
+                typography="typographyStyles-body-largeAlt" 
+                (onClick)="onClickQA($event)">
+                {{item.id}}
+            </atlas-avatar>
+        </div>
+</div>

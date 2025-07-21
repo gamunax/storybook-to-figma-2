@@ -1,0 +1,129 @@
+<div class="container padding-y-9 padding-x-9 page-bg">
+  <h2>Navigation Component Demo</h2>
+  <div class="header">
+    <atlas-theming-helper>
+      <label>Custom theme</label>
+    </atlas-theming-helper>
+  </div>
+  <h2>Navigation</h2>
+  <div class="list">
+    <div class="list__section">
+      <div class="row">
+        <div class="column">
+          <atlas-navigation [title]="'title'" [optionalSection]="false" [optionalBtnLabel]="'optionalBtnLabel'">
+            <atlas-nav-item [action]="actions.primary" (click)="navigationItem1.toggleMenu()" #navigationItem1>
+              Category
+              <atlas-nav-menu [navigationItem]="navigationItem1">
+                <atlas-nav-custom-area [title]="'customTitle'">
+                  <span>Brief description of the line of business goes here.</span>
+                </atlas-nav-custom-area>
+                <atlas-nav-content style="width: 600px">
+                  <section style="flex-basis: calc(50% - 12px)">
+                    <atlas-list>
+                      <atlas-list-item [item]="{ value: 'option 1' }">
+                        <div class="typographyStyles-body-largeAlt">Example title</div>
+                      </atlas-list-item>
+                      <atlas-list-item [item]="item" *ngFor="let item of items">
+                        <div>{{ item.label }}</div>
+                      </atlas-list-item>
+                    </atlas-list>
+                  </section>
+                  <section style="flex-basis: calc(50% - 12px)">
+                    <atlas-list>
+                      <atlas-list-item [item]="{ value: 'option 1' }">
+                        <div class="typographyStyles-body-largeAlt">Example title</div>
+                      </atlas-list-item>
+                      <atlas-list-item [item]="item" *ngFor="let item of items">
+                        <div>{{ item.label }}</div>
+                      </atlas-list-item>
+                    </atlas-list>
+                  </section>
+                </atlas-nav-content>
+              </atlas-nav-menu>
+            </atlas-nav-item>
+            <atlas-nav-item [action]="actions.primary" (click)="navigationItem2.toggleMenu()" #navigationItem2>
+              Tags
+              <atlas-nav-menu [navigationItem]="navigationItem2">
+                <atlas-nav-custom-area [title]="'customTitle'">
+                  <span>Brief description of the line of business goes here.</span>
+                </atlas-nav-custom-area>
+                <atlas-nav-content style="width: 600px">
+                  <section style="flex-basis: calc(50% - 12px)">
+                    <atlas-list>
+                      <atlas-list-item [item]="{ value: 'option 1' }">
+                        <div class="typographyStyles-body-largeAlt">Example title</div>
+                      </atlas-list-item>
+                      <atlas-list-item [item]="item" *ngFor="let item of items">
+                        <div>{{ item.label }}</div>
+                      </atlas-list-item>
+                    </atlas-list>
+                  </section>
+                  <section style="flex-basis: calc(50% - 12px)">
+                    <atlas-list>
+                      <atlas-list-item [item]="{ value: 'option 1' }">
+                        <div class="typographyStyles-body-largeAlt">Example title</div>
+                      </atlas-list-item>
+                      <atlas-list-item [item]="item" *ngFor="let item of items">
+                        <div>{{ item.label }}</div>
+                      </atlas-list-item>
+                    </atlas-list>
+                  </section>
+                  <section style="flex-basis: calc(50% - 12px)">
+                    <atlas-list>
+                      <atlas-list-item [item]="{ value: 'option 1' }">
+                        <div class="typographyStyles-body-largeAlt">Example title</div>
+                      </atlas-list-item>
+                      <atlas-list-item [item]="item" *ngFor="let item of items">
+                        <div>{{ item.label }}</div>
+                      </atlas-list-item>
+                    </atlas-list>
+                  </section>
+                </atlas-nav-content>
+              </atlas-nav-menu>
+            </atlas-nav-item>
+            <atlas-nav-item [action]="actions.primary" (click)="navigationItem3.toggleMenu()" #navigationItem3>
+              Section
+              <atlas-nav-menu [navigationItem]="navigationItem3">
+                <atlas-nav-custom-area [title]="'customTitle'">
+                  <span>Brief description of the line of business goes here.</span>
+                </atlas-nav-custom-area>
+                <atlas-nav-content style="width: 600px">
+                  <section style="flex-basis: calc(50% - 12px)">
+                    <atlas-list>
+                      <atlas-list-item [item]="{ value: 'option 1' }">
+                        <div class="typographyStyles-body-largeAlt">Example title</div>
+                      </atlas-list-item>
+                      <atlas-list-item [item]="item" *ngFor="let item of items">
+                        <div>{{ item.label }}</div>
+                      </atlas-list-item>
+                    </atlas-list>
+                  </section>
+                  <section style="flex-basis: calc(50% - 12px)">
+                    <atlas-list>
+                      <atlas-list-item [item]="{ value: 'option 1' }">
+                        <div class="typographyStyles-body-largeAlt">Example title</div>
+                      </atlas-list-item>
+                      <atlas-list-item [item]="item" *ngFor="let item of items">
+                        <div>{{ item.label }}</div>
+                      </atlas-list-item>
+                    </atlas-list>
+                  </section>
+                  <section style="flex-basis: calc(50% - 12px)">
+                    <atlas-list>
+                      <atlas-list-item [item]="{ value: 'option 1' }">
+                        <div class="typographyStyles-body-largeAlt">Example title</div>
+                      </atlas-list-item>
+                      <atlas-list-item [item]="item" *ngFor="let item of items">
+                        <div>{{ item.label }}</div>
+                      </atlas-list-item>
+                    </atlas-list>
+                  </section>
+                </atlas-nav-content>
+              </atlas-nav-menu>
+            </atlas-nav-item>
+          </atlas-navigation>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

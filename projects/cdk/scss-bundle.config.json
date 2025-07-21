@@ -1,0 +1,15 @@
+{
+  "bundlerOptions": {
+    "entryFile": "projects/cdk/scss/cdk/_all.scss",
+    "rootDir": "projects/cdk/scss",
+    "outFile": "dist/atlas-cdk/scss/cdk/_index.scss",
+    "includePaths": [
+      "scss",
+      "node_modules"
+    ],
+    "ignoredImports": ["~@angular/.*"],
+    "logLevel": "debug",
+    "tilde": true,
+    "project": "../.."
+  }
+}

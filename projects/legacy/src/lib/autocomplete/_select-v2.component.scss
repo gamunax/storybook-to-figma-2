@@ -1,0 +1,92 @@
+//-------------------------------------------------------------------------------------------
+// Legacy Mercer UI Components
+// Form Component - Select V2
+//-------------------------------------------------------------------------------------------
+
+
+
+/// Sets the default padding for select menus
+/// @type Number
+$mos-select-v2-padding: $mos-spacer-xsm;
+
+/// Sets the default height for select menus
+/// @type Number
+$mos-select-v2-height: ($mos-form-v2-elements-font-size + ($mos-select-v2-padding*2)) + rem-calc(3);
+
+/// Sets the default color for select menu arrow icon
+/// @type Color
+$mos-select-v2-triangle-color: $mos-black-color;
+
+/// Sets the default border for multiple select menus
+/// @type Border
+$mos-select-v2-multiple-border: 1px solid color(onyx-darker, 100);
+
+/// Sets the default min-height for multiple select menus
+/// @type Number
+$mos-select-v2-multiple-min-height: rem-calc(118);
+
+/// Sets the default color for select placeholder text
+/// @type Color
+$mos-select-v2-placeholder-font-color: $mos-black-color;
+
+/// Sets the default arrow icon right position
+/// @type Number
+$mos-select-v2-arrow-icon-position-right: rem-calc(5);
+
+/// Sets the default close icon right position
+/// @type Number
+$mos-select-v2-close-icon-position-right: rem-calc(30);
+
+@mixin mos-form-select-v2 {
+
+  select {
+    appearance: none;
+    height: $mos-select-v2-height;
+    box-sizing: border-box;
+
+    // Select arrow
+    @if $mos-select-v2-triangle-color != transparent {
+      @include mos-background-triangle($mos-select-v2-triangle-color);
+      background-origin: content-box;
+      background-position: right (-(size(md))) center;
+      background-repeat: no-repeat;
+      background-size: 9px 6px;
+      padding-right: $mos-spacer-xlg;
+    }
+
+    // Disabled
+    &:disabled {
+      @include mos-background-triangle($mos-form-elements-disabled-color);
+    }
+
+    // Placeholder color (when pristine and untouched)
+    &:not(:disabled).ng-pristine.ng-untouched {
+      color: $mos-select-v2-placeholder-font-color;
+    }
+
+    // Invalid and touched
+    &.ng-invalid:not(form):not(:disabled):not(:focus):not(:hover).ng-touched {
+      color: $mos-error-color;
+    }
+
+    // Multiple select
+    &[multiple] {
+      border: $mos-select-v2-multiple-border;
+      padding: $mos-select-v2-padding;
+      min-height: $mos-select-v2-multiple-min-height;
+      background-image: none;
+      &:disabled {
+        border-style: solid;
+      }
+    }
+
+    &[multiple] + label:after {
+      top: $mos-select-v2-multiple-min-height + rem-calc(29);
+    }
+
+    // Hide the dropdown arrow shown in newer IE versions
+    &::-ms-expand {
+      display: none;
+    }
+  }
+}

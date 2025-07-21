@@ -1,0 +1,18 @@
+.atlas-avatar {
+    position: relative;
+    -webkit-font-smoothing: antialiased;
+    &-indicator {
+        position: absolute;
+        bottom: -2px;
+        right: -2px;
+        border-radius: 30px;
+        border: 2px solid white;
+        height: 12px;
+        width: 12px;
+    }
+    &-grouped {
+        display: inline-flex;
+        margin-right: -8px;
+        border: 2px solid white;
+    }
+}

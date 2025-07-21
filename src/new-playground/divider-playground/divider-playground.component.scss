@@ -1,0 +1,59 @@
+.page-bg {
+  background: var(--semanticColor-layer-neutral-02);
+  color: var(--semanticColor-text-default);
+  z-index: -1;
+  padding: 2rem;
+}
+
+.page-bg .select {
+  color: var(--semanticColor-text-default);
+}
+
+.section {
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+.section h3 {
+  margin-bottom: 20px;
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+.divider-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.divider-container {
+  display: inline-block;
+  margin: 10px;
+}
+
+.divider-label {
+  margin-top: 5px;
+  font-size: 14px;
+}
+
+h3 {
+  text-align: center;
+}
+
+/* Custom CSS for Header */
+.header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.header atlas-theming-helper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

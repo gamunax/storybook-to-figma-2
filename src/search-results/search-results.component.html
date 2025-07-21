@@ -1,0 +1,132 @@
+
+<div class="column" style="padding: 24px;">
+  <div 
+    style="margin: 8px 0 24px;">
+      <atlas-breadcrumb [collapsed]="false">
+        <atlas-breadcrumb-item *ngFor="let item of breadItems;" [active]="item.active" > 
+          <atlas-link>{{ item.label }}</atlas-link>         
+          <atlas-breadcrumb-item-separator>/</atlas-breadcrumb-item-separator>
+        </atlas-breadcrumb-item>
+      </atlas-breadcrumb>
+  </div>
+  <div class="search-banner">
+    <h1 class="typographyStyles-display-small" style="margin: 0; color: var(--semanticColor-text-default);">Your Results</h1>
+    <div class="search-inline-content">
+      <p class="typographyStyles-heading-medium" style="color: var(--semanticColor-text-secondary); margin: 8px 24px 8px 0;">{{results.length}} matches</p>
+      <atlas-button [variant]="outlined_variant" [action]="reverse_action">
+        <atlas-icon [icon]="'icon-search-24'" [color]="reverse_action" [size]="iconSize"></atlas-icon> New Search
+      </atlas-button>
+    </div>
+  </div>
+  <atlas-divider style="margin: 40px 0 0;"></atlas-divider>
+  <div class="row">
+    <div class="column medium-3">
+      <p class="typographyStyles-heading-medium" style="margin-bottom: 2px;"> Filter by</p>
+      <section class="search-inline-content" style="justify-content: space-between;">
+        <p class="typographyStyles-body-small text-secondary">0 filters selected</p>
+        <atlas-button [variant]="outlined_variant" [action]="action" [size]="reset_size" (onClick)="resetSearch()">Reset</atlas-button>
+      </section>
+      <section id="filters">
+        <atlas-accordion>
+          <atlas-accordion-item (onExpand)="changeExpandStatus('filter2')">
+            <atlas-accordion-heading>
+              <div class="padding-y-6 typographyStyles-body-smallAlt">Nationality</div>
+            </atlas-accordion-heading>
+            <atlas-accordion-content>
+              <div class="padding-y-10 padding-x-8">
+                <atlas-checkbox 
+                  #checkboxFilter
+                  [tabindex]="10"
+                  aria-label={{nationality.description}}
+                  [checkboxId]="'checkbox-' + nationality.id" 
+                  *ngFor="let nationality of nationalityList; let i = index" 
+                  [value]="nationality.description" 
+                  [action]="action" 
+                  [isChecked]="nationality.checked" 
+                  (onChange)="checkboxChange($event, 'nationality')">
+                  {{nationality.description}}
+                </atlas-checkbox>
+              </div>
+            </atlas-accordion-content>
+            <atlas-accordion-expand>
+              <div>
+                <atlas-icon-button [size]="filter_icon_size" [dense]="true" [icon]="filtersStatus.filter2.icon"></atlas-icon-button>
+              </div>
+            </atlas-accordion-expand>
+          </atlas-accordion-item>
+        </atlas-accordion>
+        <atlas-accordion>
+          <atlas-accordion-item (onExpand)="changeExpandStatus('filter3')">
+            <atlas-accordion-heading>
+              <div class="padding-y-6 typographyStyles-body-smallAlt">Jobs</div>
+            </atlas-accordion-heading>
+            <atlas-accordion-content>
+              <div class="padding-y-10 padding-x-8">
+                <atlas-checkbox 
+                  [tabindex]="10"
+                  aria-label={{job.description}}
+                  [checkboxId]="'checkbox-' + job.id" 
+                  *ngFor="let job of jobList; let i = index" 
+                  [value]="job.description" 
+                  [action]="action" 
+                  [isChecked]="job.checked" 
+                  (onChange)="checkboxChange($event, 'job')">
+                  {{job.description}}
+                </atlas-checkbox>
+              </div>
+            </atlas-accordion-content>
+            <atlas-accordion-expand>
+              <div>
+                <atlas-icon-button [size]="filter_icon_size" [dense]="true" [icon]="filtersStatus.filter3.icon"></atlas-icon-button>
+              </div>
+            </atlas-accordion-expand>
+          </atlas-accordion-item>
+        </atlas-accordion>
+      </section>
+    </div>
+    <div class="column medium-9">
+      <section id="results">
+        <div class="row">
+          <div *ngFor="let result of results; let i = index" class="column small-12">
+            <atlas-card [avatar]="true" 
+              [elevation]="elevation" 
+              [contentPaddingClass]="'padding-top-4 padding-bottom-8 padding-x-8'"
+              [footerPaddingClass]="'padding-x-8 padding-bottom-4'">
+              <atlas-avatar [imgSrc]="'./atlas-logos/logo.png'" [avatarCustomClass]="'search-avatar'"></atlas-avatar>
+              <atlas-card-header>
+                <span>{{result.firstName + ' ' + result.lastName}}</span>
+              </atlas-card-header>
+              <atlas-card-subheader>
+                <span class="typographyStyles-body-small">{{result.email}}</span>
+                <p style="margin: 4px 0" class="typographyStyles-body-medium">{{result.country}}</p>
+                <atlas-chip-list>
+                  <atlas-chip [action]="action_chips" [size]="chip_size" *ngFor="let job of result.jobs; let i = index">{{job}}</atlas-chip>
+                </atlas-chip-list>
+              </atlas-card-subheader>
+              <atlas-card-content>
+                <atlas-divider></atlas-divider>
+                <div class="row">
+                  <div class="column small-12">
+                    <span>
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+                      tempor incididunt ut labore et dolore magna aliqua.
+                    </span>
+                  </div>
+                  <div class="column medium-4">
+                    
+                  </div>
+                </div>
+              </atlas-card-content>
+              <atlas-card-footer>
+                <atlas-button [size]="button_size" [variant]="text_variant" [action]="action">
+                  View more...
+                </atlas-button>
+              </atlas-card-footer>
+            </atlas-card>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+</div>
+

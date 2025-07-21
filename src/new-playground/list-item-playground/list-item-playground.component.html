@@ -1,0 +1,84 @@
+<div class="container padding-y-9 padding-x-9 page-bg">
+  <h2>list item Component Demo</h2>
+  <div class="header">
+    <atlas-theming-helper>
+      <label>Custom theme</label>
+    </atlas-theming-helper>
+  </div>
+  <h2>list item</h2>
+  <div class="list">
+    <div class="list__section">
+      <div class="list__section__item-group">
+        <div class="list__section__item-container">
+          <atlas-list>
+            <atlas-list-item [item]="{ value: 'option 1' }">
+              <div class="typographyStyles-body-largeAlt">Dense List</div>
+            </atlas-list-item>
+            <div *ngFor="let item of items">
+              <atlas-list-item [item]="item" [style.visibility]="!item.dense ? 'hidden' : 'visible'">
+                <div class="typographyStyles-body-medium">
+                  {{ item.label }}
+                </div>
+                <div [style.visibility]="!item.secondary ? 'hidden' : 'visible'" class="typographyStyles-body-small">
+                  {{ item.secondary }}
+                </div>
+              </atlas-list-item>
+            </div>
+          </atlas-list>
+        </div>
+      </div>
+      <div class="list__section__item-group">
+        <div class="list__section__item-container"></div>
+      </div>
+    </div>
+    <div class="list__section">
+      <div class="list__section__item-group">
+        <div class="list__section__item-container">
+          <atlas-list>
+            <atlas-list-item [item]="{ value: 'option 1' }">
+              <div class="typographyStyles-body-largeAlt">Nesting List with icons</div>
+            </atlas-list-item>
+            <atlas-list-item [item]="item" *ngFor="let item of items">
+              <atlas-avatar *ngIf="item.avatar" style="margin-right: 16px" [imgSrc]="item.avatar"></atlas-avatar>
+              <atlas-icon *ngIf="item.icon" style="margin-right: 32px" [icon]="item.icon"></atlas-icon>
+              <div>
+                {{ item.label }}
+                <div
+                  *ngIf="item.secondary"
+                  style="color: var(--semanticColor-text-secondary)"
+                  class="typographyStyles-body-small"
+                >
+                  {{ item.secondary }}
+                </div>
+              </div>
+            </atlas-list-item>
+          </atlas-list>
+        </div>
+      </div>
+      <div class="list__section__item-group">
+        <div class="list__section__item-container"></div>
+      </div>
+    </div>
+    <div class="list__section">
+      <div class="list__section__item-group">
+        <div class="list__section__item-container">
+          <atlas-list>
+            <atlas-list-item [item]="{ value: 'option 1' }">
+              <div class="typographyStyles-body-largeAlt">List with only avatars</div>
+            </atlas-list-item>
+            <div *ngFor="let item of items">
+              <atlas-list-item [item]="item" [style.visibility]="!item.avatar ? 'hidden' : 'visible'">
+                <atlas-avatar style="margin-right: 16px" [imgSrc]="item.avatar"></atlas-avatar>
+
+                {{ item.label }}
+              </atlas-list-item>
+            </div>
+          </atlas-list>
+        </div>
+      </div>
+      <div class="list__section__item-group">
+        <div class="list__section__item-container"></div>
+      </div>
+    </div>
+  </div>
+</div>

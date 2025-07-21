@@ -1,0 +1,88 @@
+<div class="container padding-y-9 padding-x-9 page-bg">
+  <h2>Modal Component Demo</h2>
+  <div class="header">
+    <atlas-theming-helper>
+      <label>Custom theme</label>
+    </atlas-theming-helper>
+  </div>
+  <h2>Modal</h2>
+  <atlas-modal
+    title="Dialog Title"
+    content="Content"
+    [okAction]="actionsCdk.primary"
+    [cancelAction]="actionsCdk.secondary"
+    [autofocus]="false"
+    okLabel="Ok"
+    cancelLabel="Cancel"
+    (onCancelClick)="onCancelClick()"
+    (onOkClick)="onOkClick()"
+    [disableClose]="false"
+  >
+    <atlas-button>Modal</atlas-button>
+  </atlas-modal>
+  <h2>Dynamic Modal</h2>
+  <atlas-modal
+    #modalExample
+    [headerRef]="HeaderTemplate"
+    title="This is the title"
+    [contentRef]="ContentTemplate"
+    [footerRef]="FooterTemplate"
+    [showDialogActions]="false"
+    #mediumModal
+  >
+    <atlas-button>Dynamic Modal</atlas-button>
+  </atlas-modal>
+  <ng-template #HeaderTemplate>
+    <h1>Title header example</h1>
+  </ng-template>
+
+  <ng-template #ContentTemplate>
+    <atlas-button (click)="increase()" [disabled]="getSwitchValue">On</atlas-button>
+    <atlas-button (click)="decrease()" [disabled]="!getSwitchValue">Off</atlas-button>
+  </ng-template>
+  <ng-template #FooterTemplate>
+    <atlas-button (click)="modalExample.closeModal()">Close</atlas-button>
+  </ng-template>
+  <h2>Modal inside table</h2>
+
+  <atlas-table [dense]="true">
+    <thead atlas-table-header #header>
+      <tr atlas-table-row>
+        <th atlas-table-header-cell>Firstname</th>
+        <th atlas-table-header-cell>lastnamename</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody atlas-table-body>
+      <tr halo-table-row>
+        <td atlas-table-cell>nee</td>
+        <td atlas-table-cell>raj</td>
+        <td atlas-table-cell class="row-actions">
+          <atlas-icon-button icon="icon-edit-24" collection="system" alt="visibility">
+          </atlas-icon-button>
+          <atlas-modal
+            title="Dialog Title"
+            content="Content"
+            [okAction]="actionsCdk.primary"
+            [cancelAction]="actionsCdk.secondary"
+            [autofocus]="false"
+            okLabel="Ok"
+            cancelLabel="Cancel"
+            (onCancelClick)="onCancelClick()"
+            (onOkClick)="onOkClick()"
+          >
+            <atlas-icon-button
+              (click)="openUserDeleteConfirm($event)"
+              icon="icon-trash-24"
+              collection="system"
+              alt="visibility"
+            >
+            </atlas-icon-button>
+          </atlas-modal>
+        </td>
+      </tr>
+    </tbody>
+  </atlas-table>
+  <h2>Modal (with Dialog as Component)</h2>
+  <atlas-button [action]="actionsCdk.primary" (click)="openDialog()">Open dialog</atlas-button>
+</div>

@@ -1,0 +1,65 @@
+<div class="container padding-y-9 padding-x-9 page-bg">
+  <h2>Menu Component Demo</h2>
+  <div class="header">
+    <atlas-theming-helper>
+      <label>Custom theme</label>
+    </atlas-theming-helper>
+  </div>
+  <h2>Menu from avatar</h2>
+    <atlas-button menuTrigger (triggered)="demoMenu.toggleMenu($event)" [action]="actions.primary"> Open Menu </atlas-button>
+    <div class="row">
+      <div class="column">
+        <atlas-menu #demoMenu [elevation]="elevation">
+          <atlas-list>
+            <atlas-list-item *ngFor="let item of items" [item]="item">
+              <atlas-avatar *ngIf="item.avatar" style="margin-right: 16px" [imgSrc]="item.avatar"></atlas-avatar>
+              <atlas-icon *ngIf="item.icon" style="margin-right: 34px" [size]="iconSizes.medium" [icon]="item.icon"></atlas-icon>
+              <div>
+                {{ item.label }}
+                <div *ngIf="item.secondary" class="typographyStyles-body-medium">
+                  {{ item.secondary }}
+                </div>
+              </div>
+            </atlas-list-item>
+          </atlas-list>
+        </atlas-menu>
+      </div>
+      <div class="row">
+        <div class="column">
+          <atlas-button menuTrigger (triggered)="actionsMenuTest.toggleMenu($event)">
+            <atlas-icon icon="icon-more-vertical-24"></atlas-icon>
+          </atlas-button>
+          <atlas-menu #actionsMenuTest [style.display]="'block'" [style.max-width]="'fit-content'">
+            <atlas-list>
+              <atlas-list-item>
+                <atlas-icon icon="icon-edit-24"></atlas-icon>
+                Edit
+              </atlas-list-item>
+              <atlas-list-item>
+                <atlas-icon icon="icon-trash-24"></atlas-icon>
+                Submit
+              </atlas-list-item>
+            </atlas-list>
+          </atlas-menu>
+        </div>
+    
+        <div class="column">
+          <atlas-button menuTrigger (triggered)="actionsMenuTest2.toggleMenu($event)">
+            <atlas-icon icon="icon-arrow-expand-vertical-24"></atlas-icon>
+          </atlas-button>
+          <atlas-menu #actionsMenuTest2 [style.display]="'block'" [style.max-width]="'fit-content'">
+            <atlas-list>
+              <atlas-list-item>
+                <atlas-icon icon="icon-edit-24"></atlas-icon>
+                Rename
+              </atlas-list-item>
+              <atlas-list-item>
+                <atlas-icon icon="icon-trash-24"></atlas-icon>
+                Delete
+              </atlas-list-item>
+            </atlas-list>
+          </atlas-menu>
+        </div>
+      </div>
+  </div>
+</div>

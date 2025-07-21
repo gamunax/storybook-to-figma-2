@@ -1,0 +1,9 @@
+<table [ngClass]="[
+    'atlas-table', 
+    'table',
+     dense ? 'atlas-table-dense' : 'atlas-table-default'
+    ]">
+  <ng-content select="[atlas-table-header]"></ng-content>
+  <ng-content select="[atlas-table-body]"></ng-content>
+  <ng-content select="[atlas-table-footer]"></ng-content>
+</table>

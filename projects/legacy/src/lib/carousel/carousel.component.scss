@@ -1,0 +1,154 @@
+//-------------------------------------------------------------------------------------------
+// Legacy UI Components
+// Carousel Component
+//-------------------------------------------------------------------------------------------
+
+/// Sets the default carousel page background color
+/// @type Color
+$legacy-carousel-page-background-color: #ffffff !default;
+
+/// Sets the default carousel page box shadow
+/// @type Color
+$legacy-carousel-page-box-shadow: -2px 2px 10px 1px rgba(0, 0, 0, 0.3) !default;
+
+/// Sets the default carousel prev next font size
+/// @type Number
+$legacy-carousel-prev-next-font-size: 28px;
+
+/// Sets the default prev and next inner hover
+/// @type Color
+$legacy-carousel-prev-next-inner-hover: grey !default;
+
+$legacy-primary-color: var(--colors-text-primary-main);
+
+// Check if project contains component
+.legacy-c-carousel {
+  // NOTE: Ephemeral state used to equalize heights across slides
+  &--detect-height {
+    .legacy-c-carousel {
+      height: auto !important;
+
+      &__slide-track {
+        height: auto !important;
+      }
+
+      &__width-limiter {
+        height: auto !important;
+      }
+
+      &-slide {
+        height: auto !important;
+      }
+    }
+  }
+
+  &--fixed-height {
+    .legacy-c-carousel {
+      &-slide {
+        height: 100%;
+      }
+    }
+  }
+
+  &-content {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    position: relative;
+  }
+
+  &__slide-track {
+    position: absolute;
+    width: 100%;
+    white-space: nowrap;
+    transition: all 0.15s ease-in-out;
+  }
+
+  &__loop-slide {
+    transition: none;
+  }
+
+  &-slide {
+    width: 100%;
+    display: inline-block;
+    white-space: initial;
+    user-select: none;
+    vertical-align: top;
+  }
+  &__pagination {
+    text-align: center;
+    line-height: size(xlg);
+    vertical-align: top;
+    user-select: none;
+  }
+  &__page {
+    width: 12px;
+    height: 12px;
+    margin: 6px;
+    text-indent: -999em;
+    border-radius: 50%;
+    box-shadow: $legacy-carousel-page-box-shadow;
+    background: $legacy-carousel-page-background-color;
+    display: inline-block;
+    cursor: pointer;
+    &.active {
+      background: $legacy-primary-color;
+    }
+  }
+  &__prev,
+  &__next {
+    font-size: $legacy-carousel-prev-next-font-size;
+    display: inline-block;
+    cursor: pointer;
+    user-select: none;
+    text-decoration: none;
+    &:hover {
+      text-decoration: none;
+    }
+    &-inner {
+      display: block;
+      position: relative;
+      height: 100%;
+      user-select: none;
+      &:hover {
+        text-decoration: none;
+        @media (min-width: 1024px) {
+          background: $legacy-carousel-prev-next-inner-hover;
+          opacity: 0.2;
+          cursor: pointer;
+        }
+      }
+      &-helper {
+        display: inline-block;
+        height: 100%;
+        vertical-align: middle;
+      }
+    }
+    &-container {
+      height: 100%;
+      width: 4em;
+      position: absolute;
+      top: 0;
+      z-index: 2;
+    }
+  }
+  &__prev-container {
+    left: 0;
+  }
+  &__next-container {
+    right: 0;
+  }
+  &__next-inner {
+    text-align: right;
+  }
+
+  &__arrows-outside {
+    display: flex;
+    .legacy-c-carousel {
+      &__prev-container,
+      &__next-container {
+        position: inherit;
+      }
+    }
+  }
+}

@@ -1,0 +1,76 @@
+<div
+  [ngClass]="['mos-c-stepper', theme?('mos-t-stepper--' + theme): '', bgTheme?('mos-t-stepper-bg--' + bgTheme): '', persistentTheme?('mos-t-stepper-persistent--' + persistentTheme): '']"
+  [class.mos-c-stepper--vertical]="isVertical" [class.mos-c-stepper--no-padding]="!stepperPadding">
+  <div class="mos-c-stepper__header" #headerRef [class.mos-c-stepper--inline]="isInline && !isVertical"
+    [style.padding-left.px]="stepperHeaderSidePadding" [style.padding-right.px]="stepperHeaderSidePadding">
+
+    <!-- Horizontal Bar -->
+    <div #horizontalBar class="mos-c-stepper__bar" *ngIf="!isVertical && !!steps.length"></div>
+
+    <!-- Steppers -->
+    <div #stepperButtonsRef *ngFor="let step of steps; let i = index; let first = first; let last = last;"
+      class="mos-c-stepper__step" [class.mos-c-stepper--active]="toggleActive && _activeCheck(step, i)"
+      [class.mos-c-stepper--complete]="isSequential && _completionCheck(step) || step.isComplete && activeStepIndex !== i"
+      [class.mos-c-stepper--disabled]="step.isDisabled" [class.mos-c-stepper__step--last]="last"
+      [class.mos-c-stepper__step--first]="first" [class.mos-c-stepper__step--no-click]="!allowNavigation"
+      [class.mos-c-stepper__step--label-wrap]="allowLabelWrapping"
+      [style.top.px]="isVertical ? step.currentOffsetTop : 0" (click)="allowNavigation && selectStep(i)">
+      <div class="mos-c-stepper--circle-container">
+        <!-- Main Steppers -->
+        <!-- with tooltip -->
+        <div class="mos-c-circle--md mos-c-stepper--circle" [haloTooltipWithArrow]="true"
+          [haloTooltip]="step.tooltipText"
+          [haloTooltipPosition]="(persistentTooltipOnActiveStep && activeStepIndex === i) ? step.persistingTooltipPosition : step.tooltipPosition"
+          [haloTooltipShowDelay]="step.tooltipDelay" *ngIf="!step.isSubStep">
+
+          <div [haloTooltipWithArrow]="true" [haloTooltip]="'tooltipText'" [haloTooltipPosition]="toolTipTop"
+            [haloTooltipShowDelay]="250">
+            <span class="mos-c-stepper--num mos-c-stepper--circle--label">{{step.mainIndex}}</span>
+            <atlas-icon class="mos-c-stepper--circle--label" icon="check" collection="user-interface"
+              [size]="sizeMedium"></atlas-icon>
+          </div>
+          <!-- without tooltip -->
+          <div class="mos-c-circle--md mos-c-stepper--circle"
+            *ngIf="!step.isSubStep && (!step.tooltipText || isVertical)"
+            [class.mos-c-circle--sm]="true">
+            <span class="mos-c-stepper--num">{{step.mainIndex}}</span>
+            <atlas-icon icon="check" collection="user-interface" [size]="sizeMedium"></atlas-icon>
+          </div>
+          <!-- Sub-Steppers -->
+          <!-- with tooltip -->
+          <div class="mos-c-circle--xxxxsm mos-c-stepper--circle"
+            [class.mos-c-circle--xxsm]="(activeStepIndex === i && toggleActive) || isSequential && activeStepIndex > i || step.isComplete && activeStepIndex !== i"
+            [haloTooltipWithArrow]="true" [haloTooltip]="step.tooltipText"
+            [haloTooltipPosition]="(persistentTooltipOnActiveStep && activeStepIndex === i) ? step.persistingTooltipPosition : step.tooltipPosition"
+            [haloTooltipShowDelay]="step.tooltipDelay" *ngIf="step.isSubStep && step.tooltipText">
+            <span></span>
+          </div>
+          <!-- without tooltip -->
+          <div class="mos-c-circle--xxxxsm mos-c-stepper--circle"
+            [class.mos-c-circle--xxsm]="(activeStepIndex === i && toggleActive) || isSequential && activeStepIndex > i || step.isComplete && activeStepIndex !== i"
+            *ngIf="step.isSubStep && (!step.tooltipText || isVertical)">
+            <span></span>
+          </div>
+        </div>
+        <!-- Step Label -->
+        <div class="mos-c-stepper__label" *ngIf="!isVertical">
+          <div class="mos-c-stepper--title">
+            {{ step.title || (!step.isSubStep && (activeStepIndex > i || step.isComplete) ? completeTitleText: '')}}
+          </div>
+          <p class="mos-c-stepper--description" [class.mos-c-stepper--no-description]="!step?.description">{{ step.description }}&nbsp;</p>
+        </div>
+        <!-- Vertical Bar -->
+        <div #verticalBarRef class="mos-c-stepper__bar mos-c-stepper__bar--vertical"
+          [class.mos-c-stepper__bar--vertical--active]="coloredBar && toggleActive && _activeCheck(step, i)"
+          [class.mos-c-stepper__bar--vertical--complete]="coloredBar && isSequential && _completionCheck(step) || step.isComplete && activeStepIndex !== i"
+          *ngIf="isVertical && !last"></div>
+      </div>
+    </div>
+    <!-- Hidden Elements for Horizontal Bar Colors -->
+    <div style="display:none" class="mos-c-stepper__bar--active"></div>
+    <div style="display:none" class="mos-c-stepper__bar--complete"></div>
+  </div>
+  <div class="mos-c-stepper__content">
+    <ng-content select="legacy-step"></ng-content>
+  </div>
+</div>

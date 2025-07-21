@@ -1,0 +1,23 @@
+{
+  "extends": "../tsconfig.json",
+  "compilerOptions": {
+    "skipLibCheck": true,
+    "types": [
+      "node",
+    ],
+    "preserveSymlinks": true,
+  },
+  "exclude": [
+    "../src/test.ts",
+    "../src/**/*.spec.ts",
+    "../projects/**/*.spec.ts"
+  ],
+  "include": [
+    "../src/**/*",
+    "./icon-list.ts",
+    "../projects/**/*"
+  ],
+  "files": [
+    "./typings.d.ts"
+  ],
+}

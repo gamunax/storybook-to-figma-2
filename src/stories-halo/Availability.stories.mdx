@@ -1,0 +1,260 @@
+import { Meta } from '@storybook/addon-docs';
+import pkg from '../../package.json';
+import accordionPkg from '../../projects/accordion/package.json';
+import alertPkg from '../../projects/alert/package.json';
+import appBarPkg from '../../projects/app-bar/package.json';
+import avatarPkg from '../../projects/avatar/package.json';
+import badgePkg from '../../projects/badge/package.json';
+import bottomNavigationPkg from '../../projects/bottom-navigation/package.json';
+import breadcrumbPkg from '../../projects/breadcrumb/package.json';
+import buttonPkg from '../../projects/button/package.json';
+import cardPkg from '../../projects/card/package.json';
+import cdkPkg from '../../projects/cdk/package.json';
+import checkboxPkg from '../../projects/checkbox/package.json';
+import chipsPkg from '../../projects/chips/package.json';
+import dividerPkg from '../../projects/divider/package.json';
+import drawerPkg from '../../projects/drawer/package.json';
+import fieldPkg from '../../projects/field/package.json';
+import filedropPkg from '../../projects/filedrop/package.json';
+import iconPkg from '../../projects/icon/package.json';
+import linkPkg from '../../projects/link/package.json';
+import listPkg from '../../projects/list/package.json';
+import menuPkg from '../../projects/menu/package.json';
+import modalPkg from '../../projects/modal/package.json';
+import paginationPkg from '../../projects/pagination/package.json';
+import popoverPkg from '../../projects/popover/package.json';
+import progressPkg from '../../projects/progress/package.json';
+import radioPkg from '../../projects/radio/package.json';
+import ratingPkg from '../../projects/rating/package.json';
+import sliderPkg from '../../projects/slider/package.json';
+import snackbarPkg from '../../projects/snackbar/package.json';
+import stepperPkg from '../../projects/stepper/package.json';
+import switchPkg from '../../projects/switch/package.json';
+import tablePkg from '../../projects/table/package.json';
+import tabsPkg from '../../projects/tabs/package.json';
+import tooltipPkg from '../../projects/tooltip/package.json';
+
+<style>
+{`
+table {
+  width: 100%;
+`}
+</style>
+<Meta title="Releases/Availability" parameters={{ options: { isToolshown: true } }}/>
+
+<h1>HDF v{pkg.version} Availability</h1>
+<p>Here is the current rundown of the current latest published packages on Halo's AWS Codeartifact registry. This list will be updated as packages are patched and minor releases are set. The overall version of the UI Kit and it's Docs is <strong>v{pkg.version}</strong></p>
+
+<p>The latest Figma Library can be found here: <a href="https://www.figma.com/file/x74LhhNgStoUDZtMqGjGhg/Foundation-0.0.2" target="_blank">Foundation Grandparent v0.0.2</a>.</p>
+
+## Access
+For access to the UI Kit, please contact [Mike Fortuna](mailto:mikef@mmc.com).
+
+For access to Figma materials, please contact [Chris Caracciolo](mailto:chris.caracciolo@mmc.com).
+
+For access to AWS, please submit a ticket to [Devops JIRA board](https://halo-react-team.atlassian.net/jira/software/projects/DEVOPS/boards/72).
+
+
+## Availability
+
+export const AvailabilityData = [
+  {
+    name: '@halo/accordion',
+    version: accordionPkg.version,
+    status: 'Published'
+  },
+  {
+    name: '@halo/alert',
+    version: alertPkg.version,
+    status: 'Published'
+  },
+  {
+    name: '@halo/app-bar',
+    version: appBarPkg.version,
+    status: 'Published'
+  },
+  {
+    name: '@halo/avatar',
+    version: avatarPkg.version,
+    status: 'Published'
+  },
+  {
+    name: '@halo/badge',
+    version: badgePkg.version,
+    status: 'Published'
+  },
+  {
+    name: '@halo/bottom-navigation',
+    version: bottomNavigationPkg.version,
+    status: 'Published'
+  },
+  {
+    name: '@halo/breadcrumb',
+    version: breadcrumbPkg.version,
+    status: 'Published'
+  },
+  {
+    name: '@halo/button',
+    version: buttonPkg.version,
+    status: 'Published'
+  },
+  {
+    name: '@halo/card',
+    version: cardPkg.version,
+    status: 'Published'
+  },
+  {
+    name: '@halo/cdk',
+    version: cdkPkg.version,
+    status: 'Published'
+  },
+  {
+    name: '@halo/checkbox',
+    version: checkboxPkg.version,
+    status: 'Published'
+  },
+  {
+    name: '@halo/chips',
+    version: chipsPkg.version,
+    status: 'Published'
+  },
+  {
+    name: '@halo/divider',
+    version: dividerPkg.version,
+    status: 'Published'
+  },
+  {
+    name: '@halo/drawer',
+    version: drawerPkg.version,
+    status: 'Published'
+  },
+  {
+    name: '@halo/field',
+    version: fieldPkg.version,
+    status: 'Published'
+  },
+  {
+    name: '@halo/filedrop',
+    version: filedropPkg.version,
+    status: 'Published'
+  },
+  {
+    name: '@halo/icon',
+    version: iconPkg.version,
+    status: 'Published'
+  },
+  {
+    name: '@halo/link',
+    version: linkPkg.version,
+    status: 'Published'
+  },
+  {
+    name: '@halo/list',
+    version: listPkg.version,
+    status: 'Published'
+  },
+  {
+    name: '@halo/menu',
+    version: menuPkg.version,
+    status: 'Published'
+  },
+  {
+    name: '@halo/modal',
+    version: modalPkg.version,
+    status: 'Published'
+  },
+  {
+    name: '@halo/pagination',
+    version: paginationPkg.version,
+    status: 'Published'
+  },
+  {
+    name: '@halo/popover',
+    version: popoverPkg.version,
+    status: 'Published'
+  },
+  {
+    name: '@halo/progress',
+    version: progressPkg.version,
+    status: 'Published'
+  },
+  {
+    name: '@halo/radio',
+    version: radioPkg.version,
+    status: 'Published'
+  },
+  {
+    name: '@halo/rating',
+    version: ratingPkg.version,
+    status: 'Published'
+  },
+  {
+    name: '@halo/slider',
+    version: sliderPkg.version,
+    status: 'Published'
+  },
+  {
+    name: '@halo/snackbar',
+    version: snackbarPkg.version,
+    status: 'Published'
+  },
+  {
+    name: '@halo/stepper',
+    version: stepperPkg.version,
+    status: 'Published'
+  },
+  {
+    name: '@halo/switch',
+    version: switchPkg.version,
+    status: 'Published'
+  },
+  {
+    name: '@halo/table',
+    version: tablePkg.version,
+    status: 'Published'
+  },
+  {
+    name: '@halo/tabs',
+    version: tabsPkg.version,
+    status: 'Published'
+  },
+  {
+    name: '@halo/tooltip',
+    version: tooltipPkg.version,
+    status: 'Published'
+  },
+]
+
+export function AvailabilityTableData(token) {
+  return (
+     <tr key={token.name}>
+          <td>
+              {token.name}
+          </td>
+          <td>
+              {token.version}
+          </td>
+          <td>
+              {token.status}
+          </td>
+      </tr>
+  )
+}
+
+export const VersionBase = ({packages}) => {
+  let tableRows = packages.map(packageItem => AvailabilityTableData(packageItem));
+  return tableRows;
+};
+
+<table>
+    <thead>
+        <tr>
+            <th>PACKAGE</th>
+            <th>VERSION</th>
+            <th>STATUS</th>
+        </tr>
+    </thead>
+    <tbody>
+      <VersionBase packages={AvailabilityData}/>
+    </tbody>
+</table>

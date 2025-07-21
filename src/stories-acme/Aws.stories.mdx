@@ -1,0 +1,109 @@
+import { Meta } from '@storybook/addon-docs';
+
+<Meta title="Get Started/AWS Guide" parameters={{ options: { isToolshown: true } }}/>
+
+# AWS Guide
+
+Follow this guide to setup authentication with Halo's AWS.
+
+## Get your credentials
+
+Ask for your credentials to the DevOps team in the #devops Slack channel or [Devops JIRA board](https://halo-react-team.atlassian.net/jira/software/projects/DEVOPS/boards/72). They will send you something like this: 
+
+**To configure aws-cli:**
+
+> Access key ID: AKIATXXXXXXXXXXXXXXX
+Secret access key: vR0uVNRUkXXXXXXXXXXXXXXXXXX
+Default region: us-east-1
+> 
+
+**To  access AWS console:**
+
+> url: [https://242322062111.signin.aws.amazon.com/console](https://242322062111.signin.aws.amazon.com/console)
+Usuario: john.smith
+Password: XXXXXX
+> 
+
+## AWS console access
+
+To access CodeArtifact service UI, go to the next link and log-in using your credentials:
+
+[https://242322062111.signin.aws.amazon.com/console](https://242322062111.signin.aws.amazon.com/console)
+
+Once you're logged in go to:
+
+[https://console.aws.amazon.com/codesuite/codeartifact/home?region=us-east-1](https://console.aws.amazon.com/codesuite/codeartifact/home?region=us-east-1)
+
+In the console you can see "halo" domain and "halo-libraries" repository.
+
+## Install aws-cli
+
+To be able to use the above repo. you need to install aws-cli, please follow the instructions in this link depending on your OS:
+
+[https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-started.html](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-started.html)
+
+Then, in a terminal, run the command below and complete the questions using the information provided in the previous steps by the DevOps team:
+
+```bash
+aws configure
+```
+
+## Create the registry configuration file
+
+**Automatic process:**
+
+This command will create the file ~/.npmrc to use CodeArtifact repo. globally for npm:
+
+```bash
+aws codeartifact login --tool npm --repository halo-libraries --domain halo --domain-owner 242322062111
+```
+
+**Manual process:**
+
+If you want to use CodeArtifact repo only for a specific project, move that file to the root folder of your project or use the following commands:
+
+1. Export a CodeArtifact authorization token for authorization to your repository from your preferred shell (token expires in 12 hours).
+
+```bash
+export CODEARTIFACT_AUTH_TOKEN=`aws codeartifact get-authorization-token --domain halo --domain-owner 242322062111 --query authorizationToken --output text`
+
+```
+
+2. Copy the configuration into your home directory (~/) or project .npmrc file. If the 
+
+.npmrc file does not exist, create one.
+
+```bash
+registry=https://halopowered-242322062111.d.codeartifact.us-east-1.amazonaws.com/npm/halo-libraries/
+[//halopowered-242322062111.d.codeartifact.us-east-1.amazonaws.com/npm/halo-libraries/:always-auth=true](https://halopowered-242322062111.d.codeartifact.us-east-1.amazonaws.com/npm/halo-libraries/:always-auth=true)
+//halopowered-242322062111.d.codeartifact.us-east-1.amazonaws.com/npm/halo-libraries/:_authToken=${CODEARTIFACT_AUTH_TOKEN}
+```
+
+## Autologin
+
+CodeArtifact authorization tokens have a lifetime of 12 hour maximum, this means that after 12 hours you'll need to run the login command again to update the data in your .npmrc file like this:
+
+```bash
+aws codeartifact login --tool npm --repository halo-libraries --domain halo --domain-owner 242322062111
+```
+
+Another possibility is to add to your crontab some lines that will do the login for you.
+
+In a terminal run:
+
+```bash
+crontab -e
+```
+
+and copy this lines into our crontab file and save the file:
+
+```bash
+PATH="/usr/local/bin"
+CODEARTIFACT_LOGIN="/usr/local/bin/aws codeartifact login --tool npm --repository halo-libraries --domain halo --domain-owner 242322062111"
+
+@reboot ${CODEARTIFACT_LOGIN} > /tmp/codeartifact.log 2>&1
+0 9 * * 1-5 ${CODEARTIFACT_LOGIN} > /tmp/codeartifact.log 2>&1
+```
+
+The above lines will run the login command on reboot and at 9:00 am from Monday to Friday. If this schedule doesn't fit your needs you can change it.
+  

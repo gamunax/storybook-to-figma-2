@@ -1,0 +1,30 @@
+<div class="container padding-y-9 padding-x-9 page-bg">
+  <h2>list item Component Demo</h2>
+  <div class="header">
+    <atlas-theming-helper>
+      <label>Custom theme</label>
+    </atlas-theming-helper>
+  </div>
+  <h2>list item with Horizontal Divider</h2>
+  <div class="section">
+    <div class="divider-group">
+      <div class="divider-container">
+        <atlas-list [style]="true ? 'display: flex; flex-flow: row nowrap;' : ''">
+          <atlas-list-item>Original Poster A</atlas-list-item>
+          <atlas-divider></atlas-divider>
+          <atlas-list-item>Original Poster Vertical</atlas-list-item>
+          <atlas-divider></atlas-divider>
+          <atlas-list-item>Original Poster Horizontal</atlas-list-item>
+          <atlas-divider></atlas-divider>
+        </atlas-list>
+      </div>
+    </div>
+  </div>
+
+  <h2>Vertical Divider</h2>
+  <div [style]="'display: flex; justify-content: center;'">
+    <label>Original Poster Vertical A</label>
+    <atlas-divider class="padding-x-4" [vertical]="true"></atlas-divider>
+    <label class="padding-x-4">Original Poster Vertical B</label>
+  </div>
+</div>

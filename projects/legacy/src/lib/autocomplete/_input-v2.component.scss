@@ -1,0 +1,112 @@
+//-------------------------------------------------------------------------------------------
+// Legacy Mercer UI Components
+// Form Component - Inputs v2
+//-------------------------------------------------------------------------------------------
+
+@import "./form-v2.component";
+
+/// Sets the default font color for form element placeholder text
+/// @type Color
+$mos-input-v2-placeholder-font-color: mm-color(onyx-warm, 500);
+
+/// Sets the default min-height for textareas
+/// @type Number
+$mos-input-v2-textarea-min-height: rem-calc(110);
+
+/// Sets the input padding-right to account for asboloute position icon overlap
+/// @type Number
+$mos-input-v2-padding-right-for-icon-overlap: rem-calc(60);
+
+@mixin mos-form-input-v2 {
+
+  // Placeholders
+  ::-webkit-input-placeholder {
+    color: $mos-input-v2-placeholder-font-color;
+  }
+  :-moz-placeholder { /* Firefox 18- */
+    color: $mos-input-v2-placeholder-font-color;
+  }
+  ::-moz-placeholder {  /* Firefox 19+ */
+    color: $mos-input-v2-placeholder-font-color;
+  }
+  :-ms-input-placeholder {
+    color: $mos-input-v2-placeholder-font-color;
+  }
+
+  // Text inputs
+  input:not([type]),
+  input[type="text"],
+  input[type="password"],
+  input[type="email"],
+  input[type="url"],
+  input[type="time"],
+  input[type="date"],
+  input[type="datetime"],
+  input[type="datetime-local"],
+  input[type="tel"],
+  input[type="number"],
+  input[type="search"],
+  textarea {
+
+    // Invalid (invalid and touched)
+    &.ng-invalid:not(form):not([readonly]):not(:disabled).ng-touched {
+
+      // Placeholders
+      &::-webkit-input-placeholder {
+        color: $mos-error-color;
+      }
+      &:-moz-placeholder { /* Firefox 18- */
+        color: $mos-error-color;
+      }
+      &::-moz-placeholder {  /* Firefox 19+ */
+        color: $mos-error-color;
+      }
+      &:-ms-input-placeholder {
+        color: $mos-error-color;
+      }
+    }
+
+    // Textarea
+    textarea {
+      min-height: $mos-input-v2-textarea-min-height;
+
+      // TODO: remove this when added JS that increase height of textarea on enter/return keypress
+      resize: none;
+
+      // Hint text messages
+      & + label:after {
+        top: $mos-input-v2-textarea-min-height + rem-calc(46);
+      }
+    }
+
+    // Hidden inputs
+    input[type="hidden"] {
+      display: none;
+    }
+
+    // Autosize textarea
+    // TODO: Add JS that increase height of textarea on enter/return keypress
+    .#{$global-namespace}-u-textarea-auto-resize {
+      overflow-y: hidden;
+      padding: $mos-padding 0;
+      resize: none;
+    }
+  }
+
+  // Animated Label
+  .#{$global-namespace}-u-input--animated {
+    position: relative;
+  
+    // Label
+    label {
+      pointer-events: none;
+      position: absolute;
+      top: 0;
+      left: 0;
+      font-family: $mos-form-v2-label-font-family;
+      font-size: $mos-form-v2-label-font-size;
+      color: $mos-form-v2-label-font-color;
+    }
+  }
+}
+

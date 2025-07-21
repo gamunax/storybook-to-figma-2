@@ -1,0 +1,13 @@
+<atlas-button
+  [disabled]="disabled"
+  [radius]="_radii"
+  [size]="_buttonSize"
+  [variant]="_buttonVariant"
+  (onClick)="open($event)"
+>
+  <atlas-icon
+    [color]="iconColor"
+    icon="icon-clock-24"
+    [size]="_iconSize"
+  ></atlas-icon>
+</atlas-button>

@@ -1,0 +1,28 @@
+<div class="container">
+    <hr>
+    <h1>Alert Component Tests</h1>
+    <hr><br><br>
+    <div class="row">
+        <atlas-alert *ngFor="let alert of alerts"
+            style="margin: 10px 10px"
+            [id]="alert.id"
+            (closeEmit)="closeEmit" 
+            [alertIcon]="alert.alertIcon" 
+            [variant]="alert.variant"
+            [action]="alert.action"
+            [iconSize]="alert.iconSize"
+            [width]="alert.width"
+        >
+            <atlas-alert-title>{{alert.title}}</atlas-alert-title>
+            <atlas-alert-content>
+                <div class="padding-y-2">
+                    {{alert.content}}
+                </div>
+            </atlas-alert-content>
+            <atlas-alert-action 
+                (actionClick)="actionClick"
+            >
+            </atlas-alert-action>
+        </atlas-alert>
+    </div>
+</div>

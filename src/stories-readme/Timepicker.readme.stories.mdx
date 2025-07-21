@@ -1,0 +1,54 @@
+import { Meta, ArgsTable } from '@storybook/addon-docs';
+import { FieldComponent } from 'atlas-field';
+
+<Meta title="Adopters/Components/Timepicker/Readme" 
+parameters={{
+     options: {
+      isToolshown: true
+    },
+  }}
+ />
+
+# Timepicker
+
+Time pickers help users select and set a specific time.
+
+
+## Usage
+
+Field (Timepicker) component require of BrowserAnimationsModule module 
+
+```ts
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+```
+Read more about: https://angular.io/guide/animations
+
+
+Field (Timepicker) component require of luxon dependency
+
+Read more about: https://www.npmjs.com/package/luxon
+
+
+## UX Documentation
+{false && (
+<iframe
+    src='https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Ffile%2FpI6pv5k0iiUi4PmLwV7AUa%2FTimepicker---Foundations-0.0.2-Components-Documentation%3Fnode-id%3D13866%253A22999' 
+    allowFullScreen="true"
+    width='100%'
+    height='650px'
+    style={{border: 'none'}}
+></iframe>
+)}
+Import dependencies for the library into your ```app.module.ts``` file
+
+```ts
+
+import { FieldModule } from 'atlas-field';
+
+```
+
+## API
+
+### Field - Timepicker
+
+<ArgsTable of={ FieldComponent } />

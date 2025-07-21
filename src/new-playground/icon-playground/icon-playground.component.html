@@ -1,0 +1,188 @@
+<div class="container padding-y-9 padding-x-9 page-bg">
+  <h2>Icon Component Demo</h2>
+  <div class="header">
+    <atlas-theming-helper>
+      <label>Custom theme</label>
+    </atlas-theming-helper>
+  </div>
+  <div>
+    <h2>Strong Icons - old contained</h2>
+    <div class="section">
+      <h3>size medium</h3>
+      <div class="button-group">
+        <div class="button-container">
+          <atlas-icon
+            [icon]="'icon-remove-circle-24'"
+            color="semanticColor-border-brand"
+            [size]="iconSizings.medium"
+          ></atlas-icon>
+          <div class="button-label">semanticColor-border-brand</div>
+        </div>
+        <div class="button-container">
+          <atlas-icon
+            [icon]="'icon-remove-circle-24'"
+            disabled="true"
+            color="semanticColor-border-brand"
+            [size]="iconSizings.medium"
+          ></atlas-icon>
+          <div class="button-label">semanticColor-border-brand Disabled</div>
+        </div>
+      </div>
+    </div>
+    <div class="section">
+      <h3>size large</h3>
+      <div class="button-group">
+        <div class="button-container">
+          <atlas-icon
+            [icon]="'icon-remove-circle-24'"
+            color="semanticColor-border-brand"
+            [size]="iconSizings.large"
+          ></atlas-icon>
+          <div class="button-label">semanticColor-border-brand</div>
+        </div>
+        <div class="button-container">
+          <atlas-icon
+            [icon]="'icon-remove-circle-24'"
+            disabled="true"
+            color="semanticColor-border-brand"
+            [size]="iconSizings.large"
+          ></atlas-icon>
+          <div class="button-label">semanticColor-border-brand Disabled</div>
+        </div>
+      </div>
+    </div>
+    <div class="section">
+      <h3>size xlarge</h3>
+      <div class="button-group">
+        <div class="button-container">
+          <atlas-icon
+            [icon]="'icon-remove-circle-24'"
+            color="semanticColor-border-brand"
+            [size]="iconSizings.xlarge"
+          ></atlas-icon>
+          <div class="button-label">semanticColor-border-brand</div>
+        </div>
+        <div class="button-container">
+          <atlas-icon
+            [icon]="'icon-remove-circle-24'"
+            disabled="true"
+            color="semanticColor-border-brand"
+            [size]="iconSizings.xlarge"
+          ></atlas-icon>
+          <div class="button-label">semanticColor-border-brand Disabled</div>
+        </div>
+      </div>
+    </div>
+    <div class="section">
+      <h3>size small</h3>
+      <div class="button-group">
+        <div class="button-container">
+          <atlas-icon
+            [icon]="'icon-remove-circle-24'"
+            color="semanticColor-border-brand"
+            [size]="iconSizings.small"
+          ></atlas-icon>
+          <div class="button-label">semanticColor-border-brand</div>
+        </div>
+        <div class="button-container">
+          <atlas-icon
+            [icon]="'icon-remove-circle-24'"
+            disabled="true"
+            color="semanticColor-border-brand"
+            [size]="iconSizings.small"
+          ></atlas-icon>
+          <div class="button-label">semanticColor-border-brand Disabled</div>
+        </div>
+      </div>
+    </div>
+    <div class="section">
+      <h3>size xsmall</h3>
+      <div class="button-group">
+        <div class="button-container">
+          <atlas-icon
+            [icon]="'icon-remove-circle-24'"
+            color="semanticColor-border-brand"
+            [size]="iconSizings.xsmall"
+          ></atlas-icon>
+          <div class="button-label">semanticColor-border-brand</div>
+        </div>
+        <div class="button-container">
+          <atlas-icon
+            [icon]="'icon-remove-circle-24'"
+            disabled="true"
+            color="semanticColor-border-brand"
+            [size]="iconSizings.xsmall"
+          ></atlas-icon>
+          <div class="button-label">semanticColor-border-brand Disabled</div>
+        </div>
+      </div>
+    </div>
+    <div class="section">
+      <h3>icon with iconSheetUrl</h3>
+      <div class="button-group">
+        <div class="button-container">
+          <atlas-icon
+            [icon]="'icon-accessibility-24'"
+            [iconSheetUrl]="'/atlas-icons/system.svg'"
+            color="semanticColor-border-brand"
+            [size]="iconSizings.medium"
+          ></atlas-icon>
+          <div class="button-label">iconSheetUrl: '/atlas-icons/system.svg' icon: 'icon-accessibility-24'</div>
+        </div>
+      </div>
+    </div>
+    <h2>Icons with Flags</h2>
+    <div class="section flags">
+      <div class="flags-section">
+        <h3>By Description (collection: flags)</h3>
+        <div class="button-group">
+          <div class="button-container">
+            <atlas-icon [icon]="'argentina'" [collection]="'flags'"></atlas-icon>
+            <div class="button-label">argentina</div>
+          </div>
+          <div class="button-container">
+            <atlas-icon [icon]="'united-kingdom'" [collection]="'flags'"></atlas-icon>
+            <div class="button-label">united-kingdom</div>
+          </div>
+          <div class="button-container">
+            <atlas-icon [icon]="'wales'" [collection]="'flags'"></atlas-icon>
+            <div class="button-label">wales</div>
+          </div>
+          <div class="button-container">
+            <atlas-icon [icon]="'united-states-of-america'" [collection]="'flags'"></atlas-icon>
+            <div class="button-label">united-states-of-america</div>
+          </div>
+          <div class="button-container">
+            <atlas-icon [icon]="'scotland'" [collection]="'flags'"></atlas-icon>
+            <div class="button-label">scotland</div>
+          </div>
+        </div>
+      </div>
+      <div class="flags-section">
+        <h3>By Code (collection: flags-code)</h3>
+        <div class="button-group">
+          <div class="button-container">
+            <atlas-icon [icon]="'AR'" [collection]="'flags-code'" [size]="iconSizings.medium"></atlas-icon>
+            <div class="button-label">AR</div>
+          </div>
+          <div class="button-container">
+            <atlas-icon [icon]="'GB'" [collection]="'flags-code'"></atlas-icon>
+            <div class="button-label">GB</div>
+          </div>
+          <div class="button-container">
+            <atlas-icon [icon]="'GB-WLS'" [collection]="'flags-code'"></atlas-icon>
+            <div class="button-label">GB-WLS</div>
+          </div>
+          <div class="button-container">
+            <atlas-icon [icon]="'US'" [collection]="'flags-code'"></atlas-icon>
+            <div class="button-label">US</div>
+          </div>
+          <div class="button-container">
+            <atlas-icon [icon]="'GB-SCT'" [collection]="'flags-code'"></atlas-icon>
+            <div class="button-label">GB-SCT</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

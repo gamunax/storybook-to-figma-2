@@ -1,0 +1,168 @@
+<div class="container padding-y-9 padding-x-9 page-bg">
+
+    <h2>Radio Component Demo</h2>
+    <div class="header">
+        <atlas-theming-helper>
+            <label>Custom theme</label>
+        </atlas-theming-helper>
+    </div>
+    <h2>Radio</h2>
+    <div>
+        <div class="section">
+            <h3>size medium</h3>
+            <div class="radio-group">
+                <div class="radio-container">
+                    <atlas-radio [size]="iconSizes.medium" [action]="actions.default" [checked]="false" [disabled]="false">
+                        default</atlas-radio>
+                </div>
+                <div class="radio-container">
+                    <atlas-radio [size]="iconSizes.medium" [action]="actions.primary" [checked]="false" [disabled]="false">
+                        brand</atlas-radio>
+                </div>
+                <div class="radio-container">
+                    <atlas-radio [size]="iconSizes.medium" [action]="actions.warning" [checked]="false" [disabled]="false">
+                        caution</atlas-radio>
+                </div>
+                <div class="radio-container">
+                    <atlas-radio [size]="iconSizes.medium" [action]="actions.error" [checked]="false" [disabled]="false">
+                        danger</atlas-radio>
+                </div>
+                <div class="radio-container">
+                    <atlas-radio [size]="iconSizes.medium" [action]="actions.success" [checked]="false" [disabled]="false">
+                        success</atlas-radio>
+                </div>
+                <div class="radio-container">
+                    <atlas-radio [size]="iconSizes.medium" [action]="actions.info" [checked]="false" [disabled]="false">
+                        info</atlas-radio>
+                </div>
+            </div>
+        </div>
+        <div class="section">
+          <h3>size small</h3>
+          <div class="radio-group">
+              <div class="radio-container">
+                <atlas-radio [action]="actions.default" [checked]="false" [disabled]="false" [size]="iconSizes.small">
+                  default
+                </atlas-radio>
+              </div>
+              <div class="radio-container">
+                <atlas-radio [action]="actions.primary" [checked]="false" [disabled]="false" [size]="iconSizes.small">
+                  brand
+                </atlas-radio>
+              </div>
+              <div class="radio-container">
+                <atlas-radio [action]="actions.warning" [checked]="false" [disabled]="false" [size]="iconSizes.small">
+                  caution
+                </atlas-radio>
+              </div>
+              <div class="radio-container">
+                <atlas-radio [action]="actions.error" [checked]="false" [disabled]="false" [size]="iconSizes.small">
+                  danger
+                </atlas-radio>
+              </div>
+              <div class="radio-container">
+                <atlas-radio [action]="actions.success" [checked]="false" [disabled]="false" [size]="iconSizes.small">
+                  success
+                </atlas-radio>
+              </div>
+              <div class="radio-container">
+                <atlas-radio [action]="actions.info" [checked]="false" [size]="iconSizes.small" [disabled]="true">
+                  info
+                </atlas-radio>
+              </div>
+            </div>
+      <div class="section">
+        <h3>size large</h3>
+        <div class="radio-group">
+            <div class="radio-container">
+              <atlas-radio [action]="actions.default" [checked]="false" [disabled]="false" [size]="iconSizes.large">
+                default
+              </atlas-radio>
+            </div>
+            <div class="radio-container">
+              <atlas-radio [action]="actions.primary" [checked]="false" [disabled]="false" [size]="iconSizes.large">
+                brand
+              </atlas-radio>
+            </div>
+            <div class="radio-container">
+              <atlas-radio [action]="actions.warning" [checked]="false" [disabled]="false" [size]="iconSizes.large">
+                caution
+              </atlas-radio>
+            </div>
+            <div class="radio-container">
+              <atlas-radio [action]="actions.error" [checked]="false" [disabled]="false" [size]="iconSizes.large">
+                danger
+              </atlas-radio>
+            </div>
+            <div class="radio-container">
+              <atlas-radio [action]="actions.success" [checked]="false" [disabled]="false" [size]="iconSizes.large">
+                success
+              </atlas-radio>
+            </div>
+            <div class="radio-container">
+              <atlas-radio [action]="actions.info" [checked]="false" [disabled]="false" [size]="iconSizes.large" [disabled]="true">
+                info
+              </atlas-radio>
+            </div>
+          </div>
+    </div>
+    </div>
+    <h2>Radio Group</h2>
+    <div class="row">
+      <h3>size medium</h3>
+        <div class="section column medium-3 small-12">
+          <form [formGroup]="testForm">
+            <atlas-radio-group>
+              <atlas-radio ngDefaultControl formControlName="radioElement" 
+                *ngFor="let element of radioGroupElements" [value]="element.value" 
+                [checked]="element.checked" [size]="iconSizes.medium">
+                {{ element.label }}
+              </atlas-radio>
+            </atlas-radio-group>
+          </form>
+        </div>
+        <h3>size small</h3>
+        <div class="section column medium-3 small-12">
+          <form [formGroup]="testForm">
+            <atlas-radio-group>
+              <atlas-radio ngDefaultControl formControlName="radioElement" 
+                *ngFor="let element of radioGroupElements" [value]="element.value" 
+                [checked]="element.checked" [size]="iconSizes.small">
+                {{ element.label }}
+              </atlas-radio>
+            </atlas-radio-group>
+          </form>
+        </div>
+        <h3>size large</h3>
+        <div class="section column medium-3 small-12">
+          <form [formGroup]="testForm">
+            <atlas-radio-group>
+              <atlas-radio ngDefaultControl formControlName="radioElement" 
+                *ngFor="let element of radioGroupElements" [value]="element.value" 
+                [checked]="element.checked" [size]="iconSizes.large">
+                {{ element.label }}
+              </atlas-radio>
+            </atlas-radio-group>
+          </form>
+        </div>
+    </div>
+    <h2 class="typographyStyles-heading-medium">RadioGroup value according to form</h2>
+    <form [formGroup]="testForm">
+      <atlas-radio-group #role formControlName="radioElement" (change)="seeValue()">
+        <atlas-radio  *ngFor="let element of radioGroupElements2" [value]="element.value" [radioId]="'radioId1-' + element.id">{{ element.label }}</atlas-radio>
+      </atlas-radio-group>
+    </form>
+  
+  
+    <h2 class="typographyStyles-heading-medium">RadioGroup values According items</h2>
+    <atlas-radio-group>
+      <atlas-radio
+        *ngFor="let element of radioGroupElements1" 
+        [value]="element.value"
+        [radioId]="'radioId2-' + element.id"
+        [checked]="element.checked"
+        [disabled]="element.disabled">
+      {{ element.label }} -  checked:{{ element.checked }}</atlas-radio>
+    </atlas-radio-group>
+</div>
+

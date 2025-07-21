@@ -1,0 +1,27 @@
+<div class="container padding-y-9 padding-x-9 page-bg">
+  <h2>Timepicker Component Demo</h2>
+  <div class="header">
+    <atlas-theming-helper>
+      <label>Custom theme</label>
+    </atlas-theming-helper>
+  </div>
+  <h2>New Timepicker</h2>
+  <div>
+    <div class="section">
+      <div class="timepicker-group">
+        <atlas-field [action]="actions.default">
+          <atlas-field-label>Start Time</atlas-field-label>
+          <atlas-select [placeholder]="'--:-- &nbsp;'">
+            <atlas-option *ngFor="let item of items" [value]="item.value">{{ item.value }}</atlas-option>
+          </atlas-select>
+        </atlas-field>
+        <atlas-field [action]="actions.default">
+          <atlas-field-label>End Time</atlas-field-label>
+          <atlas-select [placeholder]="'--:-- &nbsp;'">
+            <atlas-option *ngFor="let item of items" [value]="item.value">{{ item.value }}</atlas-option>
+          </atlas-select>
+        </atlas-field>
+      </div>
+    </div>
+  </div>
+</div>

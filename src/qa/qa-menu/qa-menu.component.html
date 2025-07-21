@@ -1,0 +1,24 @@
+<hr>
+<h1>Menu component tests</h1>
+<hr><br>
+
+<div class="container" style="margin-top:50px">
+    <atlas-button menuTrigger (triggered)="menu.toggleMenu($event)" [action]="actions.primary" style="margin-left:50px">Open Menu</atlas-button>
+        <div class="row">
+          <div class="column small-4">
+          <atlas-menu #menu
+            (onMenuClick)="onMenuClick($event)"
+            (menuOpened)="menuOpened($event)"
+            (menuClosed)="menuClosed($event)"
+          >
+          <atlas-list>
+            <atlas-list-item *ngFor="let item of items" [item]="item">
+              <atlas-icon *ngIf="item.icon" style="margin-right: 34px;" [size]="isize.medium" [icon]="item.icon"></atlas-icon> 
+              <div>
+                {{ item.label }} 
+              </div>
+            </atlas-list-item>
+          </atlas-list>
+          </atlas-menu>
+        </div>
+  </div>

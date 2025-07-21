@@ -1,0 +1,29 @@
+
+<div class="container">
+    <h1>Card component tests</h1>
+    <div class="row" *ngFor="let card of cards">
+    <atlas-card [avatar]="card.avatar" [id]="card.id"> 
+        <atlas-avatar [imgSrc]="card.imgSrc"></atlas-avatar>
+        <atlas-card-header> 
+          <span>Card header</span>  
+        </atlas-card-header> 
+        <atlas-card-subheader>
+            <span>Subheader</span>
+        </atlas-card-subheader>
+        <atlas-card-media>
+          <div>
+            <img src="./atlas-docs/CardMedia.png">
+          </div>
+        </atlas-card-media>
+        <atlas-card-content>
+          <span>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+          </span>
+        </atlas-card-content>
+        <atlas-card-footer>
+          <atlas-button [size]="card.size" [variant]="card.variant" [alt]="card.action">action</atlas-button>
+          <atlas-button [size]="card.size" [variant]="card.variant" [alt]="card.action">small</atlas-button>
+        </atlas-card-footer>
+      </atlas-card>
+    </div>
+</div>

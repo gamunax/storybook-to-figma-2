@@ -1,0 +1,9 @@
+<div class="legacy-hero__wrapper" [ngStyle]="_setHeroContainerStyle()">
+    <ng-container *ngIf="backgroundImage !== undefined">
+        <div class="legacy-hero__background-image" [ngStyle]="_setHeroBackgroundStyle()"></div>
+    </ng-container>
+
+    <div class="legacy-hero__content">
+        <ng-content></ng-content>
+    </div>
+</div>

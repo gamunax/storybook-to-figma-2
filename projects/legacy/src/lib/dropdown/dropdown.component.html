@@ -1,0 +1,30 @@
+<div #container class="legacy-c-dropdown__container" [class.legacy-c-dropdown__container--expanded]="expanded">
+  <div [class.legacy-is-dropdown-open]="dropdownVisible">
+    <ng-content select="legacy-dropdown-label"></ng-content>
+  </div>
+</div>
+<ng-template cdkPortal #portal="cdkPortal">
+  <div
+    *ngIf="!_hidden"
+    #dropdown
+    [class.legacy-c-dropdown--fabMenu]="fabMenu"
+    [class.legacy-c-dropdown--open]="dropdownVisible && !reverseDirection"
+    [class.legacy-c-dropdown--close]="!dropdownVisible && !reverseDirection"
+    [class.legacy-c-dropdown--up]="reverseDirection"
+    [class.legacy-c-dropdown--open-reverse]="dropdownVisible && reverseDirection"
+    [class.legacy-c-dropdown--close-reverse]="!dropdownVisible && reverseDirection"
+    [class.legacy-c-dropdown--max-height]="maxHeight"
+    [style.max-height.px]="maxHeight"
+    [ngClass]="[
+      'legacy-c-dropdown',
+      position ? 'legacy-c-dropdown--' + position : '',
+      theme ? 'legacy-t-dropdown--' + theme : ''
+    ]"
+  >
+    <ul class="legacy-c-dropdown__list">
+      <li *ngFor="let item of items" [class.legacy-c-dropdown__item--remain-open]="item.remainOpen">
+        <ng-template [ngTemplateOutlet]="item.itemTemplate" [ngTemplateOutletContext]="{ item: item }"></ng-template>
+      </li>
+    </ul>
+  </div>
+</ng-template>

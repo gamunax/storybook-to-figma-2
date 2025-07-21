@@ -1,0 +1,77 @@
+<div
+  class="timepicker"
+  [ngClass]="{ 'timepicker--disabled': disabled }"
+>
+  <timepicker-time-control
+    class="timepicker__control--first"
+    [color]="color"
+    [floatLabel]="floatLabel"
+    [placeholder]="'HH'"
+    [time]="(hour$ | async)?.time"
+    [min]="minHour"
+    [max]="maxHour"
+    [timeUnit]="timeUnit.HOUR"
+    [disabled]="disabled"
+    [timeList]="hoursList"
+    [preventTyping]="isTimeRangeSet"
+    (timeChanged)="changeHour($event)"
+  ></timepicker-time-control>
+  <span class="separator-colon timepicker__control--second">:</span>
+  <timepicker-time-control
+    class="timepicker__control--third"
+    [color]="color"
+    [floatLabel]="floatLabel"
+    [placeholder]="'MM'"
+    [time]="(minute$ | async)?.time"
+    [min]="0"
+    [max]="59"
+    [timeUnit]="timeUnit.MINUTE"
+    [disabled]="disabled"
+    [timeList]="minutesList"
+    [preventTyping]="isTimeRangeSet"
+    (timeChanged)="changeMinute($event)"
+  ></timepicker-time-control>
+  <div
+    class="period-select timepicker__control--forth"
+    *ngIf="format !== 24"
+  >
+    <select
+      [disabled]="disabled || isChangePeriodDisabled"
+      (selectionChange)="changePeriod($event)"
+      [ngModel]="period"
+    >
+      <option *ngFor="let option of periods" [value]="option">
+        {{ option }}
+      </option>
+    </select>
+  </div>
+  <timepicker-toggle
+    class="timepicker__toggle"
+    *ngIf="!controlOnly"
+    [timepicker]="timepicker"
+    [disabled]="disabled"
+  >
+    <span timepickerToggleIcon>
+      <ng-container
+        *ngTemplateOutlet="toggleIcon || defaultIcon"
+      ></ng-container>
+    </span>
+  </timepicker-toggle>
+</div>
+<timepicker
+  [color]="color"
+  [min]="min"
+  [max]="max"
+  [theme]="clockTheme"
+  [defaultTime]="timepickerTime"
+  [format]="format"
+  [cancelBtnTmpl]="cancelBtnTmpl"
+  [confirmBtnTmpl]="confirmBtnTmpl"
+  (timeSet)="onTimeSet($event)"
+  #timepicker
+>
+</timepicker>
+
+<ng-template #defaultIcon>
+  <div>icon watch_later</div>
+</ng-template>

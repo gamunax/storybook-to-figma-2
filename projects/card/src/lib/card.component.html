@@ -1,0 +1,37 @@
+<div [class]="[
+      'atlas-card', 
+      'atlas-card-hover',
+      'box-shadow-elevation-' + elevation ]"
+      [style]="cardStyles" [class.atlas-card__content--full-width]="fullWidth">
+  <div class="atlas-card-header atlas-card-header-container"
+      [class.atlas-card-header-container-avatar]="avatar"
+      [class.atlas-card-subheader]="avatar">
+    <div *ngIf="avatar" [ngClass]="avatar ? avatarPaddingClass : ''">
+      <ng-content></ng-content>
+    </div>
+    <div>
+      <div #cardHeader [ngClass]="headerPaddingClass"
+      *ngIf="_cardHeaderChildren.length > 0"
+      >
+        <ng-content select="atlas-card-header"></ng-content>
+        <div #cardSubHeader class="atlas-card-subheader" [ngClass]="subheaderPaddingClass"
+              *ngIf="_cardSubHeaderChildren.length > 0"
+        >
+          <ng-content select="atlas-card-subheader"></ng-content>
+        </div>
+      </div>
+    </div> 
+  </div>
+
+  <div #cardMediaContent class="atlas-card-media" [ngClass]="mediaPaddingClass" *ngIf="_cardMediaContentChildren.length > 0">
+    <ng-content select="atlas-card-media"></ng-content>
+  </div>
+
+  <div #cardContent class="atlas-card-body" [ngClass]="contentPaddingClass" *ngIf="_cardContentChildren.length > 0">
+    <ng-content select="atlas-card-content"></ng-content>
+  </div>
+
+  <div #cardFooter class="atlas-card-footer typographyStyles-button-medium" [ngClass]="footerPaddingClass" *ngIf="_cardFooterChildren.length > 0">
+    <ng-content select="atlas-card-footer"></ng-content>
+  </div>
+</div>

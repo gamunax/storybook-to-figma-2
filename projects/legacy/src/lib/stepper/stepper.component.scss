@@ -1,0 +1,535 @@
+//-------------------------------------------------------------------------------------------
+// Legacy UI Components
+// Stepper Component
+//-------------------------------------------------------------------------------------------
+
+@import '../../../scss/legacy_components.scss';
+@import '../../../scss/legacy_shared_mosui.scss';
+/// Stepper wrap label
+/// @type Boolean
+$mos-stepper-wrap-label: false !default;
+
+/// Stepper padding
+/// @type Number
+$mos-stepper-padding: rem-calc(0 0 1);
+
+/// Stepper base default margin
+/// @type Number
+$mos-stepper-margin: $mos-spacer-md 0;
+
+/// Stepper base default padding
+/// @type Number
+$mos-stepper-padding: 0 size(xsm);
+
+/// Stepper bar color
+/// @type Color
+$mos-stepper-bar-color: color(onyx-darker, 100) !default;
+
+/// Stepper bar height
+/// @type Number
+$mos-stepper-bar-height: 1px !default;
+
+/// Stepper vertical bar width
+/// @type Number
+$mos-stepper-vertical-bar-width: 1px !default;
+
+/// Stepper num padding
+/// @type Number
+$mos-stepper-num-padding: $mos-spacer-sm $mos-spacer-md + 0.1rem;
+
+/// Stepper num color
+/// @type Color
+$mos-stepper-num-color: color(onyx-darker, 400) !default;
+
+/// Stepper num font size
+/// @type Number
+$mos-stepper-num-font-size: size(2xsm);
+
+/// Stepper step background color
+/// @type Color
+$mos-stepper-step-background: $mos-body-background-color !default;
+
+/// Stepper title color
+/// @type Color
+$mos-stepper-title-color: $mos-black-color !default;
+
+/// Stepper description color
+/// @type Color
+$mos-stepper-description-font-color: color(onyx-darker) !default;
+
+/// Stepper active description font color
+/// @type Color
+$mos-stepper-active-description-font-color: $mos-black-color !default;
+
+/// Stepper active description font color
+/// @type Color
+$mos-stepper-active-circle-disabled-color: $mos-disabled-light-color !default;
+
+/// Stepper small height
+/// @type Number
+$mos-stepper-height-small: rem-calc(150);
+
+/// Stepper small padding
+/// @type Number
+$mos-stepper-padding-small: 0 $mos-spacer-lg;
+
+/// Stepper label title font size
+/// @type Number
+$mos-stepper-label-title-font-size: size(xsm);
+
+/// Stepper label title line-height
+/// @type Number
+$mos-stepper-label-title-line-height: size(md);
+
+/// Stepper label title margin
+/// @type Number
+$mos-stepper-label-title-margin: size(4xsm) auto 0;
+
+/// Stepper label description font-size
+/// @type Number
+$mos-stepper-label-description-font-size: size(2xsm);
+
+/// Stepper label description line-height
+/// @type Number
+$mos-stepper-label-description-line-height: size(xsm);
+
+/// Stepper label description margin-top
+/// @type Number
+$mos-stepper-label-description-margin-top: size(6xsm);
+
+/// Stepper step focus background-color
+/// @type Color
+$mos-step-focus-background-color: transparentize($mos-primary-color, 0.9) !default;
+
+/// Stepper inline header height
+/// @type Number
+$mos-stepper-inline-header-height: size(10xlg) !default;
+
+/// Stepper header height
+/// @type Number
+$mos-stepper-header-height: rem-calc(135);
+
+/// Stepper header width
+/// @type Number
+$mos-stepper-header-width: 100% !default;
+
+/// Stepper circle background-color
+/// @type Color
+$mos-stepper-circle-background-color: color(onyx-darker, 100) !default;
+
+/// Stepper complete circle background-color
+/// @type Color
+$mos-stepper-complete-circle-background-color: $mos-success-light-color !default;
+
+/// Stepper active circle background-color
+/// @type Color
+$mos-stepper-active-circle-background-color: $mos-primary-alt-color !default;
+
+/// Stepper vertical circle content padding
+/// @type Number
+$mos-vertical-stepper-content-padding: rem-calc(16) 0 0 rem-calc(50) !default;
+
+/// Stepper vertical circle content margin
+/// @type Number
+$mos-vertical-stepper-content-margin: 0 !default;
+
+/// Stepper line padding
+/// @type Number
+$mos-stepper-line-padding: rem-calc(10) !default;
+
+/// Stepper label background spacer
+// this creates space around the step, is reused on different regions if one or two line
+%mos-step-background-spacer {
+  background: $mos-body-background-color;
+  padding: 0 $mos-stepper-line-padding;
+}
+
+.#{$global-namespace}-c-stepper {
+  width: 100%;
+  margin: $mos-stepper-margin;
+  padding: $mos-stepper-padding;
+  position: relative;
+  &--no-padding {
+    padding: 0;
+  }
+  @include breakpoint(small down) {
+    display: inline-flex;
+  }
+  &__header {
+    // contains steps
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    width: $mos-stepper-header-width;
+    margin: 0 auto;
+    @include breakpoint(medium down) {
+      height: auto;
+    }
+
+    &.#{$global-namespace}-c-stepper {
+      &--inline {
+        height: $mos-stepper-inline-header-height;
+        &.#{$global-namespace}-c-stepper {
+          &__header {
+            @include breakpoint(medium down) {
+              height: auto;
+            }
+          }
+        }
+        .#{$global-namespace}-c-stepper {
+          &__step {
+            display: inline-flex;
+            align-items: center;
+            align-content: center;
+            @extend %mos-step-background-spacer;
+            &--first {
+              padding-left: 0;
+            }
+            &--last {
+              padding-right: 0;
+            }
+          }
+          &__label {
+            padding-left: rem-calc(10);
+            display: inline-flex;
+            align-items: center;
+            background: $mos-body-background-color;
+            @include breakpoint(small down) {
+              margin: 0 auto;
+            }
+          }
+          &--title {
+            margin: 0;
+          }
+          &__bar {
+            @include breakpoint(medium) {
+              top: 30%;
+            }
+          }
+        }
+      }
+    }
+  }
+  &--vertical {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    align-content: flex-start;
+    height: auto;
+    position: relative;
+    .#{$global-namespace}-c-stepper {
+      &__header {
+        display: flex;
+        flex-direction: column;
+        align-content: flex-start;
+        align-items: flex-start;
+        height: auto;
+        width: auto;
+        margin: 0;
+      }
+      &__content {
+        width: 100%;
+        padding: $mos-vertical-stepper-content-padding;
+        margin: $mos-vertical-stepper-content-margin;
+        legacy-step {
+          width: 100%;
+        }
+        .#{$global-namespace}-c-stepper__title {
+          font-family: $mos-font-medium-stack;
+          min-height: rem-calc(32);
+          line-height: rem-calc(32);
+          padding-bottom: rem-calc(30);
+        }
+      }
+      &__step {
+        margin-left: 0;
+        position: absolute;
+        left: 0;
+
+        .#{$global-namespace}-c-stepper--circle-container {
+          width: rem-calc(32);
+          height: rem-calc(32);
+          position: relative;
+
+          .#{$global-namespace}-c-stepper--circle {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+          }
+        }
+      }
+    }
+  }
+
+  &__content,
+  &--inline.#{$global-namespace}-c-stepper__content {
+    @include breakpoint(medium down) {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      justify-content: center;
+      align-items: center;
+    }
+    @include breakpoint(small down) {
+      align-items: left;
+    }
+  }
+  &__step {
+    display: inline-block;
+    position: relative;
+    text-align: center;
+    cursor: pointer;
+    // These fix the IE problem where the first child step is considered the bar
+    // which results in incorrect flex child layout
+    margin-left: auto;
+    margin-right: auto;
+    &:first-child {
+      position: absolute;
+    }
+    &:nth-child(2) {
+      margin-left: 0;
+    }
+    &:last-child {
+      margin-right: 0;
+    }
+    &--no-click {
+      cursor: default;
+    }
+    &--label-wrap {
+      .#{$global-namespace}-c-stepper__label {
+        white-space: initial;
+      }
+    }
+    // TODO: Get more full specs on multiline layout focus state to implement this:
+    // &:focus,
+    // &:active {
+    //   background-color: $mos-step-focus-background-color;
+    // }
+    .#{$global-namespace}-c-stepper--circle {
+      background: $mos-stepper-circle-background-color;
+      margin: 0 auto;
+      text-align: center;
+      position: relative;
+      user-select: none;
+      &-container {
+        &--two-line {
+          @extend %mos-step-background-spacer;
+          display: inline-block;
+          .#{$global-namespace}-c-stepper--circle {
+            display: inline-flex;
+          }
+        }
+      }
+      .#{$global-namespace}-c-stepper--circle--label {
+        position: absolute;
+        left: 50%;
+        top: 54%;
+        transform: translate(-50%, -50%);
+      }
+    }
+    atlas-icon {
+      display: none;
+    }
+    &.#{$global-namespace}-c-stepper {
+      &--complete {
+        atlas-icon {
+          // this is the added check mark icon
+          display: inline-block;
+          position: relative;
+          top: 1.5px;
+          color: $mos-success-dark-color;
+        }
+        .#{$global-namespace}-c-stepper {
+          &--circle {
+            background: $mos-stepper-complete-circle-background-color;
+          }
+          &--num {
+            display: none;
+          }
+          &--title {
+            font-family: $mos-font-medium-stack;
+          }
+          &--description {
+            color: $mos-stepper-active-description-font-color;
+          }
+        }
+      }
+      &--active {
+        .#{$global-namespace}-c-stepper {
+          &--circle {
+            background: $mos-stepper-active-circle-background-color;
+          }
+          &--num {
+            color: $mos-white-color;
+            border: none;
+          }
+          &--title {
+            font-family: $mos-font-medium-stack;
+            color: $mos-black-color;
+          }
+          &--description {
+            color: $mos-stepper-active-description-font-color;
+          }
+        }
+      }
+    }
+  }
+  &--disabled {
+    cursor: not-allowed;
+    .#{$global-namespace}-c-stepper {
+      &--circle {
+        opacity: 0.45;
+        background: $mos-stepper-active-circle-disabled-color;
+      }
+      &__label {
+        opacity: 0.45;
+      }
+    }
+  }
+  &__bar {
+    position: absolute;
+    top: 17%;
+    left: 5%;
+    width: 87%;
+    height: $mos-stepper-bar-height;
+    background: $mos-stepper-bar-color;
+    &--vertical {
+      width: $mos-stepper-vertical-bar-width;
+      margin: 0 auto;
+      position: relative;
+      top: 40px;
+      left: 0;
+      right: 0;
+      &--active {
+        background: $mos-stepper-active-circle-background-color;
+      }
+      &--complete {
+        background: $mos-stepper-complete-circle-background-color;
+      }
+    }
+    &--active {
+      background: $mos-stepper-active-circle-background-color;
+    }
+    &--complete {
+      background: $mos-stepper-complete-circle-background-color;
+    }
+  }
+  &--num {
+    color: $mos-stepper-num-color;
+    font-size: $mos-stepper-num-font-size;
+    font-family: $mos-font-medium-stack;
+  }
+  &__label {
+    @if $mos-stepper-wrap-label == false {
+      white-space: nowrap;
+    }
+  }
+  &--title {
+    margin: $mos-stepper-label-title-margin;
+    color: $mos-stepper-title-color;
+    font-family: $mos-font-regular-stack;
+    font-size: $mos-stepper-label-title-font-size;
+    line-height: $mos-stepper-label-title-line-height;
+    text-align: center;
+  }
+  &--description {
+    font-family: $mos-font-regular-stack;
+    margin-top: $mos-stepper-label-description-margin-top;
+    font-size: $mos-stepper-label-description-font-size;
+    line-height: $mos-stepper-label-description-line-height;
+    color: $mos-stepper-description-font-color;
+    text-align: center;
+  }
+  &--no-description {
+    margin-bottom: 1px;
+  }
+  @include breakpoint(small down) {
+    &__header {
+      flex-direction: column;
+    }
+    &--circle {
+      margin: 0;
+    }
+    &__step {
+      flex-direction: column;
+      align-items: center;
+    }
+    &__label {
+      margin: 0 auto;
+    }
+  }
+}
+
+// Stepper Theming
+.#{$global-namespace}-t-stepper {
+  @each $name, $color in map-merge(map-merge($mos-theme-colors, $mos-alt-theme-colors), $mos-specific-usage-colors) {
+    // Standard active-based theming
+    &--#{$name} {
+      .#{$global-namespace}-c-stepper {
+        &__bar {
+          &--active {
+            background: $color;
+          }
+          &--vertical {
+            &--active {
+              background: $color;
+            }
+          }
+        }
+        &--active {
+          .#{$global-namespace}-c-stepper {
+            &--circle {
+              background: $color;
+            }
+            &--num {
+              color: luminance-font-color($color);
+            }
+          }
+        }
+      }
+    }
+    // Steps Background theming
+    &-bg--#{$name} {
+      .#{$global-namespace}-c-stepper {
+        &__header {
+          background: $color;
+          &.#{$global-namespace}-c-stepper--inline,
+          &.#{$global-namespace}-c-stepper--inline .#{$global-namespace}-c-stepper__label {
+            background: $color;
+            .#{$global-namespace}-c-stepper__step {
+              background: $color;
+            }
+          }
+        }
+        &--num {
+          color: luminance-font-color($color);
+        }
+      }
+    }
+    &-persistent--#{$name} {
+      .#{$global-namespace}-c-stepper {
+        &__step .#{$global-namespace}-c-stepper {
+          &--circle {
+            background: $color;
+          }
+          &--num {
+            color: luminance-font-color($color);
+          }
+        }
+        &--active,
+        &--disabled,
+        &--complete {
+          .#{$global-namespace}-c-stepper {
+            &--circle {
+              background: $color;
+            }
+            &--num {
+              color: luminance-font-color($color);
+            }
+          }
+        }
+      }
+    }
+  }
+}

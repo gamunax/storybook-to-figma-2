@@ -1,0 +1,8 @@
+
+.calendar-previous-button,
+.calendar-next-button {
+  .button__wrapper {
+    // Override the default background color on the disabled button
+    background-color: transparent !important;
+  }
+}

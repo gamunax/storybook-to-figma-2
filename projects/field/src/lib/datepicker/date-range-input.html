@@ -1,0 +1,16 @@
+<div
+  class="date-range-input-container"
+  cdkMonitorSubtreeFocus
+  (cdkFocusChange)="focused = $event !== null">
+  <div class="date-range-input-start-wrapper">
+    <ng-content select="input[StartDate]"></ng-content>
+  </div>
+
+  <span
+    class="date-range-input-separator">{{separator}}</span>
+
+  <div class="date-range-input-end-wrapper">
+    <ng-content select="input[EndDate]"></ng-content>
+  </div>
+</div>
+

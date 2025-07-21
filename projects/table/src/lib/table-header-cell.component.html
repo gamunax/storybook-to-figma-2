@@ -1,0 +1,13 @@
+<span [ngClass]="headerCellType" (click)="updateSortOptions()">
+    <ng-container *ngIf="columnDef.sortable !== false">
+      <button class="table-header-column-sort-button" [class.table-header-column-sort-button--desc]="tableHeader.sortOption.direction === 'desc' && tableHeader.sortOption.field === columnDef.fieldKey">
+        <atlas-icon [color]="iconColor"
+          [size]="iconSize"
+          [icon]="icon"
+          [collection]="collection"
+          title="Sort" alt="sort!"></atlas-icon>
+      </button>
+    </ng-container>
+    <ng-content></ng-content>
+</span>
+  

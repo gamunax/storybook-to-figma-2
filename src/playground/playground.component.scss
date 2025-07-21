@@ -1,0 +1,130 @@
+.page-bg {
+  background: var(--semanticColor-layer-brand-01);
+  color: var(--semanticColor-text-default);
+  z-index: -1;
+  .select {
+    color: var(--semanticColor-text-default);
+  }
+}
+
+.hero {
+  background: var(--semanticColor-layer-brand-01);
+  color: var(--semanticColor-text-default);
+  padding: 2rem;
+
+}
+
+.demo-tab-label {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+// .search-container {
+//   @media screen and (max-width: 550px) {
+//     display: grid;
+//     grid-template-columns: 1fr auto;
+//     align-items: center;
+//   }
+//   display: flex;
+// }
+
+.search-field {
+  position: relative;
+  margin: 0 0 0 24px;
+  max-width: none !important;
+  width: 45%;
+}
+
+.atlas-select-panel {
+  width: 100%;
+}
+
+.close-icon {
+  cursor: pointer;
+}
+
+.default-input-state {
+  display: none;
+}
+
+.show-input {
+  opacity: 1;
+  transform: translateX(0%);
+  animation: slideFromRight 0.3s ease-in forwards;
+}
+
+.hide-input {
+  opacity: 0;
+  transform: translateX(-3%);
+  pointer-events: none;
+  animation: slideToRight 0.3s ease-out backwards;
+}
+
+.show-button {
+  opacity: 1;
+  transform: translateX(0%);
+  animation: slideFromRight 0.3s ease-in forwards;
+}
+
+.hide-button {
+  opacity: 0;
+  transform: translateX(3%);
+  animation: slideFromLeft 0.3s ease-out forwards;
+}  
+
+@keyframes slideFromRight {
+  0% {
+    transform: translateX(3%);
+    opacity: 0;
+  }
+  20% {
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0%);
+    opacity: 1;
+  }
+} 
+
+@keyframes slideToRight {
+  0% {
+    transform: translateX(0%);
+    opacity: 1;
+  }
+  20% {
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(3%);
+    opacity: 0;
+  }
+} 
+
+@keyframes slideToLeft {
+  0% {
+    transform: translateX(0%);
+    opacity: 1;
+  }
+  20% {
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+}  
+
+@keyframes slideFromLeft {
+  0% {
+    transform: translateX(0%);
+    opacity: 1;
+  }
+  20% {
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(3%);
+    opacity: 0;
+  }
+}  

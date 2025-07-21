@@ -1,0 +1,19 @@
+<div class="container">
+    <hr>
+    <h1>Button Component Tests</h1>
+    <hr><br>
+
+    <div class="row">
+        <atlas-button *ngFor="let button of buttons"
+            style="margin: 10px 10px"
+            [id]="button.id"
+            [action]="button.action"
+            [disabled]="button.disabled"
+            [expand]="button.expand"
+            [radius]="button.radius"
+            [size]="button.size"
+            [variant]="button.variant">
+             {{button.alt ? button.alt : 'Button'}}
+        </atlas-button>
+    </div>
+</div>

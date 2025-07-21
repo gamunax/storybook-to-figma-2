@@ -1,0 +1,14 @@
+    :host {
+      display: inline-block;
+      position: relative;
+    }
+    
+    ::ng-deep  atlas-nav-item:not(:last-child) {
+        padding: 11px 20px;
+    }
+    ::ng-deep  atlas-nav-item:first-child {
+        padding: 11px 20px 11px 24px;
+    }
+    ::ng-deep atlas-nav-item:last-child {
+        padding: 11px 24px 11px 20px;
+    }

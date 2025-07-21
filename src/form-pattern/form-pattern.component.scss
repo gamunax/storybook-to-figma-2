@@ -1,0 +1,28 @@
+.page-bg {
+    background: var(--semanticColor-layer-neutral-01);
+}
+
+::ng-deep .select-panel {
+    width: 100%;
+}
+
+.app-bar {
+    &-logo {
+        color: var(--semanticColor-background-brand-strong-rest);
+        display: flex;
+        align-items: center;
+        width: 240px;
+        justify-content: space-between;
+        &-line {
+            border-color: #e5e5e5;
+            border-style: solid;
+            margin: 8px 0
+        }
+    }
+    &-dropdown {
+        position: absolute;
+        right: 10px;
+        top: 56px;
+        width: 184px;
+     }
+}

@@ -1,0 +1,136 @@
+<div>
+  <div *ngIf="handleOverflow" 
+  [ngClass]="[
+    'atlas-tabs__header',
+    centered ? 'atlas-tabs__header--centered' : 'atlas-tabs__header--flex-start',
+    fullWidth ? 'atlas-tabs__header--full-width' : '',
+    ]
+  ">
+    <ng-template [ngTemplateOutlet]="tabsHiddenTemplate"></ng-template>
+  </div>
+  <div *ngIf="!useSideScroll && !handleOverflow" 
+  [ngClass]="[
+    'atlas-tabs__header',
+    centered ? 'atlas-tabs__header--centered' : 'atlas-tabs__header--flex-start',
+    fullWidth ? 'atlas-tabs__header--full-width' : '',
+    ]
+  ">
+    <ng-template [ngTemplateOutlet]="tabsListTemplate"></ng-template>
+  </div>
+  <div *ngIf="useSideScroll" 
+  [class.atlas-tabs__scroll-outer]="isOverflow"
+  [ngStyle]="{ 'background-color': 'var(--semanticColor-background-'+ (action ? action : color) + '-strong' + ')'}">
+    <div class="atlas-tabs__scroll-left" *ngIf="isOverflow">
+      <atlas-icon-button
+        class="atlas-tabs__scroll-button"
+        [color]="(scrollArrowAction ? scrollArrowAction: scrollArrowColor)"
+        icon="icon-chevron-left-24"
+        (click)="scrollTabs('left')">
+      </atlas-icon-button>  
+    </div>
+    <!-- The scrolling div -->
+    <div #scrollContainer
+    [ngClass]="[
+      'atlas-tabs__header',
+      'atlas-tabs__header--scroll',
+      centered ? 'atlas-tabs__header--centered' : 'atlas-tabs__header--flex-start',
+      fullWidth ? 'atlas-tabs__header--full-width' : '',
+      ]
+    ">
+      <ng-template [ngTemplateOutlet]="tabsListTemplate"></ng-template>
+    </div>
+    <div class="atlas-tabs__scroll-right" *ngIf="isOverflow">
+      <atlas-icon-button
+        class="atlas-tabs__scroll-button"
+        [color]="(scrollArrowAction ? scrollArrowAction: scrollArrowColor)"
+        icon="icon-chevron-right-24"
+        (click)="scrollTabs('right')">
+      </atlas-icon-button>
+    </div>
+  </div>
+  <div
+    #_labelContainer
+    *ngIf="handleOverflow"
+    [ngClass]="[
+    'atlas-tabs__header',
+    centered ? 'atlas-tabs__header--centered' : 'atlas-tabs__header--flex-start',
+    fullWidth ? 'atlas-tabs__header--full-width' : '',
+    ]">
+      <ng-template [ngTemplateOutlet]="tabsListTemplate"></ng-template>
+      <ng-template *ngIf="showMenu" [ngTemplateOutlet]="menu"></ng-template>
+  </div>
+  <div class="atlas-tabs__content">
+    <ng-content></ng-content>
+  </div>
+</div>
+
+<ng-template #tabsListTemplate>
+  <ng-container *ngFor="let tab of tabs; let i = index">
+    <div
+      *ngIf="_shouldShowVisible(i)"
+      [ngStyle]="{ 'min-width': labelMinWidth + 'px' }"
+      [ngClass]="[
+      fullWidth ? 'atlas-tabs__label--full-width' : 'atlas-tabs__label',
+      centered ? 'atlas-tabs__label--centered' : 'atlas-tabs__label--flex-start',
+      !tab.disabled ? 'atlas-tab atlas-tabs__label--' + variant + '--' + (action ? action : color) : '',
+      tab.disabled ? 'atlas-tabs__label--' + variant + '--' + (action ? action : color) + '--disabled' : '',
+      activeTabIndex === i ? 'atlas-tabs__label--' + variant + '--' + (action ? action : color) + '--active' : '',
+      activeTabIndex != i && !tab.disabled ? 'atlas-tabs__label--' + variant + '--' + (action ? action : color) + '--border' : '',
+      ]">
+      <a
+        (click)="selectTab(i)"><ng-template [ngTemplateOutlet]="tab.label"></ng-template></a>
+    </div>
+  </ng-container>
+</ng-template>
+
+<ng-template #tabsHiddenTemplate>
+  <div
+    #_hiddenTabs
+    *ngFor="let tab of tabs; let i = index"
+    [ngClass]="[
+      fullWidth ? 'atlas-tabs__label--full-width' : 'atlas-tabs__label',
+      centered ? 'atlas-tabs__label--centered' : 'atlas-tabs__label--flex-start',
+      !tab.disabled ? 'atlas-tabs__label--' + variant + '--' + (action ? action : color) : '',
+      tab.disabled ? 'atlas-tabs__label--' + variant + '--' + (action ? action : color) + '--disabled' : '',
+      activeTabIndex === i ? 'atlas-tabs__label--' + variant + '--' + (action ? action : color) + '--active' : '',
+      activeTabIndex != i && !tab.disabled ? 'atlas-tabs__label--' + variant + '--' + (action ? action : color) + '--border' : '',
+    ]">
+    <a>
+      <ng-template [ngTemplateOutlet]="tab.label"></ng-template>
+    </a>
+  </div>
+  <div
+    #_moreButton
+    class="atlas-tabs__more"
+  >
+    <atlas-icon icon="questionnaire"></atlas-icon>
+    <div class="atlas-tabs__more-text">more</div>
+  </div>
+</ng-template>
+
+<ng-template #menu>
+  <atlas-menu position="right" [style.maxHeight]="overflowDropdownMaxHeight">
+    <label>
+      <div class="atlas-tabs__more">
+        <atlas-icon icon="questionnaire"></atlas-icon>
+        <div class="atlas-tabs__more-text">more</div>
+      </div>
+    </label>
+    <ng-container *ngFor="let tab of tabs; let i = index">
+      <atlas-list>
+        <atlas-list-item
+        *ngIf="_shouldShowHidden(i)"
+      >
+        <a
+          class="atlas-tabs__more-item"
+          [class.atlas-tabs__more-active]="activeTabIndex === i"
+          [class.atlas-tabs__more-disabled]="tab.disabled"
+          (click)="selectTab(i)"
+        >
+          <ng-template [ngTemplateOutlet]="tab.label"></ng-template>
+        </a>
+      </atlas-list-item>
+      </atlas-list>
+    </ng-container>
+  </atlas-menu>
+</ng-template>

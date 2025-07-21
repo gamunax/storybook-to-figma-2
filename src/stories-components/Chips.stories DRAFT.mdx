@@ -1,0 +1,47 @@
+import { Meta } from '@storybook/addon-docs';
+import Code from './assets/code-brackets.svg';
+import Colors from './assets/colors.svg';
+import Comments from './assets/comments.svg';
+import Direction from './assets/direction.svg';
+import Flow from './assets/flow.svg';
+import Plugin from './assets/plugin.svg';
+import Repo from './assets/repo.svg';
+import StackAlt from './assets/stackalt.svg';
+import { BADGE } from '@geometricpanda/storybook-addon-badges';
+import { withTheming } from '../../.storybook/halo-theming-addon';
+import { ThemingServiceGlobal, defaultConfig } from 'atlas-cdk';
+import { Source, Preview  } from '@storybook/addon-docs';
+import { HoverableCode } from '../../.storybook/hoverable-code';
+
+<Meta title="Adopters/Components/Chips/UX Guide" parameters={{ badges: [ BADGE.BETA ], options: { isToolshown: true } }} decorators={[withTheming]} />
+
+# Chips
+
+The Chips component display a label.
+
+## Anatomy
+
+1. Chips
+
+## Usage
+
+The Chips component is a component to display a label.
+
+# Best Practices
+
+### Guiding
+
+--
+
+### Consistent
+
+--
+
+# Accessibility
+
+In the Chips, the counter should be clearly visible.
+
+Some users cannot recognize color. Use the following color tokens for the best readability.
+
+- Primary/contrast colors for Chips components on primary/main colors.
+- Secondary/contrast colors for Chips components on secondary/main colors.

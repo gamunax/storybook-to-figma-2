@@ -1,0 +1,18 @@
+<div class="container">
+    <hr>
+    <h1>Rating Component Tests</h1>
+    <hr><br>
+
+    <div class="row">
+
+        <atlas-rating style="margin: 10px 10px" *ngFor="let rating of ratings" 
+            [id]="rating.id" 
+            [numberOfItems]="rating.numberOfItems"
+            [rating]="rating.rating"
+            [disabled]="rating.disabled" 
+            [readOnly]="rating.readOnly"
+            [size]="rating.size"
+            [showLabel]="rating.showLabel">
+        </atlas-rating>
+    </div>
+</div>

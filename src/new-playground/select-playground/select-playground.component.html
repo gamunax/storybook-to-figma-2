@@ -1,0 +1,408 @@
+<div class="container padding-y-9 padding-x-9 page-bg">
+  <!-- Button Component Demo Header -->
+  <h2>Select Component Demo</h2>
+  <div class="header">
+    <atlas-theming-helper>
+      <label>Custom theme</label>
+    </atlas-theming-helper>
+  </div>
+  <h2>Legacy Select</h2>
+ 
+    <div class="selector-wrapper">
+      <div class="mos-u-legacy-styles selector-input">
+         <div [formGroup]="v2ArrowsForm" class="row">
+        <legacy-autocomplete
+          [displayDropdownArrow]="true"
+          [clearEnabled]="true"
+          #ctrl
+          [data]="listItems"
+          [placeholder]="'ieieie'"
+          [immediateListDisplay]="true"
+          [handleNoResult]="false"
+          [version2]="true"
+          formControlName="cancelAlso1"
+          [isFormV2Enabled]="true"
+          (click)="$event.stopPropagation()"
+        >
+        </legacy-autocomplete>
+      </div>
+    </div>
+  </div>
+
+  <h2>Select with typeahead Component</h2>
+  <div>
+    <div class="section">
+      <div class="field-group">
+        <div class="field-container">
+          <atlas-field [action]="Actions.primary" [variant]="FieldVariants.outlined">
+            <atlas-field-label>Countries <span class="required-indicator">*</span></atlas-field-label>
+            <atlas-select
+              [typeahead]="true"
+              (typeaheadChange)="filterCountry($event)"
+              [placeholder]="'Select a country'"
+            >
+              <atlas-option *ngFor="let option of countriesFiltered" [value]="option">{{ option.label }}</atlas-option>
+            </atlas-select>
+          </atlas-field>
+        </div>
+      </div>
+    </div>
+  </div>
+  <h2>Select with select All Option</h2>
+  <div>
+    <div class="section">
+      <div class="field-group">
+        <div class="field-container">
+          <atlas-field [action]="Actions.primary" [variant]="FieldVariants.outlined">
+            <atlas-field-label>Countries <span class="required-indicator">*</span></atlas-field-label>
+            <atlas-select [multiple]="true">
+              <atlas-option [selectAll]="true" >
+                             Select all
+              </atlas-option>
+              <atlas-option *ngFor="let option of countryList; index as i" [value]="option">{{ option.label }}</atlas-option>
+              </atlas-select>
+          </atlas-field>
+        </div>
+      </div>
+    </div>
+  </div>
+  <h2>Outlined Field</h2>
+  <div>
+    <div class="section">
+      <h3>size medium</h3>
+      <div class="field-group">
+        <div class="field-container">
+          <atlas-field [variant]="FieldVariants.outlined" [action]="Actions.primary" [size]="fieldSize.medium">
+            <atlas-field-label>Countries <span class="required-indicator">*</span></atlas-field-label>
+            <atlas-select #selectHtmlCountries placeholder="Select a country" [multiple]="true">
+              <atlas-option *ngFor="let option of countryList; index as i" [value]="option">{{
+                option.label
+              }}</atlas-option>
+            </atlas-select>
+          </atlas-field>
+        </div>
+
+        <div class="field-container">
+          <atlas-field [variant]="FieldVariants.outlined" [action]="Actions.primary" [size]="fieldSize.medium">
+            <atlas-field-label>Countries <span class="required-indicator">*</span></atlas-field-label>
+            <atlas-select #selectHtmlCountries placeholder="Select a country" [multiple]="true" [disabled]="true">
+              <atlas-option *ngFor="let option of countryList; index as i" [value]="option">{{
+                option.label
+              }}</atlas-option>
+            </atlas-select>
+          </atlas-field>
+        </div>
+      </div>
+    </div>
+    <div class="section">
+      <h3>size small</h3>
+      <div class="field-group">
+        <div class="field-container">
+          <atlas-field [variant]="FieldVariants.outlined" [action]="Actions.primary" [size]="fieldSize.small">
+            <atlas-field-label>Countries <span class="required-indicator">*</span></atlas-field-label>
+            <atlas-select #selectHtmlCountries placeholder="Select a country" [multiple]="true">
+              <atlas-option *ngFor="let option of countryList; index as i" [value]="option">{{
+                option.label
+              }}</atlas-option>
+            </atlas-select>
+          </atlas-field>
+        </div>
+
+        <div class="field-container">
+          <atlas-field [variant]="FieldVariants.outlined" [action]="Actions.primary" [size]="fieldSize.small">
+            <atlas-field-label>Countries <span class="required-indicator">*</span></atlas-field-label>
+            <atlas-select #selectHtmlCountries placeholder="Select a country" [multiple]="true" [disabled]="true">
+              <atlas-option *ngFor="let option of countryList; index as i" [value]="option">{{
+                option.label
+              }}</atlas-option>
+            </atlas-select>
+          </atlas-field>
+        </div>
+      </div>
+    </div>
+    <div class="section">
+      <h3>size large</h3>
+      <div class="field-group">
+        <div class="field-container">
+          <atlas-field [variant]="FieldVariants.outlined" [action]="Actions.primary" [size]="fieldSize.large">
+            <atlas-field-label>Countries <span class="required-indicator">*</span></atlas-field-label>
+            <atlas-select #selectHtmlCountries placeholder="Select a country" [multiple]="true">
+              <atlas-option *ngFor="let option of countryList; index as i" [value]="option">{{
+                option.label
+              }}</atlas-option>
+            </atlas-select>
+          </atlas-field>
+        </div>
+
+        <div class="field-container">
+          <atlas-field [variant]="FieldVariants.outlined" [action]="Actions.primary" [size]="fieldSize.large">
+            <atlas-field-label>Countries <span class="required-indicator">*</span></atlas-field-label>
+            <atlas-select #selectHtmlCountries placeholder="Select a country" [multiple]="true" [disabled]="true">
+              <atlas-option *ngFor="let option of countryList; index as i" [value]="option">{{
+                option.label
+              }}</atlas-option>
+            </atlas-select>
+          </atlas-field>
+        </div>
+      </div>
+    </div>
+  </div>
+  <h2>Filled Field</h2>
+  <div>
+    <div class="section">
+      <h3>size medium</h3>
+      <div class="field-group">
+        <div class="field-container">
+          <atlas-field [variant]="FieldVariants.filled" [action]="Actions.primary" [size]="fieldSize.medium">
+            <atlas-field-label>Countries <span class="required-indicator">*</span></atlas-field-label>
+            <atlas-select #selectHtmlCountries placeholder="Select a country" [multiple]="true">
+              <atlas-option *ngFor="let option of countryList; index as i" [value]="option">{{
+                option.label
+              }}</atlas-option>
+            </atlas-select>
+          </atlas-field>
+        </div>
+
+        <div class="field-container">
+          <atlas-field [variant]="FieldVariants.filled" [action]="Actions.primary" [size]="fieldSize.medium">
+            <atlas-field-label>Countries <span class="required-indicator">*</span></atlas-field-label>
+            <atlas-select #selectHtmlCountries placeholder="Select a country" [multiple]="true" [disabled]="true">
+              <atlas-option *ngFor="let option of countryList; index as i" [value]="option">{{
+                option.label
+              }}</atlas-option>
+            </atlas-select>
+          </atlas-field>
+        </div>
+      </div>
+    </div>
+    <div class="section">
+      <h3>size small</h3>
+      <div class="field-group">
+        <div class="field-container">
+          <atlas-field [variant]="FieldVariants.filled" [action]="Actions.primary" [size]="fieldSize.small">
+            <atlas-field-label>Countries <span class="required-indicator">*</span></atlas-field-label>
+            <atlas-select #selectHtmlCountries placeholder="Select a country" [multiple]="true">
+              <atlas-option *ngFor="let option of countryList; index as i" [value]="option">{{
+                option.label
+              }}</atlas-option>
+            </atlas-select>
+          </atlas-field>
+        </div>
+
+        <div class="field-container">
+          <atlas-field [variant]="FieldVariants.filled" [action]="Actions.primary" [size]="fieldSize.small">
+            <atlas-field-label>Countries <span class="required-indicator">*</span></atlas-field-label>
+            <atlas-select #selectHtmlCountries placeholder="Select a country" [multiple]="true" [disabled]="true">
+              <atlas-option *ngFor="let option of countryList; index as i" [value]="option">{{
+                option.label
+              }}</atlas-option>
+            </atlas-select>
+          </atlas-field>
+        </div>
+      </div>
+    </div>
+    <div class="section">
+      <h3>size large</h3>
+      <div class="field-group">
+        <div class="field-container">
+          <atlas-field [variant]="FieldVariants.filled" [action]="Actions.primary" [size]="fieldSize.large">
+            <atlas-field-label>Countries <span class="required-indicator">*</span></atlas-field-label>
+            <atlas-select #selectHtmlCountries placeholder="Select a country" [multiple]="true">
+              <atlas-option *ngFor="let option of countryList; index as i" [value]="option">{{
+                option.label
+              }}</atlas-option>
+            </atlas-select>
+          </atlas-field>
+        </div>
+
+        <div class="field-container">
+          <atlas-field [variant]="FieldVariants.filled" [action]="Actions.primary" [size]="fieldSize.large">
+            <atlas-field-label>Countries <span class="required-indicator">*</span></atlas-field-label>
+            <atlas-select #selectHtmlCountries placeholder="Select a country" [multiple]="true" [disabled]="true">
+              <atlas-option *ngFor="let option of countryList; index as i" [value]="option">{{
+                option.label
+              }}</atlas-option>
+            </atlas-select>
+          </atlas-field>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <atlas-divider class="dataset--divider"></atlas-divider>
+  <h3>Select with typeahead Component</h3>
+  <div>
+    <div class="section">
+      <div class="field-group">
+        <div class="field-container">
+          <atlas-field [action]="Actions.primary" [variant]="FieldVariants.outlined">
+            <atlas-field-label>Countries <span class="required-indicator">*</span></atlas-field-label>
+            <atlas-select
+              [typeahead]="true"
+              (typeaheadChange)="filterCountry($event)"
+              [placeholder]="'Select a country'"
+            >
+              <atlas-option *ngFor="let option of countriesFiltered" [value]="option">{{ option.label }}</atlas-option>
+            </atlas-select>
+          </atlas-field>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="section">
+    <div class="field-group">
+      <div class="field-container">
+        <h2 class="typography-desktop-title-2">Select with typeahead and multiple Component</h2>
+        <div class="row">
+          <div class="column">
+            <atlas-field>
+              <atlas-field-label>Provinces<span class="required-indicator">*</span></atlas-field-label>
+              <atlas-select
+                [formControl]="provincesControl"
+                [typeahead]="true"
+                (typeaheadChange)="filterProvinces($event)"
+                [placeholder]="'Select a province'"
+                [multiple]="true"
+                (opened)="provincesSelectOpened()"
+                (closed)="provincesSelectClosed()"
+                (openedChange)="provincesSelectOpenedChange()"
+              >
+                <atlas-option *ngFor="let option of provincesFiltered" [value]="option.label">{{
+                  option.label
+                }}</atlas-option>
+              </atlas-select>
+            </atlas-field>
+          </div>
+        </div>
+        <div class="column" style="display: flex; align-items: end">
+          <atlas-button (click)="removeSelectedProvinces()"> Remove all </atlas-button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <h2 class="typography-desktop-title-2">Select with typeahead, multiple and disabled Component</h2>
+  <div class="section">
+    <div class="field-group">
+      <div class="field-container">
+        <atlas-field>
+          <atlas-field-label>Provinces<span class="required-indicator">*</span></atlas-field-label>
+          <atlas-select
+            [formControl]="provincesControlDisabled"
+            [disabled]="provincesControlDisabled.disabled"
+            [typeahead]="true"
+            (typeaheadChange)="filterProvinces($event)"
+            [placeholder]="'Select a province'"
+            [multiple]="true"
+            (opened)="provincesSelectOpened()"
+            (closed)="provincesSelectClosed()"
+            (openedChange)="provincesSelectOpenedChange()"
+          >
+            <atlas-option *ngFor="let option of provincesFiltered" [value]="option.label">{{
+              option.label
+            }}</atlas-option>
+          </atlas-select>
+        </atlas-field>
+      </div>
+    </div>
+  </div>
+
+  <h2 class="typography-desktop-title-2">Simple Form with select countries and chips</h2>
+  <div class="section">
+    <div class="field-group">
+      <div class="field-container">
+        <form [formGroup]="simpleForm">
+          <atlas-field>
+            <atlas-field-label>Countries <span class="required-indicator">*</span></atlas-field-label>
+            <atlas-select
+              #selectCountries
+              formControlName="selectCountryFrom"
+              placeholder="Select a country"
+              [multiple]="true"
+              (valueChange)="onSelect($event)"
+            >
+              <atlas-option *ngFor="let option of countryList; index as i" [value]="option">{{
+                option.label
+              }}</atlas-option>
+            </atlas-select>
+          </atlas-field>
+          <atlas-chip-list>
+            <atlas-chip
+              class="chip-selection"
+              [removable]="true"
+              [flag]="selectedSectionsChips.code"
+              *ngFor="let selectedSectionsChips of chipList; let i = index"
+              (removed)="chipRemoved(i)"
+            >
+              {{ selectedSectionsChips.label }}
+            </atlas-chip>
+          </atlas-chip-list>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <h2>Atlas select with checkbox and select all option</h2>
+  <atlas-field>
+    <atlas-field-label>Countries <span class="required-indicator">*</span></atlas-field-label>
+    <atlas-select [multiple]="true" [placeholder]="'Select a country'" [showArrows]="false">
+      <atlas-option #optionRefAll [selectAll]="true" (selectionChange)="isCheckedSelectAll = !isCheckedSelectAll">
+        <atlas-checkbox
+          [isChecked]="isCheckedSelectAll"
+          labelTypography="typographyStyles-body-medium"
+          checkboxId="selectAllCheckboxId"
+          checkboxName="selectAllCheckboxName"
+          (onChange)="optionRefAll._selectViaInteraction()"
+        >
+          Select all
+        </atlas-checkbox>
+      </atlas-option>
+      <atlas-option
+        #optionRef
+        *ngFor="let option of countriesFiltered; let i = index"
+        [value]="option.label"
+        (selectionChange)="option.isChecked = !option.isChecked"
+      >
+        <atlas-checkbox
+          style="padding-left: 10px"
+          [isChecked]="option.isChecked"
+          labelTypography="typographyStyles-body-medium"
+          [checkboxId]="i.toString()"
+          [checkboxName]="i.toString()"
+          (onChange)="optionRef._selectViaInteraction()"
+        >
+          {{ option.label }}
+        </atlas-checkbox>
+      </atlas-option>
+    </atlas-select>
+  </atlas-field>
+  <h2>Easy example for Select</h2>
+  <atlas-field>
+  <atlas-select
+    *ngIf="countries"
+    [typeahead]="true"
+    (typeaheadChange)="filterCountry($event)"
+  >
+    <atlas-option
+      *ngFor="let country of countriesFiltered"
+      [imageIcon]="country.code"
+      [label]="country.label"
+      [value]="country.code"
+    ></atlas-option>
+  </atlas-select>
+</atlas-field>
+  <h2>Select with select all option</h2>
+  <div class="field-container">
+    <atlas-field >
+      <atlas-field-label>Countries <span class="required-indicator">*</span></atlas-field-label>
+      <atlas-select [multiple]="true">
+        <atlas-option [selectAll]="true"  >    
+          Select all
+      </atlas-option>
+        <atlas-option *ngFor="let option of countryList; index as i" [value]="option">{{
+          option.label
+        }}</atlas-option>
+      </atlas-select>
+    </atlas-field>
+  </div>
+</div>

@@ -1,0 +1,126 @@
+<ng-template #cancelBtnDefault>
+  <atlas-icon-button
+    [disabled]="activeTimeUnit === timeUnit.HOUR"
+    [dense]="true"
+    [size]="size"
+    [icon]="'icon-chevron-left-24'"
+  ></atlas-icon-button>
+</ng-template>
+<ng-template #confirmBtnDefault>
+  <atlas-icon-button
+    [disabled]="activeTimeUnit === timeUnit.MINUTE"
+    [dense]="true"
+    [size]="size"
+    [icon]="'icon-chevron-right-24'"
+  ></atlas-icon-button>
+</ng-template>
+<div atlas-dialog-content>
+  <timepicker-content
+    [appendToInput]="data.appendToInput"
+    [inputElement]="data.inputElement"
+    [timepickerTheme]="data.theme"
+  >
+    <div class="timepicker" [ngClass]="data.timepickerClass">
+      <!-- TODO: comment dial header  
+          <div class="timepicker-header">
+        <timepicker-dial
+          [color]="color"
+          [format]="data.format"
+          [hour]="(selectedHour | async)?.time.toString()"
+          [minute]="(selectedMinute | async)?.time.toString()"
+          [period]="selectedPeriod | async"
+          [activeTimeUnit]="activeTimeUnit"
+          [minTime]="data.minTime"
+          [maxTime]="data.maxTime"
+          [isEditable]="data.enableKeyboardInput"
+          [editableHintTmpl]="data.editableHintTmpl"
+          [minutesGap]="data.minutesGap"
+          [hoursOnly]="data.hoursOnly"
+          (periodChanged)="changePeriod($event)"
+          (timeUnitChanged)="changeTimeUnit($event)"
+          (hourChanged)="onHourChange($event)"
+          (minuteChanged)="onMinuteChange($event)"
+        ></timepicker-dial>
+      </div> -->
+      <div class="timepicker__main-content">
+        <div class="timepicker__body" [ngSwitch]="activeTimeUnit">
+          <div *ngSwitchCase="timeUnit.HOUR">
+            <timepicker-24-hours-face
+              *ngIf="data.format === 24; else ampmHours"
+              [color]="color"
+              (hourChange)="onHourChange($event)"
+              [selectedHour]="selectedHour | async"
+              [minTime]="data.minTime"
+              [maxTime]="data.maxTime"
+              [format]="data.format"
+              (hourSelected)="onHourSelected($event)"
+            ></timepicker-24-hours-face>
+            <ng-template #ampmHours>
+              <timepicker-12-hours-face
+                [color]="color"
+                (hourChange)="onHourChange($event)"
+                [selectedHour]="selectedHour | async"
+                [period]="selectedPeriod | async"
+                [minTime]="data.minTime"
+                [maxTime]="data.maxTime"
+                (hourSelected)="onHourSelected($event)"
+              ></timepicker-12-hours-face>
+            </ng-template>
+          </div>
+          <timepicker-minutes-face
+            *ngSwitchCase="timeUnit.MINUTE"
+            [color]="color"
+            [selectedMinute]="selectedMinute | async"
+            [selectedHour]="(selectedHour | async)?.time"
+            [minTime]="data.minTime"
+            [maxTime]="data.maxTime"
+            [format]="data.format"
+            [period]="selectedPeriod | async"
+            [minutesGap]="data.minutesGap"
+            (minuteChange)="onMinuteChange($event)"
+            (minuteSelected)="onMinuteSelected($event)"
+            (mouseUp)="onMinuteMouseUp()"
+          ></timepicker-minutes-face>
+        </div>
+      </div>
+    </div>
+  </timepicker-content>
+</div>
+<div atlas-dialog-actions>
+  <div class="timepicker-header">
+    <timepicker-dial
+      [color]="color"
+      [format]="data.format"
+      [hour]="(selectedHour | async)?.time.toString()"
+      [minute]="(selectedMinute | async)?.time.toString()"
+      [period]="selectedPeriod | async"
+      [activeTimeUnit]="activeTimeUnit"
+      [minTime]="data.minTime"
+      [maxTime]="data.maxTime"
+      [isEditable]="data.enableKeyboardInput"
+      [editableHintTmpl]="data.editableHintTmpl"
+      [minutesGap]="data.minutesGap"
+      [hoursOnly]="data.hoursOnly"
+      (periodChanged)="changePeriod($event)"
+      (timeUnitChanged)="changeTimeUnit($event)"
+      (hourChanged)="onHourChange($event)"
+      (minuteChanged)="onMinuteChange($event)"
+    ></timepicker-dial>
+  </div>
+  <div class="timepicker__unit-selector">
+    <div (click)="activeTimeUnit = timeUnit.HOUR">
+      <ng-container
+        *ngTemplateOutlet="
+          data.cancelBtnTmpl ? data.cancelBtnTmpl : cancelBtnDefault
+        "
+      ></ng-container>
+    </div>
+    <div (click)="activeTimeUnit = timeUnit.MINUTE">
+      <ng-container
+        *ngTemplateOutlet="
+          data.confirmBtnTmpl ? data.confirmBtnTmpl : confirmBtnDefault
+        "
+      ></ng-container>
+    </div>
+  </div>
+</div>

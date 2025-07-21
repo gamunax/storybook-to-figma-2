@@ -1,0 +1,62 @@
+<div class="legacy-c-chip-manager">
+  <div class="legacy-c-chip-manager__add-chip" *ngIf="isUserInput">
+    <div class="row">
+      <div class="column small-7">
+        <input [(ngModel)]="userInputChip" (keyup.enter)="addCustomChip();" class="textfield" name="userInputChip" [placeholder]="placeholder">
+      </div>
+      <div class="column shrink legacy-c-chip-manager__add-chip-button">
+        <atlas-button
+          [disabled]="userInputChip===''"
+          (onClick)="addCustomChip()"
+        >
+          {{ caption }}
+        </atlas-button>
+      </div>
+    </div>
+
+
+    <div class="legacy-c-chip-manager__status">
+      <div [hidden]="!userInputChip">
+        <atlas-chip-list>
+          <atlas-chip [removable]="true">{{ userInputChip }}</atlas-chip>
+        </atlas-chip-list>
+      </div>
+    </div>
+
+    <div class="legacy-c-chip-manager__chip-bank">
+      <div *ngFor="let chip of userInputChips; let i=index">
+        <atlas-chip-list>
+          <atlas-chip [removable]="true" (removed)="deleteUserInputChip(i)">{{ chip }}</atlas-chip>
+        </atlas-chip-list>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="row" *ngIf="!isUserInput">
+    <div class="small-{{ selectColSize }} columns legacy-o-form-input-field">
+      <select #selectElement class="form-control" (change)="chipHandler()" [(ngModel)]="newChip">
+        <option [value]="caption" disabled selected>{{ caption }}</option>
+        <option [value]="selectAll" *ngIf="selectAllOption">{{ selectAll }}</option>
+        <option [value]="deselectAll" *ngIf="deselectAllOption">{{ deselectAll }}</option>
+        <option [disabled]="chipLabels.indexOf(chip.label) > -1" *ngFor="let chip of data; let i = index" [value]="i">{{chip.label}}</option>
+      </select>
+    </div>
+    <div class="legacy-c-chip-manager__chip-bank columns legacy-u-align-center--vertical">
+      <div *ngFor="let chip of chips; let i=index">
+        <atlas-chip-list>
+          <atlas-chip
+            (removed)="deleteChip(i)"
+            [removable]="true"
+            [disabled]="chip.dismissDisabled"
+          >
+            <legacy-badge [theme]="chip.badgeTheme" *ngIf="chip.badgeContent">{{ chip.badgeContent }}</legacy-badge>{{ chip.label }}
+          </atlas-chip>
+        </atlas-chip-list>
+
+      </div>
+    </div>
+  </div>
+
+  <ng-content></ng-content>
+</div>

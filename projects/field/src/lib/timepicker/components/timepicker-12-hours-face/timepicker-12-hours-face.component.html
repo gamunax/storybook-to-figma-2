@@ -1,0 +1,7 @@
+<timepicker-face
+  [color]="color"
+  [selectedTime]="selectedHour"
+  [faceTime]="hoursList"
+  (timeChange)="hourChange.next($event)"
+  (timeSelected)="onTimeSelected($event)"
+></timepicker-face>

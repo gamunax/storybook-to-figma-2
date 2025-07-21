@@ -1,0 +1,487 @@
+//-------------------------------------------------------------------------------------------
+// Mercer UI Components
+// Tree Table Component
+//-------------------------------------------------------------------------------------------
+
+
+$atlas-breakpoints: (
+        xsmall : 0,
+        small  :  375px,
+        medium :  768px,
+        large  : 1280px,
+        xlarge : 1440px,
+) !default;
+
+$legacy-primary-color: #005C96 !default;
+/// Sets the default selected background color of table cell headers
+/// @type Color
+$legacy-tree-table-cell-header-selected-background-color: transparentize($legacy-primary-color, 0.9) !default;
+$legacy-black-color: #404040 !default;
+$legacy-disabled-color: #999999 !default;
+$global-namespace: 'legacy';
+$legacy-table-thead-border: 2px solid #CCCCCC !default;
+$legacy-table-cell-header-font-color: $legacy-black-color !default;
+//$legacy-table-cell-padding: $mos-spacer-md;
+//$legacy-font-medium-stack: "#{$mos-font-medium-family}", $mos-font-stack;
+$legacy-white-color: #ffffff;
+//$legacy-table-dense-cell-padding: $mos-spacer-sm;
+.legacy-u-display--flex {
+  display: flex;
+}
+$legacy-theme-colors: (
+        primary: #007bff,
+        secondary: #6c757d,
+        success: #28a745,
+        danger: #dc3545
+);
+
+$legacy-alt-theme-colors: (
+        warning: #ffc107,
+        info: #17a2b8,
+        light: #f8f9fa,
+        dark: #343a40
+);
+
+/// Sets the default min-width of table cell headers
+/// @type Number
+$legacy-tree-table-cell-header-min-width: 3.4375rem;
+
+
+
+/// Sets the default table cell header selected border styles
+/// @type Border
+$legacy-tree-table-cell-header-selected-border: 2px solid $legacy-primary-color !default;
+
+/// Sets the default icon color of icons inside of table cell headers
+/// @type Color
+$legacy-tree-table-cell-header-icon-color: $legacy-black-color !default;
+
+/// Sets the default table cell checkbox width
+/// @type Number
+$legacy-tree-table-cell-checkbox-width: 1.375rem;
+
+/// Sets the default table cell checkbox height
+/// @type Number
+$legacy-tree-table-cell-checkbox-height: 1.375rem;
+
+/// Sets the default table cell header disabled icon color
+/// @type Color
+$legacy-tree-table-cell-header-disabled-icon-color: #999999 !default;
+
+/// Sets the default table row selected background color
+/// @type Color
+$legacy-tree-table-row-selected-background-color: transparent !default;
+
+/// Sets the default table column cell selected background color
+/// @type Color
+$legacy-tree-table-column-selected-background-color: transparent !default;
+
+/// Sets the default table row highlighted background color
+/// @type Color
+$legacy-tree-table-row-highlighted-background-color: #BBEEF9 !default;
+
+/// Sets the default color of the text in the first column
+/// @type Color
+$legacy-tree-table-first-column-text-color: #005C96 !default;
+
+/// Sets the default color expand/collapse icons
+/// @type Color
+$legacy-tree-table-first-column-icon-color: #F0F0F0 !default;
+
+/// Sets the default table column cell max-width
+/// @type Number
+$legacy-tree-table-cell-max-width: 11.25rem !default;
+
+/// Sets the default table column cell header max-width
+/// @type Number
+$legacy-tree-table-cell-header-max-width: $legacy-tree-table-cell-max-width !default;
+
+/// Sets the default table column border
+/// @type Border
+$legacy-tree-table-column-border: 1px solid #CCCCCC;
+
+/// Set the default disabled color for headers
+/// @type Color
+$legacy-tree-table-header-disable-color: $legacy-disabled-color;
+
+mercer-tree-table {
+  position: relative;
+  display: block;
+}
+
+.#{$global-namespace}-c-tree-table {
+  $c: &;
+
+  &#{$c}__sticky {
+    position: absolute;
+    top: 0;
+    margin: 0;
+    thead {
+      th,
+      th.#{$global-namespace}-c-tree-table__column__header--highlight {
+        // Removed max-width alignment fix for Firefox,
+        // The max-width doesn't work as intended its creating some weird width calculations.
+        max-width: none;
+      }
+    }
+  }
+
+  &--overflow-x {
+    max-width: 100%;
+    overflow-x: auto;
+    .legacy-u-table--original {
+      min-width: 100%;
+    }
+  }
+
+  &--fixed-layout {
+    table-layout: fixed;
+  }
+
+  // Table head
+  thead {
+
+    a:hover {
+      text-decoration: none;
+    }
+
+    th, td {
+      min-width: $legacy-tree-table-cell-header-min-width;
+    }
+
+    th,
+    th.#{$global-namespace}-c-tree-table__column__header--highlight {
+      max-width: $legacy-tree-table-cell-header-max-width;
+      background-color: transparent;
+      border-bottom: $legacy-table-thead-border;
+      padding: 0;
+      user-select: none;
+
+      &.legacy-u-text-right {
+        a, span {
+          justify-content: flex-end;
+        }
+      }
+
+      &.legacy-u-text-left {
+        a, span {
+          justify-content: flex-start;
+        }
+      }
+
+      &.legacy-u-text-center {
+        a, span {
+          justify-content: center;
+        }
+      }
+
+      mercer-icon {
+        display: inline-block;
+        top: -1px;
+        color: $legacy-tree-table-cell-header-icon-color;
+        margin-right: 0.25rem;
+
+      }
+
+      &:not(.#{$global-namespace}-c-tree-table__column-filter--container) {
+        input[type="checkbox"]+label {
+          width: $legacy-tree-table-cell-checkbox-width;
+          height: $legacy-tree-table-cell-checkbox-height;
+          margin: 0 auto;
+          display: block;
+          text-align: center;
+          right: 0;
+          padding: 0;
+        }
+      }
+
+      >a,
+      >span {
+        display: flex;
+        color: $legacy-table-cell-header-font-color;
+        //padding: $legacy-table-cell-padding;
+        white-space: nowrap;
+        input[type="text"] {
+          margin: 0;
+          border-bottom-color: transparent;
+          //font-family: $legacy-font-medium-stack;
+          width: auto;
+          padding: 0;
+        }
+      }
+      a {
+        &:hover {
+          color: $legacy-table-cell-header-font-color;
+        }
+      }
+      // States
+      &.#{$global-namespace}-c-tree-table {
+        &__header--disabled {
+          background: none;
+          border-bottom: $legacy-table-thead-border;
+          mercer-icon {
+            color: $legacy-tree-table-cell-header-disabled-icon-color;
+          }
+        }
+        &--column--select {
+          white-space: nowrap;
+
+          .#{$global-namespace}-c-tree-table__column__checkbox--select {
+            padding-right: 0;
+            margin-right: 0.3125rem;
+            display: inline-block;
+            & + a,
+            & + span {
+              width: 85%;
+            }
+          }
+
+          a,
+          span {
+            width: 100%;
+            vertical-align: top;
+            display: inline-block;
+          }
+
+        }
+        // Set thead th whitespace
+        // headerWrapText input set to true
+        &__header {
+          &--wrap-text {
+            white-space: normal;
+            a,
+            span {
+              white-space: normal;
+
+              &.#{$global-namespace}-c-tree-table__header--checkbox-all,  &.#{$global-namespace}-c-tree-table__header--checkbox-deselect {
+                white-space: normal;
+                width: 100%;
+              }
+
+              &.#{$global-namespace}-c-tree-table__header--hide {
+                visibility: hidden;
+              }
+
+              &.#{$global-namespace}-c-tree-table__header--disable {
+                color: $legacy-tree-table-header-disable-color
+              }
+
+              mercer-icon {
+                margin-left: 0.3125rem;
+              }
+            }
+          }
+          &--word-break {
+            a,
+            span {
+              overflow-wrap: break-word;
+              word-wrap: break-word;
+              hyphens: auto;
+              display: block;
+            }
+          }
+          &--truncate-text {
+            a,
+            span {
+              white-space: nowrap;
+              overflow: hidden;
+              text-overflow: ellipsis;
+              display: block;
+            }
+          }
+        }
+      }
+      // Deselect
+      .#{$global-namespace}-c-tree-table__header--checkbox-deselect {
+        label {
+          &:before {
+            top: 3px;
+            left: 5px;
+            width: 10px;
+            height: 10px;
+            border-top: 0px solid transparent;
+            border-left: 0px solid transparent;
+            border-right: 0px solid $legacy-white-color;
+            border-bottom: 2px solid $legacy-white-color;
+            transform: rotateZ(0);
+          }
+          &:after {
+            background-color: #666666;
+            border-color: #666666;
+          }
+        }
+      }
+    }
+    .#{$global-namespace}-c-tree-table__sub-header-container {
+      th {
+        //padding: $legacy-table-cell-padding;
+      }
+
+      &.#{$global-namespace}-c-tree-table__row {
+        &--link:hover {
+          cursor: pointer;
+        }
+      }
+    }
+  }
+  // Table body
+  tbody {
+    > tr {
+      &.#{$global-namespace}-c-tree-table__row {
+        &--link {
+          &:hover {
+            cursor: pointer;
+          }
+        }
+        &--highlighted {
+          background-color: $legacy-tree-table-row-highlighted-background-color;
+        }
+        &--word-break {
+          td > a,span {
+            white-space: normal;
+            overflow-wrap: break-word;
+            word-wrap: break-word;
+            hyphens: auto;
+            display:block;
+          }
+        }
+      }
+    }
+
+    th {
+      // Set tbody th whitespace
+      // headerWrapText input set to true
+      &__row--wrap-text {
+        white-space: normal;
+        a,
+        span {
+          white-space: normal;
+        }
+      }
+    }
+
+    td {
+      vertical-align: inherit;
+      max-width: $legacy-tree-table-cell-max-width;
+
+      input[type="text"] {
+        margin: 0;
+        width: auto;
+        border-bottom-color: transparent;
+      }
+
+      input[type="checkbox"] + label {
+        display: block;
+        width: $legacy-tree-table-cell-checkbox-width;
+        height: $legacy-tree-table-cell-checkbox-width;
+        margin: 0 auto;
+        text-align: center;
+        right: 0;
+        padding: 0;
+      }
+
+      .#{$global-namespace}-c-icon-button {
+        &:active,
+        &:focus {
+          background-color: transparentize($legacy-black-color, .9)
+        }
+      }
+      &.#{$global-namespace}-c-tree-table__first-column {
+        font-weight: 600;
+        color: $legacy-tree-table-first-column-text-color;
+        mercer-icon {
+          color: $legacy-tree-table-first-column-icon-color;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+
+  // Dense table component
+  &.#{$global-namespace}-u-table--dense {
+    thead {
+      th {
+        a,
+        span {
+          //padding: $legacy-table-dense-cell-padding;
+        }
+        &.#{$global-namespace}-c-tree-table__header--sortable {
+          a,
+          span {
+            //padding: $legacy-table-dense-cell-padding $legacy-table-dense-cell-padding $legacy-table-dense-cell-padding 0;
+          }
+        }
+      }
+    }
+  }
+
+  // Responsive table
+  &.#{$global-namespace}-u-table--responsive {
+    tbody {
+      td {
+        @each $name, $width in $atlas-breakpoints {
+          @if $width > 0 {
+            @media (max-width: $width) {
+              max-width: 100%;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+// Column bordered table
+.#{$global-namespace}-u-table--column-bordered {
+  th:not(:last-child), td:not(:last-child) {
+    border-right: $legacy-tree-table-column-border;
+  }
+}
+
+// Sortable table
+.#{$global-namespace}-u-table--sortable {
+  thead {
+    th,
+    th.#{$global-namespace}-c-tree-table__column__header--highlight {
+      &.#{$global-namespace}-c-tree-table {
+        &__header {
+          &--active {
+            background-color: $legacy-tree-table-cell-header-selected-background-color;
+            border-bottom: $legacy-tree-table-cell-header-selected-border;
+          }
+          &--wrap-text {
+            a,
+            span {
+              mercer-icon:first-child {
+                margin-left: 0;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+// Table Theming
+.#{$global-namespace}-t-table {
+  @each $name, $color in map-merge($legacy-theme-colors, $legacy-alt-theme-colors) {
+    &--#{$name} {
+
+      // Table head
+      thead {
+        th, th.#{$global-namespace}-c-tree-table__header--active {
+          background-color: transparentize($color, 0.9);
+          border-bottom: 2px solid $color;
+        }
+      }
+
+      // Table body
+      tbody {
+        td {
+          vertical-align: inherit;
+        }
+      }
+    }
+  }
+}

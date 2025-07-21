@@ -1,0 +1,22 @@
+.field {
+  input, textarea {
+    all: inherit;
+    background: transparent;
+    border: 0;
+    width: 100%;
+    text-align: left;
+    &:focus {
+      border: 0;
+      outline: none;
+    }
+    &:disabled {
+      pointer-events: none;
+    }
+  }
+  textarea {
+    // Only allow resizing along the Y axis.
+    resize: vertical;
+    overflow: auto;
+    padding: 16px 12px;
+  }
+}

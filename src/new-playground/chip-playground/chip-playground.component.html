@@ -1,0 +1,36 @@
+<div class="container padding-y-9 padding-x-9 page-bg">
+<!-- Chip Component Demo Header -->
+<h2>Chip Component Demo</h2>
+<div class="header">
+  <atlas-theming-helper>
+    <label>Custom theme</label>
+  </atlas-theming-helper>
+</div>
+
+<div class="section" *ngFor="let style of chipStyles">
+  <h2>{{ style | titlecase }}</h2>
+  <div class="chip-sizes" *ngFor="let size of chipSizes">
+    <h3>{{ size | titlecase }}</h3>
+    <div class="chip-group" *ngFor="let color of colors">
+      <atlas-chip-list>
+        <atlas-chip
+          *ngFor="let chip of chips"
+          [removable]="chip.isRemovable"
+          (removed)="removeChip($event)"
+          (selectionChange)="selectionChip($event)"
+          [color]="color"
+          [disabled]="chip.isDisabled"
+          [style]="style"
+          [size]="size"
+          [indicator]="chip.isIndicator"
+          [flag]="chip.flag"
+          [customClass]="'custom-class-test'"
+        >
+          <atlas-icon *ngIf="chip.hasAvatar" icon="icon-profile-24"></atlas-icon>
+          <atlas-icon *ngIf="chip.hasIcon" icon="icon-check-circle-24"></atlas-icon>
+            Chip
+          </atlas-chip>
+        </atlas-chip-list>
+    </div>
+  </div>
+</div>

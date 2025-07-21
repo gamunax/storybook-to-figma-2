@@ -1,0 +1,73 @@
+<div class="row expanded collapse" style="
+    background: var(--semanticColor-layer-neutral-02);
+  ">
+    <div class="column small-12" style="padding-bottom: 0;">
+        <atlas-app-bar>
+            <span style="
+            color: var(--semanticColor-background-brand-strong-rest);
+            display: flex;
+            align-items: center;
+            width: 240px;
+            justify-content: space-between;">
+              <img height="20px" [src]="logoUrl" alt="Mercer" />
+              <h3 class="typographyStyles-body-largeAlt">|</h3>
+              <h3 class="typographyStyles-body-smallAlt">Acme Admin</h3>
+            </span>
+            <span class="app-bar-separator"></span>
+            <atlas-avatar menuTrigger (triggered)="demoMenu.toggleMenu($event)" [action]="action" [indicatorAction]="success" [radius]="radius" class="data-avatar__hover">OP</atlas-avatar>
+            <div style="
+            position: absolute;
+            right: 10px;
+            top: 56px;
+            width: 184px;
+            ">
+            <atlas-menu #demoMenu action="primary">
+              <atlas-list>
+                <atlas-list-item>Original Poster</atlas-list-item>
+              </atlas-list>
+              <hr style="
+              border-color: #e5e5e5;
+              border-style: solid;
+              margin: 8px 0;">
+                <atlas-list>
+                <atlas-list-item *ngFor="let item of itemsUser" [item]="item" [routerLink]="item.value">
+                  <atlas-icon *ngIf="item.icon" style="margin-right: 12px;" [size]="smallIconSize" [icon]="item.icon"></atlas-icon> 
+                  <div>
+                    {{ item.label }} 
+                    <!-- <div *ngIf="item.secondary" class="typographyStyles-body-small">{{item.secondary}}</div> -->
+                  </div>
+                </atlas-list-item>
+              </atlas-list>
+              <hr style="
+              border-color: #e5e5e5;
+              border-style: solid;
+              margin: 8px 0;">
+              <atlas-list>
+                <atlas-list-item (select)="signOut($event)">
+                <atlas-icon [size]="smallIconSize" icon="icon-logout-24" style="margin-right: 12px;"></atlas-icon>
+                Sign out</atlas-list-item>
+              </atlas-list>
+              </atlas-menu>
+            </div>
+        </atlas-app-bar>
+    </div>
+    <div class="column shrink" style="padding-top: 0;">
+        <atlas-drawer [density]="density" [action]="drawerPrimary">
+            <atlas-button [variant]="text_variant" [action]="action" (click)="openMenu($event)" [expand]="open ? false : true">
+                <atlas-icon color="colors-surface-default-main" [icon]="open ? 'icon-arrow-import-export-left-24' : 'icon-arrow-import-export-right-24'"></atlas-icon>
+            </atlas-button>
+            <atlas-list>
+                <atlas-list-item *ngFor="let item of items" [item]="item" [action]="action" [routerLink]="item.value">
+                    <atlas-icon *ngIf="item.icon" style="margin-right: 34px;" [size]="iconSize" [icon]="item.icon">
+                    </atlas-icon>
+                    <div>
+                        <span *ngIf="open" class="typographyStyles-body-small">{{ item.label }}</span>
+                    </div>
+                </atlas-list-item>
+            </atlas-list>
+        </atlas-drawer>
+    </div>
+    <div class="column">
+      <router-outlet></router-outlet>
+    </div>
+</div>

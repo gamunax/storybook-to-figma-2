@@ -1,0 +1,168 @@
+$base: 2px;
+$padding-tokens: ();
+$contrast-colors: (
+  "dark-15": "rgba(0, 0, 0, 0.15)"
+);
+
+:root {
+  --colors-gradient-blue-teal: linear-gradient(145deg,  rgba(0, 119, 168, 1) 0%,  rgba(0, 157, 224, 1) 100%);
+  --colors-gradient-blue-purple: linear-gradient(145deg,  rgba(138, 70, 175, 1) 0%,  rgba(0, 157, 224, 1) 100%);
+  --colors-gradient-blue-pink: linear-gradient(145deg,  rgba(238, 61, 139, 1) 0%,  rgba(0, 157, 224, 1) 100%);
+  --colors-gradient-blue-turquoise: linear-gradient(145deg,  rgba(0, 150, 143, 1) 0%,  rgba(0, 157, 224, 1) 100%);
+    /* Font Sizes (Deprecated) */
+  --fontSizes-desktop-caption1-deprecated: 13px;
+  --fontSizes-desktop-display-deprecated: 96px;
+  --fontSizes-mobile-caption1-deprecated: 13px;
+  --fontSizes-mobile-body3-deprecated: 13px;
+
+  /* Font Weights (Deprecated) */
+  --fontWeights-100-deprecated: ExtraLight;
+  --fontWeights-300-deprecated: Thin;
+  --fontWeights-800-deprecated: ExtraBold;
+  --fontWeights-900-deprecated: Black;
+  --fontWeights-400-book-deprecated: Book;
+
+  /* Letter Spacing (Deprecated) */
+  --letterSpacing-none-deprecated: 0%;
+  --letterSpacing-increase-base-deprecated: 0.05%;
+  --letterSpacing-decrease-base-deprecated: -0.05%;
+  --letterSpacing-increase-2-deprecated: 0.10%;
+  --letterSpacing-increase-3-deprecated: 0.15%;
+  --letterSpacing-increase-4-deprecated: 0.20%;
+  --letterSpacing-increase-5-deprecated: 0.25%;
+  --letterSpacing-increase-10-deprecated: 0.50%;
+  --letterSpacing-decrease-10-deprecated: -0.50%;
+  --letterSpacing-decrease-30-deprecated: -1.50%;
+
+  /* Line Heights (Deprecated) */
+  --lineHeights-desktop-h2-deprecated: 72px;
+  --lineHeights-desktop-display-deprecated: 120px;
+  --lineHeights-mobile-caption2-deprecated: 12px;
+
+  @each $key, $value in $contrast-colors {
+    --color-contrast-#{$key}: #{$value};
+  };
+  --scale-content-spacing-base: 2px;
+  --spacing-base: var(--scale-content-spacing-base);
+  @for $i from 2 through 12 {
+    --spacing-vertical-#{$i}: calc(var(--spacing-base) * #{$i});
+  }
+  @for $i from 2 through 12 {
+    --spacing-horizontal-#{$i}: calc(var(--spacing-base) * #{$i});
+  }
+  @for $i from 2 through 72 {
+    --spacing-#{$i}: calc(var(--spacing-base) * #{$i});
+  }
+  --spacing-none: 0;
+}
+
+$boxShadow: (
+  "flat": (
+    "x": 0px,
+    "y": 0px,
+    "blur": 0px,
+    "spread": 0px,
+    "color": var(--color-contrast-dark-15)
+  ),
+  "xsmall": (
+    "x": 0px,
+    "y": $base,
+    "blur": $base,
+    "spread": 0px,
+    "color": var(--color-contrast-dark-15)
+  ),
+  "raised": (
+    "x": 0px,
+    "y": $base * 2,
+    "blur": $base * 2,
+    "spread": 0px,
+    "color": var(--color-contrast-dark-15)
+  ),
+  "elevated": (
+    "x": 0px,
+    "y": $base * 4,
+    "blur": $base * 4,
+    "spread": 0px,
+    "color": var(--color-contrast-dark-15)
+  ),
+  "floating": (
+    "x": 0px,
+    "y": $base * 8,
+    "blur": $base * 8,
+    "spread": 0px,
+    "color": var(--color-contrast-dark-15)
+  ),
+  "lifted": (
+    "x": 0px,
+    "y": $base * 12,
+    "blur": $base * 12,
+    "spread": 0px,
+    "color": var(--color-contrast-dark-15)
+  )
+);
+
+@each $elevation, $value in $boxShadow {
+  .box-shadow-elevation-#{$elevation} {
+    box-shadow: map-get($value, "x") map-get($value, "y") map-get($value, "blur") map-get($value, "spread") map-get($value, "color");
+  }
+}
+
+@for $i from 0 through 72 {
+  $padding-tokens: map-merge($padding-tokens, (
+    '#{$i}': $base * $i
+  ));
+}
+
+@each $token, $value in $padding-tokens {
+
+  @if $token == "0" {
+    .margin-#{$token} {
+      margin: $value;
+    }
+    .padding-#{$token} {
+      padding: $value;
+    }
+  }
+
+  .padding-x-#{$token} {
+    padding-left: $value;
+    padding-right: $value;
+  }
+
+  .padding-y-#{$token} {
+    padding-top: $value;
+    padding-bottom: $value;
+  }
+
+  .padding-left-#{$token} {
+    padding-left: $value;
+  }
+
+  .padding-top-#{$token} {
+    padding-top: $value;
+  }
+  
+  .padding-right-#{$token} {
+    padding-right: $value;
+  }
+
+  .padding-bottom-#{$token} {
+    padding-bottom: $value;
+  }
+
+  .margin-left-#{$token} {
+    margin-left: $value;
+  }
+
+  .margin-right-#{$token} {
+    margin-right: $value;
+  }
+
+  .margin-bottom-#{$token} {
+    margin-bottom: $value;
+  }
+
+  .margin-top-#{$token} {
+    margin-top: $value;
+  }
+}

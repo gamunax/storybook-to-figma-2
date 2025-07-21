@@ -1,0 +1,614 @@
+@import "../../../scss/legacy_shared_mosui.scss";
+@import "../../../scss/legacy_components.scss";
+@import "./form-v2.component";
+@import "./select-v2.component";
+@import "./input-v2.component";
+@import "./form-global.component";
+
+// //-------------------------------------------------------------------------------------------
+// // Legacy UI Components
+// // Autocomplete Component
+// //-------------------------------------------------------------------------------------------
+
+@if $mos-form == true and $mos-form-v2 != true {
+  // Native form fields
+  @include mos-form-global;
+
+  // Components using native form fields
+  @include mos-autocomplete($mos-form-v2: false, $variant-name: 'default');
+  @include mos-mercer-select($mos-form-v2: false, $variant-name: 'default');
+}
+
+@if $mos-form-v2 == true {
+  // Native form fields
+  @include mos-form-global-v2;
+  @include mos-form-input-v2;
+  @include mos-form-select-v2;
+
+  // Components using native form fields
+  @include mos-autocomplete($mos-form-v2: true, $variant-name: 'version2');
+  @include mos-mercer-select($mos-form-v2: true, $variant-name: 'version2');
+}
+
+/// Autocomplete scroll
+/// @type Boolean
+$mos-autocomplete-scroll: true !default;
+
+/// Autocomplete height
+/// Sets height if scroll is enabled
+/// @type Number
+$mos-autocomplete-height: rem-calc(300) !default;
+
+/// Autocomplete group default box shadow depth
+/// @type Number
+$mos-autocomplete-group-box-shadow-depth: 2;
+
+/// Autocomplete background color
+/// @type Color
+$mos-autocomplete-background-color: $mos-white-color !default;
+
+/// Autocomplete font color
+/// @type Color
+$mos-autocomplete-font-color: $mos-primary-color !default;
+
+/// Autocomplete font hover color
+/// @type Color
+$mos-autocomplete-font-hover-color: $mos-primary-color !default;
+
+/// Autocomplete group header padding
+/// @type Number
+$mos-autocomplete-group-header-padding: size(5xsm) size(xsm);
+
+/// Autocomplete group header background color
+/// @type Color
+$mos-autocomplete-group-header-background-color: transparentize($mos-autocomplete-font-color, .9) !default;
+
+/// Autocomplete item border
+/// @type Color
+$mos-autocomplete-item-border: 1px solid color(onyx-lighter, 200) !default;
+
+/// Autocomplete item padding
+/// @type Number
+$mos-autocomplete-item-padding: size(5xsm) size(2xlg);
+
+/// Autocomplete item background color
+/// @type Color
+$mos-autocomplete-item-background-color: $mos-white-color !default;
+
+/// Autocomplete item background hover color
+/// @type Color
+$mos-autocomplete-item-background-hover-color: color(onyx-lighter, 100) !default;
+
+/// Autocomplete item selected background color
+/// @type Color
+$mos-autocomplete-item-selected-background-color: $mos-primary-color !default;
+
+/// Autocomplete container border-bottom
+/// @type Color
+$mos-autocomplete-container-border-bottom: 1px solid $mos-disabled-light-color !default;
+
+/// Autocomplete container read-only border-bottom
+/// @type Color
+$mos-autocomplete-container-read-only-border-bottom: 1px dashed $mos-black-color !default;
+
+/// Select dropdown visible option limit
+/// @type Number
+$mos-autocomplete-max-options: 6;
+
+/// Autocomplete container max-height
+/// @type Number
+$mos-autocomplete-container-max-height: calc(#{$mos-form-v2-elements-min-height} * #{$mos-autocomplete-max-options});
+
+/// Autocomplete action padding
+/// @type Number
+$mos-autocomplete-action-padding: size(5xsm) size(xsm);
+
+/// Autocomplete action background color
+/// @type Color
+$mos-autocomplete-action-background-color: $mos-white-color !default;
+
+/// Autocomplete action background hover color
+/// @type Color
+$mos-autocomplete-action-background-hover-color: color(onyx-lighter, 100) !default;
+
+/// Autocomplete action item font hover color
+/// @type Color
+$mos-autocomplete-action-font-hover-color: $mos-primary-color !default;
+
+@mixin mos-autocomplete($mos-form-v2, $variant-name) {
+  $c: #{$global-namespace}-c-autocomplete;
+
+  .#{$global-namespace}-c-autocomplete {
+
+    &.#{$global-namespace}-c-autocomplete--#{$variant-name} {
+      display: block;
+      position: relative;
+
+      .#{$c}__container {
+        background: $mos-autocomplete-background-color;
+        width: 100%;
+
+        &--box-shadow {
+          @include mos-box-shadow($mos-autocomplete-group-box-shadow-depth);
+        }
+
+        @if $mos-form-v2 == false {
+          &--absolute {
+            position: absolute;
+            margin-top: -1.0rem;
+            top: 100%;
+            left: 0;
+            z-index: z-index(dropdown);
+          }
+        }
+
+        // TODO(Franklin): new designs to apply to all autocompletes later
+        &--new {
+          &.#{$global-namespace}-c-autocomplete__container--absolute {
+            margin-top: 0;
+          }
+        }
+      }
+
+      .#{$c}__input {
+        @if $mos-form-v2 == true {
+          // Placeholders
+          &::-webkit-input-placeholder {
+            color: $mos-select-v2-placeholder-font-color;
+          }
+          &:-moz-placeholder { /* Firefox 18- */
+            color: $mos-select-v2-placeholder-font-color;
+          }
+          &::-moz-placeholder {  /* Firefox 19+ */
+            color: $mos-select-v2-placeholder-font-color;
+          }
+          &:-ms-input-placeholder {
+            color: $mos-select-v2-placeholder-font-color;
+          }
+        }
+
+        &--disabled:disabled {
+          background: $mos-accent1-color;
+          color: $mos-disabled-color;
+          padding-left: 1rem;
+          @if $mos-form-v2 == true {
+            background-color: $mos-form-v2-elements-background-color;
+          }
+        }
+
+        // TODO(Franklin): new designs to apply to all autocompletes later
+        &__container {
+          display: flex;
+          position: relative;
+          align-items: center;
+          border-radius: 2px;
+
+          &--disabled {
+            .#{$global-namespace}-c-autocomplete__input__multi--display {
+              color: $mos-disabled-color;
+            }
+          }
+
+          &.#{$global-namespace}-c-autocomplete__input__container--read-only {
+            @if $mos-form-v2 != true {
+              border-bottom: $mos-autocomplete-container-read-only-border-bottom;
+              .#{$global-namespace}-c-autocomplete__input__multi--display {
+                background-color: transparent;
+                padding: 0.5rem 0;
+              }
+              input {
+                background-color: transparent;
+              }
+            } @else {
+              .#{$global-namespace}-c-autocomplete__input__multi--display {
+                @include form-v2-read-only-styles();
+              }
+            }
+          }
+
+          input {
+            margin: 0;
+            @if $mos-form-v2 != true {
+              border-bottom-color: $mos-disabled-light-color;
+              padding-left: 1rem;
+              padding-right: 2rem;
+              background-color: $mos-accent1-color;
+              line-height: 1.5rem;
+
+              &:focus {
+                background-color: transparent;
+                border-bottom-color: $mos-primary-color;
+              }
+
+              &:disabled {
+                border-bottom: none;
+              }
+
+              &[readonly] {
+                border-bottom: none;
+              }
+            }
+          }
+
+          .#{$global-namespace}-c-autocomplete__input {
+            &__multi {
+              transition: none;
+              &--toggle {
+                width: 0;
+                padding: 0;
+                @if $mos-form-v2 == true {
+                  border: none;
+                }
+              }
+              &__close {
+                transition: none;
+              }
+              &--display {
+                display: flex;
+                width: 100%;
+                padding: 0.5rem 1rem;
+                background-color: $mos-accent1-color;
+                cursor: text;
+                border-bottom: $mos-autocomplete-container-border-bottom;
+                transition: all 0.3s;
+                align-items: center;
+                @if $mos-form-v2 == true {
+                  border: $mos-form-v2-elements-border;
+                  background: $mos-form-v2-elements-background-color;
+                  max-height: $mos-form-v2-elements-min-height;
+                  padding: $mos-form-v2-elements-padding;
+                  border-radius: $mos-form-v2-elements-border-radius;
+                  transition: border 0.3s;
+                  padding-right: $mos-input-v2-padding-right-for-icon-overlap; // prevent overlap for absolute icons
+                }
+                &--border-bottom-hide {
+                  @if $mos-form-v2 != true {
+                    border-bottom: none;
+                  }
+                }
+              }
+              &--label {
+                flex-grow: 1;
+                flex-basis: 0;
+              }
+              &--fields {
+                flex-grow: 1;
+                flex-basis: 0;
+              }
+            }
+          }
+        }
+
+
+
+        // Hide IE default reset input field icon
+        &::-ms-clear {
+          display: none;
+        }
+        &-container {
+          @if $mos-form-v2 != true {
+            display: flex;
+          } @else {
+            position: relative;
+            .#{$c}__input {
+              padding-right: $mos-input-v2-padding-right-for-icon-overlap;
+              margin: 0;
+            }
+          }
+        }
+        &__clear-container {
+          @if $mos-form-v2 != true {
+            width: 0px;
+            position: relative;
+          }
+        }
+        &__arrow-container {
+          position: absolute;
+          right: rem-calc(10);
+          top: 50%;
+          transform: translateY(-50%);
+        }
+        &-arrow,
+        &-arrow-drop-up,
+        &-close {
+          position: absolute;
+          top: 50%;
+          transform: translateY(-50%);
+          right: $mos-select-v2-arrow-icon-position-right;
+        }
+        &--textarea {
+          top: unset;
+          bottom: 0;
+        }
+        &-arrow {
+          opacity: 1;
+        }
+        &-close {
+          opacity: 0;
+          &--icon {
+            width: rem-calc(24);
+            text-align:center;
+          }
+          @if $mos-form-v2 == true {
+            opacity: 1;
+            &--icon {
+              right: $mos-select-v2-close-icon-position-right;
+            }
+          }
+        }
+        &-focus {
+          @if $mos-form-v2 != true {
+            .#{$c}__input-close {
+              opacity: 1;
+            }
+            .#{$c}__input-arrow, .#{$c}__input-arrow-drop-up {
+              opacity: 0;
+            }
+          }
+        }
+        &:focus {
+          border-bottom-color: $mos-primary-color;
+        }
+        &.ng-valid:not(.ng-pristine) {
+          @if $mos-form-v2 != true {
+            border-bottom-color: $mos-success-color;
+          }
+          &:focus {
+            border-bottom-color: $mos-primary-color;
+          }
+        }
+      }
+
+      .#{$c}__list {
+        list-style: none;
+        margin: 0;
+
+        li {
+          a {
+            text-decoration: none;
+            background: $mos-autocomplete-item-background-color;
+
+            @if $mos-form-v2 != true {
+              display: block;
+              color: $mos-autocomplete-font-color;
+              border-bottom: $mos-autocomplete-item-border;
+              padding: $mos-autocomplete-item-padding;
+              &:hover {
+                color: $mos-autocomplete-font-hover-color;
+                background: $mos-autocomplete-item-background-hover-color;
+              }
+            } @else {
+              color: $mos-black-color;
+              padding: $mos-form-v2-select-dropdown-item-padding;
+              min-height: $mos-form-v2-elements-min-height;
+              line-height: 1.15;
+              display: flex;
+              align-items: center;
+              &:hover {
+                background: $mos-form-v2-select-dropdown-item-focused-bg;
+              }
+            }
+
+            &.#{$global-namespace}-c-autocomplete__group-header {
+              cursor: pointer;
+              pointer-events: none;
+              color: $mos-autocomplete-font-color;
+              background: $mos-autocomplete-group-header-background-color;
+              padding: $mos-autocomplete-group-header-padding;
+              @if $mos-form-v2 == true {
+                display: flex;
+                align-items: center;
+                background: $mos-form-v2-select-dropdown-item-focused-bg;
+              }
+            }
+
+            &.#{$global-namespace}-c-autocomplete__action {
+              color: $mos-autocomplete-font-color;
+              background: $mos-autocomplete-action-background-color;
+              padding: $mos-autocomplete-action-padding;
+              &:hover {
+                color: $mos-autocomplete-action-font-hover-color;
+                background: $mos-autocomplete-action-background-hover-color;
+                @if $mos-form-v2 == true {
+                  background: $mos-form-v2-select-dropdown-item-focused-bg;
+                }
+              }
+            }
+
+            .#{$global-namespace}-c-autocomplete__list__multi {
+              display: flex;
+              width: 100%;
+              &--label {
+                flex-grow: 1;
+                flex-basis: 0;
+              }
+              &--fields {
+                flex-grow: 1;
+                flex-basis: 0;
+              }
+            }
+          }
+
+          &.#{$global-namespace}-c-autocomplete--selected a {
+            color: luminance-font-color($mos-autocomplete-item-selected-background-color);
+            background: $mos-autocomplete-item-selected-background-color;
+            @if $mos-form-v2 == true {
+              color: luminance-font-color($mos-form-v2-select-dropdown-item-focused-bg);
+              background: $mos-form-v2-select-dropdown-item-focused-bg;
+            }
+          }
+        }
+
+        &__container {
+          @if $mos-autocomplete-scroll {
+            overflow-y: auto;
+            @if $mos-form-v2 != true {
+              max-height: $mos-autocomplete-height;
+            } @else {
+              max-height: $mos-autocomplete-container-max-height;
+            }
+          }
+        }
+      }
+
+      .#{$c}__sticky-action__container {
+        overflow: hidden;
+      }
+
+      @if $mos-form-v2 == true {
+        // Label
+        .#{$c}__label {
+          font-family: $mos-form-v2-label-font-family;
+          font-size: $mos-form-v2-label-font-size;
+          color: $mos-form-v2-label-font-color;
+        }
+
+        // Disabled state
+        &.#{$c}--disabled {
+          .#{$c}__label {
+            color: $mos-form-v2-elements-disabled-color;
+          }
+          .#{$c}__input__multi--display {
+            color: $mos-disabled-color;
+            border-color: $mos-form-v2-elements-disabled-border-color;
+            @if $mos-form-v2 {
+              padding: $mos-form-v2-elements-padding;
+              padding-right: rem-calc(30);
+            }
+          }
+          .#{$c}__input-arrow {
+            color: $mos-form-v2-elements-disabled-color;
+          }
+        }
+
+        // Focus state
+        &.#{$c}--focused {
+          .#{$c}__input {
+            border-color: $mos-form-v2-elements-focus-border-color;
+            // Placeholders
+            &::-webkit-input-placeholder {
+              color: $mos-input-v2-placeholder-font-color;
+            }
+            &:-moz-placeholder { /* Firefox 18- */
+              color: $mos-input-v2-placeholder-font-color;
+            }
+            &::-moz-placeholder {  /* Firefox 19+ */
+              color: $mos-input-v2-placeholder-font-color;
+            }
+            &:-ms-input-placeholder {
+              color: $mos-input-v2-placeholder-font-color;
+            }
+          }
+          &-focus {
+            .#{$c}__input {
+              border-bottom-left-radius: 0;
+              border-bottom-right-radius: 0;
+            }
+          }
+
+          .#{$c}__wrapper {
+            position: relative;
+            &-inner {
+              position: absolute;
+              z-index: z-index(dropdown);
+              width: 100%;
+              border: $mos-form-v2-elements-border;
+              border-radius: $mos-form-v2-elements-border-radius;
+              border-top-left-radius: 0;
+              border-top-right-radius: 0;
+              border-top: none;
+              border-color: $mos-form-v2-elements-focus-border-color;
+
+              &--textarea {
+                top: -7px
+              }
+            }
+            .#{$c}__sticky-action__container {
+              background: $mos-white-color;
+            }
+          }
+
+          .#{$c}__label {
+            #{$c}__required-icon {
+              color: $mos-error-color;
+            }
+          }
+        }
+      }
+
+      // Autocomplete Theming
+      &.#{$global-namespace}-t-autocomplete {
+        @each $name,
+        $color in map-merge(map-merge($mos-theme-colors, $mos-alt-theme-colors), $mos-specific-usage-colors) {
+          &--#{$name} {
+            @if $mos-form-v2 != true {
+              input[type="text"]:focus:not([readonly]) {
+                border-bottom: 1px solid $color;
+                box-shadow: 0 1px 0 0 $color;
+              }
+            } @else {
+              input[type="text"]:focus:not([readonly]) {
+                border-color: $color;
+              }
+
+              &.#{$global-namespace}-c-autocomplete--focused {
+                .#{$global-namespace}-c-autocomplete__wrapper-inner {
+                  border-color: $color;
+                }
+              }
+            }
+
+            .#{$global-namespace}-c-autocomplete__list {
+              li {
+                a {
+                  @if $mos-form-v2 != true {
+                    color: $color;
+                  }
+
+                  &:hover {
+                    @if $mos-form-v2 != true {
+                      color: $color;
+                    } @else {
+                      background: transparentize($color, .9);
+                    }
+                  }
+
+                  &.#{$global-namespace}-c-autocomplete__group-header {
+                    background: transparentize($color, .9);
+                  }
+                }
+
+                &.#{$global-namespace}-c-autocomplete--selected a {
+                  @if $mos-form-v2 != true {
+                    color: luminance-font-color($color);
+                    background: $color;
+                  } @else {
+                    background: transparentize($color, .9);
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.flag {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 24px;
+  height: 24px;
+  margin-right: 10px;
+  vertical-align: middle;
+  img {
+    flex: 0 0 auto;  /* IE */
+    object-fit: scale-down; /* FF */
+    height: auto;
+    width: auto;
+    max-width: 100%;
+    max-height: 100%;
+  }
+}

@@ -1,0 +1,71 @@
+import { Meta, ArgsTable } from '@storybook/addon-docs';
+import { SnackbarComponent } from 'atlas-snackbar';
+
+<Meta title="Adopters/Components/Snackbar/Readme" 
+parameters={{
+    options: {
+      isToolshown: true
+    },
+  }}
+ />
+
+# Snackbar
+
+Snackbars displays a short LOW PRIORITY message without interrupting the user's task and don’t require user action.
+They appear temporarily, towards the bottom of the screen.
+The component is also known as a Toast.
+
+## UX Documentation
+{false && (
+<iframe
+    src='https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Ffile%2FqYzEXusuiTMnYZNzrcUlcy%2FSnackbar---Foundations-0.0.2-Components-Documentation%3Fnode-id%3D13866%253A22999' 
+    allowFullScreen="true"
+    width='100%'
+    height='650px'
+    style={{border: 'none'}}
+></iframe>
+)}
+## Usage
+
+Import dependencies for the library into your ```app.module.ts``` file
+
+```ts
+
+import { SnackbarModule } from 'atlas-snackbar';
+
+```
+
+## API
+
+### Snackbar
+
+Import ```SnackbarService``` and call in your ```constructor```
+
+```ts
+constructor(
+    ...
+    public _snackbar: SnackbarService
+    ...
+  ) {...}
+```
+To call the service to show the ```SnackbarComponent``` must to call the following service
+
+```ts
+   this._snackbar.create(SnackbarConfig);
+```
+the method above creates the ```SnackbarComponent``` with the following config:
+
+```
+  SnackbarConfig {
+      variant?: string;
+      elevation?: string;
+      message: string;
+      verticalPosition?: string;
+      horizontalPosition?: string;
+      autoDismiss?: boolean;
+      enableAction?: boolean;
+      actionLabel: string;
+      actionClick?: Function;
+      closeClick?: Function;
+  }
+```

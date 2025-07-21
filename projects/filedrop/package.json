@@ -1,0 +1,15 @@
+{
+  "name": "atlas-filedrop",
+  "version": "9.0.6",
+  "peerDependencies": {
+    "@angular/common": "^18.2.13",
+    "@angular/core": "^18.2.13",
+    "atlas-cdk": "^9.0.0",
+    "atlas-button": "^9.0.0",
+    "atlas-progress": "^9.0.0",
+    "atlas-icon": "^9.0.0"
+  },
+  "dependencies": {
+    "tslib": "^2.3.0"
+  }
+}

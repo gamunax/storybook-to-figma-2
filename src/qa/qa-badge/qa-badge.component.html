@@ -1,0 +1,38 @@
+<hr>
+<h1 class='typographyStyles-display-medium'>Badge Component Tests</h1>
+<hr>
+<br/>
+<br/>
+<div class="container">
+    <div class="row">
+        <div class="column" *ngFor="let item of row1;" style="max-width:200px;">
+            <div [id]="item.cId">
+                <atlas-icon
+                    [icon]="item.icon.name"
+                    [size]="item.icon.size"   
+                    [badgeAction]="item.badge.action"
+                    [badgePosition]="item.badge.pos"
+                    [badgeMode]="item.badge.mode"
+                    [badge]="item.badge.number"           
+                ></atlas-icon>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <br/>
+    <br/>
+    <div class="row">
+        <div class="column" *ngFor="let item of row2;" style="max-width:200px;">
+            <div [id]="item.cId">
+                <atlas-icon
+                    [icon]="item.icon.name"
+                    [size]="item.icon.size"   
+                    [badgeAction]="item.badge.action"
+                    [badgePosition]="item.badge.pos"
+                    [badgeMode]="item.badge.mode"
+                    [badge]="item.badge.number"           
+                ></atlas-icon>
+            </div>
+        </div>
+    </div>
+</div>

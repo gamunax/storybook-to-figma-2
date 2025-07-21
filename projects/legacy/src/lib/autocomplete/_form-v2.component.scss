@@ -1,0 +1,460 @@
+//-------------------------------------------------------------------------------------------
+// Legacy Mercer UI Components
+// Form V2 Component - Form Global
+//-------------------------------------------------------------------------------------------
+
+
+/// Enables the component
+/// @type Boolean
+$mos-form-v2: false !default;
+
+// Sets the default font-family of form v2 elements
+$mos-form-v2-elements-font-family: $mos-font-family;
+
+/// Sets the default font-size for form v2 elements
+/// @type Number
+$mos-form-v2-elements-font-size: $mos-font-size;
+
+/// Sets the default font color for form v2 elements
+/// @type Color
+$mos-form-v2-elements-font-color: $mos-font-color;
+
+/// Sets the default border radius for form v2 elements
+/// @type Number
+$mos-form-v2-elements-border-radius: 2px;
+
+/// Sets the default border color for form v2 elements
+/// @type Color
+$mos-form-v2-elements-border-color: mm-color(onyx-warm, 600);
+
+/// Sets the default border style for form v2 elements
+/// @type Border
+$mos-form-v2-elements-border: 1px solid $mos-form-v2-elements-border-color;
+
+/// Sets the default background color for form v2 elements
+/// @type Color
+$mos-form-v2-elements-background-color: $mos-white-color;
+
+/// Sets the default transition for form v2 elements
+/// @type String
+$mos-form-v2-elements-transition: all .3s;
+
+/// Sets the default margin-top and margin-bottom of form v2 elements
+/// @type Number
+$mos-form-v2-elements-margin-top-bottom: $mos-margin;
+
+/// Sets the default margin of form v2 elements
+/// @type Number
+$mos-form-v2-elements-margin: $mos-form-v2-elements-margin-top-bottom 0;
+
+/// Sets the default padding of form v2 elements
+/// @type Number
+$mos-form-v2-elements-padding: $mos-spacer-sm $mos-spacer-md;
+
+/// Sets the default font size of hint text
+/// @type Number
+$mos-form-v2-elements-hint-text-font-size: $mos-font-size*.75;
+
+/// Sets the default line height of hint text
+/// @type Number
+$mos-form-v2-elements-hint-text-line-height: 1.25;
+
+/// Sets the default font size of hint text color
+/// @type Color
+$mos-form-v2-elements-hint-text-font-color: color(onyx-darker, 200);
+
+/// Sets the default margin of hint text utility class
+/// @type Number
+$mos-form-v2-elements-hint-text-margin: $mos-spacer-xsm 0 0 0;
+
+/// Sets the default form v2 elements focused color
+/// @type Color
+$mos-form-v2-elements-focus-color: $mos-black-color;
+
+/// Sets the default border-color style for form v2 elements when focused
+/// @type Color
+$mos-form-v2-elements-focus-border-color: mm-color(bright-sapphire, 400);
+
+/// Sets the default border width for form v2 elements when focused
+/// @type Number
+$mos-form-v2-elements-focus-shadow-width: 0px;
+
+/// Sets the default readonly color for form v2 elements
+/// @type Color
+$mos-form-v2-elements-readonly-color: $mos-black-color;
+
+/// Sets the default readonly border for form v2 elements
+/// @type Border
+$mos-form-v2-elements-readonly-border: none;
+
+/// Sets the default readonly padding for form v2 elements
+/// @type Number
+$mos-form-v2-elements-readonly-padding: 0;
+
+/// Sets the default readonly background for form v2 elements
+/// @type Color
+$mos-form-v2-elements-readonly-background: transparent;
+
+/// Sets the default readonly min-height for form v2 elements
+/// @type Number
+$mos-form-v2-elements-readonly-min-height: rem-calc(24px);
+
+/// Sets the default disabled color for form v2 elements
+/// @type Color
+$mos-form-v2-elements-disabled-color: mm-color(onyx-warm, 500);
+
+/// Sets the default disabled border-color for form v2 elements
+/// @type Color
+$mos-form-v2-elements-disabled-border-color: mm-color(onyx-cool, 50);
+
+/// Sets the default disabled border for form v2 elements
+/// @type Border
+$mos-form-v2-elements-disabled-border: 1px solid $mos-form-v2-elements-disabled-border-color;
+
+/// Sets the default min-height for form v2 elements (input & select)
+/// @type Number
+$mos-form-v2-elements-min-height: 46px;
+
+// Sets the default font-family of labels
+$mos-form-v2-label-font-family: $mos-font-bold-family;
+
+/// Sets the default font size of labels
+/// @type Number
+$mos-form-v2-label-font-size: size(3xsm);
+
+/// Sets the default font color of labels
+/// @type Color
+$mos-form-v2-label-font-color: $mos-black-color;
+
+/// Sets the default margin of labels
+/// @type Number
+$mos-form-v2-label-margin: 0 0 $mos-spacer-xsm 0;
+
+/// Sets the default font color of labels when focused
+/// @type Color
+$mos-form-v2-label-focus-font-color: $mos-form-v2-elements-focus-color;
+
+/// Sets the default padding inside custom fieldsets.
+/// @type Number
+$mos-form-v2-fieldset-padding: $mos-spacer-sm $mos-padding $mos-padding $mos-padding;
+
+/// Sets the default border around custom fieldsets.
+/// @type Border
+$mos-form-v2-fieldset-border: 1px solid color(onyx-darker);
+
+/// Sets the default padding between the legend text and fieldset border.
+/// @type Number
+$mos-form-v2-legend-padding: $mos-spacer-xxxsm;
+
+/// Sets the default form v2 row margin
+/// @type Number
+$mos-form-v2-row-margin: 0 0 $mos-margin 0;
+
+/// Sets the default form v2 list item margin
+/// @type Number
+$mos-form-v2-list-item-margin: 0 0 $mos-spacer-xxxsm 0;
+
+/// Sets the default form v2 list inline item margin
+/// @type Number
+$mos-form-v2-list-inline-item-margin: 0 $mos-spacer-xsm $mos-spacer-xxxsm 0;
+
+/// Sets the default form v2 list inline item margin for medium up media query
+/// @type Number
+$mos-form-v2-list-inline-item-margin-medium: 0 $mos-spacer-xsm 0 0;
+
+/// Sets the default form v2 required icon padding
+/// @type Number
+$mos-form-v2-required-icon-padding: 0 0 0 $mos-spacer-xxxxsm;
+
+/// Sets the default form v2 required icon font color
+/// @type Color
+$mos-form-v2-required-icon-font-color: $mos-form-v2-label-font-color;
+
+/// Sets the default form v2 hint text margin
+/// @type Number
+$mos-hint-text-margin: rem-calc(0 0 8);
+
+/// Sets the default form v2 select dropdown item focused background-color
+/// @type Color
+$mos-form-v2-select-dropdown-item-focused-bg: mm-color(bright-sapphire, 50);
+
+/// Sets the default form v2 select dropdown item focused background-color
+/// @type Number
+$mos-form-v2-select-dropdown-item-padding: $mos-form-v2-elements-padding;
+
+@mixin form-v2-read-only-styles {
+  color: $mos-form-v2-elements-readonly-color;
+  border: $mos-form-v2-elements-readonly-border;
+  padding: $mos-form-v2-elements-readonly-padding;
+  background: $mos-form-v2-elements-readonly-background;
+  min-height: $mos-form-v2-elements-readonly-min-height;
+}
+
+@mixin mos-form-global-v2 {
+  // Form v2 elements
+  input:not([type]),
+  input[type="text"],
+  input[type="password"],
+  input[type="email"],
+  input[type="url"],
+  input[type="time"],
+  input[type="date"],
+  input[type="datetime"],
+  input[type="datetime-local"],
+  input[type="tel"],
+  input[type="number"],
+  input[type="search"],
+  select,
+  textarea {
+    font-family: $mos-form-v2-elements-font-family;
+    font-size: $mos-form-v2-elements-font-size;
+    color: $mos-form-v2-elements-font-color;
+    border-radius: $mos-form-v2-elements-border-radius;
+    border: $mos-form-v2-elements-border;
+    background-color: $mos-form-v2-elements-background-color;
+    margin: $mos-form-v2-elements-margin;
+    padding: $mos-form-v2-elements-padding;
+    width: 100%;
+    transition: $mos-form-v2-elements-transition;
+    &:not(textarea) {
+      min-height: $mos-form-v2-elements-min-height;
+    }
+
+    // Form messages shared
+    & + label:after {
+      font-size: $mos-form-v2-elements-hint-text-font-size;
+      font-family: $mos-form-v2-elements-font-family;
+      line-height: $mos-form-v2-elements-hint-text-line-height;
+      color: $mos-form-v2-elements-hint-text-font-color;
+      display: block;
+      content: '';
+      position: absolute;
+      top: 75px;
+      min-width: 100px;
+    }
+
+    // Hint text messages
+    & + label[data-#{$global-namespace}-hint-text]:after {
+      content: attr(data-#{$global-namespace}-hint-text);
+    }
+
+    // Hint text messages for textarea field
+    & + label[data-#{$global-namespace}-textarea-hint-text]:after {
+      content: attr(data-#{$global-namespace}-textarea-hint-text);
+      top: 133px;
+    }
+
+    // Focus
+    &:focus:not([readonly]):not(:disabled) {
+      border-color: $mos-form-v2-elements-focus-border-color;
+
+      & + label {
+        color: $mos-form-v2-elements-focus-color;
+
+        .#{$global-namespace}-o-form-required-icon {
+          color: $mos-error-color;
+        }
+      }
+    }
+
+    // Disabled
+    &:disabled {
+      color: $mos-form-v2-elements-disabled-color;
+      border-color: $mos-form-v2-elements-disabled-border-color;
+
+      // Placeholders
+      &::-webkit-input-placeholder {
+        color: $mos-form-v2-elements-disabled-color;
+      }
+      &:-moz-placeholder { /* Firefox 18- */
+        color: $mos-form-v2-elements-disabled-color;
+      }
+      &::-moz-placeholder {  /* Firefox 19+ */
+        color: $mos-form-v2-elements-disabled-color;
+      }
+      &:-ms-input-placeholder {
+        color: $mos-form-v2-elements-disabled-color;
+      }
+
+      + label,
+      + label:after {
+        color: $mos-form-v2-elements-disabled-color;
+      }
+
+      + label + .#{$global-namespace}-u-hint-text,
+      + .#{$global-namespace}-u-hint-text{
+        color: $mos-form-v2-elements-disabled-color;
+        a {
+          color: rgba($mos-anchor-color, .5);
+        }
+      }
+    }
+
+    // Read Only
+    &[readonly] {
+      color: $mos-form-v2-elements-readonly-color;
+      border: $mos-form-v2-elements-readonly-border;
+      padding: $mos-form-v2-elements-readonly-padding;
+      background: $mos-form-v2-elements-readonly-background;
+      min-height: $mos-form-v2-elements-readonly-min-height;
+
+      + label {
+        color: $mos-form-v2-elements-readonly-color;
+        &:after {
+          top: 50px;
+        }
+      }
+    }
+
+    // Invalid
+    &.ng-invalid:not(form):not([readonly]):not(:disabled).ng-touched {
+      border-color: $mos-error-color;
+
+      &:focus {
+        border-color: $mos-form-v2-elements-focus-border-color;
+      }
+
+      // Invalid messages
+      + label[data-#{$global-namespace}-invalid-text]:after {
+        content: attr(data-#{$global-namespace}-invalid-text);
+        color: $mos-error-color;
+      }
+      + label + .#{$global-namespace}-u-hint-text,
+      + .#{$global-namespace}-u-hint-text {
+        color: $mos-error-color;
+      }
+    }
+  }
+
+  // Labels and legends
+  label,
+  legend {
+    font-family: $mos-font-family;
+    font-size: $mos-small-font-size;
+    color: $mos-label-font-color;
+    margin: $mos-label-margin;
+  }
+
+  legend {
+    width: 100%;
+  }
+
+  // Hint text utility class
+  .#{$global-namespace}-u-hint-text {
+    font-size: $mos-form-v2-elements-hint-text-font-size;
+    line-height: $mos-form-v2-elements-hint-text-line-height;
+    color: $mos-form-v2-elements-hint-text-font-color;
+    margin: $mos-form-v2-elements-hint-text-margin;
+
+    // Valid hint text
+    &--valid {
+      color: mm-color(emerald, 400);
+    }
+
+    // Invalid hint text
+    &--invalid {
+      color: $mos-error-color;
+    }
+  }
+
+  // Fieldset utility class (brings back fieldset border and padding)
+  .#{$global-namespace}-u-fieldset	{
+    border: $mos-form-v2-fieldset-border;
+    padding: $mos-form-v2-fieldset-padding;
+
+    legend {
+      padding: $mos-form-v2-legend-padding;
+      margin: rem-calc(0 0 0 -3);
+      width: auto;
+    }
+
+    // Last form row in fieldset utility
+    .#{$global-namespace}-o-form-row:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  // Form row
+  .#{$global-namespace}-o-form-row {
+    margin: $mos-form-v2-row-margin;
+  }
+
+  // Form input field
+  .#{$global-namespace}-o-form-input-field {
+    position: relative;
+
+    label {
+      position: absolute;
+      top: 0;
+      left: $mos-grid-column-gutter-small/2;
+      width: 100%;
+      font-family: $mos-form-v2-label-font-family;
+      font-size: $mos-form-v2-label-font-size;
+      color: $mos-form-v2-label-font-color;
+      margin: $mos-form-v2-label-margin;
+      transform: translateY(0%);
+      transition: .4s ease-out;
+
+      @include breakpoint(medium) {
+        left: $mos-grid-column-gutter-medium/2;
+      }
+    }
+
+    // Hint text utility class when inside a form input field
+    .#{$global-namespace}-u-hint-text {
+      margin: $mos-hint-text-margin;
+      display: block;
+    }
+
+    // Hint text utility class when inside a form input field and used with a textarea
+    textarea + label + .#{$global-namespace}-u-hint-text,
+    textarea + .#{$global-namespace}-u-hint-text {
+      margin: rem-calc(-27 0 0 0);
+    }
+  }
+
+  // Form list
+  .#{$global-namespace}-o-form-list {
+    margin: 0;
+    list-style: none;
+
+    li {
+      margin: $mos-form-v2-list-item-margin;
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  // Form list - inline
+  .#{$global-namespace}-o-form-list-inline {
+    @extend .#{$global-namespace}-o-form-list;
+
+    li {
+      display: inline-block;
+      margin: $mos-form-v2-list-inline-item-margin;
+      &:last-child {
+        margin: 0;
+      }
+
+      @include breakpoint(medium) {
+        margin: $mos-form-v2-list-inline-item-margin-medium;
+      }
+    }
+  }
+
+  // Form required icon
+  .#{$global-namespace}-o-form-required-icon {
+    padding: $mos-form-v2-required-icon-padding;
+    color: $mos-form-v2-required-icon-font-color;
+  }
+
+  // Remove zoom of form elements on iOS devices on focus
+  @media screen and (-webkit-min-device-pixel-ratio:0) {
+    select:focus,
+    textarea:focus,
+    input:focus {
+      font-size: $mos-font-size;
+    }
+  }
+}

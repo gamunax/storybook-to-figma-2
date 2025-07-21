@@ -1,0 +1,37 @@
+<div class="container">
+    <h1>Chip Component Tests</h1>
+
+    <h2>Chip components</h2>
+    <div class="row" *ngFor="let chip of commonChip">
+        <atlas-chip-list>
+            <atlas-chip 
+                [size]="chip.size" 
+                [disabled]="chip.disabled"
+                [action]="chip.action"
+                [removable]="chip.removable"
+                [id]="chip.id"
+                [variant]="chip.variant"
+                [customClass]="chip.customClass? chip.customClass : ''" >   
+              Chip
+            </atlas-chip>
+          </atlas-chip-list>
+    </div>
+    <hr><br>
+    <h2>Chip icon component</h2>
+    <div class="row" *ngFor="let iconChip of iconChips">
+        <atlas-chip-list >
+            <atlas-chip
+                [size]="iconChip.size" 
+                [disabled]="iconChip.disabled"
+                [action]="iconChip.action"
+                [removable]="iconChip.removable"
+                [id]="iconChip.id"
+                [variant]="iconChip.variant"
+                [customClass]="iconChip.customClass? iconChip.customClass : ''" >  
+              <atlas-icon icon="icon-window-maximize-24"></atlas-icon>
+              Chip
+            </atlas-chip>
+          </atlas-chip-list>
+    </div>
+
+</div>

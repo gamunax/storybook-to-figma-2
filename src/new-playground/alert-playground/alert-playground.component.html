@@ -1,0 +1,203 @@
+<div class="padding-y-9 padding-x-9 page-bg ">
+  <h2>Alert Component Demo</h2>
+  <div class="header">
+    <atlas-theming-helper>
+      <label>Custom theme</label>
+    </atlas-theming-helper>
+  </div>
+  <div class="padding-y-9 padding-x-9 page-bg">
+    <h1 class="typographyStyles-display-large">Alert</h1>
+    <h2>caution - old warning</h2>
+    <div class="alert-container">
+      <div class="column medium-6">
+        <h3>strong - old outlined</h3>
+        <atlas-alert (closeClick)="closeAlert($event)" (actionClick)="actionAlert($event)" actionLabel="ACCEPT"
+          [alertIcon]="'icon-warning-24'" [style]="styles.strong" [color]="colors.caution">
+          <atlas-alert-title>Title</atlas-alert-title>
+          <atlas-alert-content>
+            <div>Alert content</div>
+          </atlas-alert-content>
+          <atlas-alert-action [nameAction]="'Accept'" [action]="actions.info">
+          </atlas-alert-action>
+        </atlas-alert>
+      </div>
+      <div class="column medium-6">
+        <h3>soft</h3>
+        <atlas-alert (closeClick)="closeAlert($event)" (actionClick)="actionAlert($event)" actionLabel="ACCEPT"
+          [alertIcon]="'icon-warning-24'" [style]="styles.soft" [action]="actions.warning">
+          <atlas-alert-title>Title</atlas-alert-title>
+          <atlas-alert-content>
+            <div>Alert content</div>
+          </atlas-alert-content>
+          <atlas-alert-action [nameAction]="'Accept'" [action]="actions.info">
+          </atlas-alert-action>
+        </atlas-alert>
+      </div>
+      <div class="column medium-6">
+        <h3>outlined - old contained</h3>
+        <atlas-alert (closeClick)="closeAlert($event)" (actionClick)="actionAlert($event)" actionLabel="ACCEPT"
+          [alertIcon]="'icon-warning-24'" [style]="styles.outlined" [action]="actions.warning">
+          <atlas-alert-title>Title</atlas-alert-title>
+          <atlas-alert-content>
+            <div>Alert content</div>
+          </atlas-alert-content>
+          <atlas-alert-action [nameAction]="'Accept'"> </atlas-alert-action>
+        </atlas-alert>
+      </div>
+
+
+
+    </div>
+    <h2>danger - old error</h2>
+    <div class="alert-container">
+      <div class="column medium-6">
+        <h3>strong - old outlined</h3>
+        <atlas-alert (closeClick)="closeAlert($event)" (actionClick)="actionAlert($event)" actionLabel="ACCEPT"
+          [action]="actions.error">
+          <atlas-alert-title>Title</atlas-alert-title>
+          <atlas-alert-content>
+            <div>Alert content</div>
+          </atlas-alert-content>
+          <atlas-alert-action [nameAction]="'Accept'" [action]="actions.info">
+          </atlas-alert-action>
+        </atlas-alert>
+      </div>
+      <div class="column medium-6">
+        <h3>soft</h3>
+        <atlas-alert (closeClick)="closeAlert($event)" (actionClick)="actionAlert($event)" actionLabel="ACCEPT"
+          [style]="styles.soft" [action]="actions.error">
+          <atlas-alert-title>Title</atlas-alert-title>
+          <atlas-alert-content>
+            <div>Alert content</div>
+          </atlas-alert-content>
+          <atlas-alert-action [nameAction]="'Accept'" [action]="actions.info">
+          </atlas-alert-action>
+        </atlas-alert>
+      </div>
+      <div class="column medium-6">
+        <h3>outlined - old contained</h3>
+        <atlas-alert (closeClick)="closeAlert($event)" (actionClick)="actionAlert($event)" actionLabel="ACCEPT"
+          [style]="styles.outlined" [action]="actions.error">
+          <atlas-alert-title>Title</atlas-alert-title>
+          <atlas-alert-content>
+            <div>Alert content</div>
+          </atlas-alert-content>
+          <atlas-alert-action [nameAction]="'Accept'"> </atlas-alert-action>
+        </atlas-alert>
+      </div>
+    </div>
+    <h2>info</h2>
+    <div class="alert-container">
+
+      <div class="column medium-6">
+        <h3>strong - old outlined</h3>
+        <atlas-alert (closeClick)="closeAlert($event)" (actionClick)="actionAlert($event)" actionLabel="ACCEPT"
+          [alertIcon]="'icon-warning-24'" [action]="actions.info">
+          <atlas-alert-title>Title</atlas-alert-title>
+          <atlas-alert-content>
+            <div>Alert content</div>
+          </atlas-alert-content>
+          <atlas-alert-action [nameAction]="'Accept'" [action]="actions.info">
+          </atlas-alert-action>
+        </atlas-alert>
+      </div>
+      <div class="column medium-6">
+        <h3>soft</h3>
+        <atlas-alert (closeClick)="closeAlert($event)" (actionClick)="actionAlert($event)" actionLabel="ACCEPT"
+          [alertIcon]="'icon-warning-24'" [style]="styles.soft" [action]="actions.info">
+          <atlas-alert-title>Title</atlas-alert-title>
+          <atlas-alert-content>
+            <div>Alert content</div>
+          </atlas-alert-content>
+          <atlas-alert-action [nameAction]="'Accept'" [action]="actions.info">
+          </atlas-alert-action>
+        </atlas-alert>
+      </div>
+      <div class="column medium-6">
+        <h3>outlined - old contained</h3>
+        <atlas-alert (closeClick)="closeAlert($event)" (actionClick)="actionAlert($event)" actionLabel="ACCEPT"
+          [alertIcon]="'icon-warning-24'" [style]="styles.outlined" [action]="actions.info">
+          <atlas-alert-title>Title</atlas-alert-title>
+          <atlas-alert-content>
+            <div>Alert content</div>
+          </atlas-alert-content>
+          <atlas-alert-action [nameAction]="'Accept'"> </atlas-alert-action>
+        </atlas-alert>
+      </div>
+    </div>
+    <h2>success</h2>
+    <div class="alert-container">
+      <div class="column medium-6">
+        <h3>strong - old outlined</h3>
+        <atlas-alert (closeClick)="closeAlert($event)" (actionClick)="actionAlert($event)" actionLabel="ACCEPT"
+          [alertIcon]="'icon-check-circle-24'" [action]="actions.success">
+          <atlas-alert-title>Title</atlas-alert-title>
+          <atlas-alert-content>
+            <div>Alert content</div>
+          </atlas-alert-content>
+          <atlas-alert-action [nameAction]="'Accept'" [action]="actions.info">
+          </atlas-alert-action>
+        </atlas-alert>
+      </div>
+      <div class="column medium-6">
+        <h3>soft</h3>
+        <atlas-alert (closeClick)="closeAlert($event)" (actionClick)="actionAlert($event)" actionLabel="ACCEPT"
+          [alertIcon]="'icon-check-circle-24'" [style]="styles.soft" [action]="actions.success">
+          <atlas-alert-title>Title</atlas-alert-title>
+          <atlas-alert-content>
+            <div>Alert content</div>
+          </atlas-alert-content>
+          <atlas-alert-action [nameAction]="'Accept'" [action]="actions.info">
+          </atlas-alert-action>
+        </atlas-alert>
+      </div>
+      <div class="column medium-6">
+        <h3>outlined - old contained</h3>
+        <atlas-alert (closeClick)="closeAlert($event)" (actionClick)="actionAlert($event)" actionLabel="ACCEPT"
+          [alertIcon]="'icon-check-circle-24'" [style]="styles.outlined" [action]="actions.success">
+          <atlas-alert-title>Title</atlas-alert-title>
+          <atlas-alert-content>
+            <div>Alert content</div>
+          </atlas-alert-content>
+          <atlas-alert-action [nameAction]="'Accept'"> </atlas-alert-action>
+        </atlas-alert>
+      </div>
+    </div>
+    <h2>neutral - old default</h2>
+    <div class="alert-container">
+      <div class="column medium-6">
+        <h3>strong - old outlined</h3>
+        <atlas-alert>
+          <atlas-alert-title>Title</atlas-alert-title>
+          <atlas-alert-content>
+            <div>Alert content</div>
+          </atlas-alert-content>
+          <atlas-alert-action [nameAction]="'Accept'" [action]="actions.info">
+          </atlas-alert-action>
+        </atlas-alert>
+      </div>
+      <div class="column medium-6">
+        <h3>soft</h3>
+        <atlas-alert (closeClick)="closeAlert($event)" (actionClick)="actionAlert($event)" actionLabel="ACCEPT"
+          [style]="styles.soft" [action]="actions.default">
+          <atlas-alert-title>Title</atlas-alert-title>
+          <atlas-alert-content>
+            <div>Alert content</div>
+          </atlas-alert-content>
+          <atlas-alert-action [nameAction]="'Accept'" [action]="actions.info">
+          </atlas-alert-action>
+        </atlas-alert>
+      </div>
+      <div class="column medium-6">
+        <h3>outlined - old contained</h3>
+        <atlas-alert (closeClick)="closeAlert($event)" (actionClick)="actionAlert($event)" actionLabel="ACCEPT"
+          [style]="styles.outlined" [action]="actions.default">
+          <atlas-alert-title>Title</atlas-alert-title>
+          <atlas-alert-content>
+            <div>Alert content</div>
+          </atlas-alert-content>
+          <atlas-alert-action [nameAction]="'Accept'"> </atlas-alert-action>
+        </atlas-alert>
+      </div>
+    </div>
+  </div>

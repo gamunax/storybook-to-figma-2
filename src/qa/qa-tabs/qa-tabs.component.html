@@ -1,0 +1,26 @@
+<hr>
+<h1>Tabs Component Tests</h1>
+<hr><br>
+
+<div class="container">
+    <atlas-tab-group *ngFor="let item of tabs" 
+      [action]=item.action 
+      [fullWidth]=item.fullWidth 
+      [selectedIndex]=item.selectedIndex
+      [variant]="item.variant">
+        <atlas-tab *ngFor="let test of tests">
+          <ng-template atlas-tab-label>
+            <div class="demo-tab-label" style="display: flex; flex-direction: column; align-items: center;">
+              <atlas-icon [icon]=test.icon></atlas-icon>
+              <span class="padding-top-4 typographyStyles-button-medium"> {{test.label}}</span>
+            </div>
+          </ng-template>
+  
+          <atlas-tab-content>
+            <p class="typographyStyles-body-medium">
+                {{test.content}}
+          </p>
+          </atlas-tab-content>
+        </atlas-tab>
+    </atlas-tab-group>
+  </div>

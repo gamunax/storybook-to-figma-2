@@ -1,0 +1,21 @@
+<hr>
+<h1 style="text-align: center;">Checkbox component tests</h1>
+<hr><br>
+
+<div class="container">
+    <div class="row">
+        <atlas-checkbox style="margin: 10px 10px" *ngFor="let checkbox of checkboxes" 
+            [disabled]="checkbox.disabled"
+            [action]="checkbox.action" 
+            [isChecked]="checkbox.isChecked"
+            [checkboxId]="checkbox.checkboxId"
+            [checkboxName]="checkbox.checkboxName"
+            [size]="checkbox.size"
+            [value]="checkbox.value"
+            [indeterminate]="checkbox.indeterminate"
+            [labelCustomClass]="checkbox.labelCustomClass || ''"
+
+            > {{checkbox.value}}
+        </atlas-checkbox>
+    </div>
+</div>

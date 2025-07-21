@@ -1,0 +1,3381 @@
+import { Meta } from '@storybook/addon-docs';
+import Code from 'projects/cdk/assets/icons/code-brackets.svg';
+import Colors from 'projects/cdk/assets/icons/colors.svg';
+import Comments from 'projects/cdk/assets/icons/comments.svg';
+import Direction from 'projects/cdk/assets/icons/direction.svg';
+import Flow from 'projects/cdk/assets/icons/flow.svg';
+import Plugin from 'projects/cdk/assets/icons/plugin.svg';
+import Repo from 'projects/cdk/assets/icons/repo.svg';
+import StackAlt from 'projects/cdk/assets/icons/stackalt.svg';
+import { BADGES } from '.storybook/constants';
+import { withTheming } from '../../.storybook/halo-theming-addon';
+import { ThemingServiceGlobal, defaultConfig } from 'atlas-cdk';
+import { Source, Preview  } from '@storybook/addon-docs';
+import { HoverableCode } from '../../.storybook/hoverable-code';
+
+<Meta title="Adopters/Design/Colors" parameters={{ badges: [ BADGES.BETA ], options: { isToolshown: true } }} decorators={[withTheming]} />
+
+<style>
+  {`
+    .colors__code__example {
+        max-width: 250px;
+    }
+  `}
+</style>
+
+# Colors
+Halo color system has two distinct sets of colors that you can use to build your brand. The palette is the backbone of your color scale. The theme color tokens directly use the palette in order to create a flowing set of themes across your applications.
+
+## Theme Tokens
+The theme set is used for direct integration with our components and application styles.
+
+## 🚀 **Mapping Figma Tokens to Design System Tokens**
+
+For teams using **Figma** design tokens in version `8.0.0`, all token names in the **Atlas Design System** must now begin with `SemanticColor-` to ensure consistency and alignment with our new theme structure.
+
+### Example
+
+- **Figma Token**: `background/caution/strong-rest`  
+- **Design System Token**: `SemanticColor-background-caution-strong-rest`
+
+
+<table>
+    <thead>
+        <tr>
+            <th>Token</th>
+            <th> palette variable</th>
+            <th>Example</th>
+            <th>Usage</th>
+        </tr>
+    </thead>
+        {
+    <tbody>
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>semanticColor-background-brand-active</HoverableCode>
+                </td>
+                <td>
+                    var(--brand-300)
+                </td>
+                <td style={{background: `var(--semanticColor-background-brand-active)` }}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>semanticColor-background-brand-hover</HoverableCode>
+                </td>
+                <td>
+                    var(--brand-100)
+                </td>
+                <td style={{background: `var(--semanticColor-background-brand-hover)` }}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>semanticColor-background-brand-soft-active</HoverableCode>
+                </td>
+                <td>
+                    var(--brand-opacity-600-10)
+                </td>
+                <td style={{background: `var(--semanticColor-background-brand-soft-active)` }}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>semanticColor-background-brand-soft-hover</HoverableCode>
+                </td>
+                <td>
+                    var(--brand-opacity-600-20)
+                </td>
+                <td style={{background: `var(--semanticColor-background-brand-soft-hover)` }}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>semanticColor-background-brand-soft-rest</HoverableCode>
+                </td>
+                <td>
+                    var(--brand-opacity-600-10)
+                </td>
+                <td style={{background: `var(--semanticColor-background-brand-soft-rest)` }}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>semanticColor-background-brand-strong-active</HoverableCode>
+                </td>
+                <td>
+                    var(--brand-400)
+                </td>
+                <td style={{background: `var(--semanticColor-background-brand-strong-active)` }}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>semanticColor-background-brand-strong-hover</HoverableCode>
+                </td>
+                <td>
+                    var(--brand-500)
+                </td>
+                <td style={{background: `var(--semanticColor-background-brand-strong-hover)` }}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>semanticColor-background-brand-strong-rest</HoverableCode>
+                </td>
+                <td>
+                    var(--brand-600)
+                </td>
+                <td style={{background: `var(--semanticColor-background-brand-strong-rest)` }}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>semanticColor-background-caution-soft-active</HoverableCode>
+                </td>
+                <td>
+                    var(--caution-opacity-600-10)
+                </td>
+                <td style={{background: `var(--semanticColor-background-caution-soft-active)` }}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>semanticColor-background-caution-soft-hover</HoverableCode>
+                </td>
+                <td>
+                    var(--caution-opacity-600-20)
+                </td>
+                <td style={{background: `var(--semanticColor-background-caution-soft-hover)` }}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>semanticColor-background-caution-soft-rest</HoverableCode>
+                </td>
+                <td>
+                    var(--transparent)
+                </td>
+                <td style={{background: `var(--semanticColor-background-caution-soft-rest)` }}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>semanticColor-background-caution-strong-active</HoverableCode>
+                </td>
+                <td>
+                    var(--caution-300)
+                </td>
+                <td style={{background: `var(--semanticColor-background-caution-strong-active)` }}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>semanticColor-background-caution-strong-hover</HoverableCode>
+                </td>
+                <td>
+                    var(--caution-400)
+                </td>
+                <td style={{background: `var(--semanticColor-background-caution-strong-hover)` }}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>semanticColor-background-caution-strong-rest</HoverableCode>
+                </td>
+                <td>
+                    var(--caution-500)
+                </td>
+                <td style={{background: `var(--semanticColor-background-caution-strong-rest)` }}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>semanticColor-background-danger-soft-active</HoverableCode>
+                </td>
+                <td>
+                    var(--danger-opacity-600-10)
+                </td>
+                <td style={{background: `var(--semanticColor-background-danger-soft-active)` }}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>semanticColor-background-danger-soft-hover</HoverableCode>
+                </td>
+                <td>
+                    var(--danger-opacity-600-20)
+                </td>
+                <td style={{background: `var(--semanticColor-background-danger-soft-hover)` }}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>semanticColor-background-danger-soft-rest</HoverableCode>
+                </td>
+                <td>
+                    var(--transparent)
+                </td>
+                <td style={{background: `var(--semanticColor-background-danger-soft-rest)` }}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>semanticColor-background-danger-strong-active</HoverableCode>
+                </td>
+                <td>
+                    var(--danger-400)
+                </td>
+                <td style={{background: `var(--semanticColor-background-danger-strong-active)` }}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>semanticColor-background-danger-strong-hover</HoverableCode>
+                </td>
+                <td>
+                    var(--danger-500)
+                </td>
+                <td style={{background: `var(--semanticColor-background-danger-strong-hover)` }}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>semanticColor-background-danger-strong-rest</HoverableCode>
+                </td>
+                <td>
+                    var(--danger-600)
+                </td>
+                <td style={{background: `var(--semanticColor-background-danger-strong-rest)` }}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>semanticColor-background-disabled</HoverableCode>
+                </td>
+                <td>
+                    var(--contrast-dark-010)
+                </td>
+                <td style={{background: `var(--semanticColor-background-disabled)` }}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>semanticColor-background-disabled-inverse</HoverableCode>
+                </td>
+                <td>
+                    var(--contrast-light-010)
+                </td>
+                <td style={{background: `var(--semanticColor-background-disabled-inverse)` }}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>semanticColor-background-info-hover</HoverableCode>
+                </td>
+                <td>
+                    var(--brand-100)
+                </td>
+                <td style={{background: `var(--semanticColor-background-info-hover)` }}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>semanticColor-background-info-rest</HoverableCode>
+                </td>
+                <td>
+                    var(--brand-050)
+                </td>
+                <td style={{background: `var(--semanticColor-background-info-rest)` }}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>semanticColor-background-info-soft-active</HoverableCode>
+                </td>
+                <td>
+                    var(--brand-opacity-600-20)
+                </td>
+                <td style={{background: `var(--semanticColor-background-info-soft-active)` }}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>semanticColor-background-info-soft-hover</HoverableCode>
+                </td>
+                <td>
+                    var(--brand-opacity-600-10)
+                </td>
+                <td style={{background: `var(--semanticColor-background-info-soft-hover)` }}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>semanticColor-background-info-soft-rest</HoverableCode>
+                </td>
+                <td>
+                    var(--transparent)
+                </td>
+                <td style={{background: `var(--semanticColor-background-info-soft-rest)` }}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>semanticColor-background-info-strong-active</HoverableCode>
+                </td>
+                <td>
+                    var(--brand-200)
+                </td>
+                <td style={{background: `var(--semanticColor-background-info-strong-active)` }}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>semanticColor-background-info-strong-hover</HoverableCode>
+                </td>
+                <td>
+                    var(--brand-300)
+                </td>
+                <td style={{background: `var(--semanticColor-background-info-strong-hover)` }}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>semanticColor-background-info-strong-rest</HoverableCode>
+                </td>
+                <td>
+                    var(--brand-400)
+                </td>
+                <td style={{background: `var(--semanticColor-background-info-strong-rest)` }}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>semanticColor-background-neutral-active</HoverableCode>
+                </td>
+                <td>
+                    var(--neutral-300)
+                </td>
+                <td style={{background: `var(--semanticColor-background-neutral-active)` }}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>semanticColor-background-neutral-hover</HoverableCode>
+                </td>
+                <td>
+                    var(--neutral-050)
+                </td>
+                <td style={{background: `var(--semanticColor-background-neutral-hover)` }}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>semanticColor-background-neutral-rest</HoverableCode>
+                </td>
+                <td>
+                    var(--transparent)
+                </td>
+                <td style={{background: `var(--semanticColor-background-neutral-rest)` }}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>semanticColor-background-neutral-soft-active</HoverableCode>
+                </td>
+                <td>
+                    var(--neutral-opacity-700-20)
+                </td>
+                <td style={{background: `var(--semanticColor-background-neutral-soft-active)` }}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>semanticColor-background-neutral-soft-hover</HoverableCode>
+                </td>
+                <td>
+                    var(--neutral-opacity-700-10)
+                </td>
+                <td style={{background: `var(--semanticColor-background-neutral-soft-hover)` }}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>semanticColor-background-neutral-soft-rest</HoverableCode>
+                </td>
+                <td>
+                    var(--transparent)
+                </td>
+                <td style={{background: `var(--semanticColor-background-neutral-soft-rest)` }}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>semanticColor-background-neutral-strong-active</HoverableCode>
+                </td>
+                <td>
+                    var(--neutral-500)
+                </td>
+                <td style={{background: `var(--semanticColor-background-neutral-strong-active)` }}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>semanticColor-background-neutral-strong-hover</HoverableCode>
+                </td>
+                <td>
+                    var(--neutral-800)
+                </td>
+                <td style={{background: `var(--semanticColor-background-neutral-strong-hover)` }}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>semanticColor-background-neutral-strong-rest</HoverableCode>
+                </td>
+                <td>
+                    var(--neutral-900)
+                </td>
+                <td style={{background: `var(--semanticColor-background-neutral-strong-rest)` }}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>semanticColor-background-selected-active</HoverableCode>
+                </td>
+                <td>
+                    var(--selected-200)
+                </td>
+                <td style={{background: `var(--semanticColor-background-selected-active)` }}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>semanticColor-background-selected-hover</HoverableCode>
+                </td>
+                <td>
+                    var(--selected-100)
+                </td>
+                <td style={{background: `var(--semanticColor-background-selected-hover)` }}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>semanticColor-background-selected-rest</HoverableCode>
+                </td>
+                <td>
+                    var(--selected-050)
+                </td>
+                <td style={{background: `var(--semanticColor-background-selected-rest)` }}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>semanticColor-background-selected-strong-active</HoverableCode>
+                </td>
+                <td>
+                    var(--selected-600)
+                </td>
+                <td style={{background: `var(--semanticColor-background-selected-strong-active)` }}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>semanticColor-background-selected-strong-hover</HoverableCode>
+                </td>
+                <td>
+                    var(--selected-500)
+                </td>
+                <td style={{background: `var(--semanticColor-background-selected-strong-hover)` }}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>semanticColor-background-selected-strong-rest</HoverableCode>
+                </td>
+                <td>
+                    var(--selected-400)
+                </td>
+                <td style={{background: `var(--semanticColor-background-selected-strong-rest)` }}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>semanticColor-background-success-active</HoverableCode>
+                </td>
+                <td>
+                    var(--success-300)
+                </td>
+                <td style={{background: `var(--semanticColor-background-success-active)` }}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>semanticColor-background-success-hover</HoverableCode>
+                </td>
+                <td>
+                    var(--success-200)
+                </td>
+                <td style={{background: `var(--semanticColor-background-success-hover)` }}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>semanticColor-background-success-rest</HoverableCode>
+                </td>
+                <td>
+                    var(--success-050)
+                </td>
+                <td style={{background: `var(--semanticColor-background-success-rest)` }}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>semanticColor-background-success-soft-active</HoverableCode>
+                </td>
+                <td>
+                    var(--success-opacity-600-20)
+                </td>
+                <td style={{background: `var(--semanticColor-background-success-soft-active)` }}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>semanticColor-background-success-soft-hover</HoverableCode>
+                </td>
+                <td>
+                    var(--success-opacity-600-10)
+                </td>
+                <td style={{background: `var(--semanticColor-background-success-soft-hover)` }}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>semanticColor-background-success-soft-rest</HoverableCode>
+                </td>
+                <td>
+                    var(--transparent)
+                </td>
+                <td style={{background: `var(--semanticColor-background-success-soft-rest)` }}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>semanticColor-background-success-strong-hover</HoverableCode>
+                </td>
+                <td>
+                    var(--success-500)
+                </td>
+                <td style={{background: `var(--semanticColor-background-success-strong-hover)` }}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>semanticColor-background-success-strong-rest</HoverableCode>
+                </td>
+                <td>
+                    var(--success-600)
+                </td>
+                <td style={{background: `var(--semanticColor-background-success-strong-rest)` }}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>semanticColor-background-success-strong-active</HoverableCode>
+                </td>
+                <td>
+                    var(--success-400)
+                </td>
+                <td style={{background: `var(--semanticColor-background-success-strong-active)` }}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>semanticColor-background-tooltip</HoverableCode>
+                </td>
+                <td>
+                    var(--contrast-dark-085)
+                </td>
+                <td style={{background: `var(--semanticColor-background-tooltip)`}}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>semanticColor-border-brand</HoverableCode>
+                </td>
+                <td>
+                    var(--brand-400)
+                </td>
+                <td style={{background: `var(--semanticColor-border-brand)`}}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>semanticColor-border-brand-soft</HoverableCode>
+                </td>
+                <td>
+                    var(--brand-100)
+                </td>
+                <td style={{background: `var(--semanticColor-border-brand-soft)`}}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>semanticColor-border-brand-strong</HoverableCode>
+                </td>
+                <td>
+                    var(--brand-600)
+                </td>
+                <td style={{background: `var(--semanticColor-border-brand-strong)`}}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>semanticColor-border-caution</HoverableCode>
+                </td>
+                <td>
+                    var(--caution-400)
+                </td>
+                <td style={{background: `var(--semanticColor-border-caution)`}}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>semanticColor-border-caution-soft</HoverableCode>
+                </td>
+                <td>
+                    var(--caution-100)
+                </td>
+                <td style={{background: `var(--semanticColor-border-caution-soft)`}}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>semanticColor-border-caution-strong</HoverableCode>
+                </td>
+                <td>
+                    var(--caution-600)
+                </td>
+                <td style={{background: `var(--semanticColor-border-caution-strong)`}}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>semanticColor-border-danger</HoverableCode>
+                </td>
+                <td>
+                    var(--danger-400)
+                </td>
+                <td style={{background: `var(--semanticColor-border-danger)`}}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>semanticColor-border-danger-soft</HoverableCode>
+                </td>
+                <td>
+                    var(--danger-100)
+                </td>
+                <td style={{background: `var(--semanticColor-border-danger-soft)`}}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>semanticColor-border-danger-strong</HoverableCode>
+                </td>
+                <td>
+                    var(--danger-600)
+                </td>
+                <td style={{background: `var(--semanticColor-border-danger-strong)`}}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>semanticColor-border-disabled</HoverableCode>
+                </td>
+                <td>
+                    var(--contrast-dark-010)
+                </td>
+                <td style={{background: `var(--semanticColor-border-disabled)`}}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>semanticColor-border-divider</HoverableCode>
+                </td>
+                <td>
+                    var(--contrast-dark-010)
+                </td>
+                <td style={{background: `var(--semanticColor-border-divider)`}}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>semanticColor-border-info-soft</HoverableCode>
+                </td>
+                <td>
+                    var(--brand-100)
+                </td>
+                <td style={{background: `var(--semanticColor-border-info-soft)`}}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>semanticColor-border-info</HoverableCode>
+                </td>
+                <td>
+                    var(--brand-400)
+                </td>
+                <td style={{background: `var(--semanticColor-border-info)`}}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>semanticColor-border-inverse</HoverableCode>
+                </td>
+                <td>
+                    var(--contrast-light-050)
+                </td>
+                <td style={{background: `var(--semanticColor-border-inverse)`}}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>semanticColor-border-neutral</HoverableCode>
+                </td>
+                <td>
+                    var(--neutral-400)
+                </td>
+                <td style={{background: `var(--semanticColor-border-neutral)`}}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>semanticColor-border-neutral-strong</HoverableCode>
+                </td>
+                <td>
+                    var(--neutral-600)
+                </td>
+                <td style={{background: `var(--semanticColor-border-neutral-strong)`}}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>semanticColor-border-selected</HoverableCode>
+                </td>
+                <td>
+                    var(--selected-500)
+                </td>
+                <td style={{background: `var(--semanticColor-border-selected)`}}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>semanticColor-border-success</HoverableCode>
+                </td>
+                <td>
+                    var(--success-400)
+                </td>
+                <td style={{background: `var(--semanticColor-border-success)`}}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>semanticColor-border-success-soft</HoverableCode>
+                </td>
+                <td>
+                    var(--success-100)
+                </td>
+                <td style={{background: `var(--semanticColor-border-success-soft)`}}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>semanticColor-border-success-strong</HoverableCode>
+                </td>
+                <td>
+                    var(--success-600)
+                </td>
+                <td style={{background: `var(--semanticColor-border-success-strong)`}}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>semanticColor-icon-brand</HoverableCode>
+                </td>
+                <td>
+                    var(--brand-700)
+                </td>
+                <td style={{background: `var(--semanticColor-icon-brand)`}}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>semanticColor-icon-caution</HoverableCode>
+                </td>
+                <td>
+                    var(--caution-600)
+                </td>
+                <td style={{background: `var(--semanticColor-icon-caution)`}}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>semanticColor-icon-inverse</HoverableCode>
+                </td>
+                <td>
+                    var(--contrast-dark-085)
+                </td>
+                <td style={{background: `var(--semanticColor-icon-inverse)`}}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>semanticColor-icon-danger</HoverableCode>
+                </td>
+                <td>
+                    var(--danger-600)
+                </td>
+                <td style={{background: `var(--semanticColor-icon-danger)`}}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>semanticColor-icon-disabled</HoverableCode>
+                </td>
+                <td>
+                    var(--contrast-dark-035)
+                </td>
+                <td style={{background: `var(--semanticColor-icon-disabled)`}}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>semanticColor-icon-info</HoverableCode>
+                </td>
+                <td>
+                    var(--brand-500)
+                </td>
+                <td style={{background: `var(--semanticColor-icon-info)`}}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>semanticColor-icon-inverse</HoverableCode>
+                </td>
+                <td>
+                    var(--contrast-light-100)
+                </td>
+                <td style={{background: `var(--semanticColor-icon-inverse)`}}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>semanticColor-icon-neutral</HoverableCode>
+                </td>
+                <td>
+                    var(--neutral-700)
+                </td>
+                <td style={{background: `var(--semanticColor-icon-neutral)`}}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>semanticColor-icon-rating</HoverableCode>
+                </td>
+                <td>
+                    var(--caution-500)
+                </td>
+                <td style={{background: `var(--semanticColor-icon-rating)`}}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>semanticColor-icon-selected</HoverableCode>
+                </td>
+                <td>
+                    var(--selected-500)
+                </td>
+                <td style={{background: `var(--semanticColor-icon-selected)`}}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>semanticColor-icon-success</HoverableCode>
+                </td>
+                <td>
+                    var(--success-600)
+                </td>
+                <td style={{background: `var(--semanticColor-icon-success)`}}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>semanticColor-layer-brand-00</HoverableCode>
+                </td>
+                <td>
+                    var(--brand-alt-200)
+                </td>
+                <td style={{background: `var(--semanticColor-layer-brand-00)`}}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>semanticColor-layer-brand-01</HoverableCode>
+                </td>
+                <td>
+                    var(--brand-alt-100)
+                </td>
+                <td style={{background: `var(--semanticColor-layer-brand-01)`}}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>semanticColor-layer-brand-02</HoverableCode>
+                </td>
+                <td>
+                    var(--brand-alt-050)
+                </td>
+                <td style={{background: `var(--semanticColor-layer-brand-02)`}}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>semanticColor-layer-neutral-00</HoverableCode>
+                </td>
+                <td>
+                    var(--neutral-200)
+                </td>
+                <td style={{background: `var(--semanticColor-layer-neutral-00)`}}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>semanticColor-layer-neutral-01</HoverableCode>
+                </td>
+                <td>
+                    var(--neutral-100)
+                </td>
+                <td style={{background: `var(--semanticColor-layer-neutral-01)`}}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>semanticColor-layer-neutral-02</HoverableCode>
+                </td>
+                <td>
+                    var(--neutral-050)
+                </td>
+                <td style={{background: `var(--semanticColor-layer-neutral-02)`}}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>semanticColor-layer-neutral-03</HoverableCode>
+                </td>
+                <td>
+                    var(--contrast-light-100)
+                </td>
+                <td style={{background: `var(--semanticColor-layer-neutral-03)`}}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>semanticColor-layer-neutral-04</HoverableCode>
+                </td>
+                <td>
+                    var(--contrast-dark-050)
+                </td>
+                <td style={{background: `var(--semanticColor-layer-neutral-04)`}}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>semanticColor-layer-screen</HoverableCode>
+                </td>
+                <td>
+                    var(--contrast-dark-050)
+                </td>
+                <td style={{background: `var(--semanticColor-layer-screen)`}}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>semanticColor-text-default</HoverableCode>
+                </td>
+                <td>
+                    var(--contrast-dark-085)
+                </td>
+                <td style={{background: `var(--semanticColor-text-default)`}}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>semanticColor-text-disabled</HoverableCode>
+                </td>
+                <td>
+                    var(--contrast-dark-045)
+                </td>
+                <td style={{background: `var(--semanticColor-text-disabled)`}}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>semanticColor-text-helper-brand</HoverableCode>
+                </td>
+                <td>
+                    var(--brand-700)
+                </td>
+                <td style={{background: `var(--semanticColor-text-helper-brand)`}}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>semanticColor-text-helper-caution</HoverableCode>
+                </td>
+                <td>
+                    var(--caution-800)
+                </td>
+                <td style={{background: `var(--semanticColor-text-helper-caution)`}}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>semanticColor-text-helper-caution-inverse</HoverableCode>
+                </td>
+                <td>
+                    var(--contrast-dark-085)
+                </td>
+                <td style={{background: `var(--semanticColor-text-helper-caution-inverse)`}}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>semanticColor-text-helper-danger</HoverableCode>
+                </td>
+                <td>
+                    var(--danger-700)
+                </td>
+                <td style={{background: `var(--semanticColor-text-helper-danger)`}}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>semanticColor-text-helper-info</HoverableCode>
+                </td>
+                <td>
+                    var(--info-400)
+                </td>
+                <td style={{background: `var(--semanticColor-text-helper-info)`}}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>semanticColor-text-helper-neutral</HoverableCode>
+                </td>
+                <td>
+                    var(--contrast-dark-065)
+                </td>
+                <td style={{background: `var(--semanticColor-text-helper-neutral)`}}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>semanticColor-text-helper-selected</HoverableCode>
+                </td>
+                <td>
+                    var(--selected-500)
+                </td>
+                <td style={{background: `var(--semanticColor-text-helper-selected)`}}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>semanticColor-text-helper-success</HoverableCode>
+                </td>
+                <td>
+                    var(--success-700)
+                </td>
+                <td style={{background: `var(--semanticColor-text-helper-success)`}}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>semanticColor-text-inverse</HoverableCode>
+                </td>
+                <td>
+                    var(--contrast-light-100)
+                </td>
+                <td style={{background: `var(--semanticColor-text-inverse)`}}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>semanticColor-text-link-active</HoverableCode>
+                </td>
+                <td>
+                    var(--brand-400)
+                </td>
+                <td style={{background: `var(--semanticColor-text-link-active)`}}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>semanticColor-text-link-hover</HoverableCode>
+                </td>
+                <td>
+                    var(--brand-500)
+                </td>
+                <td style={{background: `var(--semanticColor-text-link-hover)`}}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>semanticColor-text-link-rest</HoverableCode>
+                </td>
+                <td>
+                    var(--brand-500)
+                </td>
+                <td style={{background: `var(--semanticColor-text-link-rest)`}}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>semanticColor-text-link-visited</HoverableCode>
+                </td>
+                <td>
+                    var(--f164c39)
+                </td>
+                <td style={{background: `var(--semanticColor-text-link-visited)`}}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>semanticColor-text-placeholder</HoverableCode>
+                </td>
+                <td>
+                    var(--contrast-dark-055)
+                </td>
+                <td style={{background: `var(--semanticColor-text-placeholder)`}}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>semanticColor-text-secondary</HoverableCode>
+                </td>
+                <td>
+                    var(--contrast-dark-070)
+                </td>
+                <td style={{background: `var(--semanticColor-text-secondary)`}}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+   
+    </tbody>
+     }
+</table>
+
+## Palette Tokens
+The brand palette is used to create a backbone asthetic that can be used to generate many themes for your brand.
+<table>
+    <thead>
+        <tr>
+            <th>Token</th>
+            <th>Default</th>
+            <th>Example</th>
+            <th>Usage</th>
+        </tr>
+    </thead>
+        { 
+    <tbody>
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>brand-alt-050</HoverableCode>
+                </td>
+                <td>
+                    var(--color-blue-050)
+                </td>
+                <td style={{background: `var(--brand-alt-050)`}}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>brand-alt-100</HoverableCode>
+                </td>
+                <td>
+                    var(--color-blue-100)
+                </td>
+                <td style={{background: `var(--brand-alt-100)`}}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>brand-alt-200</HoverableCode>
+                </td>
+                <td>
+                    var(--color-blue-200)
+                </td>
+                <td style={{background: `var(--brand-alt-200)`}}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>brand-alt-300</HoverableCode>
+                </td>
+                <td>
+                    var(--color-blue-300)
+                </td>
+                <td style={{background: `var(--brand-alt-300)`}}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>brand-alt-400</HoverableCode>
+                </td>
+                <td>
+                    var(--color-blue-400)
+                </td>
+                <td style={{background: `var(--brand-alt-400)`}}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>brand-alt-500</HoverableCode>
+                </td>
+                <td>
+                    var(--color-blue-500)
+                </td>
+                <td style={{background: `var(--brand-alt-500)`}}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>brand-alt-600</HoverableCode>
+                </td>
+                <td>
+                    var(--color-blue-600)
+                </td>
+                <td style={{background: `var(--brand-alt-600)`}}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>brand-alt-700</HoverableCode>
+                </td>
+                <td>
+                    var(--color-blue-700)
+                </td>
+                <td style={{background: `var(--brand-alt-700)`}}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>brand-alt-800</HoverableCode>
+                </td>
+                <td>
+                    var(--color-blue-800)
+                </td>
+                <td style={{background: `var(--brand-alt-800)`}}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>brand-alt-900</HoverableCode>
+                </td>
+                <td>
+                    var(--color-blue-900)
+                </td>
+                <td style={{background: `var(--brand-alt-900)`}}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>brand-050</HoverableCode>
+                </td>
+                <td>
+                    var(--color-cobalt-050)
+                </td>
+                <td style={{background: `var(--brand-050)`}}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>brand-100</HoverableCode>
+                </td>
+                <td>
+                    var(--color-cobalt-100)
+                </td>
+                <td style={{background: `var(--brand-100)`}}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>brand-200</HoverableCode>
+                </td>
+                <td>
+                    var(--color-cobalt-200)
+                </td>
+                <td style={{background: `var(--brand-200)`}}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>brand-300</HoverableCode>
+                </td>
+                <td>
+                    var(--color-cobalt-300)
+                </td>
+                <td style={{background: `var(--brand-300)`}}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>brand-400</HoverableCode>
+                </td>
+                <td>
+                    var(--color-cobalt-400)
+                </td>
+                <td style={{background: `var(--brand-400)`}}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>brand-500</HoverableCode>
+                </td>
+                <td>
+                    var(--color-cobalt-500)
+                </td>
+                <td style={{background: `var(--brand-500)`}}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>brand-600</HoverableCode>
+                </td>
+                <td>
+                    var(--color-cobalt-600)
+                </td>
+                <td style={{background: `var(--brand-600)`}}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>brand-700</HoverableCode>
+                </td>
+                <td>
+                    var(--color-cobalt-700)
+                </td>
+                <td style={{background: `var(--brand-700)`}}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>brand-800</HoverableCode>
+                </td>
+                <td>
+                    var(--color-cobalt-800)
+                </td>
+                <td style={{background: `var(--brand-800)`}}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>brand-900</HoverableCode>
+                </td>
+                <td>
+                    var(--color-cobalt-900)
+                </td>
+                <td style={{background: `var(--brand-900)`}}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>brand-opacity-300-10</HoverableCode>
+                </td>
+                <td>
+                    #5d93ff1a
+                </td>
+                <td style={{background: `var(--brand-opacity-300-10)`}}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>brand-opacity-300-10</HoverableCode>
+                </td>
+                <td>
+                    #5d93ff33
+                </td>
+                <td style={{background: `var(--brand-opacity-300-10)`}}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>brand-opacity-600-10</HoverableCode>
+                </td>
+                <td>
+                    #0b41ad1a
+                </td>
+                <td style={{background: `var(--brand-opacity-600-10)`}}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>brand-opacity-600-20</HoverableCode>
+                </td>
+                <td>
+                    #0b41ad33
+                </td>
+                <td style={{background: `var(--brand-opacity-600-20)`}}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>caution-050</HoverableCode>
+                </td>
+                <td>
+                    var(--color-yellow-050)
+                </td>
+                <td style={{background: `var(--caution-050)`}}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>caution-100</HoverableCode>
+                </td>
+                <td>
+                    var(--color-yellow-100)
+                </td>
+                <td style={{background: `var(--caution-100)`}}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>caution-200</HoverableCode>
+                </td>
+                <td>
+                    var(--color-yellow-200)
+                </td>
+                <td style={{background: `var(--caution-200)`}}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>caution-300</HoverableCode>
+                </td>
+                <td>
+                    var(--color-yellow-300)
+                </td>
+                <td style={{background: `var(--caution-300)`}}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>caution-400</HoverableCode>
+                </td>
+                <td>
+                    var(--color-yellow-400)
+                </td>
+                <td style={{background: `var(--caution-400)`}}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>caution-500</HoverableCode>
+                </td>
+                <td>
+                    var(--color-yellow-500)
+                </td>
+                <td style={{background: `var(--caution-500)`}}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>caution-600</HoverableCode>
+                </td>
+                <td>
+                    var(--color-yellow-600)
+                </td>
+                <td style={{background: `var(--caution-600)`}}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>caution-700</HoverableCode>
+                </td>
+                <td>
+                    var(--color-yellow-700)
+                </td>
+                <td style={{background: `var(--caution-700)`}}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>caution-800</HoverableCode>
+                </td>
+                <td>
+                    var(--color-yellow-800)
+                </td>
+                <td style={{background: `var(--caution-800)`}}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>caution-900</HoverableCode>
+                </td>
+                <td>
+                    var(--color-yellow-900)
+                </td>
+                <td style={{background: `var(--caution-900)`}}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>caution-opacity-300-10</HoverableCode>
+                </td>
+                <td>
+                    #ffe5801a
+                </td>
+                <td style={{background: `var(--caution-opacity-300-10)`}}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>caution-opacity-300-10</HoverableCode>
+                </td>
+                <td>
+                    #ffe58033
+                </td>
+                <td style={{background: `var(--caution-opacity-300-10)`}}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>caution-opacity-600-10</HoverableCode>
+                </td>
+                <td>
+                    #c996001a
+                </td>
+                <td style={{background: `var(--caution-opacity-600-10)`}}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>caution-opacity-600-20</HoverableCode>
+                </td>
+                <td>
+                    #c9960033
+                </td>
+                <td style={{background: `var(--caution-opacity-600-20)`}}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>contrast-dark-005</HoverableCode>
+                </td>
+                <td>
+                    var(--color-contrast-dark-005)
+                </td>
+                <td style={{background: `var(--contrast-dark-005)`}}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>contrast-dark-010</HoverableCode>
+                </td>
+                <td>
+                    var(--color-contrast-dark-010)
+                </td>
+                <td style={{background: `var(--contrast-dark-010)`}}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>contrast-dark-015</HoverableCode>
+                </td>
+                <td>
+                    var(--color-contrast-dark-015)
+                </td>
+                <td style={{background: `var(--contrast-dark-015)`}}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>contrast-dark-020</HoverableCode>
+                </td>
+                <td>
+                    var(--color-contrast-dark-020)
+                </td>
+                <td style={{background: `var(--contrast-dark-020)`}}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>contrast-dark-025</HoverableCode>
+                </td>
+                <td>
+                    var(--color-contrast-dark-025)
+                </td>
+                <td style={{background: `var(--contrast-dark-025)`}}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>contrast-dark-030</HoverableCode>
+                </td>
+                <td>
+                    var(--color-contrast-dark-030)
+                </td>
+                <td style={{background: `var(--contrast-dark-030)`}}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>contrast-dark-035</HoverableCode>
+                </td>
+                <td>
+                    var(--color-contrast-dark-035)
+                </td>
+                <td style={{background: `var(--contrast-dark-035)`}}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>contrast-dark-040</HoverableCode>
+                </td>
+                <td>
+                    var(--color-contrast-dark-040)
+                </td>
+                <td style={{background: `var(--contrast-dark-040)`}}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>contrast-dark-045</HoverableCode>
+                </td>
+                <td>
+                    var(--color-contrast-dark-045)
+                </td>
+                <td style={{background: `var(--contrast-dark-045)`}}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>contrast-dark-050</HoverableCode>
+                </td>
+                <td>
+                    var(--color-contrast-dark-050)
+                </td>
+                <td style={{background: `var(--contrast-dark-050)`}}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>contrast-dark-055</HoverableCode>
+                </td>
+                <td>
+                    var(--color-contrast-dark-055)
+                </td>
+                <td style={{background: `var(--contrast-dark-055)`}}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>contrast-dark-060</HoverableCode>
+                </td>
+                <td>
+                    var(--color-contrast-dark-060)
+                </td>
+                <td style={{background: `var(--contrast-dark-060)`}}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>contrast-dark-065</HoverableCode>
+                </td>
+                <td>
+                    var(--color-contrast-dark-065)
+                </td>
+                <td style={{background: `var(--contrast-dark-065)`}}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>contrast-dark-070</HoverableCode>
+                </td>
+                <td>
+                    var(--color-contrast-dark-070)
+                </td>
+                <td style={{background: `var(--contrast-dark-070)`}}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>contrast-dark-075</HoverableCode>
+                </td>
+                <td>
+                    var(--color-contrast-dark-075)
+                </td>
+                <td style={{background: `var(--contrast-dark-075)`}}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>contrast-dark-080</HoverableCode>
+                </td>
+                <td>
+                    var(--color-contrast-dark-080)
+                </td>
+                <td style={{background: `var(--contrast-dark-080)`}}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>contrast-dark-085</HoverableCode>
+                </td>
+                <td>
+                    var(--color-contrast-dark-085)
+                </td>
+                <td style={{background: `var(--contrast-dark-085)`}}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>contrast-dark-090</HoverableCode>
+                </td>
+                <td>
+                    var(--color-contrast-dark-090)
+                </td>
+                <td style={{background: `var(--contrast-dark-090)`}}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>contrast-dark-095</HoverableCode>
+                </td>
+                <td>
+                    var(--color-contrast-dark-095)
+                </td>
+                <td style={{background: `var(--contrast-dark-095)`}}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>contrast-dark-100</HoverableCode>
+                </td>
+                <td>
+                    var(--color-contrast-dark-100)
+                </td>
+                <td style={{background: `var(--contrast-dark-100)`}}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>contrast-light-005</HoverableCode>
+                </td>
+                <td>
+                    var(--color-contrast-light-005)
+                </td>
+                <td style={{background: `var(--contrast-light-005)`}}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>contrast-light-010</HoverableCode>
+                </td>
+                <td>
+                    var(--color-contrast-light-010)
+                </td>
+                <td style={{background: `var(--contrast-light-010)`}}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>contrast-light-015</HoverableCode>
+                </td>
+                <td>
+                    var(--color-contrast-light-015)
+                </td>
+                <td style={{background: `var(--contrast-light-015)`}}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>contrast-light-020</HoverableCode>
+                </td>
+                <td>
+                    var(--color-contrast-light-020)
+                </td>
+                <td style={{background: `var(--contrast-light-020)`}}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>contrast-light-025</HoverableCode>
+                </td>
+                <td>
+                    var(--color-contrast-light-025)
+                </td>
+                <td style={{background: `var(--contrast-light-025)`}}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>contrast-light-030</HoverableCode>
+                </td>
+                <td>
+                    var(--color-contrast-light-030)
+                </td>
+                <td style={{background: `var(--contrast-light-030)`}}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>contrast-light-035</HoverableCode>
+                </td>
+                <td>
+                    var(--color-contrast-light-035)
+                </td>
+                <td style={{background: `var(--contrast-light-035)`}}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>contrast-light-040</HoverableCode>
+                </td>
+                <td>
+                    var(--color-contrast-light-040)
+                </td>
+                <td style={{background: `var(--contrast-light-040)`}}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>contrast-light-045</HoverableCode>
+                </td>
+                <td>
+                    var(--color-contrast-light-045)
+                </td>
+                <td style={{background: `var(--contrast-light-045)`}}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>contrast-light-050</HoverableCode>
+                </td>
+                <td>
+                    var(--color-contrast-light-050)
+                </td>
+                <td style={{background: `var(--contrast-light-050)`}}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>contrast-light-055</HoverableCode>
+                </td>
+                <td>
+                    var(--color-contrast-light-055)
+                </td>
+                <td style={{background: `var(--contrast-light-055)`}}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>contrast-light-060</HoverableCode>
+                </td>
+                <td>
+                    var(--color-contrast-light-060)
+                </td>
+                <td style={{background: `var(--contrast-light-060)`}}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>contrast-light-065</HoverableCode>
+                </td>
+                <td>
+                    var(--color-contrast-light-065)
+                </td>
+                <td style={{background: `var(--contrast-light-065)`}}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>contrast-light-070</HoverableCode>
+                </td>
+                <td>
+                    var(--color-contrast-light-070)
+                </td>
+                <td style={{background: `var(--contrast-light-070)`}}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>contrast-light-075</HoverableCode>
+                </td>
+                <td>
+                    var(--color-contrast-light-075)
+                </td>
+                <td style={{background: `var(--contrast-light-075)`}}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>contrast-light-080</HoverableCode>
+                </td>
+                <td>
+                    var(--color-contrast-light-080)
+                </td>
+                <td style={{background: `var(--contrast-light-080)`}}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>contrast-light-085</HoverableCode>
+                </td>
+                <td>
+                    var(--color-contrast-light-085)
+                </td>
+                <td style={{background: `var(--contrast-light-085)`}}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>contrast-light-090</HoverableCode>
+                </td>
+                <td>
+                    var(--color-contrast-light-090)
+                </td>
+                <td style={{background: `var(--contrast-light-090)`}}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>contrast-light-095</HoverableCode>
+                </td>
+                <td>
+                    var(--color-contrast-light-095)
+                </td>
+                <td style={{background: `var(--contrast-light-095)`}}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>contrast-light-100</HoverableCode>
+                </td>
+                <td>
+                    var(--color-contrast-light-100)
+                </td>
+                <td style={{background: `var(--contrast-light-100)`}}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>danger-050</HoverableCode>
+                </td>
+                <td>
+                    var(--color-crimson-050)
+                </td>
+                <td style={{background: `var(--danger-050)`}}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>danger-100</HoverableCode>
+                </td>
+                <td>
+                    var(--color-crimson-100)
+                </td>
+                <td style={{background: `var(--danger-100)`}}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>danger-200</HoverableCode>
+                </td>
+                <td>
+                    var(--color-crimson-200)
+                </td>
+                <td style={{background: `var(--danger-200)`}}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>danger-300</HoverableCode>
+                </td>
+                <td>
+                    var(--color-crimson-300)
+                </td>
+                <td style={{background: `var(--danger-300)`}}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>danger-400</HoverableCode>
+                </td>
+                <td>
+                    var(--color-crimson-400)
+                </td>
+                <td style={{background: `var(--danger-400)`}}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>danger-500</HoverableCode>
+                </td>
+                <td>
+                    var(--color-crimson-500)
+                </td>
+                <td style={{background: `var(--danger-500)`}}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>danger-600</HoverableCode>
+                </td>
+                <td>
+                    var(--color-crimson-600)
+                </td>
+                <td style={{background: `var(--danger-600)`}}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>danger-700</HoverableCode>
+                </td>
+                <td>
+                    var(--color-crimson-700)
+                </td>
+                <td style={{background: `var(--danger-700)`}}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>danger-800</HoverableCode>
+                </td>
+                <td>
+                    var(--color-crimson-800)
+                </td>
+                <td style={{background: `var(--danger-800)`}}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>danger-900</HoverableCode>
+                </td>
+                <td>
+                    var(--color-crimson-900)
+                </td>
+                <td style={{background: `var(--danger-900)`}}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>info-050</HoverableCode>
+                </td>
+                <td>
+                    var(--color-cobalt-050)
+                </td>
+                <td style={{background: `var(--info-050)`}}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>info-100</HoverableCode>
+                </td>
+                <td>
+                    var(--color-cobalt-100)
+                </td>
+                <td style={{background: `var(--info-100)`}}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>info-200</HoverableCode>
+                </td>
+                <td>
+                    var(--color-cobalt-200)
+                </td>
+                <td style={{background: `var(--info-200)`}}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>info-300</HoverableCode>
+                </td>
+                <td>
+                    var(--color-cobalt-300)
+                </td>
+                <td style={{background: `var(--info-300)`}}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>info-400</HoverableCode>
+                </td>
+                <td>
+                    var(--color-cobalt-400)
+                </td>
+                <td style={{background: `var(--info-400)`}}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>info-500</HoverableCode>
+                </td>
+                <td>
+                    var(--color-cobalt-500)
+                </td>
+                <td style={{background: `var(--info-500)`}}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>info-600</HoverableCode>
+                </td>
+                <td>
+                    var(--color-cobalt-600)
+                </td>
+                <td style={{background: `var(--info-600)`}}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>info-700</HoverableCode>
+                </td>
+                <td>
+                    var(--color-cobalt-700)
+                </td>
+                <td style={{background: `var(--info-700)`}}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>info-800</HoverableCode>
+                </td>
+                <td>
+                    var(--color-cobalt-800)
+                </td>
+                <td style={{background: `var(--info-800)`}}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>info-900</HoverableCode>
+                </td>
+                <td>
+                    var(--color-cobalt-900)
+                </td>
+                <td style={{background: `var(--info-900)`}}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>info-opacity-200-10</HoverableCode>
+                </td>
+                <td>
+                    #8cb2ff1a
+                </td>
+                <td style={{background: `var(--info-opacity-200-10)`}}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>info-opacity-200-20</HoverableCode>
+                </td>
+                <td>
+                    #8cb2ff33
+                </td>
+                <td style={{background: `var(--info-opacity-200-20)`}}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>info-opacity-500-10</HoverableCode>
+                </td>
+                <td>
+                    #0e53d11a
+                </td>
+                <td style={{background: `var(--info-opacity-500-10)`}}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>info-opacity-500-20</HoverableCode>
+                </td>
+                <td>
+                    #0e53d133
+                </td>
+                <td style={{background: `var(--info-opacity-500-20)`}}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>neutral-050</HoverableCode>
+                </td>
+                <td>
+                    var(--color-gray-050)
+                </td>
+                <td style={{background: `var(--neutral-050)`}}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>neutral-100</HoverableCode>
+                </td>
+                <td>
+                    var(--color-gray-100)
+                </td>
+                <td style={{background: `var(--neutral-100)`}}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>neutral-200</HoverableCode>
+                </td>
+                <td>
+                    var(--color-gray-200)
+                </td>
+                <td style={{background: `var(--neutral-200)`}}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>neutral-300</HoverableCode>
+                </td>
+                <td>
+                    var(--color-gray-300)
+                </td>
+                <td style={{background: `var(--neutral-300)`}}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>neutral-400</HoverableCode>
+                </td>
+                <td>
+                    var(--color-gray-400)
+                </td>
+                <td style={{background: `var(--neutral-400)`}}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>neutral-500</HoverableCode>
+                </td>
+                <td>
+                    var(--color-gray-500)
+                </td>
+                <td style={{background: `var(--neutral-500)`}}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>neutral-600</HoverableCode>
+                </td>
+                <td>
+                    var(--color-gray-600)
+                </td>
+                <td style={{background: `var(--neutral-600)`}}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>neutral-700</HoverableCode>
+                </td>
+                <td>
+                    var(--color-gray-700)
+                </td>
+                <td style={{background: `var(--neutral-700)`}}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>neutral-800</HoverableCode>
+                </td>
+                <td>
+                    var(--color-gray-800)
+                </td>
+                <td style={{background: `var(--neutral-800)`}}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>neutral-850</HoverableCode>
+                </td>
+                <td>
+                    var(--color-gray-850)
+                </td>
+                <td style={{background: `var(--neutral-850)`}}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>neutral-900</HoverableCode>
+                </td>
+                <td>
+                    var(--color-gray-900)
+                </td>
+                <td style={{background: `var(--neutral-900)`}}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>neutral-opacity-200-10</HoverableCode>
+                </td>
+                <td>
+                    #e3e3e31a
+                </td>
+                <td style={{background: `var(--neutral-opacity-200-10)`}}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>neutral-opacity-200-20</HoverableCode>
+                </td>
+                <td>
+                    #e3e3e333
+                </td>
+                <td style={{background: `var(--neutral-opacity-200-20)`}}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>neutral-opacity-700-10</HoverableCode>
+                </td>
+                <td>
+                    #5656561a
+                </td>
+                <td style={{background: `var(--neutral-opacity-700-10)`}}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>neutral-opacity-700-20</HoverableCode>
+                </td>
+                <td>
+                    #56565633
+                </td>
+                <td style={{background: `var(--neutral-opacity-700-20)`}}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>selected-050</HoverableCode>
+                </td>
+                <td>
+                    var(--color-cobalt-050)
+                </td>
+                <td style={{background: `var(--selected-050)`}}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>selected-100</HoverableCode>
+                </td>
+                <td>
+                    var(--color-cobalt-100)
+                </td>
+                <td style={{background: `var(--selected-100)`}}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>selected-200</HoverableCode>
+                </td>
+                <td>
+                    var(--color-cobalt-200)
+                </td>
+                <td style={{background: `var(--selected-200)`}}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>selected-300</HoverableCode>
+                </td>
+                <td>
+                    var(--color-cobalt-300)
+                </td>
+                <td style={{background: `var(--selected-300)`}}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>selected-400</HoverableCode>
+                </td>
+                <td>
+                    var(--color-cobalt-400)
+                </td>
+                <td style={{background: `var(--selected-400)`}}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>selected-500</HoverableCode>
+                </td>
+                <td>
+                    var(--color-cobalt-500)
+                </td>
+                <td style={{background: `var(--selected-500)`}}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>selected-600</HoverableCode>
+                </td>
+                <td>
+                    var(--color-cobalt-600)
+                </td>
+                <td style={{background: `var(--selected-600)`}}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>selected-700</HoverableCode>
+                </td>
+                <td>
+                    var(--color-cobalt-700)
+                </td>
+                <td style={{background: `var(--selected-700)`}}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>selected-800</HoverableCode>
+                </td>
+                <td>
+                    var(--color-cobalt-800)
+                </td>
+                <td style={{background: `var(--selected-800)`}}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>selected-900</HoverableCode>
+                </td>
+                <td>
+                    var(--color-cobalt-900)
+                </td>
+                <td style={{background: `var(--selected-900)`}}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>success-050</HoverableCode>
+                </td>
+                <td>
+                    var(--color-green-050)
+                </td>
+                <td style={{background: `var(--success-050)`}}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>success-100</HoverableCode>
+                </td>
+                <td>
+                    var(--color-green-100)
+                </td>
+                <td style={{background: `var(--success-100)`}}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>success-200</HoverableCode>
+                </td>
+                <td>
+                    var(--color-green-200)
+                </td>
+                <td style={{background: `var(--success-200)`}}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>success-300</HoverableCode>
+                </td>
+                <td>
+                    var(--color-green-300)
+                </td>
+                <td style={{background: `var(--success-300)`}}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>success-400</HoverableCode>
+                </td>
+                <td>
+                    var(--color-green-400)
+                </td>
+                <td style={{background: `var(--success-400)`}}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>success-500</HoverableCode>
+                </td>
+                <td>
+                    var(--color-green-500)
+                </td>
+                <td style={{background: `var(--success-500)`}}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>success-600</HoverableCode>
+                </td>
+                <td>
+                    var(--color-green-600)
+                </td>
+                <td style={{background: `var(--success-600)`}}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>success-700</HoverableCode>
+                </td>
+                <td>
+                    var(--color-green-700)
+                </td>
+                <td style={{background: `var(--success-700)`}}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>success-800</HoverableCode>
+                </td>
+                <td>
+                    var(--color-green-800)
+                </td>
+                <td style={{background: `var(--success-800)`}}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>success-900</HoverableCode>
+                </td>
+                <td>
+                    var(--color-green-900)
+                </td>
+                <td style={{background: `var(--success-900)`}}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>success-opacity-300-10</HoverableCode>
+                </td>
+                <td>
+                    #addfb11a
+                </td>
+                <td style={{background: `var(--success-opacity-300-10)`}}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>success-opacity-300-20</HoverableCode>
+                </td>
+                <td>
+                    #addfb133
+                </td>
+                <td style={{background: `var(--success-opacity-300-20)`}}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>success-opacity-600-10</HoverableCode>
+                </td>
+                <td>
+                    #14853d1a
+                </td>
+                <td style={{background: `var(--success-opacity-600-10)`}}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+            <tr>
+                <td className="hoverable__cell colors__code__example">
+                    <HoverableCode>success-opacity-600-20</HoverableCode>
+                </td>
+                <td>
+                    #14853d33
+                </td>
+                <td style={{background: `var(--success-opacity-600-20)`}}>
+                </td>
+                <td>
+                CSS Variable
+                </td>
+            </tr>
+
+    </tbody>
+       }
+</table>

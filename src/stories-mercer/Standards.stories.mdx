@@ -1,0 +1,86 @@
+import { Meta } from '@storybook/addon-docs';
+import Code from 'projects/cdk/assets/icons/code-brackets.svg';
+import Colors from 'projects/cdk/assets/icons/colors.svg';
+import Comments from 'projects/cdk/assets/icons/comments.svg';
+import Direction from 'projects/cdk/assets/icons/direction.svg';
+import Flow from 'projects/cdk/assets/icons/flow.svg';
+import Plugin from 'projects/cdk/assets/icons/plugin.svg';
+import Repo from 'projects/cdk/assets/icons/repo.svg';
+import StackAlt from 'projects/cdk/assets/icons/stackalt.svg';
+import { BADGES } from '.storybook/constants';
+
+<Meta title="Get Started/Standards" parameters={{ badges: [ BADGES.STABLE ], options: { isToolshown: true } }}/>
+
+<style>
+    {`
+    .outer-table {
+            width: 100%;
+        }
+    `}
+</style>
+
+# Web Standards Guide
+
+This guide provides an overview of the key considerations for accessibility (a11y) and internationalization (i18n) when using the Atlas component library. Our goal is to ensure that all users, regardless of ability or language, can effectively interact with the components provided by our library. Atlas is designed to be WCAG 2.0 AA compliant and prioritizes i18n support in its architecture decisions.
+
+## Accessibility (a11y)
+
+### Introduction
+
+Welcome to the accessibility (a11y) documentation for Atlas! In this guide, we'll cover the key accessibility considerations for using our components in your projects. Our goal is to ensure that all users, regardless of ability, can effectively interact with the components provided by our library. Atlas is designed to be WCAG 2.0 AA compliant, meeting the Web Content Accessibility Guidelines for a wide range of users.
+
+### General Accessibility Principles
+
+When using Atlas, please keep the following general accessibility principles in mind:
+
+- **Keyboard Navigation**: Ensure that all interactive elements are keyboard accessible. Users should be able to navigate through the components using the "Tab" key and activate buttons and links using the "Enter" key.
+
+- **Semantic HTML**: Use appropriate semantic HTML elements to convey the structure and meaning of the content. For instance, our [type classes](?path=/docs/adopters-design-tokens-typography--docs) allow you to style any element you need to so your design is remains both semantic and cohesive.
+
+- **Color Contrast**: Choose colors with sufficient contrast between text and background to ensure readability for users with visual impairments.
+
+- **Alternative Text**: Provide meaningful alternative text for images and icons to convey their purpose to screen reader users.
+
+- **Focus Indicators**: Ensure that focus indicators are visible for interactive elements to help keyboard users understand which element currently has focus.
+
+### Accessibility-Tested Themes
+
+All themes provided by Atlas have been thoroughly accessibility tested to ensure compliance with WCAG 2.0 AA standards. Our commitment to accessibility extends to the visual design and color schemes of our themes, allowing you to create inclusive user interfaces that cater to a diverse audience.
+
+### Testing for Accessibility
+
+We recommend testing the accessibility of your implementation using a combination of automated tools and manual testing. Some popular accessibility testing tools include:
+
+- [axe](https://www.deque.com/axe/)
+- [Lighthouse](https://developers.google.com/web/tools/lighthouse)
+- [WAVE](https://wave.webaim.org/)
+
+Additionally, consider performing manual testing with screen readers such as [NVDA](https://www.nvaccess.org/download/), [JAWS](https://www.freedomscientific.com/products/software/jaws/), and [VoiceOver](https://www.apple.com/accessibility/mac/vision/).
+
+
+### Notice
+
+By adhering to WCAG 2.0 AA standards, Atlas aims to provide a high level of accessibility for all users.
+
+Please note that while Atlas provides a set of accessible building blocks, it is important to test each product or implementation for accessibility. Ensuring accessibility is an ongoing process, and we encourage you to conduct thorough testing to identify and address any potential accessibility issues in your specific use case.
+
+
+## BEM Methodology in Atlas
+
+Atlas adopts the BEM (Block, Element, Modifier) methodology for organizing and structuring CSS code. BEM is a widely recognized naming convention that provides a clear and consistent way to structure CSS classes, making it easier to understand the relationship between different parts of a component. In BEM, each component is defined as a "Block," its constituent parts are "Elements," and variations or states are represented as "Modifiers." By using BEM, Atlas ensures that its CSS code is scalable, maintainable, and easy to understand. Developers using Atlas can benefit from this structured approach, which promotes modularity and reduces the risk of style conflicts in complex applications.
+
+
+## Internationalization (i18n) Support in Atlas
+
+Atlas is designed with internationalization (i18n) in mind, recognizing the importance of creating user interfaces that can be adapted to various languages, regions, and cultures. Our library's architecture decisions prioritize i18n support, ensuring that our components, directives, and services are flexible and adaptable to the needs of a global audience.
+
+One of the key considerations in our approach to i18n is the elimination of non-configurable text within our components, directives, and services. This design choice allows developers to provide their own translations and language-specific content, making it easier to localize applications for different languages and regions. By avoiding hardcoded text, Atlas empowers developers to create user interfaces that are truly inclusive and accessible to users around the world.
+
+In addition to providing the ability to configure text, Atlas's architecture is built to accommodate other localization considerations, such as text direction (left-to-right or right-to-left), date and number formats, and cultural nuances. Our goal is to provide a library that serves as a foundation for building applications that can seamlessly cater to a diverse and global user base.
+
+We encourage developers using Atlas to leverage the i18n capabilities of our library to create applications that are not only visually appealing and functional but also culturally sensitive and linguistically accurate. By doing so, we can collectively contribute to a more inclusive and connected digital world.
+
+
+## Semantic Versioning (SemVer) in Atlas
+
+Atlas follows the principles of Semantic Versioning (SemVer) to manage version numbers and communicate changes in the library. SemVer is a versioning system that uses a three-part version number format: MAJOR.MINOR.PATCH (e.g., 1.2.3). In SemVer, a change in the MAJOR version indicates breaking changes, a change in the MINOR version indicates the addition of new backward-compatible features, and a change in the PATCH version indicates backward-compatible bug fixes. By adhering to SemVer, Atlas provides developers with a clear and predictable way to understand the impact of updates and releases. This approach helps ensure smooth integration and reduces the risk of unexpected issues when upgrading to a new version of Atlas.

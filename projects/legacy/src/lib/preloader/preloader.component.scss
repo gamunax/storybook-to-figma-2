@@ -1,0 +1,170 @@
+/// Sets the default preloader loading title color
+/// @type Color
+$legacy-preloader-loading-title-color: var(--colors-action-primary-content-light) !default;
+
+/// Sets the default preloader loading title font-family
+/// @type Font
+$legacy-preloader-loading-title-font-family: var(--semanticTypography-font-family-display) !default;
+
+/// Sets the default preloader loading title line-height
+/// @type Number
+$legacy-preloader-loading-title-line-height: 0 !default;
+
+/// Sets the default preloader loading message color
+/// @type Color
+$legacy-preloader-loading-message-color: var(--colors-action-primary-content-light) !default;
+
+/// Sets the default preloader loading message font-family
+/// @type Font
+$legacy-preloader-loading-message-font-family: var(--semanticTypography-font-family-plain) !default;
+
+/// Sets the default preloader loading progress color
+/// @type Color
+$legacy-preloader-loading-progress-color: var(--colors-action-primary-content-light) !default;
+
+/// Sets the default preloader loading progress font-family
+/// @type Font
+$legacy-preloader-loading-progress-font-family: var(--semanticTypography-font-family-plain) !default;
+
+/// Sets the default preloader overlay background-color
+/// @type Color
+$legacy-preloader-overlay-background-color: transparentize(#000000, 0.5) !default;
+
+/// Sets the default preloader loading content margin
+/// @type Number
+$legacy-preloader-content-margin: 0;
+
+/// Sets the default preloader loading text light theme color
+/// @type Color
+$legacy-preloader-loading-text-light-theme-color: var(--scale-color-contrast-dark-100) !default;
+
+/// Sets the default preloader loading text vertical alignment
+/// @type String
+$legacy-preloader-loading-text-alignment-vertical: center !default;
+
+/// Sets the default preloader loading text horizontal alignment
+/// @type String
+$legacy-preloader-loading-text-alignment-horizontal: center !default;
+
+
+.legacy-preloader {
+  &__container {
+    position: relative;
+    &--full-page {
+      position: fixed;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      .legacy-preloader__overlay:before {
+        content: '';
+        display: block;
+        position: absolute;
+        left: 0; top: 0; right: 0; bottom: 0;
+        width: 100%; height: 100%;
+        background-color: $legacy-preloader-overlay-background-color;
+        z-index: z-index(default-above);
+      }
+    }
+    &--loading {
+      z-index: 999;
+    }
+  }
+  &__overlay {
+    position: absolute;
+    width: 100%; height: 100%;
+    left: 0; top: 0; right: 0; bottom: 0;
+    &--set {
+      background-color: $legacy-preloader-overlay-background-color;
+      z-index: z-index(default-above);
+    }
+  }
+  &__loading {
+    &-content {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+      width: 100%;
+      z-index: z-index(default-above);
+      &--top {
+        justify-content: flex-start;
+      }
+      &--bottom {
+
+        justify-content: flex-end;
+      }
+      &--left {
+        align-items: flex-start;
+      }
+      &--right {
+        align-items: flex-end;
+      }
+      &--light {
+        .legacy-preloader__loading {
+          &-title, &-message, &-progress {
+            color: $legacy-preloader-loading-text-light-theme-color;
+          }
+        }
+      }
+    }
+    &-title {
+      display: flex;
+      align-items: $legacy-preloader-loading-text-alignment-vertical;
+      justify-content: $legacy-preloader-loading-text-alignment-horizontal;
+      color: $legacy-preloader-loading-title-color;
+      font-family: $legacy-preloader-loading-title-font-family;
+    }
+    &-message {
+      display: flex;
+      align-items: $legacy-preloader-loading-text-alignment-vertical;
+      justify-content: $legacy-preloader-loading-text-alignment-horizontal;
+      color: $legacy-preloader-loading-message-color;
+      font-family: $legacy-preloader-loading-message-font-family;
+    }
+    &-progress {
+      display: flex;
+      align-items: $legacy-preloader-loading-text-alignment-vertical;
+      justify-content: $legacy-preloader-loading-text-alignment-horizontal;
+      color: $legacy-preloader-loading-progress-color;
+      font-family: $legacy-preloader-loading-progress-font-family;
+    }
+  }
+
+  &__spinners {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    position: absolute;
+    animation: rotate 1s linear infinite;
+
+    .atlas-primary-spinner, .atlas-secondary-spinner {
+      content: "";
+      box-sizing: border-box;
+      position: absolute;
+      inset: 0px;
+      border-radius: 50%;
+      border: 5px solid #FFF;
+      animation: preloaderClipFix 2s linear infinite ;
+    }
+
+    .atlas-primary-spinner{
+      transform: rotate3d(90, 90, 0, 180deg );
+      border-color: var(--colors-action-primary-main-contained, #0065acff);
+    }
+  }
+}
+
+@keyframes rotate {
+  0%   {transform: rotate(0deg)}
+  100%   {transform: rotate(360deg)}
+}
+
+@keyframes preloaderClipFix {
+    0%   {clip-path:polygon(50% 50%,0 0,0 0,0 0,0 0,0 0)}
+    50%  {clip-path:polygon(50% 50%,0 0,100% 0,100% 0,100% 0,100% 0)}
+    75%, 100%  {clip-path:polygon(50% 50%,0 0,0 0,0 0,0 0,0 0)}
+}

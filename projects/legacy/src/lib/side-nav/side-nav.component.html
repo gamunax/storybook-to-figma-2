@@ -1,0 +1,19 @@
+<div class="legacy-drawer-container" *ngIf="isOpen" (click)="close()">
+  <atlas-drawer #refDrawer>
+    <ng-container>
+      <div class="row collapse legacy-side-nav__header">
+        <div class="column shrink legacy-side-nav__close">
+          <a (click)="close()">
+            <atlas-icon icon="icon-remove-24" collection="system" [size]="closeIconSize"></atlas-icon>
+          </a>
+        </div>
+        <div class="column legacy-side-nav__logo">
+          <ng-content select="legacy-side-nav-logo"></ng-content>
+        </div>
+      </div>
+      <div class="legacy-side-nav__content">
+        <ng-content></ng-content>
+      </div>
+    </ng-container>
+  </atlas-drawer>
+</div>

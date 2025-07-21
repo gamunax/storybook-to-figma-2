@@ -1,0 +1,19 @@
+.popover-back-button-example {
+    &__list {
+      list-style-type: none;
+      margin-left: 0;
+  
+      &--item {
+        height: 50px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+  
+        &:hover {
+          cursor: pointer;
+          background: var(--semanticColor-background-disabled);
+          transition: 0.3s;
+        }
+      }
+    }
+}

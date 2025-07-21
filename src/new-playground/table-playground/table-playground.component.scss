@@ -1,0 +1,36 @@
+.page-bg {
+  background: var(--semanticColor-layer-neutral-02);
+  color: var(--semanticColor-text-default);
+  z-index: -1;
+  padding: 2rem;
+}
+
+.page-bg .select {
+  color: var(--semanticColor-text-default);
+}
+
+
+.section {
+  margin-bottom: 40px;
+}
+
+
+h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+
+/* Custom CSS for Header */
+.header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.header atlas-theming-helper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

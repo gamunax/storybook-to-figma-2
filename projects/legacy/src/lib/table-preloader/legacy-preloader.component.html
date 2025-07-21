@@ -1,0 +1,23 @@
+<div class="legacy-table-preloader">
+  <ng-container *ngIf="!_showTable">
+    <ng-content></ng-content>
+  </ng-container>
+  <table class="legacy-table-preloader__table">
+    <thead *ngIf="showTableHead">
+      <tr @list (@list.done)="_switch()" *ngIf="loading">
+        <td @items *ngFor="let column of _columnData; trackBy: _trackBy">
+          <span class="legacy-table-preloader__item"></span>
+        </td>
+      </tr>
+    </thead>
+    <tbody>
+      <ng-container *ngFor="let row of _rowData; trackBy: _trackBy">
+        <tr @list *ngIf="loading">
+          <td @items *ngFor="let column of _columnData; trackBy: _trackBy">
+            <span class="legacy-table-preloader__item"></span>
+          </td>
+        </tr>
+      </ng-container>
+    </tbody>
+  </table>
+</div>

@@ -1,0 +1,114 @@
+import { Meta, ArgsTable } from '@storybook/addon-docs';
+import { FieldComponent } from 'atlas-field'
+
+<Meta title="Adopters/Components/Field/Readme" 
+parameters={{
+    options: {
+      isToolshown: true
+    },
+  }}
+ />
+
+# Field
+
+Field is a grouped package that contains [key subcomponents](#sub-components) used to capture data in forms and dialogs. Our field package offers many different sub components and capabilities.
+
+
+## Usage
+
+Import [Field dependencies](#dependencies) for the library into your ```app.module.ts``` file
+
+```ts
+
+import {  FieldModule } from 'atlas-field';
+
+```
+Import into `styles.scss` for a correct `select component` style's behavior
+
+```css
+  @import '@angular/cdk/overlay-prebuilt.css';
+```
+
+## Dependencies
+
+| Dependency | Support |
+| ----------- | ----------- |
+| @angular/compiler | ^16.2.12 |
+| @angular/common | ^16.2.12 |
+| @angular/core | ^16.2.12 |
+| @angular/cdk | ^16.2.12 |
+| atlas-button | ^6.0.0 |
+| atlas-icon | ^6.0.0 |
+| atlas-menu | ^6.0.0 |
+| @types/luxon | ^2.3.2 |
+| luxon | ^2.3.2 |
+| sass | ^1.36.0 |
+| sass-loader | ^12.0.0 |
+
+
+> *❗️ NPM Dependency Notice*
+>
+> Timepicker is built with luxon:
+> https://www.npmjs.com/package/luxon
+> Please note, the `atlas-field` package is dependent on `luxon` and `@types/luxon`.
+> ```bash
+> npm i luxon --save
+> npm i @types/luxon --save
+> ```
+> ```bash
+> yarn add luxon --D
+> yarn add @types/luxon --D
+> ```
+
+> *❗️ Angular Dependency Notice*
+>
+> As a requirement for Field, import BrowserAnimationsModule in your app.module:
+>
+> ```ts
+> import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+> ```
+> Read more about: https://angular.io/guide/animations
+
+## Sub Components
+
+1. Text fields
+2. Select, Option
+3. Password Redaction
+4. Error handling, display
+5. Hint field
+6. Label
+7. Prefix, Suffix
+8. Calendar
+9. Datepicker
+10. Date Range Picker
+11. Timepicker
+12. Typeahead
+
+
+## UX Documentation
+{false && (
+<iframe
+    src='https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Ffile%2F2Mf1airOEOzgCrNlErdaem%2FField---Text---Foundations-0.0.2-Components-Documentation%3Fnode-id%3D13951%253A14624' 
+    allowFullScreen="true"
+    width='100%'
+    height='650px'
+    style={{border: 'none'}}
+></iframe>
+)}
+## API
+
+### Field
+
+<ArgsTable of={ FieldComponent } />
+
+> You can use typeahead in the field components. An enhanced text input in a panel of suggested options.
+> Also in known as Autocomplete
+>
+> ```html
+> <atlas-field>
+>    <atlas-field-label>Country</atlas-field-label>
+>    <atlas-select [typeahead]="true" (typeaheadChange)="filterCountry($event)" [placeholder]="'Select a country'" [(ngModel)]="country">
+>      <atlas-option *ngFor="let country of countriesFiltered | async" [value]="country.value">{{ country.name }}</atlas-option>
+>    </atlas-select>
+>  </atlas-field>
+> ```

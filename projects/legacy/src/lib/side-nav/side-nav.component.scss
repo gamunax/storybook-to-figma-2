@@ -1,0 +1,267 @@
+/// Side-nav base content padding
+/// @type String
+$legacy-side-nav-content-padding: 1.5rem 0 0 0;
+
+/// Side-nav base header height
+/// @type Number
+$legacy-side-nav-header-height: var(--spacing-32);
+
+/// Side-nav base header border
+/// @type Border
+$legacy-side-nav-header-border: 1px solid #F0F0F0 !default;
+
+/// Side-nav base header logo padding
+/// @type Number
+$legacy-side-nav-logo-padding: 0 var(--spacing-18) 0 0;
+
+/// Side-nav base header logo image height
+/// @type Number
+$legacy-side-nav-logo-image-height: var(--spacing-16);
+
+/// Side-nav base header logo image height for medium and up media query
+/// @type Number
+$legacy-side-nav-logo-image-height-medium: var(--spacing-16);
+
+/// Side-nav base header close padding
+/// @type Number
+$legacy-side-nav-close-padding: 0 var(--spacing-8);
+
+/// Side-nav base header close font color
+/// @type Color
+$legacy-side-nav-close-font-color: #404040 !default;
+
+/// Side-nav base header close hover font color
+/// @type Color
+$legacy-side-nav-close-hover-font-color: #404040 !default;
+
+/// Side-nav base header close focus background color
+/// @type Color
+$legacy-side-nav-close-focus-background-color: #fff !default;
+
+/// Side-nav base default group title margin
+/// @type Number
+$legacy-side-nav-group-title-margin: 0 0 0 var(--spacing-12);
+
+/// Side-nav base default group title padding
+/// @type Number
+$legacy-side-nav-group-title-padding: var(--spacing-6) 0;
+
+/// Side-nav base default group title font color
+/// @type Color
+$legacy-side-nav-group-title-font-color: #404040 !default;
+
+/// Side-nav base default group title font size
+/// @type Number
+$legacy-side-nav-group-title-font-size: var(--spacing-6);
+
+/// Side-nav base default group transition
+/// @type String
+$legacy-side-nav-group-transition: 0.5s all ease-in-out !default;
+
+/// Side-nav base default item padding
+/// @type Number
+$legacy-side-nav-item-padding: var(--spacing-6) var(--spacing-8);
+
+/// Side-nav base default item font size
+/// @type Number
+$legacy-side-nav-item-font-size: 1rem;
+
+/// Side-nav base default item font family
+/// @type String
+$legacy-side-nav-item-font-family: proxima_nova_rgregular, Helvetica, Arial, sans-serif;
+
+/// Side-nav base default item font color
+/// @type Color
+$legacy-side-nav-item-font-color: #005c96;
+
+/// Side-nav base default item background color
+/// @type Color
+$legacy-side-nav-item-background-color: rgba(255, 255, 255, 0.1) !default;
+
+/// Side-nav base default item border
+/// @type Border
+$legacy-side-nav-item-border: 2px solid transparent !default;
+
+/// Side-nav base default item transition
+/// @type String
+$legacy-side-nav-item-transition: 0.5s all ease-in-out !default;
+
+/// Side-nav base default item border top
+/// @type String
+$legacy-side-nav-item-border-top: 1px solid transparent !default;
+
+/// Side-nav base default item border bottom
+/// @type String
+$legacy-side-nav-item-border-bottom: 1px solid transparent !default;
+
+/// Side-nav base default item active focus background color
+/// @type Color
+$legacy-side-nav-item-focus-background-color: #fff !default;
+
+/// Side-nav base default item icon color
+/// @type Color
+$legacy-side-nav-item-icon-color: #404040 !default;
+
+/// Side-nav base default item title margin
+/// @type Number
+$legacy-side-nav-item-title-margin: 0 0 0 1rem;
+
+/// Side-nav base default item active shadow depth
+/// @type Number
+$legacy-side-nav-item-active-shadow-depth: 1;
+
+/// Side-nav base default item active background color
+/// @type Color
+$legacy-side-nav-item-active-background-color: #fff !default;
+
+/// Side-nav base default item active border
+/// @type Border
+$legacy-side-nav-item-active-border: 2px solid rgb(0, 168, 200) !default;
+
+/// Side-nav base default item active icon color
+/// @type Color
+$legacy-side-nav-item-active-icon-color: rgb(0, 168, 200) !default;
+
+::ng-deep {
+  .legacy-side-nav {
+    position: relative;
+
+    // Side-nav content
+    &__content {
+      padding: $legacy-side-nav-content-padding;
+    }
+
+    // Side-nav header
+    &__header {
+      border-bottom: $legacy-side-nav-header-border;
+      margin: 0;
+      line-height: $legacy-side-nav-header-height;
+
+      a {
+        text-decoration: none;
+      }
+    }
+
+    // Side-nav logo and close
+    &__logo,
+    &__close {
+      a {
+        display: block;
+      }
+    }
+
+    // Side-nav logo
+    &__logo {
+      a {
+        position: relative;
+        padding: $legacy-side-nav-logo-padding;
+      }
+      img {
+        height: $legacy-side-nav-logo-image-height;
+
+        @media (min-width: 768px) {
+          height: $legacy-side-nav-logo-image-height-medium;
+        }
+      }
+    }
+
+    // Side-nav close
+    &__close {
+      a {
+        padding: $legacy-side-nav-close-padding;
+        color: $legacy-side-nav-close-font-color;
+
+        &:focus,
+        &:active {
+          background-color: $legacy-side-nav-close-focus-background-color;
+        }
+
+        &:hover,
+        &:focus {
+          color: $legacy-side-nav-close-hover-font-color;
+        }
+      }
+      atlas-icon {
+        cursor: pointer;
+      }
+    }
+
+    // Side-nav group
+    &__group {
+
+      // Side-nav group title
+      &-title {
+        margin: $legacy-side-nav-group-title-margin;
+        color: $legacy-side-nav-group-title-font-color;
+        padding: $legacy-side-nav-group-title-padding;
+        font-size: $legacy-side-nav-group-title-font-size;
+      }
+      transition: $legacy-side-nav-group-transition;
+    }
+
+    // Side-nav item
+    &__item {
+      display: block;
+      padding: $legacy-side-nav-item-padding;
+      font-size: $legacy-side-nav-item-font-size;
+      font-family: $legacy-side-nav-item-font-family;
+      color: $legacy-side-nav-item-font-color;
+      background-color: $legacy-side-nav-item-background-color;
+      text-decoration: none;
+      border-left: $legacy-side-nav-item-border;
+      transition: $legacy-side-nav-item-transition;
+      border-top: $legacy-side-nav-item-border-top;
+      border-bottom: $legacy-side-nav-item-border-bottom;
+
+      &:active,
+      &:focus {
+        background-color: $legacy-side-nav-item-focus-background-color;
+      }
+
+      atlas-icon {
+        color: $legacy-side-nav-item-icon-color;
+      }
+
+      &-title {
+        margin: $legacy-side-nav-item-title-margin;
+      }
+
+      &-active
+      {
+        box-shadow: 0 0 2px 0 rgba(0, 0, 0, .08), 0 1px 2px 0 rgba(0, 0, 0, .06), 0 1px 2px 0 rgba(0, 0, 0, .02);
+        background-color: $legacy-side-nav-item-active-background-color;
+        border-left: $legacy-side-nav-item-active-border;
+
+        &:active,
+        &:focus {
+          background-color: $legacy-side-nav-item-active-background-color;
+        }
+
+        atlas-icon {
+          color: $legacy-side-nav-item-active-icon-color;
+        }
+      }
+    }
+
+    &--open {
+      transform: translateX(0%);
+    }
+  }
+}
+
+.legacy-drawer-container {
+  display: flex;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba($color: #000000, $alpha: 0.25);
+  z-index: 999;
+
+  @media screen and (max-width: 47.9375em) {
+    .drawer {
+      width: 100vw !important;
+    }
+  }
+}

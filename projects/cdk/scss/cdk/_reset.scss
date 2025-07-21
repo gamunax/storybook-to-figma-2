@@ -1,0 +1,128 @@
+//-------------------------------------------------------------------------------------------
+// Resets
+//-------------------------------------------------------------------------------------------
+
+
+// HTML Reset
+// ------------------------------------------------------------------------------------------
+
+/// Simple HTML Reset Utility
+///
+/// @example scss
+///		@include html-reset;
+
+@mixin html-reset {
+
+  // Set box-sizing globally to handle padding and border widths
+  html {
+    box-sizing: border-box;
+  }
+  *,
+  *::before,
+  *::after {
+    box-sizing: inherit;
+  }
+
+  // Focus
+  // This is to remove the global outline that comes in on links or tabbing through form elements
+  *:focus {outline: 0;}
+
+  // Body
+  body {
+    margin: 0;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden; // Addresses a small issue in webkit: https://css-tricks.com/almanac/properties/b/backface-visibility/
+  }
+
+  // Buttons
+  // Reset <button> styles created by most browsers
+  button {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background: transparent;
+    padding: 0;
+    border: 0;
+    line-height: 1;
+  }
+
+  // Fieldsets
+  fieldset {
+    border: 0;
+    padding: 0;
+    margin: 0;
+  }
+
+  // Images
+  img	{
+
+    // Get rid of gap under images by making them display: inline-block; by default
+    display: inline-block;
+    vertical-align: middle;
+  }
+
+  // Legends
+  legend {
+    max-width: 100%;
+  }
+
+  // Selects
+  // Make select elements are 100% width by default
+  select {
+    width: 100%;
+  }
+
+  // Textareas
+  // Make sure textarea takes on height automatically
+  textarea {
+    height: auto;
+    min-height: 80px;
+  }
+
+}
+
+// Print Reset
+// ------------------------------------------------------------------------------------------
+
+/// Simple Print Reset Utility
+///
+/// @example scss
+///		@include print-reset;
+
+@mixin print-reset {
+  @media print {
+    // General Adjustments
+    * {
+      box-shadow: none !important;
+    }
+
+    // Avoid page breaks after a heading
+    h1, h2, h3, h4, h5, h6 {
+      page-break-after: avoid;
+    }
+
+    tr,
+    img { page-break-inside: avoid; }
+
+    img {
+      max-width: 100% !important;
+    }
+
+    // Print Classes
+    .show-for-print { display: block !important; }
+    .hide-for-print { display: none !important; }
+
+    table.show-for-print { display: table !important; }
+    thead.show-for-print { display: table-header-group !important; }
+    tbody.show-for-print { display: table-row-group !important; }
+    tr.show-for-print { display: table-row !important; }
+    td.show-for-print { display: table-cell !important; }
+    th.show-for-print { display: table-cell !important; }
+
+    // Prevent page breaks in the middle of a blockquote or preformatted text block
+    pre,
+    blockquote {
+      border: 1px solid #8a8a8a;
+      page-break-inside: avoid;
+    }
+  }
+}

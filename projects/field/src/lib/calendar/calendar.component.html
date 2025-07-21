@@ -1,0 +1,47 @@
+<div
+  class="calendar-content"
+  [ngSwitch]="currentView"
+  cdkMonitorSubtreeFocus
+  tabindex="-1"
+>
+  <calendar-header></calendar-header>
+  <calendar-month
+    #month
+    *ngSwitchCase="'month'"
+    [(activeDate)]="activeDate"
+    [selected]="selected"
+    [dateFilter]="dateFilter"
+    [maxDate]="maxDate"
+    [minDate]="minDate"
+    [comparisonStart]="comparisonStart"
+    [comparisonEnd]="comparisonEnd"
+    (_userSelection)="_dateSelected($event)"
+  >
+  </calendar-month>
+
+  <calendar-year
+    #year
+    *ngSwitchCase="'year'"
+    [(activeDate)]="activeDate"
+    [selected]="selected"
+    [dateFilter]="dateFilter"
+    [maxDate]="maxDate"
+    [minDate]="minDate"
+    (monthSelected)="_monthSelectedInYearView($event)"
+    (selectedChange)="_goToDateInView($event, 'month')"
+  >
+  </calendar-year>
+
+  <calendar-multi-year
+    #multiYear
+    *ngSwitchCase="'multi-year'"
+    [(activeDate)]="activeDate"
+    [selected]="selected"
+    [dateFilter]="dateFilter"
+    [maxDate]="maxDate"
+    [minDate]="minDate"
+    (yearSelected)="_yearSelectedInMultiYearView($event)"
+    (selectedChange)="_goToDateInView($event, 'year')"
+  >
+  </calendar-multi-year>
+</div>

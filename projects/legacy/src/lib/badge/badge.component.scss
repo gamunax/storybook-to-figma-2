@@ -1,0 +1,271 @@
+$mos-theme-colors: (
+  "alert-light": #fea9a2,
+  "success-light": #9fdd79,
+  "warning-light": #f4d481,
+  "info-light": #8bdae4,
+  "primary": #00a8c8,
+);
+
+//-------------------------------------------------------------------------------------------
+// Mercer UI Components
+// Badge Component
+//-------------------------------------------------------------------------------------------
+@function luminance($color) {
+  $colors: (
+      'red': red($color),
+      'green': green($color),
+      'blue': blue($color)
+  );
+
+  @each $name, $value in $colors {
+    $adjusted: 0;
+    $value: $value / 255;
+
+    @if $value < 0.03928 {
+      $value: $value / 12.92;
+    } @else {
+      $value: ($value + .055) / 1.055;
+      $value: pow($value, 2.4);
+    }
+
+    $colors: map-merge($colors, ($name: $value));
+  }
+
+  @return (map-get($colors, 'red') * .2126) + (map-get($colors, 'green') * .7152) + (map-get($colors, 'blue') * .0722);
+}
+
+@function luminance-font-color($background-color) {
+  @if (round(luminance($background-color)) == 1) {
+    @return #000000; // Lighter background, return dark color
+  } @else {
+    @return #FFFFFF; // Darker background, return light color
+  }
+}
+/// Sets the default badge display
+/// @type Keyword
+$mos-badge-display: inline-block;
+
+/// Sets the default badge font size
+/// @type Number
+$mos-badge-font-size: 12px;
+
+/// Sets the default badge padding
+/// @type Number
+$mos-badge-padding: 1px .3125rem 0;
+
+/// Sets the default badge min-width
+/// @type Number
+$mos-badge-min-width: 12px;
+
+/// Sets the default badge text align
+/// @type Keyword
+$mos-badge-text-align: center;
+
+/// Sets the default badge border radius
+/// @type Number
+$mos-badge-border-radius: 62.4375rem;
+
+/// Sets the default badge line height
+/// @type Number
+$mos-badge-line-height: 1.3;
+
+/// Sets the default badge font family
+/// @type String
+$mos-badge-font-family: proxima_nova_ltsemibold,Helvetica,Arial,sans-serif;
+
+/// Sets the default badge transition
+/// @type String
+$mos-badge-transition: all 0.3s;
+
+/// Sets the default badge text-transform
+/// @type Keyword
+$mos-badge-text-transform: uppercase;
+
+/// Sets the default badge letter-spacing
+/// @type Number
+$mos-badge-letter-spacing: rem-calc(.2);
+
+/// Sets the default badge font color
+/// @type Color
+$mos-badge-font-color: #000 !default;
+
+/// Sets the default badge background-color
+/// @type Color
+$mos-badge-background-color: #e6e6e6 !default;
+
+/// Sets the default badge sizes
+/// @type Map
+$mos-badge-sizes:(
+  xxsm: .5rem, // 10
+  xsm: .75rem, // 12
+  sm: .8751458576rem, // 14
+  md: 1rem, // 16
+  lg: 1.5rem, // 24
+  xlg: 2rem, // 32
+  xxlg: 48px, // 48
+  xxxlg: 64px // 64
+);
+
+/// Sets the default badge border
+/// @type Border
+$mos-badge-border: 1px solid;
+
+/// Sets the default badge border color
+/// @type Color
+$mos-badge-border-color: transparent !default;
+
+
+.mos-c-badge {
+  display: $mos-badge-display;
+  padding: $mos-badge-padding;
+  min-width: $mos-badge-min-width;
+  text-align: $mos-badge-text-align;
+  border-radius: $mos-badge-border-radius;
+  font-size: $mos-badge-font-size;
+  line-height: $mos-badge-line-height;
+  font-family: $mos-badge-font-family;
+  transition: $mos-badge-transition;
+  text-transform: $mos-badge-text-transform;
+  letter-spacing: .0125rem;
+
+  // Badge sizes
+  @each $mos-badge-size, $font-size in $mos-badge-sizes {
+    &--#{$mos-badge-size} {
+      font-size: $font-size;
+      padding: 1px ($font-size/2) 0 ($font-size/2);
+    }
+  }
+
+  // Badge border
+  &--border {
+    border: $mos-badge-border;
+  }
+
+}
+
+
+// Badge Theming
+.mos-t-badge {
+  &--default {
+    background-color: $mos-badge-background-color;
+    color: $mos-badge-font-color;
+  }
+  @each $name, $color in $mos-theme-colors {
+    &--#{$name} {
+      background-color: $color;
+      color: luminance-font-color($color);
+    }
+  }
+}
+
+// Badge Border Theming
+.most-t-badge--border {
+  &-default {
+    border-color: $mos-badge-border-color;
+  }
+  @each $name, $color in $mos-theme-colors{
+    &-#{$name} {
+      border-color: $color;
+    }
+  }
+}
+/// brighter Badge Component deprecated
+
+$mos-theme-colors: (
+  "alert-light": #fea9a2,
+  "success-light": #9fdd79,
+  "warning-light": #f4d481,
+  "info-light": #8bdae4,
+  "primary": #00a8c8,
+);
+
+
+$brighter-badge-min-width: 5px;
+
+/// Sets the default badge text align
+/// @type Keyword
+$brighter-badge-text-align: center;
+
+/// Sets the default badge border radius
+/// @type Number
+$brighter-badge-border-radius: 16px;
+
+/// Sets the default badge line height
+/// @type Number
+$brighter-badge-line-height: 18px;
+
+/// Sets the default badge transition
+/// @type String
+$brighter-badge-transition: all 0.3s;
+
+/// Sets the default badge text-transform
+/// @type Keyword
+$brighter-badge-text-transform: uppercase;
+
+/// Sets the default badge letter-spacing
+/// @type Number
+$brighter-badge-letter-spacing: 0;
+
+/// Sets the default badge sizes
+/// @type Map
+$brighter-badge-sizes:(
+  10px,
+  12px,
+  14px,
+  16px,
+  24px,
+  32px,
+  48px,
+  64px,
+);
+
+/// Sets the default badge border
+/// @type Border
+$brighter-badge-border: 1px solid;
+
+/// Sets the default badge border color
+/// @type Color
+$brighter-badge-border-color: transparent;
+
+
+.brighter-badge {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  min-width: $brighter-badge-min-width;
+  text-align: $brighter-badge-text-align;
+  border-radius: $brighter-badge-border-radius;
+  transition: $brighter-badge-transition;
+
+  // Badge border
+  &--border {
+    border: $brighter-badge-border;
+  }
+}
+.primary {
+  background: #005A8E;
+  color: #FFFFFF;
+}
+
+.secondary {
+  background: #275D;
+  color: #FFFFFF;
+}
+
+.warning {
+  background: #FFDA75;
+  color: #1E2022
+}
+
+.danger {
+  background: #E10606;
+  color: #FFFF;
+}
+.success {
+  background: #35C26A;
+  color: #1E2022;
+}
+.info {
+  background: #76D3FF;
+  color: #1E2022
+}

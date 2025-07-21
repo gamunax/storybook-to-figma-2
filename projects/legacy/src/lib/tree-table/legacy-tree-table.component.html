@@ -1,0 +1,275 @@
+<div #_tableOverflowContainer
+     *ngIf="scrollHorizontal || stickyHeader"
+     [class.legacy-c-tree-table--overflow-x]="scrollHorizontal">
+  <ng-template
+    *ngFor="let copy of _copies"
+    [ngTemplateOutlet]="_table"
+    [ngTemplateOutletContext]="{ copy: copy }"
+  ></ng-template>
+</div>
+<ng-template *ngIf="!scrollHorizontal && !stickyHeader" [ngTemplateOutlet]="_table"></ng-template>
+<ng-template #_table let-copy="copy">
+  <table
+    #_tableCopies
+    class="legacy-c-tree-table"
+    *ngIf="copy === 'sticky' ? stickyHeader : true"
+    [class.legacy-c-tree-table__original]="copy === 'original'"
+    [class.legacy-c-tree-table__sticky]="copy === 'sticky'"
+    [class.legacy-u-table--bordered]="bordered"
+    [class.legacy-u-table--column-bordered]="columnBordered"
+    [class.legacy-u-table--striped]="striped"
+    [class.legacy-u-table--row-highlight]="rowHighlight || rowClickable"
+    [class.legacy-u-table--centered]="centered"
+    [class.legacy-u-table--responsive]="responsive"
+    [class.legacy-u-table--dense]="dense"
+    [class.legacy-u-table--sortable]="sortable"
+    [class.legacy-c-tree-table--fixed-layout]="fixedTableLayout">
+    <thead>
+    <tr *ngIf="_headerGroups">
+      <th *ngIf="rowSelectable" colspan="1"></th>
+      <ng-container *ngFor="let headerGroup of _headerGroups">
+        <th [attr.colspan]="headerGroup.colspan" class="legacy-u-text-center" [style.background]="headerGroup.background">
+          <ng-template [ngTemplateOutlet]="headerGroup.headerGroupTemplate" [ngTemplateOutletContext]="{ headerGroup: headerGroup }"></ng-template>
+        </th>
+      </ng-container>
+    </tr>
+    <tr *ngIf="!sortable" class="legacy-u-table__header-container">
+      <th *ngIf="rowSelectable" [class.legacy-c-tree-table__header--wrap-text]="headerWrapText">
+        <ng-container *ngIf="allSelected || allDeselected">
+          <span class="legacy-c-tree-table__header--checkbox-all">
+            <input id="mosCheckboxAll" type="checkbox" name="mosCheckboxAll" title="Select All" [(ngModel)]="allSelected" (change)="selectAll()" [checked]="allSelected">
+            <label for="mosCheckboxAll"></label>
+          </span>
+        </ng-container>
+        <ng-container *ngIf="rowSelected && !allSelected">
+          <span class="legacy-c-tree-table__header--checkbox-deselect">
+            <input id="mosCheckboxDeselect" type="checkbox" name="mosCheckboxDeselect" title="Deselect All" [(ngModel)]="rowSelected" (change)="deselectAll()" [checked]="rowSelected">
+            <label for="mosCheckboxDeselect"></label>
+          </span>
+        </ng-container>
+      </th>
+      <ng-container *ngFor="let header of columnsData; let i = index">
+        <ng-template
+          [ngTemplateOutlet]="headerDefault"
+          [ngTemplateOutletContext]="{ header: header, i: i }"
+        ></ng-template>
+      </ng-container>
+    </tr>
+    <tr *ngIf="sortable" class="legacy-u-table__header-container">
+      <th *ngIf="rowSelectable" class="legacy-c-tree-table__header--disabled" [class.legacy-c-tree-table__header--wrap-text]="headerWrapText">
+        <ng-container *ngIf="allSelected || allDeselected">
+          <span class="legacy-c-tree-table__header--checkbox-all">
+            <input id="mosCheckboxAll" type="checkbox" name="mosCheckboxAll" title="Select All" [(ngModel)]="allSelected" (change)="selectAll()" [checked]="allSelected">
+            <label for="mosCheckboxAll"></label>
+          </span>
+        </ng-container>
+        <ng-container *ngIf="rowSelected && !allSelected">
+          <span class="legacy-c-tree-table__header--checkbox-deselect">
+            <input id="mosCheckboxDeselect" type="checkbox" name="mosCheckboxDeselect" title="Deselect All" [(ngModel)]="rowSelected" (change)="deselectAll()" [checked]="rowSelected">
+            <label for="mosCheckboxDeselect"></label>
+          </span>
+        </ng-container>
+      </th>
+      <ng-container *ngFor="let header of columnsData; let i = index">
+        <ng-template
+          *ngIf="!!header.reference.disableSort"
+          [ngTemplateOutlet]="headerDefault"
+          [ngTemplateOutletContext]="{ header: header, i: i }"
+        ></ng-template>
+        <ng-template
+          *ngIf="!header.reference.disableSort"
+          [ngTemplateOutlet]="headerSortable"
+          [ngTemplateOutletContext]="{ header: header, i: i }"
+        ></ng-template>
+      </ng-container>
+    </tr>
+    <tr class="legacy-c-tree-table__sub-header-container"
+        (click)="subHeaderClickable ? _subHeaderRowClick($event) : true"
+        [class.legacy-c-tree-table__row--link]="subHeaderClickable">
+      <ng-template [ngTemplateOutlet]="subHeaderRow"></ng-template>
+    </tr>
+    </thead>
+    <tbody #_tableBody *ngIf="!stickyHeader || copy === 'original'">
+    <ng-container *ngFor="let row of rowsData; let i = index; trackBy: trackRow">
+      <!-- normal tree table -->
+      <tr *ngIf="row.shown && !(leafTemplate && row.isLeaf)" (click)="_rowClick($event, i, row)"
+          [class.legacy-c-tree-table__row--link]="rowClickable"
+          [class.legacy-c-tree-table__row--selected]="rowSelectable && row.selected"
+          [class.legacy-c-tree-table__row--highlighted]="row.reference?.highlighted"
+          [class.legacy-c-tree-table__row--word-break]="rowWordBreak">
+
+        <td *ngIf="rowSelectable" [class.legacy-c-tree-table__row--wrap-text]="rowWrapText">
+          <span (click)="$event.stopPropagation()">
+            <input type="checkbox"
+                   [attr.name]="'checkboxRow' + i"
+                   [attr.id]="'checkboxRow' + i"
+                   title="Select"
+                   [(ngModel)]="row.selected"
+                   (change)="selectRow(row)"
+                   [checked]="row.selected"
+                   [disabled]="row.reference?.selectable === false">
+            <label [attr.for]="'checkboxRow' + i"></label>
+          </span>
+        </td>
+        <td class="legacy-c-tree-table__first-column" [style.padding-left.rem]="( 2 * ( row.level - 1 ) ) || 1" [attr.colspan]="labelColspan">
+          <ng-template *ngIf="nodeData" [ngTemplateOutlet]="nodeData" [ngTemplateOutletContext]="_rowContext(row, i)"></ng-template>
+          <div *ngIf="!nodeData" class="legacy-u-display--flex">
+            <atlas-icon
+              *ngIf="!row.isLeaf"
+              (click)="_expandNode($event, i, row)"
+              [icon]="row.isExpanded ? 'icon-chevron-down-24' : 'icon-chevron-right-24'"
+              [collection]="'system'"
+            ></atlas-icon>
+            <div class="legacy-u-display--inline-block">{{row.reference.labelColumn}}</div>
+          </div>
+        </td>
+        <ng-template [ngTemplateOutlet]="rowData" [ngTemplateOutletContext]="_rowContext(row, i)"></ng-template>
+      </tr>
+      <!-- leaf template -->
+      <tr *ngIf="row.shown && leafTemplate && row.isLeaf">
+        <td [attr.colspan]="columnsData.length">
+          <ng-template [ngTemplateOutlet]="leafTemplate" [ngTemplateOutletContext]="_rowContext(row, i)"></ng-template>
+        </td>
+      </tr>
+    </ng-container>
+    </tbody>
+    <ng-content *ngIf="footer && (!stickyHeader || copy === 'original')" select="[mercer-tree-table-footer]"></ng-content>
+  </table>
+</ng-template>
+
+<ng-template #iconTooltipTemplate let-header="header">
+  <atlas-icon
+    *ngIf="!header.reference.tooltip"
+    [ngClass]="'legacy-c-tree-table__header-icon-' + header.reference.column"
+    [icon]="header.reference.icon"
+    [collection]="'system'"
+    [size]="header.reference.iconSize || 'md'"
+  ></atlas-icon>
+
+  <atlas-icon
+    *ngIf="header.reference.tooltip"
+    [ngClass]="'legacy-c-tree-table__header-icon-' + header.reference.column"
+    [icon]="header.reference.icon"
+    [size]="header.reference.iconSize || 'md'"
+    [collection]="'system'"
+    [haloTooltip]="header.reference.tooltip"
+    haloTooltipShowDelay="100"
+  ></atlas-icon>
+</ng-template>
+
+<ng-template #headerSortable let-header="header" let-i="i">
+  <th
+    class="legacy-c-tree-table__header--sortable"
+    [attr.colspan]="header.reference.colspan || '1'"
+    [class.legacy-u-table--column-header-highlight]="header.reference.highlighted"
+    [class.legacy-c-tree-table__header--active]='i == sortCol && !header.reference.highlighted'
+    [class.legacy-c-tree-table__header--disabled]='i != sortCol && !header.reference.highlighted'
+    [class.legacy-u-text-left]="header.reference.textAlign == 'left'"
+    [class.legacy-u-text-right]="header.reference.textAlign == 'right'"
+    [class.legacy-u-text-center]="header.reference.textAlign == 'center'"
+    [class.legacy-c-tree-table__header--wrap-text]="headerWrapText"
+    [class.legacy-c-tree-table__header--truncate-text]="headerTruncateText"
+    [style.background]="_backgrounds[i]">
+
+    <!-- if sorting is hidden, same as disabledSort headers but with an invisible icon to prevent stuttering -->
+    <span *ngIf="headerTruncateText && header.reference.hideSort"
+          [ngClass]="'legacy-c-tree-table__header-label-' + i"
+          [class.legacy-c-tree-table__header--hide]="header.reference.hideHeaderText"
+          [class.legacy-c-tree-table__header--disable]="header.reference.disableHeaderText"
+          [haloTooltip]="header.reference.name"
+          haloTooltipShowDelay="100"
+    >
+      <atlas-icon [icon]="'icon-saved-items-24'" [collection]="'system'" style="opacity: 0"></atlas-icon>
+      <ng-container>{{ header.reference.name }}</ng-container>
+      <ng-container *ngIf="header.reference.icon">
+        <ng-container *ngTemplateOutlet="iconTooltipTemplate; context: {header: header}"></ng-container>
+      </ng-container>
+    </span>
+    <span *ngIf="!headerTruncateText && header.reference.hideSort"
+          [ngClass]="'legacy-c-tree-table__header-label-' + i"
+          [class.legacy-c-tree-table__header--hide]="header.reference.hideHeaderText"
+          [class.legacy-c-tree-table__header--disable]="header.reference.disableHeaderText">
+      <atlas-icon [icon]="'icon-saved-items-24'" [collection]="'system'"></atlas-icon>
+      <ng-container>{{ header.reference.name }}</ng-container>
+      <ng-container *ngIf="header.reference.icon">
+        <ng-container *ngTemplateOutlet="iconTooltipTemplate; context: {header: header}"></ng-container>
+      </ng-container>
+    </span>
+
+    <a *ngIf="headerTruncateText && !header.reference.hideSort"
+       (click)="sortColumn(i, $event)"
+       [ngClass]="'legacy-c-tree-table__header-label-' + i"
+       [class.legacy-c-tree-table__header--hide]="header.reference.hideHeaderText"
+       [class.legacy-c-tree-table__header--disable]="header.reference.disableHeaderText"
+       [haloTooltip]="header.reference.name"
+       haloTooltipShowDelay="100"
+    >
+      <atlas-icon
+        *ngIf="i == sortCol && reverse"
+        [icon]="'icon-chevron-down-24'"
+        [collection]="'system'"
+      ></atlas-icon>
+      <atlas-icon
+        *ngIf="i != sortCol || !reverse"
+        [icon]="'icon-chevron-up-24'"
+        [collection]="'system'"
+      ></atlas-icon>
+      <ng-container>{{ header.reference.name }}</ng-container>
+      <ng-container *ngIf="header.reference.icon">
+        <ng-container *ngTemplateOutlet="iconTooltipTemplate; context: {header: header}"></ng-container>
+      </ng-container>
+    </a>
+    <a *ngIf="!headerTruncateText && !header.reference.hideSort"
+       (click)="sortColumn(i, $event)"
+       [ngClass]="'legacy-c-tree-table__header-label-' + i"
+       [class.legacy-c-tree-table__header--hide]="header.reference.hideHeaderText"
+       [class.legacy-c-tree-table__header--disable]="header.reference.disableHeaderText">
+      <atlas-icon
+        *ngIf="i == sortCol && reverse"
+        [icon]="'icon-chevron-down-24'"
+        [collection]="'system'"
+      ></atlas-icon>
+      <atlas-icon
+        *ngIf="i != sortCol || !reverse"
+        [icon]="'icon-chevron-up-24'"
+        [collection]="'system'"
+      ></atlas-icon>
+      <ng-container>{{ header.reference.name }}</ng-container>
+      <ng-container *ngIf="header.reference.icon">
+        <ng-container *ngTemplateOutlet="iconTooltipTemplate; context: {header: header}"></ng-container>
+      </ng-container>
+    </a>
+  </th>
+</ng-template>
+<ng-template #headerDefault let-header="header" let-i="i">
+  <th
+    [attr.colspan]="header.reference.colspan || '1'"
+    [class.legacy-u-table--column-header-highlight]="header.reference.highlighted"
+    [class.legacy-u-text-left]="header.reference.textAlign == 'left'"
+    [class.legacy-u-text-right]="header.reference.textAlign == 'right'"
+    [class.legacy-u-text-center]="header.reference.textAlign == 'center'"
+    [class.legacy-c-tree-table__header--wrap-text]="headerWrapText"
+    [class.legacy-c-tree-table__header--truncate-text]="headerTruncateText"
+    [style.background]="_backgrounds[i]">
+    <span *ngIf="headerTruncateText" [ngClass]="'legacy-c-tree-table__header-label-' + i"
+          [class.legacy-c-tree-table__header--hide]="header.reference.hideHeaderText"
+          [class.legacy-c-tree-table__header--disable]="header.reference.disableHeaderText"
+          [haloTooltip]="header.reference.name"
+          [haloTooltipWithArrow]="true"
+          haloTooltipShowDelay="100"
+    >
+      <ng-container>{{ header.reference.name }}</ng-container>
+      <ng-container *ngIf="header.reference.icon">
+        <ng-container *ngTemplateOutlet="iconTooltipTemplate; context: {header: header}"></ng-container>
+      </ng-container>
+    </span>
+    <span *ngIf="!headerTruncateText" [ngClass]="'legacy-c-tree-table__header-label-' + i"
+          [class.legacy-c-tree-table__header--hide]="header.reference.hideHeaderText"
+          [class.legacy-c-tree-table__header--disable]="header.reference.disableHeaderText">
+      <ng-container>{{ header.reference.name }}</ng-container>
+      <ng-container *ngIf="header.reference.icon">
+        <ng-container *ngTemplateOutlet="iconTooltipTemplate; context: {header: header}"></ng-container>
+      </ng-container>
+    </span>
+  </th>
+</ng-template>

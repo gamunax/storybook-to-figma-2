@@ -1,0 +1,39 @@
+timepicker-dialog {
+  
+    height: 360px;
+    padding: 24px 24px 0 24px;
+    width: 308px;
+    border-radius: 2px;
+    background-color: var(--semanticColor-layer-neutral-01);
+    box-shadow: 0px 8px 8px rgba(0, 0, 0, 0.16);
+
+    atlas-dialog-content {
+      padding: 0;
+
+      mat-toolbar.timepicker-header {
+        align-items: center;
+        display: flex;
+        justify-content: center;
+      }
+
+      .clock-face {
+        margin: 16px;
+      }
+    }
+
+    div[atlas-dialog-actions] {
+      display: flex;
+      justify-content: space-between;      
+      padding: 12px 0 0 0;
+    }
+  
+
+  .timepicker__unit-selector {
+    display: flex;
+    margin-right: -16px;
+
+    & > div > atlas-icon-button {
+      padding: 0 2px;
+    }
+  }  
+}

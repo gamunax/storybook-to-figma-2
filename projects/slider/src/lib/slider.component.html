@@ -1,0 +1,45 @@
+
+<div class="atlas-slider-wrapper"
+    #sliderWrapper>
+  <div class="atlas-slider-track-wrapper"  [class.atlas-slider-track-wrapper--disabled]="disabled">
+    <div *ngIf="_isRangeSlider" class="atlas-slider-track-background atlas-slider-track-background--left" [ngStyle]="_trackBackgroundStylesLeft"></div>
+    <div class="atlas-slider-track-fill" 
+        [ngClass]="{'atlas-slider-track-fill--range': _isRangeSlider}" 
+        [ngClass]="'atlas-slider-track-fill-' + (action ? action : color)" 
+        [class.atlas-slider-track-fill--disabled]="disabled"
+        [ngStyle]="_trackFillStyles"></div>
+    <div class="atlas-slider-track-background atlas-slider-track-background--right" 
+        [ngClass]="'atlas-slider-track-background-' + (action ? action : color)"
+        [class.atlas-slider-track-background--disabled]="disabled"
+        [ngStyle]="_trackBackgroundStylesRight"></div>
+  </div>
+  <div class="atlas-slider-ticks-container" [ngStyle]="_ticksContainerStyles">
+    <div class="atlas-slider-ticks"
+    [class.atlas-slider-ticks--disabled]="disabled"
+    [ngStyle]="_ticksStyles"></div>
+  </div>
+  <div class="atlas-slider-thumb-container atlas-slider-thumb-container-left" 
+      [ngStyle]="_thumbContainerStylesLeft">
+    <div class="atlas-slider-focus-ring" [ngClass]="'atlas-slider-focus-ring-' + (action ? action : color)"></div>
+    <div class="atlas-slider-thumb" 
+      [class.atlas-slider-thumb--disabled]="disabled"
+      [ngClass]="['atlas-slider-thumb-' + (action ? action : color), 'box-shadow-elevation-' + elevation]" 
+      #leftThumb></div>
+    <div class="atlas-slider-thumb-label">
+      <span class="atlas-slider-thumb-label-text">{{displayValueLeft}}</span>
+    </div>
+  </div>
+  <div *ngIf="_isRangeSlider"
+       class="atlas-slider-thumb-container atlas-slider-thumb-container-right"
+       #rightThumbContainer
+       [ngStyle]="_thumbContainerStylesRight">
+    <div class="atlas-slider-focus-ring" [ngClass]="'atlas-slider-focus-ring-' + (action ? action : color)"></div>
+    <div class="atlas-slider-thumb" 
+      [class.atlas-slider-thumb--disabled]="disabled"
+      [ngClass]="'atlas-slider-thumb-' + (action ? action : color)"
+      #rightThumb></div>
+    <div class="atlas-slider-thumb-label">
+      <span class="atlas-slider-thumb-label-text">{{displayValueRight}}</span>
+    </div>
+  </div>
+</div>

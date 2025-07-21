@@ -1,0 +1,20 @@
+<div cdkTrapFocus>
+  <calendar
+    [id]="datepicker.id"
+    [ngClass]="datepicker.panelClass"
+    [startAt]="datepicker.startAt"
+    [startView]="datepicker.startView"
+    [minDate]="datepicker._getMinDate()"
+    [maxDate]="datepicker._getMaxDate()"
+    [dateFilter]="datepicker._getDateFilter()"
+    [headerComponent]="datepicker.calendarHeaderComponent"
+    [selected]="_getSelected()"
+    [dateClass]="datepicker.dateClass"
+    [comparisonStart]="comparisonStart"
+    [comparisonEnd]="comparisonEnd"
+    [@fadeInCalendar]="'enter'"
+    (yearSelected)="datepicker._selectYear($event)"
+    (monthSelected)="datepicker._selectMonth($event)"
+    (viewChanged)="datepicker._viewChanged($event)"
+    (_userSelection)="_handleUserSelection($event)"></calendar>
+</div>

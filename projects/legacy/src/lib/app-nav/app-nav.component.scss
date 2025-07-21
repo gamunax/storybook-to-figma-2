@@ -1,0 +1,701 @@
+$atlas-font-bold-family: var(--semanticTypography-font-family-display);
+$legacy-app-nav-background-color: #F4F4F4 !default;
+$legacy-app-nav-active-color: #00A8C8 !default;
+$legacy-app-nav-close-color: #666666 !default;
+$legacy-app-nav-control-separator-color: #E6E6E6 !default;
+$legacy-app-nav-footer-height: 40px;
+$legacy-app-nav-hamburger-padding-x: 5px !default;
+$legacy-app-nav-hamburger-padding-y: 0 !default;
+$legacy-app-nav-hamburger-width: 30px !default;
+$legacy-app-nav-hamburger-layer-width: 20px !default;
+$legacy-app-nav-hamburger-layer-height: 2px !default;
+$legacy-app-nav-hamburger-layer-spacing: 3px !default;
+$legacy-app-nav-hamburger-layer-color: #666666 !default;
+$legacy-app-nav-hamburger-layer-border-radius: 0 !default;
+$legacy-app-nav-hamburger-hover-opacity: 0.7 !default;
+$legacy-app-nav-hamburger-hover-transition-duration: 0.15s !default;
+$legacy-app-nav-hamburger-hover-transition-timing-function: linear !default;
+$legacy-app-nav-hamburger-hover-use-filter: false !default;
+$legacy-app-nav-hamburger-hover-filter: 50% !default;
+$legacy-app-nav-section-title-font-size: 1.125rem !default;
+$legacy-app-nav-shadow-depth: 1 !default;
+$legacy-app-nav-title-bar-section-title-font-family: var(--semanticTypography-font-family-display) !default;
+$legacy-app-nav-title-bar-height: 45px !default;
+$legacy-app-nav-horizontal-section-title-font-size: 20px;
+$legacy-app-nav-horizontal-section-title-font-family: var(--semanticTypography-font-family-plain);
+$legacy-app-nav-expanded-horizontal-z-index: 1001;
+$legacy-app-nav-content-z-index: 1 !default;
+$legacy-app-nav-horizontal-flex-direction: column;
+$legacy-app-nav-header-height: 45px;
+$legacy-app-nav-header-padding: 8px 14px;
+$legacy-app-nav-header-border-bottom: 1px solid $legacy-app-nav-control-separator-color !default;
+$legacy-app-nav-footer-border-top: 1px solid $legacy-app-nav-control-separator-color !default;
+$legacy-app-nav-item-padding: 9.18px 10px;
+$legacy-app-nav-item-white-space: nowrap !default;
+$legacy-app-nav-item-font-family: var(--semanticTypography-font-family-plain);
+$legacy-app-nav-item-font-size: 1.125rem;
+$legacy-app-nav-item-icon-color: #666666;
+$legacy-app-nav-wrapper-justify-content: space-between;
+$legacy-app-nav-collapsed-item-justify-content: center;
+$legacy-app-nav-vertical-collapsed-width: 45px;
+$legacy-app-nav-vertical-expanded-width: 300px;
+$legacy-app-nav-horizontal-expanded-header-border-bottom: 1px solid $legacy-app-nav-control-separator-color !default;
+$legacy-app-nav-horizonta-expanded-top: 50px;
+$legacy-app-nav-section-link-color: #666666 !default;
+$legacy-app-nav-section-link-active-color: #005C96 !default;
+$legacy-app-nav-section-link-hover-color: #005C96 !default;
+$legacy-app-nav-section-link-hover-background-color: rgba(0, 168, 200, 0.9) !default;
+$legacy-app-nav-section-link-padding: 0 13px;
+$legacy-app-nav-section-link-hover-border-bottom: 2px solid #00A8C8;
+$legacy-app-nav-section-link-font-family: var(--semanticTypography-font-family-plain);
+$legacy-app-nav-horizontal-section-title-padding: 0 13px;
+$legacy-app-nav-header-tier-mode-min-height: 100px !default;
+$legacy-app-nav-tier-mode-timestamp-font-size: 12px !default;
+$legacy-app-nav-tier-mode-timestamp-font-family: var(--semanticTypography-font-family-plain) !default;
+$legacy-app-nav-tier-mode-timestamp-color: #FFFFFF !default;
+$legacy-app-nav-section-link-font-size: 24px !default;
+$legacy-app-nav-section-link-font-size: var(--semanticTypography-font-family-plain) !default;
+$legacy-app-nav-tier-mode-item-font-family: var(--semanticTypography-font-family-display) !default;
+$legacy-app-nav-tier-mode-item-hover-color: #FFFFFF !default;
+$legacy-app-nav-tier-mode-item-hover-background-color: transparent !default;
+$legacy-app-nav-tier-mode-item-hover-font-family: var(--semanticTypography-font-family-display) !default;
+$legacy-app-nav-tier-mode-item-active-background-color: #5D747E !default;
+$legacy-app-nav-tier-mode-item-hover-border-color: 1px solid #F4F4F4 !default;
+$legacy-app-nav-tier-mode-item-click-background-color: #229BC2 !default;
+$legacy-app-nav-tier-mode-item-active-color: $legacy-app-nav-tier-mode-item-hover-color !default;
+$legacy-app-nav-tier-mode-item-active-font-family: $legacy-app-nav-tier-mode-item-hover-font-family !default;
+$legacy-app-nav-tier-mode-item-font-size: 1rem !default;
+$legacy-app-nav-tier-mode-expand-button-color: #E1E7E9 !default;
+$legacy-app-nav-tier-mode-header-padding: 8px 0 !default;
+$legacy-app-nav-tier-mode-header-border-bottom: 1px solid #5D747E !default;
+$legacy-app-nav-header-content-container-width: 100% !default;
+$legacy-app-nav-tier-mode-item-color: #E1E7E9 !default;
+$legacy-app-nav-tier-mode-item-icon-color: #B8C5CB !default;
+$legacy-app-nav-tier-mode-back-link-label-color: #E1E7E9 !default;
+$legacy-app-nav-tier-mode-back-menu-background-color: #37464C !default;
+$legacy-app-nav-tier-mode-back-menu-height: 40px;
+$legacy-app-nav-tier-mode-background-color: #273035 !default;
+$legacy-app-nav-tier-mode-section-link-color: #FFFFFF !default;
+$legacy-app-nav-tier-mode-hamburger-link-background-color: #E1E7E9 !default;
+
+
+.legacy-app-nav {
+  $c: &; // Base
+  display: flex;
+  flex-direction: row;
+  justify-content: stretch;
+  &--horizontal {
+    flex-direction: $legacy-app-nav-horizontal-flex-direction;
+  }
+  &__nav {
+    position: absolute;
+    background-color: $legacy-app-nav-background-color;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition-property: min-width, width;
+    transition-duration: 0.12s;
+    transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    // keep above the footer
+    z-index: 10001;
+    border-right: 1px solid #e4e4e4;
+    &-header {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: $legacy-app-nav-header-height;
+      padding: $legacy-app-nav-header-padding;
+      border-bottom: $legacy-app-nav-header-border-bottom;
+      h3 {
+        font-size: rem-calc(20);
+        display: inline-block;
+        margin: 0;
+      }
+      h5 {
+        font-size: $legacy-app-nav-section-title-font-size;
+        display: inline-block;
+        margin: 0;
+      }
+    }
+    &-footer {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      min-height: $legacy-app-nav-footer-height;
+      border-top: $legacy-app-nav-footer-border-top;
+    }
+    &-item {
+      cursor: pointer;
+      $nav-item: &;
+      padding: $legacy-app-nav-item-padding;
+      white-space: $legacy-app-nav-item-white-space;
+      overflow-x: hidden;
+      // transition: 0.35s all ease-in-out;
+      border-top: 1px solid transparent;
+      border-bottom: 1px solid transparent;
+      a {
+        display: flex;
+        flex-direction: row;
+        font-family: $legacy-app-nav-item-font-family;
+        font-size: $legacy-app-nav-item-font-size;
+        text-decoration: none;
+        atlas-icon {
+          text-decoration: none;
+          color: $legacy-app-nav-item-icon-color;
+        }
+        span {
+          padding-left: 10px;
+          vertical-align: bottom;
+          line-height: 1.4;
+        }
+
+        cursor: pointer;
+      }
+      &--active,
+      &:hover {
+        position: relative;
+        background: #F3FDFF;
+
+        &::after {
+          border-left: 4px solid $legacy-app-nav-active-color;
+          border-top: 1px solid #E6E6E6;
+          border-bottom: 1px solid #E6E6E6;
+          width: 4px;
+          height: 100%;
+          position: absolute;
+          top: 0;
+          left: 0;
+          content: "";
+        }
+
+        &#{$nav-item} {
+          atlas-icon {
+            color: #005C96;
+          }
+          span {
+            color: $legacy-app-nav-active-color;
+            font-family: $legacy-app-nav-tier-mode-item-active-font-family;
+          }
+        }
+      }
+      &--active {
+        &--horizontal:after {
+          display: none;
+        }
+      }
+    }
+  }
+
+  &__back-link {
+    &-label {
+      line-height: 30px;
+      padding-left: 5px;
+      font-family: $atlas-font-bold-family;
+      color: $legacy-app-nav-tier-mode-back-link-label-color;
+    }
+    &:hover {
+      text-decoration: none;
+    }
+  }
+
+  // App-nav Tier Mode
+  // enabled by tierMode Input()
+  &--tier-mode {
+    #{$c} {
+      &__nav {
+        box-shadow:  0px 2px 4px rgba(0, 0, 0, 0.5);
+        background: $legacy-app-nav-tier-mode-background-color;
+        border: none;
+        overflow: hidden;
+        &-timestamp {
+          display: flex;
+          justify-content: flex-start;
+          align-items: center;
+          font-size: $legacy-app-nav-tier-mode-timestamp-font-size;
+          font-family: $legacy-app-nav-tier-mode-timestamp-font-family;
+          color: $legacy-app-nav-tier-mode-timestamp-color;
+          atlas-icon {
+            margin-right: 8px;
+            line-height: 1;
+          }
+          span {
+            margin: 0 10px;
+          }
+        }
+        &-header {
+          flex-direction: column;
+          justify-content: space-around;
+          min-height: $legacy-app-nav-header-tier-mode-min-height;
+          border-bottom: $legacy-app-nav-tier-mode-header-border-bottom;
+          padding: $legacy-app-nav-tier-mode-header-padding;
+          &-section-title {
+            font-size: $legacy-app-nav-section-link-font-size;
+            color: $legacy-app-nav-tier-mode-section-link-color;
+          }
+          &--no-border {
+            border: none;
+          }
+        }
+        &-footer {
+          border: none;
+        }
+        &-item {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          padding: 0 10px 0 0;
+          border-radius: 30px;
+          border: 1px solid transparent;
+          margin: 5px 10px;
+          span {
+            font-size: $legacy-app-nav-tier-mode-item-font-size;
+            padding: 0;
+          }
+          &-toggle-button {
+            display: none;
+            &:focus, &:active {
+              background-color: $legacy-app-nav-tier-mode-item-hover-background-color;
+            }
+          }
+          &:hover {
+            background-color: $legacy-app-nav-tier-mode-item-hover-background-color;
+            border: $legacy-app-nav-tier-mode-item-hover-border-color;
+            cursor: pointer;
+            span, a atlas-icon {
+              font-family: $legacy-app-nav-tier-mode-item-hover-font-family;
+              color: $legacy-app-nav-tier-mode-item-hover-color;
+            }
+            atlas-icon {
+              color: $legacy-app-nav-tier-mode-item-hover-color;
+            }
+          }
+          a {
+            color: $legacy-app-nav-tier-mode-item-color;
+            &:focus, &:active {
+              background: none;
+            }
+            atlas-icon {
+              color: $legacy-app-nav-tier-mode-item-icon-color;
+            }
+          }
+          &--active {
+            background: $legacy-app-nav-tier-mode-item-active-background-color;
+            color: $legacy-app-nav-tier-mode-item-active-color;
+            font-family: $legacy-app-nav-tier-mode-item-active-font-family;
+            &:hover {
+              background: $legacy-app-nav-tier-mode-item-active-background-color;
+                atlas-icon {
+                cursor: default;
+                color: $legacy-app-nav-tier-mode-item-hover-color;
+              }
+            }
+            span {
+              color: $legacy-app-nav-tier-mode-item-active-color;
+            }
+          }
+          // On click
+          &:active {
+            background-color: $legacy-app-nav-tier-mode-item-click-background-color;
+            border-color: $legacy-app-nav-tier-mode-item-click-background-color;
+          }
+        }
+      }
+    }
+    &.legacy-app-nav {
+      // Tier Mode Expanded
+      &--expanded {
+        #{$c} {
+          &__expand {
+            color: $legacy-app-nav-tier-mode-expand-button-color;
+          }
+          &__nav {
+            &-back-menu {
+              height: $legacy-app-nav-tier-mode-back-menu-height;
+              background: $legacy-app-nav-tier-mode-back-menu-background-color;
+              atlas-icon {
+                color: $legacy-app-nav-tier-mode-item-icon-color;
+              }
+            }
+            &-scroll-container {
+              height: calc(100vh - 45px - #{$legacy-app-nav-tier-mode-back-menu-height} - #{$legacy-app-nav-footer-height}); // subtract header height, back-menu height, and nav-footer height
+              overflow-y: auto;
+              overflow-x: hidden;
+            }
+            &-item {
+              > a {
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                width: 100%;
+                padding: 10px 20px;
+                atlas-icon {
+                  margin-right: 10px;
+                }
+              }
+              &--expanded {
+                a {
+                  font-family: $legacy-app-nav-tier-mode-item-active-font-family;
+                }
+                span, atlas-icon {
+                  color: $legacy-app-nav-tier-mode-item-active-color;
+                }
+              }
+            }
+          }
+          &__hamburger {
+            background-color: rgba(255, 255, 255, 0.10);
+
+            &-inner {
+              &,
+              &::before,
+              &::after {
+                background-color: #FFFFFF;
+              }
+            }
+          }
+        }
+      }
+      // Tier Mode Collapsed
+      &--collapsed {
+        #{$c} {
+          &__expand {
+            color: $legacy-app-nav-tier-mode-expand-button-color;
+          }
+          &__nav {
+            &-item {
+              border-radius: 0;
+              border-radius: 24px;
+              border: 1px solid transparent;
+              height: 40px;
+              width: 40px;
+              padding: 0;
+              margin: 10px auto;
+              &:hover {
+                border: 1px solid #F4F4F4;
+              }
+              &--contains-active {
+                background: $legacy-app-nav-tier-mode-item-active-background-color;
+                a {
+                  atlas-icon {
+                    color: $legacy-app-nav-tier-mode-item-active-color;
+                  }
+                }
+              }
+              // On click
+              &:active {
+                background: $legacy-app-nav-tier-mode-item-click-background-color;
+                border-color: $legacy-app-nav-tier-mode-item-click-background-color;
+              }
+              &--nested {
+                display: none;
+              }
+            }
+            &-header {
+              min-height: $legacy-app-nav-header-height;
+            }
+          }
+          &__hamburger {
+            &-inner {
+              &,
+              &::before,
+              &::after {
+                background-color: $legacy-app-nav-tier-mode-hamburger-link-background-color;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  // Note:
+  // This is enabled when there is a sectionTitle to display and isVertical is disabled
+  &__title-bar {
+    z-index: 1000;
+    background-color: $legacy-app-nav-background-color;
+    height: $legacy-app-nav-title-bar-height;
+    width: 100%;
+    border-bottom: 1px solid #E6E6E6;
+    border-top: 1px solid #E6E6E6;
+    display: flex;
+    align-items: center;
+    &-section-title {
+      font-size: 20px;
+      margin-left: 12px;
+      font-family: $legacy-app-nav-title-bar-section-title-font-family;
+    }
+  }
+
+  // Hamburger
+  // ==================================================
+  &__hamburger {
+    width: $legacy-app-nav-hamburger-width;
+    height: $legacy-app-nav-hamburger-width;
+    padding: $legacy-app-nav-hamburger-padding-y $legacy-app-nav-hamburger-padding-x;
+    display: inline-block;
+    cursor: pointer;
+    transition-property: opacity, filter;
+    transition-duration: $legacy-app-nav-hamburger-hover-transition-duration;
+    transition-timing-function: $legacy-app-nav-hamburger-hover-transition-timing-function;
+
+    // Normalize (<button>)
+    font: inherit;
+    color: inherit;
+    text-transform: none;
+    background-color: transparent;
+    border: 0;
+    margin: 0;
+    overflow: visible;
+    position: relative;
+    &:hover {
+      @if $legacy-app-nav-hamburger-hover-use-filter==true {
+        filter: $legacy-app-nav-hamburger-hover-filter;
+      }
+      @else {
+        opacity: $legacy-app-nav-hamburger-hover-opacity;
+      }
+    }
+    &-inner {
+      display: block;
+      top: 50%;
+      margin-top: $legacy-app-nav-hamburger-layer-height / -2;
+      &,
+      &::before,
+      &::after {
+        width: $legacy-app-nav-hamburger-layer-width;
+        height: $legacy-app-nav-hamburger-layer-height;
+        background-color: $legacy-app-nav-hamburger-layer-color;
+        border-radius: $legacy-app-nav-hamburger-layer-border-radius;
+        position: absolute;
+        transition-property: transform;
+        transition-duration: 0.15s;
+        transition-timing-function: ease;
+      }
+      &::before,
+      &::after {
+        content: "";
+        display: block;
+      }
+      &::before {
+        top: ($legacy-app-nav-hamburger-layer-spacing + $legacy-app-nav-hamburger-layer-height) * -1;
+      }
+      &::after {
+        bottom: ($legacy-app-nav-hamburger-layer-spacing + $legacy-app-nav-hamburger-layer-height) * -1;
+      }
+      transition-duration: 0.075s;
+      transition-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+      &::before {
+        transition: top 0.075s 0.12s ease, opacity 0.075s ease;
+      }
+      &::after {
+        transition: bottom 0.075s 0.12s ease, transform 0.075s cubic-bezier(0.55, 0.055, 0.675, 0.19);
+      }
+    }
+  }
+  &__expand {
+    color: $legacy-app-nav-hamburger-layer-color;
+    cursor: pointer;
+    right: 6px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+  }
+  &__content {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    overflow-y: scroll;
+    z-index: $legacy-app-nav-content-z-index;
+    .legacy-app-nav--vertical & {
+      margin-left: $legacy-app-nav-vertical-collapsed-width; // Adjust for collapsed vertical app-nav
+    }
+    &-container {
+      flex-grow: 1;
+      @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+        flex: 1 0 auto;
+      }
+    }
+  }
+
+  // States
+  &--expanded {
+    #{$c} {
+      &__nav {
+        width: $legacy-app-nav-vertical-expanded-width;
+        min-width: $legacy-app-nav-vertical-expanded-width;
+        height: inherit;
+        &--horizontal {
+          position: absolute;
+          left: 0;
+          height: calc(100% - 45px - 1px); // subtract header height, 1px for border-top to prevent additional scrolling
+          background: $legacy-app-nav-background-color;
+          z-index: $legacy-app-nav-expanded-horizontal-z-index;
+          #{$c} {
+            &__nav-header {
+              border-bottom: $legacy-app-nav-horizontal-expanded-header-border-bottom;
+            }
+          }
+          &-menu {
+            display: block;
+            width: 100%;
+            position: absolute;
+            top: $legacy-app-nav-horizonta-expanded-top;
+            left: 0;
+          }
+        }
+      }
+      &__hamburger {
+        background-color: rgba(153, 153, 153, 0.10);
+        border-radius: 50%;
+        &-inner {
+          transform: rotate(45deg);
+          transition-delay: 0.12s;
+          transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+          &,
+          &::before,
+          &::after {
+            background-color: $legacy-app-nav-close-color;
+          }
+          &::before {
+            top: 0;
+            opacity: 0;
+            transition: top 0.075s ease, opacity 0.075s 0.12s ease;
+          }
+          &::after {
+            bottom: 0;
+            transform: rotate(-90deg);
+            transition: bottom 0.075s ease, transform 0.075s 0.12s cubic-bezier(0.215, 0.61, 0.355, 1);
+          }
+        }
+      }
+      &__expand {
+        // reverse
+        transform: scale(-1, 1);
+        color: $legacy-app-nav-active-color;
+      }
+    }
+
+    .legacy-app-nav__nav-footer {
+      display: flex;
+      justify-content: flex-end;
+    }
+  }
+  &--collapsed {
+    #{$c} {
+      &__nav {
+        width: $legacy-app-nav-vertical-collapsed-width;
+        min-width: $legacy-app-nav-vertical-collapsed-width;
+        height: inherit;
+        &--horizontal {
+          position: relative; // Make relative when horizontal app-nav is collapsed to prevent section title overlap
+          height: 100%;
+        }
+        &-header {
+          padding: 0;
+          justify-content: center;
+        }
+        &-item {
+          display: flex;
+          justify-content: $legacy-app-nav-collapsed-item-justify-content;
+          align-items: center;
+        }
+        &--horizontal {
+          &-menu, &-menu-bottom {
+            display: none;
+          }
+          #{$c}__nav {
+            width: 100%;
+            min-height: $legacy-app-nav-header-height;
+            height: $legacy-app-nav-header-height;
+          }
+        }
+      }
+    }
+  }
+  &--hidden {
+    #{$c} {
+      &__content {
+        margin-left: 0;
+      }
+    }
+  }
+  &--inactive-route {
+    #{$c} {
+      &__nav, &__nav--horizontal-wrapper {
+        display: none;
+      }
+    }
+  }
+  &__nav--horizontal {
+    #{$c} {
+      &__nav-header {
+        border-bottom: none;
+      }
+    }
+    .atlas-list--horizontal .atlas-list-item {
+      padding: 0;
+    }
+    &-section-link {
+      a {
+        display: block;
+        height: $legacy-app-nav-header-height;
+        font-family: $legacy-app-nav-section-link-font-family;
+        color: $legacy-app-nav-section-link-color;
+        padding: $legacy-app-nav-section-link-padding;
+        &:hover,
+        &:focus {
+          background-color: $legacy-app-nav-section-link-hover-background-color;
+          color: $legacy-app-nav-section-link-hover-color;
+          border-bottom: $legacy-app-nav-section-link-hover-border-bottom;
+          text-decoration: none;
+        }
+      }
+      &--active a {
+        font-family: var(--semanticTypography-font-family-plain);
+        color: $legacy-app-nav-section-link-active-color;
+        &:hover,
+        &:focus {
+          cursor: default;
+          background: none;
+          border: none;
+          font-family: var(--semanticTypography-font-family-plain);
+          color: $legacy-app-nav-section-link-active-color;
+        }
+      }
+      .atlas-list--horizontal &-item.atlas-list-item {
+        padding: 0;
+      }
+    }
+    &-wrapper {
+      display: flex;
+      flex-direction: row;
+      z-index: 1000;
+      justify-content: $legacy-app-nav-wrapper-justify-content;
+      width: 100%;
+      max-width: 100%;
+      height: $legacy-app-nav-header-height;
+      min-height: $legacy-app-nav-header-height;
+      border-bottom: 1px solid #E6E6E6;
+      border-top: 1px solid #E6E6E6;
+      background-color: $legacy-app-nav-background-color;
+      &.row {
+        margin: 0;
+      }
+    }
+    &-section-title {
+      font-size: $legacy-app-nav-horizontal-section-title-font-size;
+      font-family: $legacy-app-nav-horizontal-section-title-font-family;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      padding: $legacy-app-nav-horizontal-section-title-padding;
+    }
+  }
+}
+
+legacy-app-nav-header-content {
+  width: $legacy-app-nav-header-content-container-width;
+}

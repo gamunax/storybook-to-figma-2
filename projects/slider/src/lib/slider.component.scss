@@ -1,0 +1,242 @@
+.atlas-slider-cursor {
+  .atlas-slider:not(.atlas-slider--disabled):not(.atlas-slider--sliding) & {
+    cursor: grab;
+  }
+}
+
+.atlas-slider {
+  &:not(.atlas-slider--disabled):active,
+  &.atlas-slider--sliding:not(.atlas-slider--disabled) {
+    cursor: grabbing;
+  }
+  
+  &-focus-ring {
+    .atlas-slider.cdk-keyboard-focused &,
+    .atlas-slider.cdk-mouse-focused &,
+    .atlas-slider.cdk-program-focused & {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+  
+  &-thumb {
+    @extend .atlas-slider-cursor;
+  }
+
+  &-thumb-label {
+    @extend .atlas-slider-cursor;
+  }
+
+  // Slider sliding state.
+  &--sliding {
+    .atlas-slider-track-fill,
+    .atlas-slider-track-background,
+    .atlas-slider-thumb-container {
+      // Must use `transition-duration: 0ms` to disable animation rather than `transition: none`.
+      // On Mobile Safari `transition: none` causes the slider thumb to appear stuck.
+      transition-duration: 0ms;
+    }
+  }
+
+  // Active slider.
+  &:not(.atlas-slider--disabled) {
+    &.cdk-focused {
+      &.atlas-slider--thumb-label-showing .atlas-slider-thumb {
+        transform: scale(0);
+      }
+
+      .atlas-slider-thumb-label {
+        border-radius: 50% 50% 0;
+      }
+
+      .atlas-slider-thumb-label-text {
+        opacity: 1;
+      }
+
+      &.atlas-slider--focused-left {
+        .atlas-slider-thumb-container-left {
+          .atlas-slider-focus-ring-primary {
+            background-color: rgba(11, 65, 173, 0.16);
+          }
+          .atlas-slider-focus-ring-secondary {
+            background-color: rgba(178, 2, 91, 0.16);
+          }
+        }
+      }
+
+      &.atlas-slider--focused-right {
+        .atlas-slider-thumb-container-right {
+          .atlas-slider-focus-ring-primary {
+            background-color: rgba(11, 65, 173, 0.16);
+          }
+          .atlas-slider-focus-ring-secondary {
+            background-color: rgba(178, 2, 91, 0.16);
+          }
+        }
+      }
+    }
+  }
+
+  // Disabled slider.
+  &--disabled {
+    .atlas-slider-focus-ring {
+      transform: scale(0);
+      opacity: 0;
+    }
+    .atlas-slider-thumb-label {
+      display: none;
+    }
+  }
+
+  // Horizontal slider.
+  &--horizontal {
+      .atlas-slider-wrapper {
+      height: var(--slider-track-thickness);
+      top: (var(--slider-thickness) - var(--slider-track-thickness)) / 2;
+      left: var(--slider-padding);
+      right: var(--slider-padding);
+
+      &:after {
+        height: var(--slider-track-thickness);
+        border-left-width:var(--slider-tick-size);
+        right: 0;
+        top: 0;
+      }
+    }
+
+    .atlas-slider-track-wrapper {
+      height: var(--slider-track-thickness);
+      width: 100%;
+    }
+
+    .atlas-slider-track-fill {
+      height: var(--slider-track-thickness);
+      width: 100%;
+      transform: scaleX(0);
+    }
+
+    .atlas-slider-track-background {
+      height: var(--slider-track-thickness);
+      width: 100%;
+      transform: scaleX(1);
+    }
+
+    .atlas-slider-ticks-container {
+      height: var(--slider-track-thickness);
+      width: 100%;
+    }
+
+    .atlas-slider-ticks {
+      height: var(--slider-track-thickness);
+      width: 100%;
+      background-image: repeating-linear-gradient(90deg,rgba(0,0,0,.7),rgba(0,0,0,.7) 2px,transparent 0,transparent);
+    }
+
+    .atlas-slider-thumb-container {
+      width: 100%;
+      height: 0;
+      top: 50%;
+    }
+
+    .atlas-slider-focus-ring {
+      top: calc(-1 * (var(--slider-focus-ring-size) / 2));
+      right: calc(-1 * (var(--slider-focus-ring-size) / 2));
+    }
+
+    .atlas-slider-thumb-label {
+      right: calc(-1 * (var(--slider-thumb-label-size) / 2));
+      top: calc(-1 * (var(--slider-thumb-label-size) + var(--slider-thumb-arrow-gap)));
+      transform: translateY(var(--slider-thumb-label-size) / 2 + var(--slider-thumb-arrow-gap))
+          scale(0.01)
+          rotate(45deg);
+    }
+
+    .atlas-slider-thumb-label-text {
+      transform: rotate(-45deg);
+    }
+
+    &.cdk-focused {
+      .atlas-slider-thumb-label {
+        transform: rotate(45deg);
+      }
+    }
+  }
+
+  // Vertical slider.
+  &--vertical {
+    .atlas-slider-wrapper {
+      width: var(--slider-track-thickness);
+      top: var(--slider-padding);
+      bottom: var(--slider-padding);
+      left: (var(--slider-thickness) - var(--slider-track-thickness)) / 2;
+
+      &:after {
+        width: var(--slider-track-thickness);
+        border-top-width: var(--slider-tick-size);
+        bottom: 0;
+        left: 0;
+      }
+    }
+
+
+    .atlas-slider-track-wrapper {
+      height: 100%;
+      width: var(--slider-track-thickness);
+    }
+
+    .atlas-slider-track-fill {
+      height: 100%;
+      width: var(--slider-track-thickness);
+      transform: scaleY(0);
+    }
+
+    .atlas-slider-track-background {
+      height: 100%;
+      width: var(--slider-track-thickness);
+      transform: scaleY(1);
+    }
+
+    .atlas-slider-ticks-container {
+      width: var(--slider-track-thickness);
+      height: 100%;
+    }
+
+    .atlas-slider-focus-ring {
+      bottom: calc(-1 * (var(--slider-focus-ring-size) / 2));
+      left: calc(-1 * (var(--slider-focus-ring-size) / 2));
+    }
+
+    .atlas-slider-ticks {
+      width: var(--slider-track-thickness);
+      height: 100%;
+    }
+
+    .atlas-slider-thumb-container {
+      height: 100%;
+      width: 0;
+      left: 50%;
+    }
+
+    .atlas-slider-thumb {
+      backface-visibility: hidden;
+    }
+
+    .atlas-slider-thumb-label {
+      bottom: calc(-1 * (var(--slider-thumb-label-size) / 2));
+      left: calc(-1 * (var(--slider-thumb-label-size) + var(--slider-thumb-arrow-gap)));
+      transform: translateX(var(--slider-thumb-label-size) / 2 + var(--slider-thumb-arrow-gap))
+          scale(0.01)
+          rotate(-45deg);
+    }
+
+    .atlas-slider-thumb-label-text {
+      transform: rotate(45deg);
+    }
+
+    &.cdk-focused {
+      .atlas-slider-thumb-label {
+        transform: rotate(-45deg);
+      }
+    }
+  }
+}

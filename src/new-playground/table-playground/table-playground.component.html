@@ -1,0 +1,105 @@
+<div class="container padding-y-9 padding-x-9 page-bg">
+  <!-- Chip Component Demo Header -->
+  <h2>Table Component Demo</h2>
+  <div class="header">
+    <atlas-theming-helper>
+      <label>Custom theme</label>
+    </atlas-theming-helper>
+  </div>
+  <div>
+    <h2>Table</h2>
+    <div class="section">
+      <atlas-table [dense]="true">
+        <thead atlas-table-header #header [highlightSortedHeader]="true">
+          <tr atlas-table-row >
+            <th atlas-table-header-cell *ngFor="let col of columnDef1" [columnDef]="col">
+              {{ col.displayLabel }}
+            </th>
+          </tr>
+        </thead>
+
+        <tbody atlas-table-body>
+          <tr class="custom-class" atlas-table-row *ngFor="let row of rows | sort : header.sortOption">
+            <td atlas-table-cell>
+              {{ row.age }}
+            </td>
+            <td atlas-table-cell>
+              {{ row.name }}
+            </td>
+            <td atlas-table-cell>
+              {{ row.birthplace }}
+            </td>
+            <td atlas-table-cell>
+              {{ row.cars }}
+            </td>
+            <td atlas-table-cell>
+              {{ row.f }}
+            </td>
+          </tr>
+        </tbody>
+      </atlas-table>
+    </div>
+  </div>
+<h2>Table like accordion mode</h2>
+<div class="section">
+  <atlas-table>
+    <thead atlas-table-header #header2>
+      <tr atlas-table-row>
+        <th  atlas-table-header-cell>
+        </th>
+        <th atlas-table-header-cell  [headerCellType]="'typographyStyles-mobile-heading-small'"
+        *ngFor="let col of columnDef2" [columnDef]="col" [collection]="'arrows'" [icon]="'arrow-up'"
+        [iconSize]="iconSize">
+          {{ col.displayLabel }}
+        </th>
+      </tr>
+    </thead>
+    <tbody atlas-table-body>
+      <ng-container *ngFor="let row of rows2 | sort : header2.sortOption; let i = index">
+        <tr atlas-table-row>
+          <td atlas-table-cell>
+            <atlas-icon-button (onClick)="toggleRowAccordion(i)" [icon]="expandedRowIndexes.has(i) ? 'icon-chevron-up-24' : 'icon-chevron-down-24'"></atlas-icon-button>       
+          </td>
+          <td atlas-table-cell [cellType]="'typographyStyles-mobile-heading-small'" *ngFor="let col of columnDef2">
+            <ng-container [ngSwitch]="col.fieldKey">
+              <atlas-checkbox
+                *ngSwitchCase="'action'"
+                [isChecked]="row[col.fieldKey]"
+                (checkedChange)="row[col.fieldKey] = $event"
+              ></atlas-checkbox>
+              <span *ngSwitchDefault>
+                {{ row[col.fieldKey] }}
+              </span>
+            </ng-container>
+          </td>
+        </tr>
+        <tr *ngIf="expandedRowIndexes.has(i)">
+          <td [attr.colspan]="columnDef2.length + 1" style="padding: 0; background: transparent; border: none">
+            <atlas-table>
+              <thead atlas-table-header>
+                <tr atlas-table-row>
+                  <th>
+                    subcolumn1
+                  </th>
+                  <th>
+                    subcolumn2
+                  </th>
+                </tr>
+              </thead>
+              <tbody atlas-table-body>
+                <tr atlas-table-row>
+                  <td atlas-table-cell>Data 1A</td>
+                  <td atlas-table-cell>Data 1B</td>
+                </tr>
+                <tr atlas-table-row>
+                  <td atlas-table-cell>Data 2A</td>
+                  <td atlas-table-cell>Data 2B</td>
+                </tr>
+              </tbody>
+            </atlas-table>
+          </td>
+        </tr>
+      </ng-container>
+    </tbody>
+  </atlas-table>
+</div>

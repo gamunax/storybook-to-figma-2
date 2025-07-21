@@ -1,0 +1,47 @@
+
+
+/// Chip Manager status: margin
+/// @type Number
+$legacy-chip-manager-status-margin: 0 0 1.5rem;
+
+/// Chip Manager chip style: margin-right
+/// @type Number
+$legacy-chip-manager-chip-margin-right: 1.5rem;
+
+/// Chip Manager chip style: margin-bottom
+/// @type Number
+$legacy-chip-manager-chip-margin-bottom: 1.5rem;
+
+/// Chip Manager chip style: margin-bottom
+/// @type Number
+$legacy-chip-manager-chip-bank-margin: 0 !default;
+
+/// Chip Manager chip bank max-height
+/// @type Number
+$legacy-chip-manager-chip-bank-max-height: 12.5rem !default;
+$global-namespace: 'legacy';
+
+.#{$global-namespace}-c-chip-manager {
+
+  &__status {
+    margin: $legacy-chip-manager-status-margin;
+  }
+
+  &__chip-bank {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin: $legacy-chip-manager-chip-bank-margin;
+    max-height: $legacy-chip-manager-chip-bank-max-height;
+    overflow-y: auto;
+    mercer-chip {
+      display: inline-block;
+      margin-right: $legacy-chip-manager-chip-margin-right;
+      margin-bottom: $legacy-chip-manager-chip-margin-bottom;
+    }
+  }
+  &__add-chip-button {
+    display: flex;
+    align-items: center;
+  }
+}

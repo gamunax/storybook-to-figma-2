@@ -1,0 +1,103 @@
+<div class="container padding-y-9 padding-x-9 page-bg">
+  <h2>Progress Component Demo</h2>
+  <div class="header">
+    <atlas-theming-helper>
+      <label>Custom theme</label>
+    </atlas-theming-helper>
+  </div>
+
+  <div class="section">
+    <div class="progress-group">
+      <div class="progress-container">
+        <h2>Progress Bar</h2>
+        <div class="row">
+          <div class="column medium-2 small-12">
+            <atlas-field>
+              <input
+                value="20"
+                (change)="updateProgressValue()"
+                type="text"
+                atlasInput
+                #percentValue
+                [disabled]="false"
+                [required]="true"
+                placeholder="Insert the value"
+              />
+            </atlas-field>
+          </div>
+          <div class="column medium-2 small-12">
+            <atlas-progress [value]="progressValue" [labeled]="true"></atlas-progress>
+          </div>
+          <div class="column medium-2 small-12">
+            <atlas-progress [variant]="actions.default" [value]="progressValue" [labeled]="true"></atlas-progress>
+          </div>
+          <div class="column medium-2 small-12">
+            <atlas-progress [variant]="actions.success" [value]="progressValue" [labeled]="true"></atlas-progress>
+          </div>
+          <div class="column medium-2 small-12">
+            <atlas-progress [variant]="'danger'" [value]="progressValue" [labeled]="true"></atlas-progress>
+          </div>
+        </div>
+        <h2>Progress Circular</h2>
+        <div class="row">
+          <div class="column medium-2 small-12">
+            <atlas-field>
+              <input
+                value="20"
+                (change)="updateProgressValueCircular()"
+                type="text"
+                atlasInput
+                #percentValueCircular
+                [disabled]="false"
+                [required]="true"
+                placeholder="Insert the value"
+              />
+            </atlas-field>
+          </div>
+          <div class="column medium-2 small-12">
+            <atlas-progress [variant]="'brand'" [barStyle]="'simple'" [type]="'circular'" [value]="progressValueCircular" [labeled]="true"></atlas-progress>
+          </div>
+          <div class="column medium-2 small-12">
+            <atlas-progress [variant]="'neutral'" [barStyle]="'simple'" [type]="'circular'" [value]="progressValueCircular" [labeled]="true"></atlas-progress>
+          </div>
+          <div class="column medium-2 small-12">
+            <atlas-progress [variant]="'success'" [barStyle]="'simple'" [type]="'circular'" [value]="progressValueCircular" [labeled]="true"></atlas-progress>
+          </div>
+          <div class="column medium-2 small-12">
+            <atlas-progress [variant]="'danger'" [barStyle]="'simple'" [type]="'circular'" [value]="progressValueCircular" [labeled]="true"></atlas-progress>
+          </div>
+        </div>
+        <h2>Progress Bar Indeterminate</h2>
+        <div class="row">
+          <div class="column medium-2 small-12">
+            <atlas-progress [barStyle]="'indeterminate'" ></atlas-progress>
+          </div>
+          <div class="column medium-2 small-12">
+            <atlas-progress [variant]="'neutral'" [barStyle]="'indeterminate'" ></atlas-progress>
+          </div>
+          <div class="column medium-2 small-12">
+            <atlas-progress [variant]="'success'" [barStyle]="'indeterminate'" ></atlas-progress>
+          </div>
+          <div class="column medium-2 small-12">
+            <atlas-progress [variant]="'danger'" [barStyle]="'indeterminate'" ></atlas-progress>
+          </div>
+        </div>
+        <h2>Progress Circular Indeterminate</h2>
+        <div class="row">
+          <div class="column medium-2 small-12">
+            <atlas-progress [barStyle]="'indeterminate'" [type]="'circular'"></atlas-progress>
+          </div>
+          <div class="column medium-2 small-12">
+            <atlas-progress [variant]="'neutral'" [barStyle]="'indeterminate'" [type]="'circular'"></atlas-progress>
+          </div>
+          <div class="column medium-2 small-12">
+            <atlas-progress [variant]="'success'" [barStyle]="'indeterminate'" [type]="'circular'"></atlas-progress>
+          </div>
+          <div class="column medium-2 small-12">
+            <atlas-progress [variant]="'danger'" [barStyle]="'indeterminate'" [type]="'circular'"></atlas-progress>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

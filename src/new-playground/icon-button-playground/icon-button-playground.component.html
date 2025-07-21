@@ -1,0 +1,223 @@
+<div class="container padding-y-9 padding-x-9 page-bg">
+  <h2>Icon Button Component Demo</h2>
+  <div class="header">
+    <atlas-theming-helper>
+      <label>Custom theme</label>
+    </atlas-theming-helper>
+  </div>
+  <div>
+    <h2>Strong Icons Button - old contained</h2>
+    <div class="section">
+      <h3>size medium</h3>
+      <div class="button-group">
+        <div class="button-container">
+            <!--<atlas-icon [icon]="'icon-remove-circle-24'"  [color]="actions.success" [size]="iconSizings.medium"></atlas-icon>
+        -->
+          <atlas-icon-button [action]="actions.primary" [size]="iconSizings.medium" [action]="actions.primary"
+            >brand</atlas-icon-button
+          >
+          <div class="button-label">Brand</div>
+        </div>
+        <div class="button-container">
+          <atlas-icon-button [action]="actions.default" [size]="iconSizings.medium" [action]="actions.default"
+            >neutral</atlas-icon-button
+          >
+          <div class="button-label">Neutral</div>
+        </div>
+        <div class="button-container">
+          <atlas-icon-button [action]="actions.error" [size]="iconSizings.medium" [action]="actions.error"
+            >danger</atlas-icon-button
+          >
+          <div class="button-label">Danger</div>
+        </div>
+        <div class="button-container">
+          <atlas-icon-button [action]="actions.success" [size]="iconSizings.medium" [action]="actions.success"
+            >success</atlas-icon-button
+          >
+          <div class="button-label">Success</div>
+        </div>
+        <div class="button-container">
+          <atlas-icon-button [action]="actions.info" [size]="iconSizings.medium" [action]="actions.info"
+            >Info</atlas-icon-button
+          >
+          <div class="button-label">Info</div>
+        </div>
+      </div>
+    </div>
+    <div class="section">
+        <h3>size large</h3>
+        <div class="button-group">
+          <div class="button-container">
+            <atlas-icon-button [action]="actions.primary" [size]="iconSizings.large" [action]="actions.primary"
+              >brand</atlas-icon-button
+            >
+            <div class="button-label">Brand</div>
+          </div>
+          <div class="button-container">
+            <atlas-icon-button [action]="actions.default" [size]="iconSizings.large" [action]="actions.default"
+              >neutral</atlas-icon-button
+            >
+            <div class="button-label">Neutral</div>
+          </div>
+          <div class="button-container">
+            <atlas-icon-button [action]="actions.error" [size]="iconSizings.large" [action]="actions.error"
+              >danger</atlas-icon-button
+            >
+            <div class="button-label">Danger</div>
+          </div>
+          <div class="button-container">
+            <atlas-icon-button [action]="actions.success" [size]="iconSizings.large" [action]="actions.success"
+              >success</atlas-icon-button
+            >
+            <div class="button-label">Success</div>
+          </div>
+          <div class="button-container">
+            <atlas-icon-button [action]="actions.info" [size]="iconSizings.large" [action]="actions.info"
+              >Info</atlas-icon-button
+            >
+            <div class="button-label">Info</div>
+          </div>
+        </div>
+    </div>
+    <div class="section">
+        <h3>size xlarge</h3>
+        <div class="button-group">
+          <div class="button-container">
+            <atlas-icon-button [action]="actions.primary" [size]="iconSizings.xlarge" [action]="actions.primary"
+              >brand</atlas-icon-button
+            >
+            <div class="button-label">Brand</div>
+          </div>
+          <div class="button-container">
+            <atlas-icon-button [action]="actions.default" [size]="iconSizings.xlarge" [action]="actions.default"
+              >neutral</atlas-icon-button
+            >
+            <div class="button-label">Neutral</div>
+          </div>
+          <div class="button-container">
+            <atlas-icon-button [action]="actions.error" [size]="iconSizings.xlarge" [action]="actions.error"
+              >danger</atlas-icon-button
+            >
+            <div class="button-label">Danger</div>
+          </div>
+          <div class="button-container">
+            <atlas-icon-button [action]="actions.success" [size]="iconSizings.xlarge" [action]="actions.success"
+              >success</atlas-icon-button
+            >
+            <div class="button-label">Success</div>
+          </div>
+          <div class="button-container">
+            <atlas-icon-button [action]="actions.info" [size]="iconSizings.xlarge" [action]="actions.info"
+              >Info</atlas-icon-button
+            >
+            <div class="button-label">Info</div>
+          </div>
+        </div>
+    </div>
+    <div class="section">
+        <h3>size small</h3>
+        <div class="button-group">
+          <div class="button-container">
+            <atlas-icon-button [action]="actions.primary" [size]="iconSizings.small" [action]="actions.primary"
+              >brand</atlas-icon-button
+            >
+            <div class="button-label">Brand</div>
+          </div>
+          <div class="button-container">
+            <atlas-icon-button [action]="actions.default" [size]="iconSizings.small" [action]="actions.default"
+              >neutral</atlas-icon-button
+            >
+            <div class="button-label">Neutral</div>
+          </div>
+          <div class="button-container">
+            <atlas-icon-button [action]="actions.error" [size]="iconSizings.small" [action]="actions.error"
+              >danger</atlas-icon-button
+            >
+            <div class="button-label">Danger</div>
+          </div>
+          <div class="button-container">
+            <atlas-icon-button [action]="actions.success" [size]="iconSizings.small" [action]="actions.success"
+              >success</atlas-icon-button
+            >
+            <div class="button-label">Success</div>
+          </div>
+          <div class="button-container">
+            <atlas-icon-button [action]="actions.info" [size]="iconSizings.small" [action]="actions.info"
+              >Info</atlas-icon-button
+            >
+            <div class="button-label">Info</div>
+          </div>
+        </div>
+    </div>
+    <div class="section">
+        <h3>size xsmall</h3>
+        <div class="button-group">
+          <div class="button-container">
+            <atlas-icon-button [action]="actions.primary" [size]="iconSizings.xsmall" [action]="actions.primary"
+              >brand</atlas-icon-button
+            >
+            <div class="button-label">Brand</div>
+          </div>
+          <div class="button-container">
+            <atlas-icon-button [action]="actions.default" [size]="iconSizings.xsmall" [action]="actions.default"
+              >neutral</atlas-icon-button
+            >
+            <div class="button-label">Neutral</div>
+          </div>
+          <div class="button-container">
+            <atlas-icon-button [action]="actions.error" [size]="iconSizings.xsmall" [action]="actions.error"
+              >danger</atlas-icon-button
+            >
+            <div class="button-label">Danger</div>
+          </div>
+          <div class="button-container">
+            <atlas-icon-button [action]="actions.success" [size]="iconSizings.xsmall" [action]="actions.success"
+              >success</atlas-icon-button
+            >
+            <div class="button-label">Success</div>
+          </div>
+          <div class="button-container">
+            <atlas-icon-button [action]="actions.info" [size]="iconSizings.xsmall" [action]="actions.info"
+              >Info</atlas-icon-button
+            >
+            <div class="button-label">Info</div>
+          </div>
+        </div>
+    </div>
+    <div class="section">
+        <h3>size medium disabled</h3>
+        <div class="button-group">
+          <div class="button-container">
+            <atlas-icon-button [disabled]="true" [action]="actions.primary" [size]="iconSizings.medium" [action]="actions.primary"
+              >brand</atlas-icon-button
+            >
+            <div class="button-label">Brand</div>
+          </div>
+          <div class="button-container">
+            <atlas-icon-button [disabled]="true" [action]="actions.default" [size]="iconSizings.medium" [action]="actions.default"
+              >neutral</atlas-icon-button
+            >
+            <div class="button-label">Neutral</div>
+          </div>
+          <div class="button-container">
+            <atlas-icon-button [disabled]="true" [action]="actions.error" [size]="iconSizings.medium" [action]="actions.error"
+              >danger</atlas-icon-button
+            >
+            <div class="button-label">Danger</div>
+          </div>
+          <div class="button-container">
+            <atlas-icon-button [disabled]="true" [action]="actions.success" [size]="iconSizings.medium" [action]="actions.success"
+              >success</atlas-icon-button
+            >
+            <div class="button-label">Success</div>
+          </div>
+          <div class="button-container">
+            <atlas-icon-button [disabled]="true" [action]="actions.info" [size]="iconSizings.medium" [action]="actions.info"
+              >Info</atlas-icon-button
+            >
+            <div class="button-label">Info</div>
+          </div>
+        </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,88 @@
+:root {
+    --button-animation-speed: 0.15s;
+    --button-animation-property: all;
+    --button-animation-type: ease-in-out;
+}
+
+.atlas-button {
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    cursor: pointer;
+    transition: var(--button-animation-speed) var(--button-animation-property) var(--button-animation-type);
+
+    &--expand {
+        width: 100%;
+        display: block;
+    }
+
+    span {
+        display: flex;
+        align-content: center;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+.button-group-position {
+    &-horizontal {
+        button,
+        a {
+            cursor: pointer;
+
+            &:first-child {
+                border-top-right-radius: 0;
+                border-bottom-right-radius: 0;
+            }
+
+            &:not(:first-child):not(:last-child) {
+                border-radius: 0;
+                border-left: none;
+            }
+
+            &:last-child {
+                border-left: none;
+                border-top-left-radius: 0;
+                border-bottom-left-radius: 0;
+            }
+        }
+    }
+    &-vertical {
+        button,
+        a {
+            cursor: pointer;
+
+            &:first-child {
+                border-bottom-left-radius: 0;
+                border-bottom-right-radius: 0;
+            }
+
+            &:not(:first-child):not(:last-child) {
+                border-radius: 0;
+                border-top: none;
+            }
+
+            &:last-child {
+                border-top: none;
+                border-top-left-radius: 0;
+                border-top-right-radius: 0;
+            }
+        }
+    }
+}
+
+$button-variants: brand, neutral, caution, success, danger, info;
+
+@mixin outlined-button-size($variant, $size, $padding) {
+  .button-#{$variant}-outlined.button-size-#{$size} {
+    padding: $padding;
+  }
+}
+
+@each $variant in $button-variants {
+  @include outlined-button-size($variant, xsmall, 3px 7px 2px 7px);
+  @include outlined-button-size($variant, small, 3px 7px);
+  @include outlined-button-size($variant, medium, 7px 11px);
+  @include outlined-button-size($variant, large, 11px 19px);
+  @include outlined-button-size($variant, xlarge, 15px 23px);
+}

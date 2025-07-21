@@ -1,0 +1,34 @@
+.page-bg {
+  background: var(--semanticColor-layer-neutral-02);
+  color: var(--semanticColor-text-default);
+  z-index: -1;
+  padding: 2rem;
+  h2 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  h3 {
+    text-align: center;
+  }
+  .select {
+    color: var(--semanticColor-text-default);
+  }
+  /* Custom CSS for Header */
+  .header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+
+  .header atlas-theming-helper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+.list {
+  display: flex;
+  justify-content: flex-start;
+}

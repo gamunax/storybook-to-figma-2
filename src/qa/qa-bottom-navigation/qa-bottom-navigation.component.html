@@ -1,0 +1,19 @@
+<div class="container">
+    <hr>
+    <h1>Bottom navigation component tests</h1>
+    <hr><br>
+
+    <div class="row">
+        <atlas-bottom-navigation *ngFor="let bottomNav of bottomNavs"
+        [id]="bottomNav.id"
+        >
+        <atlas-bottom-navigation-action>
+            <atlas-icon
+            [icon]="bottomNav.icon"
+            [size]="bottomNav.size"
+            ></atlas-icon>
+            <atlas-field-label>{{bottomNav.label}}</atlas-field-label>
+        </atlas-bottom-navigation-action>
+        </atlas-bottom-navigation>
+    </div>
+</div>

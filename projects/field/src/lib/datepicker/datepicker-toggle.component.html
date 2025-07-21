@@ -1,0 +1,10 @@
+<atlas-button 
+        [disabled]="disabled"
+        [radius]="_radii"
+        [size]="_buttonSize"        
+        [variant]="_buttonVariant"
+        [attr.aria-label]="ariaLabel || _intl.openCalendarLabel"
+        (onClick)="_open($event)"
+        >
+        <atlas-icon [color]="iconColor" icon="icon-calendar-24" [size]="_iconSize" ></atlas-icon>
+</atlas-button>

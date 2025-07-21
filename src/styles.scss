@@ -1,0 +1,26 @@
+/* You can add global styles to this file, and also import other style files */
+
+// Use
+@use '/projects/cdk/scss/cdk/fonts';
+@use '/projects/cdk/scss/cdk/grid';
+@use '/projects/cdk/scss/cdk/mixins';
+@use '/projects/cdk/scss/cdk/reset';
+@use '/projects/cdk/scss/cdk/helpers';
+@use '/projects/cdk/scss/cdk/utils';
+
+// Legacy Styles
+@use '/projects/legacy/scss/legacy_components';
+@use '/projects/legacy/scss/legacy_shared_mosui.scss';
+
+// Imports
+@import '@angular/cdk/overlay-prebuilt.css';
+
+
+// Mixins
+@include grid.generate-grid();
+@include reset.html-reset;
+@include helpers.material-cdk-resets();
+
+body {
+    background: var(--semanticColor-layer-neutral-01);
+  }

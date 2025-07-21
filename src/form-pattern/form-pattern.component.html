@@ -1,0 +1,280 @@
+
+<div class="row expanded collapse page-bg">
+  <div class="column small-12">
+    <atlas-app-bar>
+      <span class="app-bar-logo">
+        <img height="20px" [src]="logoUrl" alt="Mercer" />
+        <h3 class="typographyStyles-body-largeAlt">|</h3>
+        <h3 class="typographyStyles-body-smallAlt">Acme Admin</h3>
+      </span>
+      <span class="app-bar-separator"></span>
+      <atlas-avatar menuTrigger (triggered)="demoMenu.toggleMenu($event)" [action]="action" [indicatorAction]="success"
+        [radius]="radius">OP</atlas-avatar>
+      <div class="app-bar-dropdown">
+        <atlas-menu #demoMenu action="primary">
+          <atlas-list>
+            <atlas-list-item>Original Poster</atlas-list-item>
+          </atlas-list>
+          <hr class="app-bar-logo-line" />
+          <atlas-list>
+            <atlas-list-item *ngFor="let item of itemsUser" [item]="item" [routerLink]="item.value">
+              <atlas-icon *ngIf="item.icon" style="margin-right: 12px" [size]="smallIconSize" [icon]="item.icon">
+              </atlas-icon>
+              <div>
+                {{ item.label }}
+              </div>
+            </atlas-list-item>
+          </atlas-list>
+          <hr class="app-bar-logo-line" />
+          <atlas-list>
+            <atlas-list-item (select)="signOut($event)">
+              <atlas-icon [size]="smallIconSize" icon="icon-logout-24" style="margin-right: 12px"></atlas-icon>
+              Sign out
+            </atlas-list-item>
+          </atlas-list>
+        </atlas-menu>
+      </div>
+    </atlas-app-bar>
+  </div>
+  <div class="column" style="padding: 16px 24px;">
+    <div class="container" >
+      <div class="padding-y-12">
+        <atlas-breadcrumb [collapsed]="false">
+          <atlas-breadcrumb-item *ngFor="let item of breadItems" [active]="item.active" (onSelect)="onSelectedRoute(item)">
+            {{ item.label }}
+            <atlas-breadcrumb-item-separator>/</atlas-breadcrumb-item-separator>
+          </atlas-breadcrumb-item>
+        </atlas-breadcrumb>
+      </div>
+      <h1 class="typographyStyles-display-small" style="margin: 0; color: var(--semanticColor-text-default)">
+        Form pattern
+      </h1>
+      <p>An example form using <atlas-link [external]="true" url="https://angular.io/guide/reactive-forms" [target]="target">Angular Reactive Forms <atlas-icon [icon]="'icon-share-24'" [size]="smallIconSize"></atlas-icon></atlas-link>.</p>
+      <form autocomplete="off" novalidate [formGroup]="form">       
+        <div class="row">
+          <div class="column medium-6">
+            <atlas-field [fullWidth]="true">
+              <atlas-field-label>First name</atlas-field-label>
+              <input id="first-name" type="text" atlasInput placeholder="John" formControlName="firstName" [required]="true" aria-label="first name" [tabindex]="1" />
+              <atlas-field-error *ngIf="form.get('firstName').errors?.required">First name is required</atlas-field-error>
+            </atlas-field>
+          </div>
+          <div class="column medium-6">
+            <atlas-field [fullWidth]="true">
+              <atlas-field-label>Last name</atlas-field-label>
+              <input type="text" atlasInput placeholder="Doe" formControlName="lastName" [required]="true" aria-label="last name" [tabindex]="2"/>
+              <atlas-field-error *ngIf="form.get('lastName').errors?.required">Last name is required</atlas-field-error>
+            </atlas-field>
+          </div>
+        </div>
+        <div class="row">
+          <div class="column medium-12">
+            <atlas-field [fullWidth]="true">
+              <atlas-field-prefix>
+                <atlas-icon [icon]="'icon-home-24'" [size]="iconSize">
+                </atlas-icon>
+              </atlas-field-prefix>
+              <atlas-field-label>E-mail</atlas-field-label>
+              <input type="email" atlasInput placeholder="jhon@doe.com" formControlName="email" [required]="true" aria-label="email" [tabindex]="3"/>
+              <atlas-field-error *ngIf="form.get('email').errors?.required">Email is required</atlas-field-error>
+              <atlas-field-error *ngIf="form.get('email').errors?.pattern">Email is wrong</atlas-field-error>
+            </atlas-field>
+          </div>
+        </div>
+        <div class="row">
+          <div class="column medium-6">
+            <atlas-field [fullWidth]="true">
+              <atlas-field-label>Enter password</atlas-field-label>
+              <input type="password" atlasInput formControlName="password" [required]="true" autocomplete="new-password" aria-label="Enter password" [tabindex]="4"/>
+              <atlas-field-error *ngIf="form.get('password').errors?.required">Password is required</atlas-field-error>
+              <atlas-field-error *ngIf="form.get('password').errors?.minlength">Minimun 8 characters required</atlas-field-error>
+            </atlas-field>
+          </div>
+          <div class="column medium-6">
+            <atlas-field [fullWidth]="true">
+              <atlas-field-label>Confirm password</atlas-field-label>
+              <input type="password" atlasInput formControlName="confirmPassword" [required]="true" aria-label="Confirm password" [tabindex]="5"/>
+              <atlas-field-error *ngIf="form.get('confirmPassword').errors?.required">Confirm Password is required</atlas-field-error>
+              <atlas-field-error *ngIf="form.get('confirmPassword').errors?.mustMatch">Passwords must match</atlas-field-error>
+            </atlas-field>
+          </div>
+        </div>
+        <div class="row">
+          <div class="column medium-6">
+            <atlas-field [fullWidth]="true">
+              <atlas-field-label>Date of birth</atlas-field-label>
+              <input [Datepicker]="picker" atlasInput placeholder="Choose a date" formControlName="dob" aria-label="birth date" [tabindex]="6"/>
+              <atlas-field-suffix>
+                <datepicker-toggle [datepicker]="picker"></datepicker-toggle>
+              </atlas-field-suffix>
+              <datepicker #picker></datepicker>              
+              <atlas-field-error *ngIf="form.get('dob').errors?.required">Date of birth is required</atlas-field-error>
+            </atlas-field>
+          </div>
+          <div class="column medium-6">
+            <atlas-field [fullWidth]="true">
+              <atlas-field-label>Time of birth</atlas-field-label>
+              <input formControlName="time" [Timepicker]="timepicker" atlasInput placeholder="Choose a time" #input aria-label="time of birth" [tabindex]="7"/>
+              <atlas-field-suffix>
+                <timepicker-toggle [timepicker]="timepicker"></timepicker-toggle>
+              </atlas-field-suffix>
+              <timepicker #timepicker [defaultTime]="input.value"></timepicker>
+            </atlas-field>
+          </div>
+        </div>
+        <div class="row">
+          <div class="column medium-6">
+            <atlas-field [action]="action" [fullWidth]="true">
+              <atlas-field-label>Country</atlas-field-label>
+              <atlas-select [typeahead]="true" (typeaheadChange)="filterCountry($event)" [placeholder]="'Select a country'" formControlName="country" aria-label="Country" [tabindex]="7">
+                <atlas-option *ngFor="let country of countriesFiltered | async" [value]="country.value">{{ country.name }}</atlas-option>
+              </atlas-select>
+            </atlas-field>
+          </div>
+          <div class="column medium-6">
+            <atlas-field [action]="action" [fullWidth]="true">
+              <atlas-field-label>Languages</atlas-field-label>
+              <atlas-select [placeholder]="'Select languages'" #languages (valueChange)="onSelectedLanguages($event)"
+                [multiple]="true" formControlName="languages" aria-label="Languages" [tabindex]="8">
+                <atlas-option [value]="'EN'">English</atlas-option>
+                <atlas-option [value]="'GE'">German</atlas-option>
+                <atlas-option [value]="'ES'">Spanish</atlas-option>
+              </atlas-select>
+              <atlas-field-hint *ngIf="languages.value">Selected languages: {{languages.value}}</atlas-field-hint>
+            </atlas-field>
+          </div>
+        </div>
+        <div class="row">
+          <div class="column medium-6">
+            <p class="typographyStyles-label-small" style="color: var(--semanticColor-text-secondary)">
+              Nationality
+            </p>
+            <atlas-radio-group #radio formControlName="nationality" [action]="action" (onChange)="onNationalityChange($event)" >
+              <atlas-radio *ngFor="let nationality of nationalityList; let i = index" [radioId]="'radioId-' + nationality.id"
+                [action]="action" 
+                [value]="nationality.description" [disabled]="nationality.disabled"
+                [tabindex]="9"
+                aria-label={{nationality.description}}>
+                {{nationality.description}}
+              </atlas-radio>     
+            </atlas-radio-group>       
+          </div>
+          <div class="column medium-6" formArrayName="sports">
+            <p class="typographyStyles-label-small" style="color: var(--semanticColor-text-secondary)">
+              Sports
+            </p>
+            <atlas-checkbox 
+              #sportsCheckbox
+              [tabindex]="10"
+              aria-label={{sport.description}}
+              [checkboxId]="'checkbox-' + sport.id" 
+              *ngFor="let sport of sportsList; let i = index" 
+              [value]="sport.description" 
+              [action]="action" 
+              [isChecked]="sport.checked" 
+              (onChange)="onSportChange($event)">
+              {{sport.description}}
+            </atlas-checkbox>
+          </div>
+        </div>
+        <div class="row">
+          <div class="column medium-6">
+            <p class="typographyStyles-label-small" style="color: var(--semanticColor-text-secondary)">
+              Remote Work System
+            </p>
+            <atlas-switch formControlName="remote" [action]="action" [size]="switchSize" aria-label="remote" [tabindex]="11">
+              Yes
+            </atlas-switch>
+            <p class="typographyStyles-label-small" style="color: var(--semanticColor-text-secondary)">
+              Hourly Rate
+            </p>
+            <atlas-slider [action]="action" [disabled]="false" formControlName="slider" aria-label="hourly rate" [tabindex]="12"></atlas-slider>
+            <p class="typographyStyles-body-medium" style="color: var(--semanticColor-text-default-contained); margin-top: -24px;">
+              {{ form.value.slider }} $
+            </p>
+          </div>
+          <div class="column medium-6">
+            <atlas-field [action]="action">
+              <atlas-field-label>Select Jobs</atlas-field-label>
+              <atlas-select #jobs aria-label="jobs" [tabindex]="13" formControlName="jobs" [placeholder]="'Select items'" [multiple]="true" [disabled]="false" (valueChange)="onSelectJob($event)" (selectionChange)="jobChanged($event)">
+                <atlas-option *ngFor="let job of allJobs" [value]="job" (selectionChange)="onSelectJob($event)">{{ job }}</atlas-option>
+              </atlas-select>
+              <atlas-field-hint>{{form.value.jobs}}</atlas-field-hint>
+            </atlas-field>
+            <p class="typographyStyles-label-small" style="color: var(--semanticColor-text-secondary)">
+              Preferred job positions
+            </p>
+            <atlas-chip-list>
+              <atlas-chip
+                [removable]="true"
+                (removed)="chipRemoved(i, $event)"
+                [action]="actionChip"
+                [disabled]="false"
+                [variant]="chipVariants"
+                [size]="chipSize"
+                *ngFor="let chip of chipList; index as i"
+              >
+              <atlas-icon [icon]="'icon-check-double-24'"></atlas-icon>
+                {{ chip }}
+              </atlas-chip>
+            </atlas-chip-list>
+            <p class="typographyStyles-label-small" style="color: var(--semanticColor-text-secondary)">
+              Rating
+            </p>
+            <atlas-rating 
+              [rating]="initialRating"
+              [disabled]="false" 
+              [readOnly]="false" 
+              [size]="ratingSize"
+              [showLabel]="true"
+              formControlName="rating"
+              aria-label="rating"
+              [tabIndex]="14">
+            </atlas-rating>
+          </div>
+        </div>
+        <div class="row">
+          <div class="column">
+            <p class="typographyStyles-label-small" style="color: var(--semanticColor-text-secondary)">
+              Resume upload
+            </p>
+            <atlas-filedrop 
+            ngDefaultControl
+            [fullWidth]="true"
+            formControlName="files"
+            (canceledUpload)="onCanceledUpload($event)" 
+            (selectedFiles)="onFilesSelected($event)"
+            [tabindex]="15"
+            aria-label="Resume"></atlas-filedrop>
+          </div>
+        </div>
+        <div class="row">
+          <div class="column align-right">
+            <atlas-button
+              [size]="button_size" [action]="cancelAction" (onClick)="onCancel()" aria-label="cancel" [tabindex]="16">Cancel
+            </atlas-button>&#160;
+            <atlas-button
+              [size]="button_size"
+                (click)="onSubmit()"
+                [disabled]="!form.valid"
+                [action]="action"
+                aria-label="save"
+                [tabindex]="17">Save
+            </atlas-button>
+          </div>
+        </div>
+      </form>
+      <atlas-modal
+        [title]="'Saved data'" 
+        #modal
+        content="{{ form.value | json }}"
+        [autofocus]="false"
+        [okLabel]="'Ok'"
+        [cancelLabel]="'Cancel'"   
+        (onOkClick)="onOkClick()">    
+      </atlas-modal>
+    </div>
+  </div>
+</div>
+
+

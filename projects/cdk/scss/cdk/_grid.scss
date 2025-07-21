@@ -1,0 +1,149 @@
+//-------------------------------------------------------------------------------------------
+// Grid Generation
+//-------------------------------------------------------------------------------------------
+
+@use 'sass:math';
+
+$atlas-breakpoints: (
+  xsmall : 0,
+  small  :  375px,
+  medium :  768px,
+  large  : 1280px,
+  xlarge : 1440px,
+) !default;
+
+@mixin generate-grid(
+  $max-width: 1184px,
+  $grid-columns: 12,
+  $container-class: 'container',
+  $row-class: 'row',
+  $column-class: 'column',
+  $gutter: 10px) {
+  // Create the container with max width
+  .#{$container-class} {
+    max-width: $max-width;
+    margin: 0 auto;
+    &--fluid {
+      margin: 0;
+      max-width: 100%;
+    }
+  }
+
+  // Create the row
+  .#{$row-class} {
+    display: flex;
+    flex-wrap: wrap;
+    &.collapse>.#{$column-class} {
+      padding: 0;
+    }
+    &.align {
+      &-center {
+        justify-content: center;
+        &-vertical {
+          align-items: center;
+        }
+      }
+      &-right {
+        justify-content: flex-end;
+      }
+      &-left {
+        justify-content: flex-start;
+      }
+    }
+  }
+
+  // Columns
+  .#{$column-class} {
+    flex-grow: 1;
+    padding: math.div($gutter, 2);
+    flex-basis: (math.div(100, $grid-columns) ) * 1%;
+    &.shrink {
+      flex: 0 0 auto;
+      max-width: 100%;
+    }
+    &.align {
+      &-center {
+        text-align: center;
+        &-vertical {
+          align-items: center;
+        }
+      }
+      &-right {
+        text-align: right;
+      }
+      &-left {
+        text-align: left;
+      }
+    }
+  }
+  @each $modifier, $breakpoint in $atlas-breakpoints {
+    @include respond-from($modifier) {
+      @for $i from 1 through $grid-columns {
+        // Columns
+        .#{$modifier}-#{$i} {
+          flex-grow: 1;
+          flex-basis: ( math.div(100, math.div($grid-columns, $i)) ) * 1%;
+          max-width: ( math.div(100, math.div($grid-columns, $i)) ) * 1%;
+          padding-left: math.div($gutter, 2);
+          padding-right: math.div($gutter, 2);
+        }
+        .#{$modifier}-offset-#{$i} {
+          margin-left: ( math.div(100, math.div($grid-columns, $i)) ) * 1%;
+        }
+      }
+      // Grid Utils
+      .#{$modifier}-up-offset-0 {
+        margin-left: 0;
+      }
+      .hide-#{$modifier}-up {
+        display: none;
+      }
+      .#{$modifier}-align {
+        &-center {
+          text-align: center;
+        }
+        &-right {
+          text-align: right;
+        }
+        &-left {
+          text-align: left;
+        }
+      }
+    }
+    @include respond-to($modifier) {
+      .hide-#{$modifier}-down {
+        display: none;
+      }
+      .#{$modifier}-down-offset-0 {
+        margin-left: 0;
+      }
+    }
+  }
+}
+
+// Breakpoints
+// ------------------------------------------------------------------------------------------
+@mixin respond-to($breakpoint) {
+  @if map-has-key($atlas-breakpoints, $breakpoint) {
+    @media (max-width: map-get($atlas-breakpoints, $breakpoint)) {
+      @content;
+    }
+  }
+  @else {
+    @warn "Unfortunately, no value could be retrieved from `#{$atlas-breakpoints}`. "
+        + "Please make sure it is defined in `$atlas-breakpoints` map.";
+  }
+}
+
+@mixin respond-from($breakpoint) {
+  @if map-has-key($atlas-breakpoints, $breakpoint) {
+    @media (min-width: map-get($atlas-breakpoints, $breakpoint)) {
+      @content;
+    }
+  }
+  @else {
+    @warn "Unfortunately, no value could be retrieved from `#{$atlas-breakpoints}`. "
+        + "Please make sure it is defined in `$atlas-breakpoints-down` map.";
+  }
+}
+

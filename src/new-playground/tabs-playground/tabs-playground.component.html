@@ -1,0 +1,341 @@
+<div class="container padding-y-9 padding-x-9 page-bg">
+
+  <h2>tabs Component Demo</h2>
+  <div class="header">
+    <atlas-theming-helper>
+      <label>Custom theme</label>
+    </atlas-theming-helper>
+  </div>
+  <h2>tabs</h2>
+  <div>
+    <div class="section">
+      <h4>full width / empty - side scroll</h4>
+      <div class="tabs-group">
+        <atlas-tab-group [fullWidth]="true" [variant]="variants.empty" [useSideScroll]="true" labelMinWidth="120" [scrollArrowAction]="actions.primary">
+          <atlas-tab>
+            <ng-template atlas-tab-label>
+              <div class="demo-tab-label">
+                <atlas-icon icon="icon-home-24"></atlas-icon>
+                <span class="padding-top-4 typographyStyles-button-medium"> Tab 1</span>
+              </div>
+            </ng-template>
+      
+            <atlas-tab-content>
+              <p class="typographyStyles-body-medium">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto rem ab commodi distinctio magnam odit est
+                consequatur, quidem cupiditate esse quos modi omnis ad excepturi, in ex libero. Non, nam!
+              </p>
+            </atlas-tab-content>
+          </atlas-tab>
+          <atlas-tab [disabled]="true">
+            <ng-template atlas-tab-label>
+              <div class="demo-tab-label">
+                <atlas-icon icon="icon-lock-24"></atlas-icon>
+                <span class="padding-top-4 typographyStyles-button-medium"> Tab 2</span>
+              </div>
+            </ng-template>
+      
+            <atlas-tab-content>
+              <p class="typographyStyles-body-medium">
+                Hodor. Hodor hodor, hodor. Hodor hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor; hodor hodor hodor.
+                Hodor. Hodor hodor; hodor hodor - hodor, hodor, hodor hodor. Hodor, hodor. Hodor. Hodor, hodor hodor hodor;
+                hodor hodor; hodor hodor hodor! Hodor hodor HODOR! Hodor hodor... Hodor hodor hodor...
+              </p>
+            </atlas-tab-content>
+          </atlas-tab>
+          <atlas-tab>
+            <ng-template atlas-tab-label>
+              <div class="demo-tab-label">
+                <atlas-icon icon="icon-file-upload-24"></atlas-icon>
+                <span class="padding-top-4 typographyStyles-button-medium"> Tab 3</span>
+              </div>
+            </ng-template>
+      
+            <atlas-tab-content>
+              <p class="typographyStyles-body-medium">hello world 3</p>
+            </atlas-tab-content>
+          </atlas-tab>
+          <atlas-tab>
+            <ng-template atlas-tab-label>
+              <div class="demo-tab-label">
+                <atlas-icon icon="icon-calendar-24"></atlas-icon>
+                <span class="padding-top-4 typographyStyles-button-medium"> Tab 4</span>
+              </div>
+            </ng-template>
+      
+            <atlas-tab-content>
+              <p class="typographyStyles-body-medium">
+                hello world 4, hodor. Hodor hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor; hodor hodor hodor.
+                Hodor. Hodor hodor; hodor hodor - hodor, hodor, hodor hodor. Hodor, hodor. Hodor. Hodor, hodor hodor hodor;
+                hodor hodor; hodor hodor hodor! Hodor hodor HODOR! Hodor hodor... Hodor hodor hodor...
+              </p>
+            </atlas-tab-content>
+          </atlas-tab>
+          <atlas-tab>
+            <ng-template atlas-tab-label>
+              <div class="demo-tab-label">
+                <atlas-icon icon="icon-notification-24"></atlas-icon>
+                <span class="padding-top-4 typographyStyles-button-medium"> Tab 5</span>
+              </div>
+            </ng-template>
+      
+            <atlas-tab-content>
+              <p class="typographyStyles-body-medium">
+                hello world 5 hodor, hodor. Hodor hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor; hodor hodor
+                hodor. Hodor. Hodor hodor; hodor hodor - hodor, hodor, hodor hodor. Hodor, hodor. Hodor. Hodor, hodor hodor
+                hodor; hodor hodor; hodor hodor hodor! Hodor hodor HODOR! Hodor hodor... Hodor hodor hodor...
+              </p>
+            </atlas-tab-content>
+          </atlas-tab>
+        </atlas-tab-group>
+      </div>
+    </div>
+    <!-- <div class="section">
+      <h4>full width / filled - primary</h4>
+      <div class="tabs-group">
+        <atlas-tab-group [fullWidth]="true" [variant]="variants.filled" [useSideScroll]="true" labelMinWidth="120">
+          <atlas-tab>
+            <ng-template atlas-tab-label>
+              <div class="demo-tab-label">
+                <atlas-icon icon="icon-home-24"></atlas-icon>
+                <span class="padding-top-4 typographyStyles-button-medium"> Tab 1</span>
+              </div>
+            </ng-template>
+      
+            <atlas-tab-content>
+              <p class="typographyStyles-body-medium">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto rem ab commodi distinctio magnam odit est
+                consequatur, quidem cupiditate esse quos modi omnis ad excepturi, in ex libero. Non, nam!
+              </p>
+            </atlas-tab-content>
+          </atlas-tab>
+          <atlas-tab [disabled]="true">
+            <ng-template atlas-tab-label>
+              <div class="demo-tab-label">
+                <atlas-icon icon="icon-lock-24"></atlas-icon>
+                <span class="padding-top-4 typographyStyles-button-medium"> Tab 2</span>
+              </div>
+            </ng-template>
+      
+            <atlas-tab-content>
+              <p class="typographyStyles-body-medium">
+                Hodor. Hodor hodor, hodor. Hodor hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor; hodor hodor hodor.
+                Hodor. Hodor hodor; hodor hodor - hodor, hodor, hodor hodor. Hodor, hodor. Hodor. Hodor, hodor hodor hodor;
+                hodor hodor; hodor hodor hodor! Hodor hodor HODOR! Hodor hodor... Hodor hodor hodor...
+              </p>
+            </atlas-tab-content>
+          </atlas-tab>
+          <atlas-tab>
+            <ng-template atlas-tab-label>
+              <div class="demo-tab-label">
+                <atlas-icon icon="icon-file-upload-24"></atlas-icon>
+                <span class="padding-top-4 typographyStyles-button-medium"> Tab 3</span>
+              </div>
+            </ng-template>
+      
+            <atlas-tab-content>
+              <p class="typographyStyles-body-medium">hello world 3</p>
+            </atlas-tab-content>
+          </atlas-tab>
+          <atlas-tab>
+            <ng-template atlas-tab-label>
+              <div class="demo-tab-label">
+                <atlas-icon icon="icon-calendar-24"></atlas-icon>
+                <span class="padding-top-4 typographyStyles-button-medium"> Tab 4</span>
+              </div>
+            </ng-template>
+      
+            <atlas-tab-content>
+              <p class="typographyStyles-body-medium">
+                hello world 4, hodor. Hodor hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor; hodor hodor hodor.
+                Hodor. Hodor hodor; hodor hodor - hodor, hodor, hodor hodor. Hodor, hodor. Hodor. Hodor, hodor hodor hodor;
+                hodor hodor; hodor hodor hodor! Hodor hodor HODOR! Hodor hodor... Hodor hodor hodor...
+              </p>
+            </atlas-tab-content>
+          </atlas-tab>
+          <atlas-tab>
+            <ng-template atlas-tab-label>
+              <div class="demo-tab-label">
+                <atlas-icon icon="icon-notification-24"></atlas-icon>
+                <span class="padding-top-4 typographyStyles-button-medium"> Tab 5</span>
+              </div>
+            </ng-template>
+      
+            <atlas-tab-content>
+              <p class="typographyStyles-body-medium">
+                hello world 5 hodor, hodor. Hodor hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor; hodor hodor
+                hodor. Hodor. Hodor hodor; hodor hodor - hodor, hodor, hodor hodor. Hodor, hodor. Hodor. Hodor, hodor hodor
+                hodor; hodor hodor; hodor hodor hodor! Hodor hodor HODOR! Hodor hodor... Hodor hodor hodor...
+              </p>
+            </atlas-tab-content>
+          </atlas-tab>
+        </atlas-tab-group>
+      </div>
+    </div>
+    <div class="section">
+      <h4>filled - neutral</h4>
+      <div class="tabs-group">
+        <atlas-tab-group [fullWidth]="true" [variant]="variants.filled" [action]="actions.secondary">
+          <atlas-tab>
+            <ng-template atlas-tab-label>
+              <div class="demo-tab-label">
+                <atlas-icon icon="icon-home-24"></atlas-icon>
+                <span class="padding-top-4 typographyStyles-button-medium"> Tab 1</span>
+              </div>
+            </ng-template>
+      
+            <atlas-tab-content>
+              <p class="typographyStyles-body-medium">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto rem ab commodi distinctio magnam odit est
+                consequatur, quidem cupiditate esse quos modi omnis ad excepturi, in ex libero. Non, nam!
+              </p>
+            </atlas-tab-content>
+          </atlas-tab>
+          <atlas-tab [disabled]="true">
+            <ng-template atlas-tab-label>
+              <div class="demo-tab-label">
+                <atlas-icon icon="icon-lock-24"></atlas-icon>
+                <span class="padding-top-4 typographyStyles-button-medium"> Tab 2</span>
+              </div>
+            </ng-template>
+      
+            <atlas-tab-content>
+              <p class="typographyStyles-body-medium">
+                Hodor. Hodor hodor, hodor. Hodor hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor; hodor hodor hodor.
+                Hodor. Hodor hodor; hodor hodor - hodor, hodor, hodor hodor. Hodor, hodor. Hodor. Hodor, hodor hodor hodor;
+                hodor hodor; hodor hodor hodor! Hodor hodor HODOR! Hodor hodor... Hodor hodor hodor...
+              </p>
+            </atlas-tab-content>
+          </atlas-tab>
+          <atlas-tab>
+            <ng-template atlas-tab-label>
+              <div class="demo-tab-label">
+                <atlas-icon icon="icon-file-upload-24"></atlas-icon>
+                <span class="padding-top-4 typographyStyles-button-medium"> Tab 3</span>
+              </div>
+            </ng-template>
+      
+            <atlas-tab-content>
+              <p class="typographyStyles-body-medium">hello world 3</p>
+            </atlas-tab-content>
+          </atlas-tab>
+          <atlas-tab>
+            <ng-template atlas-tab-label>
+              <div class="demo-tab-label">
+                <atlas-icon icon="icon-calendar-24"></atlas-icon>
+                <span class="padding-top-4 typographyStyles-button-medium"> Tab 4</span>
+              </div>
+            </ng-template>
+      
+            <atlas-tab-content>
+              <p class="typographyStyles-body-medium">
+                hello world 4, hodor. Hodor hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor; hodor hodor hodor.
+                Hodor. Hodor hodor; hodor hodor - hodor, hodor, hodor hodor. Hodor, hodor. Hodor. Hodor, hodor hodor hodor;
+                hodor hodor; hodor hodor hodor! Hodor hodor HODOR! Hodor hodor... Hodor hodor hodor...
+              </p>
+            </atlas-tab-content>
+          </atlas-tab>
+          <atlas-tab>
+            <ng-template atlas-tab-label>
+              <div class="demo-tab-label">
+                <atlas-icon icon="icon-notification-24"></atlas-icon>
+                <span class="padding-top-4 typographyStyles-button-medium"> Tab 5</span>
+              </div>
+            </ng-template>
+      
+            <atlas-tab-content>
+              <p class="typographyStyles-body-medium">
+                hello world 5 hodor, hodor. Hodor hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor; hodor hodor
+                hodor. Hodor. Hodor hodor; hodor hodor - hodor, hodor, hodor hodor. Hodor, hodor. Hodor. Hodor, hodor hodor
+                hodor; hodor hodor; hodor hodor hodor! Hodor hodor HODOR! Hodor hodor... Hodor hodor hodor...
+              </p>
+            </atlas-tab-content>
+          </atlas-tab>
+        </atlas-tab-group>
+      </div>
+    </div>
+    <div class="section">
+      <h4>filled - success</h4>
+      <div class="tabs-group">
+        <atlas-tab-group [fullWidth]="true" [variant]="variants.filled" [action]="actions.success">
+          <atlas-tab>
+            <ng-template atlas-tab-label>
+              <div class="demo-tab-label">
+                <atlas-icon icon="icon-home-24"></atlas-icon>
+                <span class="padding-top-4 typographyStyles-button-medium"> Tab 1</span>
+              </div>
+            </ng-template>
+      
+            <atlas-tab-content>
+              <p class="typographyStyles-body-medium">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto rem ab commodi distinctio magnam odit est
+                consequatur, quidem cupiditate esse quos modi omnis ad excepturi, in ex libero. Non, nam!
+              </p>
+            </atlas-tab-content>
+          </atlas-tab>
+          <atlas-tab [disabled]="true">
+            <ng-template atlas-tab-label>
+              <div class="demo-tab-label">
+                <atlas-icon icon="icon-lock-24"></atlas-icon>
+                <span class="padding-top-4 typographyStyles-button-medium"> Tab 2</span>
+              </div>
+            </ng-template>
+      
+            <atlas-tab-content>
+              <p class="typographyStyles-body-medium">
+                Hodor. Hodor hodor, hodor. Hodor hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor; hodor hodor hodor.
+                Hodor. Hodor hodor; hodor hodor - hodor, hodor, hodor hodor. Hodor, hodor. Hodor. Hodor, hodor hodor hodor;
+                hodor hodor; hodor hodor hodor! Hodor hodor HODOR! Hodor hodor... Hodor hodor hodor...
+              </p>
+            </atlas-tab-content>
+          </atlas-tab>
+          <atlas-tab>
+            <ng-template atlas-tab-label>
+              <div class="demo-tab-label">
+                <atlas-icon icon="icon-file-upload-24"></atlas-icon>
+                <span class="padding-top-4 typographyStyles-button-medium"> Tab 3</span>
+              </div>
+            </ng-template>
+      
+            <atlas-tab-content>
+              <p class="typographyStyles-body-medium">hello world 3</p>
+            </atlas-tab-content>
+          </atlas-tab>
+          <atlas-tab>
+            <ng-template atlas-tab-label>
+              <div class="demo-tab-label">
+                <atlas-icon icon="icon-calendar-24"></atlas-icon>
+                <span class="padding-top-4 typographyStyles-button-medium"> Tab 4</span>
+              </div>
+            </ng-template>
+      
+            <atlas-tab-content>
+              <p class="typographyStyles-body-medium">
+                hello world 4, hodor. Hodor hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor; hodor hodor hodor.
+                Hodor. Hodor hodor; hodor hodor - hodor, hodor, hodor hodor. Hodor, hodor. Hodor. Hodor, hodor hodor hodor;
+                hodor hodor; hodor hodor hodor! Hodor hodor HODOR! Hodor hodor... Hodor hodor hodor...
+              </p>
+            </atlas-tab-content>
+          </atlas-tab>
+          <atlas-tab>
+            <ng-template atlas-tab-label>
+              <div class="demo-tab-label">
+                <atlas-icon icon="icon-notification-24"></atlas-icon>
+                <span class="padding-top-4 typographyStyles-button-medium"> Tab 5</span>
+              </div>
+            </ng-template>
+      
+            <atlas-tab-content>
+              <p class="typographyStyles-body-medium">
+                hello world 5 hodor, hodor. Hodor hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor; hodor hodor
+                hodor. Hodor. Hodor hodor; hodor hodor - hodor, hodor, hodor hodor. Hodor, hodor. Hodor. Hodor, hodor hodor
+                hodor; hodor hodor; hodor hodor hodor! Hodor hodor HODOR! Hodor hodor... Hodor hodor hodor...
+              </p>
+            </atlas-tab-content>
+          </atlas-tab>
+        </atlas-tab-group>
+      </div>
+    </div> -->
+
+
+  </div>

@@ -1,0 +1,55 @@
+$actions: 'neutral', 'brand', 'caution', 'success', 'info', 'danger' !default;
+
+/* Customize the label (the container) */
+.atlas-checkbox {
+    display: flex;
+    align-items: center;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    input {
+      position: absolute;
+      opacity: 0;
+      cursor: pointer;
+      height: 0;
+      width: 0;
+    }
+    svg {
+      display: block;
+    }
+    span {
+      display: flex;
+      align-content: center;
+      justify-content: center;
+      align-items: center;
+    }
+    .checkmark-container {
+      position: relative;
+      text-align: center;
+      margin-right: 8px;
+      cursor: pointer;
+      .checkbox-hover-indicator {
+        display: none;
+        position: absolute;
+        top: -30%;
+        left: -30%;
+        width: 160%;
+        height: 160%;
+        border-radius: var(--radius-full);
+      }
+    }
+    @each $action in $actions  {
+      input:checked ~ .checkbox-#{$action} {
+        color: var(--semanticColor-background-#{$action}-strong-hover);
+      }
+      .checkbox-#{$action} {
+        &:hover {
+          .checkbox-hover-indicator {
+            display: block;
+            background-color: var(--semanticColor-background-#{$action}-soft-hover);
+          }  
+        }
+      }
+    }
+  }

@@ -1,0 +1,56 @@
+$colors: 'brand', 'neutral', 'success', 'caution', 'info', 'danger' !default;
+
+/* Customize the label (the container) */
+.atlas-radio {
+    display: flex;
+    align-items: center;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    &-group--inline {
+      display: flex;
+      .radio-label {
+        padding-right: 8px;
+      }
+    }
+    input {
+      position: absolute;
+      opacity: 0;
+      cursor: pointer;
+      height: 0;
+      width: 0;
+    }  
+    svg {
+      display: block;
+    }
+    .radio-container {
+      position: relative;
+      text-align: center;
+      margin-right: 8px;
+      cursor: pointer;
+      .radio-hover-indicator {
+        display: none;
+        position: absolute;
+        top: -17%;
+        left: -25%;
+        width: 150%;
+        height: 140%;
+        border-radius: var(--radius-full);
+      }
+    }
+
+    @each $color in $colors  {
+      input:checked ~ .radio-#{$color} {
+        color: var(--semanticColor-background-#{$color}-strong-hover);
+      }
+      .radio-#{$color} {
+        &:hover {
+          .radio-hover-indicator {
+            display: block;
+            background-color: var(--semanticColor-background-#{$color}-soft-hover);
+          }  
+        }
+      }
+    }
+  }

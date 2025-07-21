@@ -1,0 +1,68 @@
+import { Meta } from '@storybook/addon-docs';
+import Code from './assets/code-brackets.svg';
+import Colors from './assets/colors.svg';
+import Comments from './assets/comments.svg';
+import Direction from './assets/direction.svg';
+import Flow from './assets/flow.svg';
+import Plugin from './assets/plugin.svg';
+import Repo from './assets/repo.svg';
+import StackAlt from './assets/stackalt.svg';
+import { BADGES } from '.storybook/constants';
+import { withTheming } from '../../.storybook/halo-theming-addon';
+import { ThemingServiceGlobal, defaultConfig } from 'atlas-cdk';
+import { Source, Preview  } from '@storybook/addon-docs';
+import { HoverableCode } from '../../.storybook/hoverable-code';
+
+<Meta title="Adopters/Design/Tokens/Colors/UX Guide" parameters={{ badges: [ BADGES.BETA ], options: { isToolshown: true } }} decorators={[withTheming]} />
+
+<style>{`
+    .colors__code__example {
+        max-width: 250px;
+    }
+`}</style>
+
+# Halo Color System
+
+Color communicates meaning and expresses style. The Halo Color System has two distinct sets of colors that you can use to build your brand. The palette is the foundation of your color themes. You can create a flowing set of themes across your application by using the palette directly in the theme color tokens.
+
+## Usage
+
+### Color usage and palettes
+
+Use the Halo Color System to provide a meaningful user interface (UI). You choose a primary color and a secondary color to represent your brand. To ensure accessible text, and distinguish UI elements, dark and light tonal palettes of each color can then be applied to your UI.
+
+### Tonal palette
+
+There are 10 tones in a tonal palette. A tone value of 900 is the brand's color at its maximum results when black is added. Each tone value between 50 and 900 represents the amount of black in the color.
+
+### Design tokens
+
+Tokens allow designers to assign color roles to elements in the UI instead of using a fixed value, enabling consistency and flexibility across products.
+
+The token serves as a bridge between the element's assigned role and its color value. With the addition of tokens, designing for relationships between elements is more fundamental than selecting specific colors.
+
+### Palette Tokens
+
+Brand palettes can be used as a foundation for generating many different themes for your brand.
+
+### Theme Tokens
+
+This theme set allows for direct integration with our components and application styles.
+
+## Best Practices
+
+### Hierarchical
+
+The important elements should stand out the most. Color indicates whether an element is interactive, its prominence and how it relates to other elements.
+
+### Legible
+
+Text and important elements, such as icons, should meet legibility standards on colored backgrounds.
+
+### Expressive
+
+Showcase your brand's colors at memorable moments that reinforce your brand's style
+
+## Accessibility
+
+Tonality rather than hex value or hue is one of the keys to making the color output accessible. Using the algorithmic combinations of the Halo Color System, the end-user experience will always meet accessibility standards.

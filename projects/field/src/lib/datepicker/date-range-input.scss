@@ -1,0 +1,32 @@
+@use "sass:math";
+
+:root{
+  --var-datepicker-date-range-input-separator-spacing: 4px;
+  --var-datepicker-date-range-input-part-max-width: calc(50% - var(--var-datepicker-date-range-input-separator-spacing));
+}
+
+@mixin _date-range-input-placeholder-transition($property) {
+  transition: #{$property} var(--var-datepicker-swift-ease-out-duration) var(--var-datepicker-swift-ease-out-duration)/3
+      var(--var-datepicker-swift-ease-out-timing-function);
+}
+
+// Text shown between the two inputs.
+.date-range-input-separator {
+  @include _date-range-input-placeholder-transition(opacity);
+  // margin: 0 var(--var-datepicker-date-range-input-separator-spacing);
+}
+
+// Underlying input inside the range input.
+.date-range-input__inner {
+  // Remove IE's default clear and reveal icons.
+  &::-ms-clear,
+  &::-ms-reveal {
+    display: none;
+  }
+
+  // Undo the red box-shadow glow added by Firefox on invalid inputs.
+  // See https://developer.mozilla.org/en-US/docs/Web/CSS/:-moz-ui-invalid
+  &:-moz-ui-invalid {
+    box-shadow: none;
+  }
+}

@@ -1,0 +1,32 @@
+
+.datepicker-content {
+  .calendar {
+    width: var(--var-datepicker-non-touch-calendar-width);
+    min-height: var(--var-datepicker-non-touch-calendar-height);
+    background: var(--semanticColor-layer-neutral-01); 
+    border-radius: 2px;   
+  }
+}
+
+.datepicker-content-touch {
+  .calendar {
+    min-width: var(--var-datepicker-touch-min-width);
+    min-height: var(--var-datepicker-touch-min-height);
+    max-width: var(--var-datepicker-touch-max-width);
+    max-height: var(--var-datepicker-touch-max-height);
+  }
+}
+
+@media all and (orientation: landscape) {
+  .datepicker-content-touch .calendar {
+    width: var(--var-datepicker-touch-landscape-width);
+    height: var(--var-datepicker-touch-landscape-height);
+  }
+}
+
+@media all and (orientation: portrait) {
+  .datepicker-content-touch .calendar {
+    width: var(--var-datepicker-touch-portrait-width);
+    height: var(--var-datepicker-touch-portrait-height);
+  }
+}

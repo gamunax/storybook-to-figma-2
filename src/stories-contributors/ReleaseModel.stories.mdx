@@ -1,0 +1,69 @@
+import { Meta } from '@storybook/addon-docs';
+
+<Meta title="Contributors/Releasing" parameters={{ options: { isToolshown: true } }} />
+
+{/* MF NOTE: 
+I  Don't think we're ready for contributor deployments yet */}
+
+
+# Releasing
+
+Our maintainers regularly update the UI packages with updates. You can find more info on our [Changlog page](?path=/docs/releases-changelog--docs).
+
+## Packages
+
+Each component has it's own package, you can refer to the availability for more information on current published versions. Our CDK package distributes across all of our components and has usable services, directives and types for you to reuse throughout your project.
+
+
+## Versioning
+
+We use [semantic version](https://semver.org/) for all the packages.
+
+The version in every package is incremented based on the level of changes included in the release.
+
+
+### Strategy
+With every minor update to the library, we anticipate the over Atlas ui kit repository to be bumped in version as well as it contains the storybook documentation and example sets that are used for testing and showcasing how to use the new feature being created in a real use case.
+
+- Any individual component package, design artifact or UX doc can be `PATCHED` infinitely
+- `MINOR` indicates a new feature, but no breaking changes
+- `MAJOR` indicates breaking changes to a single package, and must be bumped inline across all packages
+
+
+
+### Release Candidate workflow
+Once all of the team's code review feedback has been completed and approved, the Atlas Engineers can now prepare a new version for release. A Senior Atlas Engineer will follow this flow:
+
+- Merge feature PR(s) to RC branch
+    ex: `v5.50.0-rc`
+- Check CI: `yarn test:ci`
+- Version affected packge(s): `npm version patch | minor | major`
+- Run `yarn changelog`
+- Ensure Availability table has the latest versions and package release info
+- Ensure any migration notes are added and any duplicate history is cleaned up
+- Update `yarn.lock`
+- Commit these changes to RC-branch PR
+- Push any code changes
+- Push tags `git push origin --tags`
+- Merge to appropriate production branch(es)
+- Publish `main` branch using slackbot
+    ex: 
+    `/hbot publish ui-components -a`
+    `/hbot publish ui-components button`
+- Publish to `@mmctech` via Jenkins on OSS2 (submit DVS ticket for access or ask a maintainer for more info)
+
+
+
+### Major releases
+
+Major releases contain significant new features or breaking changes, developer work is expected during the update.
+When updating to a new major release, you might need to refactor code, run additional tests, and update/learn new APIs.
+
+### Minor releases
+
+Minor releases contain new smaller features. Minor releases are fully backward-compatible (no breaking changes are added); no developer assistance is expected during update,
+You can optionaly modify your application to use new APIs or functionality added in the release.
+
+### Patch releases
+
+Patch releases are low risk, bug fix releases. No developer work is expected during update.

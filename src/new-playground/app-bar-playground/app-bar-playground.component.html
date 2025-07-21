@@ -1,0 +1,209 @@
+<div class="container padding-y-9 padding-x-9 page-bg">
+  <h2>App Bar Component Demo</h2>
+  <div class="page-bg__header">
+    <atlas-theming-helper>
+      <label>Custom theme</label>
+    </atlas-theming-helper>
+  </div>
+  <h2 class="typographyStyles-heading-medium">App Bar</h2>
+  <atlas-app-bar>
+    <atlas-icon-button
+      [size]="iconAppBar"
+      [action]="actionAppBar"
+      [icon]="'icon-menu-24'"
+      [dense]="false"
+    ></atlas-icon-button>
+    Example
+    <span class="app-bar-separator"></span>
+    <atlas-icon-button
+      [size]="iconAppBar"
+      [action]="actionAppBar"
+      [icon]="'icon-search-24'"
+      [dense]="false"
+    ></atlas-icon-button>
+    <atlas-button [action]="actionAppBar" [variant]="variantAppBar"> Medium </atlas-button>
+  </atlas-app-bar>
+  <br />
+
+  <h2 class="typographyStyles-heading-medium">App Bar with Logo and Avatar</h2>
+  <atlas-app-bar [action]="actionAppBarPrimary" [background]="primaryBackground">
+    <atlas-icon-button
+      [size]="iconAppBar"
+      [action]="actionAppBarPrimary"
+      [icon]="'icon-menu-24'"
+      [dense]="false"
+      [customClass]="'app-bar-primary-icon-button'"
+    ></atlas-icon-button>
+    <img alt="Mercer_R.png" src="./atlas-logos/Mercer_R.png" height="20px" class="padding-left-2" />
+    <span class="app-bar-separator"></span>
+    <atlas-field
+      cdkOverlayOrigin
+      #origin="cdkOverlayOrigin"
+      id="search_input"
+      #trigger
+      [fullWidth]="false"
+      [ngClass]="['search-field', isShown ? 'show-input' : isShown !== null ? 'hide-input' : 'default-input-state']"
+      [size]="fieldSize"
+    >
+      <input
+        #typeahead
+        type="text"
+        atlasInput
+        [required]="true"
+        [placeholder]="placeholder"
+        (input)="_handleInput($event)"
+        (click)="open()"
+      />
+      <atlas-field-prefix>
+        <atlas-icon [icon]="'icon-search-24'" [size]="iconAppBar"> </atlas-icon>
+      </atlas-field-prefix>
+      <atlas-field-suffix class="close-icon" (click)="showSearchInput(false)">
+        <atlas-icon [icon]="'icon-remove-circle-24'" [size]="iconAppBar"> </atlas-icon>
+      </atlas-field-suffix>
+      <ng-template
+        cdkConnectedOverlay
+        cdkConnectedOverlayLockPosition
+        [cdkConnectedOverlayHasBackdrop]="true"
+        cdkConnectedOverlayBackdropClass="select-backdrop"
+        [cdkConnectedOverlayScrollStrategy]="_scrollStrategy"
+        [cdkConnectedOverlayOrigin]="origin"
+        [cdkConnectedOverlayOpen]="panelOpen"
+        [cdkConnectedOverlayPositions]="_positions"
+        [cdkConnectedOverlayWidth]="origin.elementRef.nativeElement.offsetWidth"
+        (backdropClick)="close()"
+        (detach)="close()"
+      >
+        <div class="atlas-select-panel box-shadow-elevation-elevated">
+          <div #panel class="atlas-select-panel-content" style="background: #ffffff">
+            <atlas-menu [menuOpen]="true">
+              <div [ngTemplateOutlet]="contentTemplate"></div>
+            </atlas-menu>
+          </div>
+        </div>
+      </ng-template>
+    </atlas-field>
+    <atlas-icon-button
+      *ngIf="!isShown"
+      [size]="iconAppBar"
+      [action]="actionAppBarPrimary"
+      [icon]="'icon-search-24'"
+      [dense]="false"
+      [customClass]="'app-bar-primary-icon-button'"
+      [ngClass]="[isShown ? 'hide-button' : isShown !== null ? 'show-button' : '']"
+      (onClick)="showSearchInput(true)"
+    ></atlas-icon-button>
+    <atlas-avatar
+      [action]="actionAppBarPrimary"
+      typography="typographyStyles-body-largeAlt"
+      [grouped]="false"
+      [indicator]="false"
+      class="padding-left-2"
+      [avatarCustomClass]="'app-bar-primary-avatar'"
+      >CF</atlas-avatar
+    >
+  </atlas-app-bar>
+
+  <ng-template #contentTemplate>
+  <div class="typographyStyles-body-largeAlt padding-x-5 padding-y-8">
+    <atlas-icon [icon]="'icon-search-content-24'"></atlas-icon><span class="padding-left-4">Searching Results</span>
+  </div>
+  <atlas-accordion>
+    <atlas-accordion-item (onExpand)="changeStatus('filter2')">
+      <atlas-accordion-heading>
+        <div class="padding-y-6 typographyStyles-body-smallAlt">Top Search</div>
+      </atlas-accordion-heading>
+      <atlas-accordion-content>
+        <div class="padding-y-10 padding-x-8">
+          <atlas-list *ngIf="topResults.length > 0; else emptyTemplate">
+            <atlas-list-item *ngFor="let item of topResults; let i = index" [item]="{ value: 'option 2' }">
+              <div>
+                {{ item.title }}
+                <div style="color: var(--semanticColor-text-secondary)" class="typographyStyles-body-small">
+                  Tags: {{ item.tags }}
+                </div>
+              </div>
+            </atlas-list-item>
+          </atlas-list>
+        </div>
+      </atlas-accordion-content>
+      <atlas-accordion-expand>
+        <div>
+          <atlas-icon-button
+            [size]="filter_icon_size"
+            [dense]="true"
+            [icon]="filtersStatus.filter2.icon"
+          ></atlas-icon-button>
+        </div>
+      </atlas-accordion-expand>
+    </atlas-accordion-item>
+  </atlas-accordion>
+  <atlas-accordion>
+    <atlas-accordion-item (onExpand)="changeStatus('filter3')">
+      <atlas-accordion-heading>
+        <div class="padding-y-6 typographyStyles-body-smallAlt">Other results</div>
+      </atlas-accordion-heading>
+      <atlas-accordion-content>
+        <div class="padding-y-10 padding-x-8">
+          <atlas-list *ngIf="otherResults.length > 0; else emptyTemplate">
+            <atlas-list-item *ngFor="let item of otherResults; let i = index" [item]="{ value: 'option 2' }">
+              <div>
+                {{ item.title }}
+                <div style="color: var(--semanticColor-text-secondary)" class="typographyStyles-body-small">
+                  Tags: {{ item.tags }}
+                </div>
+              </div>
+            </atlas-list-item>
+          </atlas-list>
+        </div>
+      </atlas-accordion-content>
+      <atlas-accordion-expand>
+        <div>
+          <atlas-icon-button
+            [size]="filter_icon_size"
+            [dense]="true"
+            [icon]="filtersStatus.filter3.icon"
+          ></atlas-icon-button>
+        </div>
+      </atlas-accordion-expand>
+    </atlas-accordion-item>
+  </atlas-accordion>
+  <ng-template #emptyTemplate>
+    <div
+      style="text-align: center; color: var(--semanticColor-text-secondary)"
+      class="typographyStyles-body-small"
+    >
+      Sorry, no results were found for your search.
+    </div>
+  </ng-template>
+</ng-template>
+<br />
+
+<h2 class="typographyStyles-heading-medium">App Bar with Logo and Legacy Dropdown</h2>
+  <atlas-app-bar [action]="actionAppBarPrimary">
+    <atlas-icon-button
+      [size]="iconAppBar"
+      [action]="actionAppBarPrimary"
+      [icon]="'icon-menu-24'"
+      [dense]="false"
+      [customClass]="'app-bar-primary-icon-button'"
+    ></atlas-icon-button>
+    <img alt="Mercer_R.png" src="./atlas-logos/Mercer.png" height="20px" class="padding-left-2" />
+    <span class="app-bar-separator"></span>
+    <legacy-dropdown position="right">
+      <legacy-dropdown-label>
+        <atlas-button> Dropdown</atlas-button>
+      </legacy-dropdown-label>
+      <legacy-dropdown-item>
+        <a href="#/">Link 1</a>
+      </legacy-dropdown-item>
+      <legacy-dropdown-item>
+        <a href="#/">Link 2</a>
+      </legacy-dropdown-item>
+      <legacy-dropdown-item>
+        <a href="#/">Link 3</a>
+      </legacy-dropdown-item>
+    </legacy-dropdown>
+  </atlas-app-bar>
+</div>
+
+

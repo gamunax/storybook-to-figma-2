@@ -1,0 +1,78 @@
+<div class="container padding-y-9 padding-x-9 page-bg">
+
+  <h2>Tooltip Component Demo</h2>
+  <div class="header">
+    <atlas-theming-helper>
+      <label>Custom theme</label>
+    </atlas-theming-helper>
+  </div>
+  <h2>Tooltip</h2>
+  <div>
+    <div class="section">
+      <div class="tooltip-group">
+        <div class="tooltip-container">
+            <atlas-button [action]="actions.info" [size]="buttonSizings.medium" [variant]="buttonVariants.outlined"
+              #tooltip="haloTooltip"
+              haloTooltip="Aliquam eget finibus ante, non facilisis lectus. Sed vitae dignissim est, vel aliquam tellus."
+              [haloTooltipPosition]="haloTooltipPosition.left"
+              [haloTooltipWithArrow]="true"
+              >Hover
+            </atlas-button>
+
+        </div>
+      </div>
+
+      
+      <div class="tooltip-group">
+      <atlas-button [action]="actions.info" [size]="buttonSizings.medium" [variant]="buttonVariants.outlined"
+      (onClick)="tooltip.show()">Show tooltip</atlas-button>
+    </div>
+    <div class="tooltip-group">
+      <atlas-button [action]="actions.info" [size]="buttonSizings.medium" [variant]="buttonVariants.outlined"
+      (onClick)="tooltip.hide()">Hide tooltip</atlas-button>
+    </div>
+    </div>
+  </div>
+
+  <h2>Tooltip with html content</h2>
+      <div>
+      <div class="section">
+      <div class="tooltip-group">
+        <div class="tooltip-container">
+            <atlas-button [action]="actions.info" [size]="buttonSizings.medium" [variant]="buttonVariants.outlined" class="atlas-button"
+              #tooltip="haloTooltip"
+              haloTooltip="<p><strong>This is a tag html</strong></p>"
+              [haloTooltipPosition]="haloTooltipPosition.left"
+              [haloTooltipWithArrow]="true"
+              >Strong text - left
+            </atlas-button>
+
+            <atlas-button [action]="actions.info" [size]="buttonSizings.medium" [variant]="buttonVariants.outlined" class="atlas-button"
+              #tooltip="haloTooltip"
+              [haloTooltip]="tooltipHTML"
+              [haloTooltipPosition]="haloTooltipPosition.top"
+
+              >Paragraph - top
+            </atlas-button>
+
+            <atlas-button [action]="actions.info" [size]="buttonSizings.medium" [variant]="buttonVariants.outlined" class="atlas-button"
+              #tooltip="haloTooltip"
+              haloTooltip="<u>Underline</u>"
+              [haloTooltipPosition]="haloTooltipPosition.right"
+
+              >Underline - right
+            </atlas-button>
+
+            <atlas-button [action]="actions.info" [size]="buttonSizings.medium" [variant]="buttonVariants.outlined" class="atlas-button"
+              #tooltip="haloTooltip"
+              haloTooltip="<i>Italic</i>"
+              [haloTooltipPosition]="haloTooltipPosition.bottom"
+
+              >Italic - bottom
+            </atlas-button>
+
+        </div>
+      </div>
+
+
+</div>

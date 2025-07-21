@@ -1,0 +1,23 @@
+[
+  {
+    "title": "INSTALLATION",
+    "file": "INSTALLATION.md"
+  },
+  {
+    "title": "GET STARTED",
+    "file": "GET_STARTED.md"
+  },
+  {
+    "title": "MIGRATING",
+    "file": "MIGRATING.md"
+  },
+  {
+    "title": "RELEASE HISTORY",
+    "file": "RELEASE_HISTORY.md"
+  },
+  {
+    "title": "IMPORTANT RELEASE NOTES",
+    "file": "NOTES.md"
+  }
+
+]

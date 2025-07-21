@@ -1,0 +1,27 @@
+<div class="legacy-preloader__container"
+[class.legacy-preloader__container--full-page]="fullPageLoader"
+[class.legacy-preloader__container--loading]="loading">
+  <ng-content></ng-content>
+  <div class="legacy-preloader__overlay" *ngIf="loading"
+    [class.legacy-preloader__overlay--set]="!fullPageLoader">
+    <div class="legacy-preloader__loading-content"
+      [class.legacy-preloader__loading-content--top]="loadingMessagePosition === 'top'"
+      [class.legacy-preloader__loading-content--bottom]="loadingMessagePosition === 'bottom'"
+      [class.legacy-preloader__loading-content--left]="loadingMessagePosition === 'left'"
+      [class.legacy-preloader__loading-content--right]="loadingMessagePosition === 'right'">
+      <div *ngIf="loadingTitle" class="legacy-preloader__loading-title">
+        {{ loadingTitle }}
+      </div>
+      <div *ngIf="loadingMessage" class="legacy-preloader__loading-message">
+        {{ loadingMessage }}
+      </div>
+      <div *ngIf="loadingProgress" class="legacy-preloader__loading-progress">
+        {{ loadingProgress }}
+      </div>
+      <div class="legacy-preloader__spinners">
+        <div class="atlas-primary-spinner"></div>
+        <div class="atlas-secondary-spinner"></div>
+      </div>
+    </div>
+  </div>
+</div>

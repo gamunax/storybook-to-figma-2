@@ -1,0 +1,56 @@
+.data {
+    &-avatar {
+        &__hover:hover {
+            cursor: pointer;
+        }
+    }
+}
+
+.search {
+    &-banner {
+        border-radius: 8px;
+        background: url('../../images/demo_atlas_search.png'), linear-gradient(235.2deg, #0077A0 23.02%, #009DE0 94.96%) ;
+        background-position: right center;
+        background-repeat: no-repeat;
+        background-size: contain;
+        padding: 48px;
+    }
+    &-inline-content {
+        display: flex; 
+        align-items: center;
+    }
+}
+
+.text-secondary {
+    color: var(--semanticColor-text-secondary);
+}
+
+::ng-deep .atlas-accordion-item-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+::ng-deep .atlas-accordion-item-content {
+    background: #f4f4f4;
+}
+
+::ng-deep .atlas-card {
+    width: 100%;
+    position: relative;
+    border-radius: 8px;
+}
+
+::ng-deep .atlas-chip {
+    margin-top: 12px;
+}
+
+::ng-deep .atlas-card-footer {
+    text-align: end;
+}
+
+::ng-deep  .atlas-avatar {
+    background-position-x: right;
+    background-color: white;
+    background-size: cover;
+}

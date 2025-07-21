@@ -1,0 +1,91 @@
+<div class="container padding-y-9 padding-x-9 page-bg">
+  <h2>Card Component Demo</h2>
+  <div class="header">
+    <atlas-theming-helper>
+      <label>Custom theme</label>
+    </atlas-theming-helper>
+  </div>
+  <h2>Card</h2>
+  <div class="row">
+    <div class="column">
+      <atlas-card [background]="cardBackground" [fullWidth]="true" [mediaPaddingClass]="'padding-x-8'">
+        <atlas-card-header>
+          <span>Card header</span>
+        </atlas-card-header>
+        <atlas-card-subheader>
+          <span>Subheader</span>
+        </atlas-card-subheader>
+        <atlas-card-media>
+            <img src="./atlas-docs/CardMedia.png" />
+        </atlas-card-media>
+        <atlas-card-content>
+          <span>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+            dolore magna aliqua.
+          </span>
+        </atlas-card-content>
+        <atlas-card-footer>
+          <div class="row">
+            <div class="column align-right">
+              <atlas-button [action]="actionAppBarPrimary" label="action">action</atlas-button>
+            </div>
+          </div>
+        </atlas-card-footer>
+      </atlas-card>
+    </div>
+  </div>  
+  <div class="row">  
+    <div class="column">
+      <atlas-card [background]="cardBackground">
+        <atlas-card-header>
+          <span>Card header</span>
+        </atlas-card-header>
+        <atlas-card-subheader>
+          <span>Subheader</span>
+        </atlas-card-subheader>
+        <atlas-card-media>
+            <img src="./atlas-docs/CardMedia.png" />
+        </atlas-card-media>
+        <atlas-card-content>
+          <span>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+            dolore magna aliqua.
+          </span>
+        </atlas-card-content>
+        <atlas-card-footer>
+          <div class="row">
+            <div class="column align-right">
+              <atlas-button [action]="actionAppBarPrimary" label="action">action</atlas-button>
+            </div>
+          </div>
+        </atlas-card-footer>
+      </atlas-card>
+    </div>
+    <div class="column">
+      <atlas-card [background]="cardBackground">
+        <atlas-card-header>
+          <span>Card header</span>
+        </atlas-card-header>
+        <atlas-card-subheader>
+          <span>Subheader</span>
+        </atlas-card-subheader>
+        <atlas-card-media>
+            <img src="./atlas-docs/CardMedia.png" />
+        </atlas-card-media>
+        <atlas-card-content>
+          <span>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+            dolore magna aliqua.
+          </span>
+        </atlas-card-content>
+        <atlas-card-footer>
+          <div class="row">
+            <div class="column align-right">
+              <atlas-button [action]="actionAppBarPrimary" label="action">action</atlas-button>
+            </div>
+          </div>
+        </atlas-card-footer>
+      </atlas-card>
+    </div>
+  </div>
+</div>

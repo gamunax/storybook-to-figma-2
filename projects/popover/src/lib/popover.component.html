@@ -1,0 +1,15 @@
+<div #popupContainer [style.left.px]="_left" [style.top.px]="_top" [style.width.px]="_width"
+[ngClass]="[_directionClass, 'popover', 'box-shadow-elevation-' + elevation, isDropdownVariant?'popover--dropdown-variant':'']">
+  <div *ngIf="!isDropdownVariant" [ngClass]="['popover-title','popover-title-color-' + (action ? action : color), 'padding-x-7', 'padding-y-7']">
+    <div class="popover-align-center-vertical">
+      <atlas-icon *ngIf="backButton" class="popover-back-button margin-x-4" (click)="goBack($event)" icon="icon-chevron-left-24" alt="go back"></atlas-icon>
+      <div class="typographyStyles-body-largeAlt" [innerHTML]="popoverTitle"></div>
+    </div>
+    <a *ngIf="showCloseButton && !isDropdownVariant" (click)="hide()">
+      <atlas-icon icon="icon-remove-24"></atlas-icon>
+    </a>
+  </div>
+  <div class="typographyStyles-body-medium popover-content padding-x-7 padding-y-7">
+    <ng-content></ng-content>
+  </div>
+</div>

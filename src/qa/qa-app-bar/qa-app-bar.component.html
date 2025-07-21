@@ -1,0 +1,54 @@
+<div class="container">
+    <h1>App Bar Tests</h1> <br>
+
+    <h2>App bar with buttons</h2> <br>
+    <div class="column" *ngFor="let item of appBarButton">
+        <div class="row" [id]="item.id">
+            <atlas-app-bar [action]="item.action" class="app-bar typographyStyles-heading-small">
+                <atlas-icon-button [size]="item.size" [action]="item.actionBtn" [icon]="'icon-menu-24'">
+                </atlas-icon-button>
+                <div class="padding-left-8 typographyStyles-heading-medium">Example</div>
+                <span class="app-bar-separator"></span>
+                <atlas-icon-button [size]="item.size" [action]="item.actionBtn" [icon]="'icon-search-24'">
+                </atlas-icon-button>
+                <atlas-button [action]="item.actionBtn" [variant]="item.variant">
+                    Medium
+                </atlas-button>
+            </atlas-app-bar>
+        </div>
+    </div>
+    <br>
+
+    <h2>AppBar with Icons</h2>
+    <div class="column" *ngFor="let item of appBarIcon">
+        <div class="row" [id]="item.id">
+            <atlas-app-bar [action]="item.action" class="app-bar typographyStyles-heading-small">
+                <atlas-icon-button [size]="item.size" [action]="item.actionBtn" [icon]="'icon-menu-24'">
+                </atlas-icon-button>
+                <img [src]="item.src" height="20px" class="padding-left-8" />
+                <span class="app-bar-separator"></span>
+                <atlas-icon-button [size]="item.size" [action]="item.actionBtn" [icon]="'icon-search-24'">
+                </atlas-icon-button>
+                <atlas-avatar [action]="item.actionBtn" typography="typographyStyles-body-largeAlt" [grouped]="false"
+                    [indicator]="false" class="padding-left-2" [avatarCustomClass]="item.customClass">
+                    <div>CF</div>
+                </atlas-avatar>
+            </atlas-app-bar>
+        </div>
+    </div>
+
+    <h2>AppBar with Icon and button</h2>
+    <div class="column" *ngFor="let item of appBarIB">
+        <div class="row" [id]="item.id">
+            <atlas-app-bar class="app-bar typographyStyles-heading-small" [action]="item.action">
+                <atlas-icon-button [size]="item.size" [action]="item.actionBtn" [icon]="'icon-menu-24'"></atlas-icon-button>
+                <img [src]="item.src" height="20px" class="padding-left-8" />
+                <span class="app-bar-separator"></span>
+                <atlas-icon-button [size]="item.size" [action]="item.actionBtn" [icon]="'icon-search-24'"></atlas-icon-button>
+                <atlas-button [action]="item.actionBtn" [variant]="item.variant">
+                    Medium
+                </atlas-button>
+            </atlas-app-bar>
+        </div>
+    </div>
+</div>

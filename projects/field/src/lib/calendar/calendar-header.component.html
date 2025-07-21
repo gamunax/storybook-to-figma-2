@@ -1,0 +1,42 @@
+<div class="calendar-header">
+  <div class="calendar-hero">
+    <div class="calendar-hero-year typographyStyles-body-medium">
+      {{ yearName | titlecase }}
+    </div>
+    <div class="calendar-hero-month typographyStyles-display-small">
+      {{ monthName | titlecase }}
+    </div>
+  </div>
+  <div class="calendar-controls">
+    <span [attr.id]="_buttonDescriptionId" class="typographyStyles-body-medium margin-left-8 margin-right-4" Type="p-condensed-lead">
+      {{ periodButtonText | titlecase }}
+    </span>
+    <atlas-icon-button
+    class="calendar-button-previous"
+    [size]="iconSizes"
+    [icon]=" calendar.currentView === 'month'
+    ? 'icon-chevron-down-24'
+    : 'icon-chevron-up-24'
+    "
+    (onClick)="currentPeriodClicked()"
+    >
+    </atlas-icon-button>
+    <div class="calendar-spacer"></div>
+    <atlas-icon-button
+      class="calendar-button-previous"
+      [size]="iconSizes"
+      [disabled]="!previousEnabled()"
+      (onClick)="previousClicked()"
+      [icon]="'icon-chevron-left-24'"
+    >
+    </atlas-icon-button>
+    <atlas-icon-button
+      class="calendar-button-next margin-right-8"
+      [size]="iconSizes"
+      [disabled]="!nextEnabled()"
+      (onClick)="nextClicked()"
+      [icon]="'icon-chevron-right-24'"
+    >
+    </atlas-icon-button>
+  </div>
+</div>

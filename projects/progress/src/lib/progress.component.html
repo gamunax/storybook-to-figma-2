@@ -1,0 +1,42 @@
+<div *ngIf="type === 'divider'" [class]="'progress-bar-container'">
+  <div [ngClass]="['progress-bar', barStyle === 'indeterminate' ? 'indeterminate' : '']">
+    <div
+      *ngIf="barStyle !== 'indeterminate'"
+      [ngClass]="['progress-bar-inner', 'progress-bar-inner-' + (variant ? variant : color)]"
+      [ngStyle]="{
+        width: value + '%',
+        margin: barStyle != 'simple' ? '0 auto' : ''
+      }"
+    ></div>
+    <div
+      *ngIf="barStyle === 'indeterminate'"
+      [ngClass]="['progress-bar-inner', 'progress-bar-inner-' + (variant ? variant : color), 'indeterminate-animation-' + (variant ? variant : color)]"
+    ></div>
+  </div>
+
+  <label *ngIf="labeled" [ngClass]="'progress-bar-container-label margin-y-4 typographyStyles-body-large'">
+    {{ value }}%
+  </label>
+</div>
+
+<div *ngIf="type === 'circular'">
+  <div
+    [ngClass]="[
+      'circular-bar-progress',
+      'circular-bar-progress-size-small',
+      barStyle === 'indeterminate' ? 'indeterminate' : ''
+    ]"
+    [ngStyle]="{
+      background: calculateBackground((variant ? variant : color), value)
+    }"
+  >
+    <div
+      *ngIf="barStyle != 'indeterminate' && labeled"
+      [ngClass]="['circular-bar-percent-container', 'typographyStyles-label-large']"
+    >
+      {{ value }}%
+    </div>
+
+    <div *ngIf="barStyle === 'indeterminate'" [ngClass]="['spinner-animation-' + (variant ? variant : color)]"></div>
+  </div>
+</div>

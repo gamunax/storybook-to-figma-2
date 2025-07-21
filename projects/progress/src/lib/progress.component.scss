@@ -1,0 +1,99 @@
+.progress-bar-inner.indeterminate-animation-brand {
+  width: 100%;
+  height: 100%;
+  background-color: var(--semanticColor-background-brand-strong-rest);
+  animation: indeterminate-animation 1s infinite linear;
+  transform-origin: 0% 50%;
+}
+.progress-bar-inner.indeterminate-animation-danger {
+  width: 100%;
+  height: 100%;
+  background-color: var(--semanticColor-background-danger-strong-rest);
+  animation: indeterminate-animation 1s infinite linear;
+  transform-origin: 0% 50%;
+}
+.progress-bar-inner.indeterminate-animation-success {
+  width: 100%;
+  height: 100%;
+  background-color: var(--semanticColor-background-success-strong-rest);
+  animation: indeterminate-animation 1s infinite linear;
+  transform-origin: 0% 50%;
+}
+.progress-bar-inner.indeterminate-animation-neutral {
+  width: 100%;
+  height: 100%;
+  background-color: var(--semanticColor-background-neutral-strong-rest);
+  animation: indeterminate-animation 1s infinite linear;
+  transform-origin: 0% 50%;
+}
+
+.progress-bar.indeterminate {
+  height: 4px;
+  background-color: var(--semanticColor-background-neutral-rest);
+  width: 100%;
+  overflow: hidden;
+}
+
+@keyframes indeterminate-animation {
+  0% {
+    transform: translateX(0) scaleX(0);
+  }
+  40% {
+    transform: translateX(0) scaleX(0.4);
+  }
+  100% {
+    transform: translateX(100%) scaleX(0.5);
+  }
+}
+
+.circular-bar-progress.indeterminate {
+  position: relative;
+  width: 50px;
+  height: 50px;
+}
+
+.spinner-animation-brand {
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  border: 5px solid transparent;
+  border-top-color: var(--semanticColor-background-brand-strong-rest);
+  border-radius: 50%;
+  animation: spinner 2s linear infinite;
+}
+.spinner-animation-danger {
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  border: 5px solid transparent;
+  border-top-color: var(--semanticColor-background-danger-strong-rest);
+  border-radius: 50%;
+  animation: spinner 2s linear infinite;
+}
+.spinner-animation-success {
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  border: 5px solid transparent;
+  border-top-color: var(--semanticColor-background-success-strong-rest);
+  border-radius: 50%;
+  animation: spinner 2s linear infinite;
+}
+.spinner-animation-neutral {
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  border: 5px solid transparent;
+  border-top-color: var(--semanticColor-background-neutral-strong-rest);
+  border-radius: 50%;
+  animation: spinner 2s linear infinite;
+}
+
+@keyframes spinner {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

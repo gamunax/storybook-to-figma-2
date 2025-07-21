@@ -1,0 +1,73 @@
+<div class="legacy-footer">
+  <div class="row collapse">
+    <div class="column legacy-footer__top">
+      <img [src]="topLeftLogo">
+      <div class="social-links">
+        <ng-content select="legacy-footer-social-links"></ng-content>
+      </div>
+    </div>
+  </div>
+  <div class="row legacy-footer__coop-section"
+       *ngIf="coopLinks || !hideTerms"
+       [class.legacy-footer__coop-section--no-coop]="!coopLinks">
+    <div *ngIf="coopLinks"
+         class="column small-12 medium-6 legacy-footer__coop-section--links">
+      <ul *ngIf="coopLinks">
+        <li [class.legacy-footer__coop-section--links__active]="company === 'Marsh & McLennan'"><a
+             href="https://www.marsh.com/"
+             target="_blank">Marsh</a></li>
+        <li [class.legacy-footer__coop-section--links__active]="company === 'Guy Carpenter'"><a
+             href="http://www.guycarp.com/content/guycarp/en/home.html"
+             target="_blank">Guy Carpenter</a></li>
+        <li [class.legacy-footer__coop-section--links__active]="company === 'Mercer'"><a
+             href="https://www.mercer.com/"
+             target="_blank">Mercer</a></li>
+        <li [class.legacy-footer__coop-section--links__active]="company === 'Oliver Wyman'"><a
+             href="http://www.oliverwyman.com/index.html"
+             target="_blank">Oliver Wyman</a></li>
+      </ul>
+    </div>
+    <div *ngIf="!hideTerms"
+         class="column small-12 medium-6 legacy-footer__coop-section--links legacy-footer__coop-section--links--right">
+      <ul>
+        <li *ngIf="termsUrl">
+          <a *ngIf="!outBoundLinks"
+             [routerLink]="termsUrl">{{ termsLabel }}</a>
+          <a *ngIf="outBoundLinks"
+             [attr.target]="outBoundLinkTarget"
+             [href]="termsUrl">{{ termsLabel }}</a>
+        </li>
+        <li *ngIf="privacyUrl">
+          <a *ngIf="!outBoundLinks"
+             [routerLink]="privacyUrl">{{ privacyLabel }}</a>
+          <a *ngIf="outBoundLinks"
+             [attr.target]="outBoundLinkTarget"
+             [href]="privacyUrl">{{ privacyLabel }}</a>
+        </li>
+        <li *ngIf="sitemapUrl">
+          <a *ngIf="!outBoundLinks"
+             [routerLink]="sitemapUrl">{{ sitemapLabel }}</a>
+          <a *ngIf="outBoundLinks"
+             [attr.target]="outBoundLinkTarget"
+             [href]="sitemapUrl">{{ sitemapLabel }}</a>
+        </li>
+      </ul>
+    </div>
+    <div *ngIf="_footerChildren.length > 0 && hideTerms"
+      class="column small-12 medium-6 legacy-footer__coop-section--links legacy-footer__coop-section--links--right">
+      <ng-content select="legacy-footer-custom-links"></ng-content>
+    </div>
+  </div>
+  <div class="row collapse legacy-footer__bottom">
+    <div class="column small-12 medium-6">
+      <h6 class="legacy-footer__copy"
+          *ngIf="!customCopyright">&copy; {{ currentYear }} {{ company }}, All Rights Reserved</h6>
+      <h6 class="legacy-footer__copy"
+          *ngIf="customCopyright">{{ customCopyright }}</h6>
+    </div>
+    <div class="column small-12 medium-6 legacy-footer__bottom-logo">
+      <img [src]="bottomRightLogo">
+    </div>
+  </div>
+
+</div>

@@ -1,0 +1,137 @@
+<div class="container padding-y-9 padding-x-9 page-bg">
+  <div class="drawer-wrapper">
+    <h2>Drawer Component Demo</h2>
+    <div class="header">
+      <atlas-theming-helper>
+        <label>Custom theme</label>
+      </atlas-theming-helper>
+    </div>
+    <h2>Drawer</h2>
+    <atlas-drawer #DrawerRef [ignoreOutsideClicks]="true" [isAlwaysOpen]="false" [density]="density" [action]="action">
+      <atlas-button
+        [variant]="text_variant"
+        [action]="action"
+        (click)="openMenu($event)"
+        [expand]="open ? false : true"
+      >
+        <atlas-icon
+          color="colors-surface-default-main"
+          [icon]="open ? 'icon-arrow-import-export-left-24' : 'icon-arrow-import-export-right-24'"
+        ></atlas-icon>
+      </atlas-button>
+      <atlas-list>
+        <atlas-list-item *ngFor="let item of items" [item]="item" [action]="action">
+          <atlas-icon *ngIf="item.icon" style="margin-right: 34px" [size]="iconSize" [icon]="item.icon"> </atlas-icon>
+          <div>
+            <span *ngIf="open" class="typographyStyles-body-small">{{ item.label }}</span>
+          </div>
+        </atlas-list-item>
+      </atlas-list>
+    </atlas-drawer>
+    <div class="drawer-button-wrapper">
+      <atlas-button [action]="action" (click)="DrawerRef.toggleDrawer()">Open Atlas Drawer</atlas-button>
+    </div>
+    <h2>Legacy Drawer</h2>
+    <legacy-side-nav #mySideNav2>
+      <legacy-side-nav-logo>
+        <a>
+          <img class="mos-u-responsive-img" src="./atlas-logos/Mercer.png" alt="Mercer">
+        </a>
+      </legacy-side-nav-logo>
+      <legacy-side-nav-group groupTitle="Tools">
+        <!-- link has the same interface as `routerLink` -->
+        <legacy-side-nav-group-item icon="icon-calendar-24" collection="system" itemTitle="Changelog" link="/docs/changelog" [active]="true">
+        </legacy-side-nav-group-item>
+        <!-- can pass urls with `//`, will be parsed as external -->
+        <legacy-side-nav-group-item icon="icon-preferences-squared-horizontal-24" collection="system" itemTitle="Google" link="https://www.google.com">
+        </legacy-side-nav-group-item>
+      </legacy-side-nav-group>
+      <legacy-side-nav-group groupTitle="Internal Links">
+        <legacy-side-nav-group-item icon="store_mall_directory" collection="system" itemTitle="User Manual" link="#">
+        </legacy-side-nav-group-item>
+        <legacy-side-nav-group-item icon="thumbs_up_down" collection="system" itemTitle="Assisted Job Match" link="#">
+        </legacy-side-nav-group-item>
+      </legacy-side-nav-group>
+    </legacy-side-nav>
+
+    <div class="drawer-button-wrapper">
+      <atlas-button (click)="mySideNav2.open(); isSideNavOpen = true">Open Side Nav2</atlas-button>
+    </div>
+
+    <h2>Example Drawer 2</h2>
+
+    <div class="column" >
+      <div class="row ">
+        <div class="column medium-6">
+          <atlas-button [action]="action" (click)="DrawerRef1.open(); isSideNavOpen = true"
+            >Open Atlas Drawer2</atlas-button
+          >
+          <atlas-drawer
+            #DrawerRef1
+            [ignoreOutsideClicks]="false"
+            [isAlwaysOpen]="false"
+            [density]="densityExpanded"
+            [action]="action"
+          >
+            <div class="row collapse">
+              <div class="column shrink">
+                <atlas-icon-button
+                  (click)="DrawerRef1.close(); isSideNavOpen = false"
+                  icon="icon-remove-24"
+                  collection="system"
+                ></atlas-icon-button>
+              </div>
+            </div>
+            <div (click)="DrawerRef1.close(); isSideNavOpen = false">
+              <atlas-list>
+                <atlas-list-item *ngFor="let item of items" [item]="item" [action]="action">
+                  <atlas-icon *ngIf="item.icon" style="margin-right: 34px" [size]="iconSize" [icon]="item.icon">
+                  </atlas-icon>
+                  <div>
+                    <span class="typographyStyles-body-small">{{ item.label }}</span>
+                  </div>
+                </atlas-list-item>
+              </atlas-list>
+            </div>
+          </atlas-drawer>
+        </div>
+        <div class="column medium-6" 
+        (click)="DrawerRef1.close(); isSideNavOpen = false">
+          <div class="drawer-wrapper-content">
+            <h2>Hi Amigos!</h2>
+            <p>This is a sidebar. You can place any relevant content here, such as instructions, helpful links, or additional information for the user.</p>
+            <ul>
+              <li>Link 1</li>
+              <li>Link 2</li>
+              <li>Link 3</li>
+            </ul>
+          </div>
+        </div>
+        <div class="column medium-12" 
+        (click)="DrawerRef1.close(); isSideNavOpen = false">
+          <div class="drawer-wrapper-content">
+            <h2>Hi Amigos!</h2>
+            <p>This is a sidebar. You can place any relevant content here, such as instructions, helpful links, or additional information for the user.</p>
+            <ul>
+              <li>Link 1</li>
+              <li>Link 2</li>
+              <li>Link 3</li>
+            </ul>
+          </div>
+        </div>
+        <div class="column medium-12" 
+        (click)="DrawerRef1.close(); isSideNavOpen = false">
+          <div class="drawer-wrapper-content">
+            <h2>Hi Amigos!</h2>
+            <p>This is a sidebar. You can place any relevant content here, such as instructions, helpful links, or additional information for the user.</p>
+            <ul>
+              <li>Link 1</li>
+              <li>Link 2</li>
+              <li>Link 3</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

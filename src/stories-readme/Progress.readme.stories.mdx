@@ -1,0 +1,39 @@
+import { Meta, ArgsTable } from '@storybook/addon-docs';
+import { ProgressComponent, ProgressModule } from 'atlas-progress';
+
+
+<Meta title="Adopters/Components/Progress/Readme" 
+parameters={{
+    options: {
+      isToolshown: true
+    },
+  }}
+/>
+
+# Progress
+
+Progress indicators commonly known as spinners, express an unspecified wait time or display the length of a process.They could be Linear or Circular and depending on whether the progress of the process is known or not,  they could be Determinate or Indeterminate.
+{false && (
+<iframe
+    src='https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Ffile%2F25WIADfxPqQg0L5makzunt%2FProgress---Foundations-0.0.2-Components-Documentation%3Fnode-id%3D13956%253A4200' 
+    allowFullScreen="true"
+    width='100%'
+    height='650px'
+    style={{border: 'none'}}
+></iframe>
+)}
+## Usage
+
+Import dependencies for the library into your ```app.module.ts``` file
+
+```ts
+
+import { ProgressModule } from 'atlas-progress';
+
+```
+
+## API
+
+### Progress
+
+<ArgsTable of={ ProgressComponent } />

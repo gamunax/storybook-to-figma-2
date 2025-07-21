@@ -1,0 +1,55 @@
+import { Meta } from '@storybook/addon-docs';
+import Code from 'projects/cdk/assets/icons/code-brackets.svg';
+import Colors from 'projects/cdk/assets/icons/colors.svg';
+import Comments from 'projects/cdk/assets/icons/comments.svg';
+import Direction from 'projects/cdk/assets/icons/direction.svg';
+import Flow from 'projects/cdk/assets/icons/flow.svg';
+import Plugin from 'projects/cdk/assets/icons/plugin.svg';
+import Repo from 'projects/cdk/assets/icons/repo.svg';
+import StackAlt from 'projects/cdk/assets/icons/stackalt.svg';
+import HALO from 'projects/cdk/assets/logos/logo.png';
+import Grid from 'projects/cdk/assets/docs/grid.png';
+import { ButtonComponent } from 'projects/button/src/public-api';
+import mainVersion from '../../package.json';
+
+<Meta title="Get Started/Cover" parameters={{ options: { isToolshown: false } }} />
+
+<style>
+  {`
+  .css-zgt7u1 {
+    padding: 0;
+  }
+  .css-1gh4yjl {
+    max-width: none;
+  }
+  
+  .intro {
+    height: 100vh;
+    width: 100%;
+    background: var(--background-main);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0;
+    z-index: 999;
+    justify-content: space-around;
+  }
+
+  .intro__grid {
+    width: 360px;
+  }
+  
+  `}
+</style>
+
+<div class="intro">
+  <div>
+    <img src={HALO}  alt={HALO} />
+    <p class="typography-title-1">Design Foundation UI Kit v{mainVersion.version}</p>
+    <a href="/?path=/docs/get-started-introduction--docs">Get Started</a>
+  </div>
+
+  <div class="intro__grid">
+    <img src={Grid} alt="flow" />
+  </div>
+</div>

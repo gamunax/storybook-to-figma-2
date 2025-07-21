@@ -1,0 +1,55 @@
+import { Meta } from '@storybook/addon-docs';
+
+<Meta title="Adopters/Design/Theming" parameters={{ options: { isToolshown: true } }} />
+
+# Theming
+
+An application can be themed in runtime through the Theming Service.
+
+The configuration can be created manually or using the figma plugin "[Figma Tokens](https://www.figma.com/community/plugin/843461159747178978/Figma-Tokens)".
+
+## Theming with atlas-cdk
+
+Import the `ThemingService` from `atlas-cdk`.
+
+```ts
+import { ThemingService } from 'atlas-cdk';
+```
+
+Inject the service in your root component (`app.component.ts`) and call `applyConfigTheming` with your theming configuration.
+
+```ts
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.scss']
+})
+export class AppComponent {
+  constructor(
+    themingService: ThemingService
+  ) {
+    themingService.applyConfigTheming();
+  }
+}
+```
+
+
+The `applyConfigTheming` will apply the selected configuration as css variables and classes to the `root` document element.
+
+The default configuration can be imported from the `atlas-cdk` package.
+
+```ts
+import { defaultConfig } from 'atlas-cdk';
+```
+ 
+If you need to apply a different theme specifically for edge cases, please contact Atlas Support. Use the following configuration as a reference:
+
+```typescript
+import { ThemingService } from 'atlas-cdk';
+constructor(private themingService: ThemingService) {
+    this.themingService.initializeTheme(yourEspecialConfig); // the file must follow the defaultConfig structure
+    this.themingService.loadPrimitives();
+    this.themingService.loadPalette();
+    this.themingService.applyTheme();
+}
+```

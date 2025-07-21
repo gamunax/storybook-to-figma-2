@@ -1,0 +1,227 @@
+<div class="legacy-app-nav"
+ [class.legacy-app-nav--expanded]="_expanded"
+ [class.legacy-app-nav--collapsed]="!_expanded"
+ [style.height]="_heightCalc"
+ [class.legacy-app-nav--active-route]="_active"
+ [class.legacy-app-nav--inactive-route]="!_active"
+ [class.legacy-app-nav--vertical]="verticalNavigation"
+ [class.legacy-app-nav--horizontal]="!verticalNavigation"
+ [class.legacy-app-nav--tier-mode]="tierMode"
+ [class.legacy-app-nav--hidden]="hidden"
+>
+<!-- App Nav Tier Mode -->
+<div class="legacy-app-nav__nav legacy-app-nav__nav-tier-mode"
+  *ngIf="tierMode && !hidden">
+  <div class="legacy-app-nav__nav-top">
+    <div class="row legacy-app-nav__nav-back-menu" *ngIf="_expanded">
+      <div class="column align-middle">
+        <div *ngIf="backLinkLabel">
+          <a (click)="backAction.emit($event)" class="legacy-app-nav__back-link">
+            <atlas-icon *ngIf="showLeftArrow" [icon]="leftArrowIcon" collection="system" class="legacy-app-nav__back-link-left-arrow"></atlas-icon>
+            <span class="legacy-app-nav__back-link-label">{{ backLinkLabel }}</span>
+          </a>
+        </div>
+      </div>
+      <div class="column shrink align-middle">
+        <button class="legacy-app-nav__hamburger"
+                type="button"
+                #burger
+                (click)="_closeAction($event)">
+          <span class="legacy-app-nav__hamburger-box">
+            <span class="legacy-app-nav__hamburger-inner"></span>
+          </span>
+        </button>
+      </div>
+    </div>
+    <div class="legacy-app-nav__nav-scroll-container">
+      <div class="legacy-app-nav__nav-header"
+      [class.legacy-app-nav__nav-header--no-border]="!tierModeHeaderBorder"
+      [ngStyle]="{
+        'padding.px': _expanded ? tierModeHeaderPadding : null,
+        'height.px': _expanded ? tierModeHeaderHeight : null
+      }">
+        <!-- Used for inserting custom content in the app-nav header region -->
+        <ng-content *ngIf="_expanded" select="legacy-app-nav-header-content"></ng-content>
+        <div class="row" [class.collapse]="!_expanded" *ngIf="!_expanded || sectionTitle">
+          <div class="column" *ngIf="_expanded && sectionTitle">
+            <h3 *ngIf="_expanded && _truncateSectionTitle()"
+                class="legacy-app-nav__nav-header-section-title"
+                [haloTooltip]="sectionTitle"
+                [haloTooltipPosition]="tooltipsPositions.bottom">{{ _sectionTitleTruncated }}</h3>
+            <h3 *ngIf="_expanded && !_truncateSectionTitle()" class="legacy-app-nav__nav-header-section-title">{{ sectionTitle }}</h3>
+          </div>
+          <div class="column shrink align-middle" *ngIf="!_expanded">
+            <button class="legacy-app-nav__hamburger"
+              *ngIf="!_expanded"
+              type="button"
+              #burger
+              (click)="_closeAction($event)">
+              <span class="legacy-app-nav__hamburger-box">
+                <span class="legacy-app-nav__hamburger-inner"></span>
+              </span>
+            </button>
+          </div>
+        </div>
+      </div>
+      <ng-container *ngFor="let item of _topNavigation; let index = index">
+        <ng-container *ngTemplateOutlet="navLink; context: { item: item, index: index }"></ng-container>
+      </ng-container>
+    </div>
+  </div>
+
+  <div class="legacy-app-nav__nav-bottom">
+    <!-- <ng-container *ngFor="let item of _bottomNavigation">
+      <ng-container *ngTemplateOutlet="navLink; context: { item: item }"></ng-container>
+    </ng-container> -->
+    <div class="legacy-app-nav__nav-footer">
+      <button class="legacy-app-nav__expand"
+        (click)="_closeAction($event)">
+        <atlas-icon icon="icon-chevron-right-24" collection="system"></atlas-icon>
+      </button>
+    </div>
+  </div>
+</div>
+
+  <!-- Vertical App Nav -->
+  <div class="legacy-app-nav__nav legacy-app-nav__nav-vertical" *ngIf="verticalNavigation && !tierMode && !hidden">
+    <div class="legacy-app-nav__nav-top">
+      <div class="legacy-app-nav__nav-header">
+        <h3 *ngIf="_expanded">{{ menuTitle }}</h3>
+        <button class="legacy-app-nav__hamburger" type="button" #burger (click)="_closeAction($event)">
+            <span class="legacy-app-nav__hamburger-box">
+              <span class="legacy-app-nav__hamburger-inner"></span>
+            </span>
+          </button>
+      </div>
+      <ng-container *ngFor="let item of _topNavigation">
+        <ng-container *ngTemplateOutlet="navLink; context: { item: item }"></ng-container>
+      </ng-container>
+    </div>
+
+    <div class="legacy-app-nav__nav-bottom">
+      <ng-container *ngFor="let item of _bottomNavigation">
+        <ng-container *ngTemplateOutlet="navLink; context: { item: item }"></ng-container>
+      </ng-container>
+      <div class="legacy-app-nav__nav-footer">
+        <button class="legacy-app-nav__expand" (click)="_closeAction($event)">
+          <atlas-icon icon="icon-chevron-right-24" collection="system"></atlas-icon>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Horizontal App Nav -->
+  <div class="legacy-app-nav__nav--horizontal-wrapper row collapse" *ngIf="!verticalNavigation && !tierMode && !hidden">
+    <div class="legacy-app-nav__nav legacy-app-nav__nav--horizontal">
+      <div class="legacy-app-nav__nav-header">
+        <h5 *ngIf="_expanded">{{ menuTitle }}</h5>
+        <button class="legacy-app-nav__hamburger" type="button" #burger (click)="_closeAction($event)">
+          <span class="legacy-app-nav__hamburger-box">
+            <span class="legacy-app-nav__hamburger-inner"></span>
+          </span>
+        </button>
+      </div>
+      <div class="legacy-app-nav__nav--horizontal-menu">
+        <ng-container *ngFor="let item of _topNavigation">
+          <ng-container *ngTemplateOutlet="navLink; context: { item: item }"></ng-container>
+        </ng-container>
+      </div>
+      <div class="legacy-app-nav__nav-bottom legacy-app-nav__nav--horizontal-menu-bottom">
+        <ng-container *ngFor="let item of _bottomNavigation">
+          <ng-container *ngTemplateOutlet="navLink; context: { item: item }"></ng-container>
+        </ng-container>
+      </div>
+    </div>
+    <div class="columns">
+      <div class="legacy-app-nav__nav--horizontal-section-title">{{ sectionTitle }}</div>
+    </div>
+    <div class="legacy-app-nav__nav--horizontal-section-links">
+      <ul>
+        <li *ngFor="let item of _sectionLinkNavigation" class="legacy-app-nav__nav--horizontal-section-link-item">
+          <ng-container *ngTemplateOutlet="sectionLinks; context: { item: item }">{{ item.name }}</ng-container>
+        </li>
+      </ul>
+    </div>
+    <div class="columns shrink">
+      <ng-content select="legacy-app-nav-horizontal-content"></ng-content>
+    </div>
+  </div>
+
+  <!-- App Nav Content -->
+  <div class="legacy-app-nav__content" (click)="closeOffNavClick ? close() : null">
+    <div class="legacy-app-nav__content-container">
+      <div class="legacy-app-nav__title-bar" *ngIf="verticalNavigation && sectionTitle && !tierMode">
+        <span class="legacy-app-nav__title-bar-section-title">
+          {{ sectionTitle }}
+        </span>
+      </div>
+      <ng-content></ng-content>
+    </div>
+  </div>
+
+  <!-- Horizontal Nav Section Links -->
+  <ng-template #sectionLinks let-icon="item.icon" let-iconCollection="item.iconCollection" let-target="item.target" let-path="item.path" let-name="item.name" let-expanded="expanded"
+    let-active="item.active" let-external="item.external" let-exact="item.exact">
+    <div *ngIf="external" class="legacy-app-nav__nav--horizontal-section-link" [class.legacy-app-nav__nav--horizontal-section-link--active]="active">
+      <a [href]="path" [target]="target || defaultPathTarget">
+        <div>{{ name }}</div>
+      </a>
+    </div>
+    <div *ngIf="!external" class="legacy-app-nav__nav--horizontal-section-link" routerLinkActive="legacy-app-nav__nav--horizontal-section-link--active" [routerLinkActiveOptions]="{exact: exact}">
+      <a [routerLink]="path">
+        <div>{{ name }}</div>
+      </a>
+    </div>
+  </ng-template>
+
+  <!-- App Nav Menu -->
+  <ng-template #navLink let-icon="item.icon" let-iconCollection="item.iconCollection" let-iconTheme="item.iconTheme" let-target="item.target" let-path="item.path" let-name="item.name" let-expanded="item.expanded"
+    let-active="item.active" let-external="item.external" let-exact="item.exact" let-level="item.level" let-i="index" let-item="item" let-leaf="item.isLeaf" let-parent="item.parent" let-_containsActiveChild="item._containsActiveChild">
+    <ng-container *ngIf="!item.isInvisible">
+      <div *ngIf="external"
+           class="legacy-app-nav__nav-item legacy-app-nav__nav-item-external"
+           [class.legacy-app-nav__nav-item--active]="active"
+           [style.margin-left.px]="_expanded && level > 0 ? level * _levelSpacing : null">
+        <a class="" [href]="path" [target]="target || defaultPathTarget" (click)="close()">
+          <div [haloTooltip]="name" [haloTooltipPosition]="tooltipsPositions.right" *ngIf="iconTooltips && !_expanded">
+            <atlas-icon *ngIf="icon" [icon]="icon" [collection]="iconCollection"></atlas-icon>
+          </div>
+          <div *ngIf="!iconTooltips || _expanded">
+            <atlas-icon *ngIf="icon" [icon]="icon" [collection]="iconCollection"></atlas-icon>
+          </div>
+          <span *ngIf="_expanded">{{ name }}</span>
+        </a>
+      </div>
+      <div *ngIf="!external"
+           class="legacy-app-nav__nav-item"
+           [class.legacy-app-nav__nav-item--contains-active]="_containsActiveChild"
+           [class.legacy-app-nav__nav-item--expanded]="expanded"
+           routerLinkActive="legacy-app-nav__nav-item--active"
+           [routerLinkActiveOptions]="{exact: exact}"
+           [style.margin-left.px]="_expanded && level > 0 ? level * _levelSpacing : null"
+           [class.legacy-app-nav__nav-item--nested]="level > setBaseLevel">
+        <a *ngIf="path" [routerLink]="path" (click)="!tierMode && close()">
+          <div [haloTooltip]="name" [haloTooltipPosition]="tooltipsPositions.right" *ngIf="iconTooltips && !_expanded">
+            <atlas-icon *ngIf="icon" [icon]="icon" [collection]="iconCollection"></atlas-icon>
+          </div>
+          <div *ngIf="!iconTooltips || _expanded">
+            <atlas-icon *ngIf="icon" [icon]="icon" [collection]="iconCollection"></atlas-icon>
+          </div>
+          <span *ngIf="_expanded">{{ name }}</span>
+        </a>
+        <a *ngIf="!path" (click)="toggleItem(i)">
+          <div [haloTooltip]="name" [haloTooltipPosition]="tooltipsPositions.right" *ngIf="iconTooltips && !_expanded">
+            <atlas-icon *ngIf="icon" [icon]="icon" [collection]="iconCollection"></atlas-icon>
+          </div>
+          <div *ngIf="!iconTooltips || _expanded">
+            <atlas-icon *ngIf="icon" [icon]="icon" [collection]="iconCollection"></atlas-icon>
+          </div>
+          <span *ngIf="_expanded">{{ name }}</span>
+        </a>
+        <div class="legacy-app-nav__nav-item-toggle-button" *ngIf="tierMode && _expanded && !leaf">
+          <atlas-icon-button (click)="toggleItem(i)" [icon]="expanded ? 'icon-chevron-up-24' : 'icon-chevron-down-24'" collection="system"></atlas-icon-button>
+        </div>
+      </div>
+    </ng-container>
+  </ng-template>
+</div>

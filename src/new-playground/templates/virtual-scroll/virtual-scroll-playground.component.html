@@ -1,0 +1,81 @@
+<div class="container padding-y-9 padding-x-9 page-bg">
+  <h2> Virtual Scroll Example using popover and Table</h2>
+  <div class="header">
+    <atlas-theming-helper>
+      <label>Custom theme</label>
+    </atlas-theming-helper>
+  </div>
+  <h2>Popover with table</h2>
+  <div class="section">
+    <div class="virtualscroll-group">
+      <div class="virtualscroll-container">
+        <atlas-button atlas-popover [color]="colors.brand" (click)="onClickButtonPopover($event)">
+          Open Popover with Virtual Scrolling Table
+          <atlas-popover-content
+            [autoClose]="false"
+            [showCloseButton]="showCloseButton"
+            (hidePopover)="onHide($event)"
+            [popoverTitle]="popoverTitle"
+            [position]="position"
+            [elevation]="elevation"
+            [color]="colors.neutral"
+            [style.min-width.px]="800"
+          >
+            <div class="virtual-table-wrapper">
+              <!-- Table body with both vertical and horizontal virtual scrolling -->
+              <cdk-virtual-scroll-viewport class="virtual-scroll-viewport" 
+                [itemSize]="itemSize" 
+                [minBufferPx]="itemSize * bufferSize" 
+                [maxBufferPx]="itemSize * bufferSize * 2">
+                <div class="horizontal-scroll-container">
+                  <atlas-table class="body-table">
+                    <thead atlas-table-header #header>
+                      <tr atlas-table-row>
+                        <th atlas-table-header-cell *ngFor="let col of columnDef" [columnDef]="col" [ngClass]="'col-' + (columnDef.indexOf(col) + 1)">
+                          {{ col.displayLabel }}
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody atlas-table-body>
+                      <tr atlas-table-row *cdkVirtualFor="let row of rows" class="virtual-row">
+                        <td atlas-table-cell class="col-1">
+                          {{ row.age }}
+                        </td>
+                        <td atlas-table-cell class="col-2">
+                          {{ row.name }}
+                        </td>
+                        <td atlas-table-cell class="col-3">
+                          {{ row.birthplace }}
+                        </td>
+                        <td atlas-table-cell class="col-4">
+                          {{ row.cars }}
+                        </td>
+                        <td atlas-table-cell class="col-5">
+                          {{ row.f }}
+                        </td>
+                        <td atlas-table-cell class="col-6">
+                          {{ row.email }}
+                        </td>
+                        <td atlas-table-cell class="col-7">
+                          {{ row.phone }}
+                        </td>
+                        <td atlas-table-cell class="col-8">
+                          {{ row.status }}
+                        </td>
+                      </tr>
+                    </tbody>
+                  </atlas-table>
+                </div>
+              </cdk-virtual-scroll-viewport>
+              <!-- Loading indicator -->
+              <div *ngIf="isLoading" class="loading-indicator">
+                <div class="loading-spinner"></div>
+                <div class="loading-text">Loading more data...</div>
+              </div>
+            </div>
+          </atlas-popover-content>
+        </atlas-button>
+      </div>
+    </div>
+  </div>
+</div>

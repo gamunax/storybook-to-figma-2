@@ -1,0 +1,109 @@
+import { Meta, ArgsTable } from '@storybook/addon-docs';
+import { FieldComponent } from 'atlas-field'
+
+<Meta title="Adopters/Components/Datepicker/Readme" 
+parameters={{
+    options: {
+      isToolshown: true
+    },
+  }}
+ />
+
+# Datepicker
+
+Time pickers help users select and set a specific time.
+
+## UX Documentation
+{false && (
+<iframe
+    src='https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Ffile%2FoYnGgQzofdnbsg7MwA3eIi%2FDatepicker---Foundations-0.0.2-Components-Documentation%3Fnode-id%3D13866%253A22999' 
+    allowFullScreen="true"
+    width='100%'
+    height='650px'
+    style={{border: 'none'}}
+></iframe>
+)}
+## Usage
+
+Datepicker component require of BrowserAnimationsModule module
+
+Import the `BrowserAnimationsModule` from `@angular/platform-browser/animations` into `app.module.ts`
+
+```ts
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+```
+Read more about: https://angular.io/guide/animations
+
+Import dependencies for the library into your ```app.module.ts``` file
+
+```ts
+
+import {  FieldModule } from 'atlas-field';
+
+```
+
+## Locale-Based Date Formatting
+
+### Purpose:
+
+This section guides you through customizing the way dates are displayed and accepted within your datepicker component, enabling you to tailor it to specific locales like Spanish Argentina (es-AR). In this case, dates will be formatted as "dd/M/yyyy" (e.g., 21/03/2024).
+
+### Steps:
+
+1. Start by importing the DATE_FORMATS and DATE_LOCALE tokens from atlas-cdk:
+
+```ts
+
+import { DATE_FORMATS, DATE_LOCALE } from 'atlas-cdk';
+
+```
+2. Create a Custom Date Format Object:
+Define an object called MY_DATE_FORMAT that encapsulates your desired date formatting options. 
+This object has two properties: parse and display:
+parse: Dictates how dates entered by the user should be interpreted.
+display: Controls how dates are displayed in various contexts within the datepicker.
+Here's a breakdown of the configuration options within MY_DATE_FORMAT:
+
+```ts
+const MY_DATE_FORMAT = {
+  parse: {
+    dateInput: 'dd/M/yyyy', // How dates should be parsed from user input
+  },
+  display: {
+    dateInput: { year: 'numeric', month: '2-digit', day: '2-digit' },  // Format for date input fields
+    dateA11yLabel: { year: 'numeric', month: 'long', day: 'numeric' }, // Format for accessibility (screen readers)
+    monthYearLabel: { year: 'numeric', month: 'short' }, // Format for concise month-year displays
+    monthYearA11yLabel: { year: 'numeric', month: 'long' }, // Accessibility format for month-year displays 
+  },
+};
+
+```
+You can customize these options to achieve your preferred date formatting style.
+
+3. Inject Dependencies in app.module.ts:
+Within your app.module.ts file, locate the providers array in the @NgModule decorator and inject the following dependencies:
+```ts
+providers: [
+  { provide: DATE_LOCALE, useValue: 'es-AR' }, // Set 'es-AR' as the locale
+  { provide: DATE_FORMATS, useValue: MY_DATE_FORMAT }, // Provide your custom format
+],
+
+```
+
+### Explanation
+
+**DATE_LOCALE**: 
+Instructs Angular to use the specified locale ('es-AR' in this example) for all date-related operations within your application. This ensures that dates are displayed, formatted, and parsed according to the conventions of Spanish Argentina .
+By setting the DATE_LOCALE, you guarantee consistent and culturally appropriate date handling for users in that region.
+
+**DATE_FORMATS**:
+Allows you to override Angular's default date formatting patterns with your own custom formatting options. 
+The MY_DATE_FORMAT object serves as the container for these customizations.
+
+Customization: The MY_DATE_FORMAT object allows you to control how dates are parsed, displayed for regular use, and formatted for accessibility purposes.
+
+## API
+
+### Field
+
+<ArgsTable of={ FieldComponent } />

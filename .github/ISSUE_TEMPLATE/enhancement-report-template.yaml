@@ -1,0 +1,108 @@
+name: Enhancement
+description: Create a enhancement report to help us improve
+
+body:
+  - type: input
+    id: project-name
+    validations:
+      required: true
+    attributes:
+      label: Project Name / Product Name Affected
+      description: |
+        Please specify the exact name of your project or product
+  - type: textarea
+    id: description-request
+    attributes:
+      label: Description of the request
+      description: >-
+        A clear and concise description of the requirement. In this step the
+        reporter should enter as many details as possible of the situation and
+        the reason of the request
+      placeholder: Tell us what you see!
+    validations:
+      required: true
+  - type: textarea
+    id: steps-reproduce
+    attributes:
+      label: Steps tp reproduce
+      description: >-
+        1. Go to '...'
+        2. Click on '....'
+        3. Scroll down to '....'
+        4. See error
+    validations:
+      required: true
+  - type: textarea
+    id: expected-results
+    attributes:
+      label: Expected Results
+      description: A clear and concise description of what you expected to happen
+    validations:
+      required: true
+  - type: textarea
+    id: actual-results
+    attributes:
+      label: Actual Results
+      description: Describe what actually happened when following the detailed steps
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Evidences
+      description: Any evidence documenting the found issue, Screenshot, Gif, Video, etc
+    validations:
+      required: true
+  - type: dropdown
+    id: urgency
+    attributes:
+      label: Urgency
+      multiple: false
+      options:
+        - Critical
+        - High
+        - Medium
+        - Low
+  - type: dropdown
+    id: impact
+    attributes:
+      label: Impact
+      multiple: false
+      options:
+        - Critical
+        - High
+        - Medium
+        - Low
+        - Lowest
+  - type: input
+    id: pod-lead
+    validations:
+      required: true
+    attributes:
+      label: POD Lead
+      description: |
+        Indicate the name of the POD Lead of the project/product
+  - type: input
+    id: deadline
+    validations:
+      required: false
+    attributes:
+      label: Deadline affected
+      description: >
+        Specify the deadline in your project affected by the reported issue.
+  - type: input
+    id: additional-context
+    validations:
+      required: false
+    attributes:
+      label: Additional context
+      description: |
+        Add any other context about the request
+  - type: textarea
+    id: suggestions
+    validations:
+      required: false
+    attributes:
+      label: Suggestions
+      description: |
+        When identifying the issue, if the developer finds a way to solve the problem, this is where it should be suggested. If you would like to go further and make the necessary changes to the Library, you can follow the Contribute Back Workflow and send your PR to the Library Support Team.

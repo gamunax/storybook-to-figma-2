@@ -1,0 +1,40 @@
+import { Meta, ArgsTable } from '@storybook/addon-docs';
+import { StepperComponent } from 'atlas-stepper';
+
+<Meta title="Adopters/Components/Stepper/Readme" 
+parameters={{
+    options: {
+      isToolshown: true
+    },
+  }}
+ />
+
+# Stepper
+
+Stepper is a way of displaying progress through logical steps; each containing content intended to be consumed sequentially.
+
+## UX Documentation
+{false && (
+<iframe
+    src='https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Ffile%2FnnZbR87wUyDncuFuU2I2HA%2FStepper---Foundations-0.0.2-Components-Documentation%3Fnode-id%3D13956%253A4150' 
+    allowFullScreen="true"
+    width='100%'
+    height='650px'
+    style={{border: 'none'}}
+></iframe>
+)}
+## Usage
+
+Import dependencies for the library into your ```app.module.ts``` file
+
+```ts
+
+import { StepperModule } from 'atlas-stepper';
+
+```
+
+## API
+
+### Stepper
+
+<ArgsTable of={ StepperComponent } />

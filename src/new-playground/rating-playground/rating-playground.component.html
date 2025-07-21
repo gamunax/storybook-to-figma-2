@@ -1,0 +1,36 @@
+<div class="container padding-y-9 padding-x-9 page-bg">
+  <!-- Chip Component Demo Header -->
+  <h2>Rating Component Demo</h2>
+  <div class="header">
+    <atlas-theming-helper>
+      <label>Custom theme</label>
+    </atlas-theming-helper>
+  </div>
+  <div>
+    <h2>Rating</h2>
+    <div class="section">
+      <atlas-rating
+        [numberOfItems]="5"
+        [rating]="3.2"
+        [readOnly]="false"
+        [disabled]="false"
+        [showLabel]="true"
+        [size]="ratingSizings.small"
+        (rated)="onRated($event)"
+      >
+      </atlas-rating>
+    </div>
+    <h2>Rating disabled</h2>
+    <div class="section">
+      <atlas-rating
+        [numberOfItems]="5"
+        [rating]="3.2"
+        [readOnly]="false"
+        [disabled]="true"
+        [showLabel]="true"
+        [size]="ratingSizings.small"
+        (rated)="onRated($event)"
+      >
+      </atlas-rating>
+    </div>
+  </div>

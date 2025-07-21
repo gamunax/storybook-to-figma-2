@@ -1,0 +1,53 @@
+<div class="container padding-y-9 padding-x-9 page-bg">
+  <h2>breadcrumb Component Demo</h2>
+  <div class="header">
+    <atlas-theming-helper>
+      <label>Custom theme</label>
+    </atlas-theming-helper>
+  </div>
+  <h2>breadcrumb examples</h2>
+  <div>
+    <div class="section">
+      <div class="breadcrumb-group">
+        <div class="breadcrumb-container">
+          <atlas-breadcrumb [collapsed]="collapsed">
+            <atlas-breadcrumb-item
+              *ngFor="let item of items"
+              [active]="item.active"
+              [disabled]="item.disabled"
+              (onSelect)="onSelectedItem(item)"
+              (onCollapsed)="onCollapsed()"
+            >
+              <atlas-link [underline]="false" [action]="actions.default" [url]="'playground'">
+                <atlas-icon [size]="iconSizes.small" icon="icon-caret-circle-up-24"></atlas-icon>
+                {{ item.label }}
+              </atlas-link>
+              <atlas-breadcrumb-item-separator>/</atlas-breadcrumb-item-separator>
+            </atlas-breadcrumb-item>
+          </atlas-breadcrumb>
+        </div>
+      </div>
+      <div class="breadcrumb-group">
+        <div class="breadcrumb-container">
+          <atlas-breadcrumb [collapsed]="collapsed" [action]="actions.default">
+            <atlas-breadcrumb-item
+              *ngFor="let item of items"
+              [active]="item.active"
+              [disabled]="item.disabled"
+              (onSelect)="onSelectedItem(item)"
+              (onCollapsed)="onCollapsed()"
+            >
+              {{ item.label }}
+              <atlas-breadcrumb-item-separator>></atlas-breadcrumb-item-separator>
+            </atlas-breadcrumb-item>
+          </atlas-breadcrumb>
+        </div>
+      </div>
+      <div class="breadcrumb-group">
+        <div class="breadcrumb-container">
+          <atlas-breadcrumb [iconSeparator]="'icon-phone-24'" [breadcrumbs]="items"> </atlas-breadcrumb>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,30 @@
+<div class="container">
+    <h1>Table Component Tests</h1>
+    <hr><br>
+    <atlas-table>
+        <thead atlas-table-header>
+            <tr atlas-table-row>
+                <th atlas-table-header-cell *ngFor="let col of columns" [columnDef]="col">
+                    {{ col.displayLabel }}
+                </th>
+            </tr>
+        </thead>
+
+        <tbody atlas-table-body>
+            <tr atlas-table-row *ngFor="let row of rows" [id]="row.id" [class.table-row-selected]="row.selected">
+                <td atlas-table-cell [class]="row.age">
+                    {{ row.age }}
+                </td>
+                <td atlas-table-cell [class]="row.name">
+                    {{ row.name }}
+                </td>
+                <td atlas-table-cell [class]="row.birthplace">
+                    {{ row.birthplace }}
+                </td>
+                <td atlas-table-cell [class]="row.cars">
+                    {{ row.cars }}
+                </td>
+            </tr>
+        </tbody>
+    </atlas-table>
+</div>

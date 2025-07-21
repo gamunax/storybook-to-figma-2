@@ -1,0 +1,81 @@
+//-------------------------------------------------------------------------------------------
+// Functions deprecated from Merceros for migration uses only
+//-------------------------------------------------------------------------------------------
+
+// Color Luminance - Font Color [DEPRECATED]
+// ------------------------------------------------------------------------------------------
+
+/// Returns the correct font color based on luminance of background color behind font color
+/// @param {Color} $background-color - Background color
+@function luminance-font-color($background-color) {
+  @if (round(luminance($background-color)) == 1) {
+    @return var(--support-2); // Lighter background, return dark color
+  } @else {
+    @return var(--support); // Darker background, return light color
+  }
+}
+
+/// Function description
+///
+/// @param {Type} $parameter-name - Parameter description
+///
+/// @returns {Type} Returns description
+/// @example scss - example description
+///   example code
+///   // what example code returns
+@function map-has-nested-keys($map, $keys...) {
+  @each $key in $keys {
+    @if not map-has-key($map, $key) {
+      @return false;
+    }
+    $map: map-get($map, $key);
+  }
+
+  @return true;
+}
+
+// Map Fetching [DEPRECATED]
+// ------------------------------------------------------------------------------------------
+
+/// Function description
+///
+/// @param {Type} $parameter-name - Parameter description
+///
+/// @returns {Type} Returns description
+/// @example scss - example description
+///   example code
+///   // what example code returns
+@function map-fetch($map, $keys...) {
+  @each $key in $keys {
+    $map: map-get($map, $key);
+  }
+  @return $map;
+}
+
+// Z-index Mapping [DEPRECATED]
+// ------------------------------------------------------------------------------------------
+
+/// Sets the z-index layer mappings to be used across core and components
+/// @type Map
+$gbp-z-index-layers: (
+  low: -9999,
+  default-below: -1,
+  default: 0,
+  default-above: 1,
+  header-fixed: 10,
+  side-scroller: 50,
+  dropdown: 60,
+  popup: 300,
+  backdrop: 600,
+  tooltip: 2000,
+  max: 9999,
+);
+
+/// Function for controlling z-index layer mappings using a Sass map
+
+@function set-z-index($layers...) {
+  @if not map-has-nested-keys($gbp-z-index-layers, $layers...) {
+    @warn "No layer found for `#{inspect($layers...)}` in $gbp-z-index-layers map. Property omitted.";
+  }
+  @return map-fetch($gbp-z-index-layers, $layers...);
+}

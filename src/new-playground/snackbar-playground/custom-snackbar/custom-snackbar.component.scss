@@ -1,0 +1,53 @@
+$link-color: rgb(0, 90, 142);
+
+.custom-snackbar {
+  &-wrapper {
+    padding-bottom: 1rem;
+    position: relative;
+
+    &-close-icon {
+      position: absolute;
+      top: -0.5rem;
+      right: -1rem;
+      cursor: pointer;
+      z-index: 2;
+    }
+
+    p {
+      margin: 0;
+    }
+
+    a {
+      color: $link-color;
+
+      &:visited {
+        color: purple;
+      }
+
+      &:hover {
+        color: darkblue;
+        cursor: pointer;
+      }
+    }
+  }
+
+  &-table {
+    border-spacing: 0;
+    border: 1px solid;
+    width: 100%;
+
+    th,
+    td {
+      padding: 5px;
+      border: 1px solid black;
+    }
+
+    &__header {
+      font-weight: bold;
+    }
+
+    &__row-column {
+      text-align: center;
+    }
+  }
+}

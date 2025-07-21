@@ -1,0 +1,12 @@
+<h2>Datepicker {{ isLocalEnUS ? 'en_US' : 'en_AU' }}</h2>
+<atlas-field>
+  <input [Datepicker]="datepicker" atlasInput placeholder="Choose a date" />
+  <atlas-field-suffix>
+    <datepicker-toggle [datepicker]="datepicker"></datepicker-toggle>
+  </atlas-field-suffix>
+  <datepicker #datepicker> </datepicker>
+</atlas-field>
+<br>
+<atlas-button (onClick)="switchLocale()">Switch Locale </atlas-button>
+
+

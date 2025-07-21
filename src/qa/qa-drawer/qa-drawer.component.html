@@ -1,0 +1,50 @@
+<hr>
+<h1>Drawer Component Tests</h1>
+<hr><br>
+<div class="container">
+    <div class="row">
+            <atlas-drawer style="padding:30px;" *ngFor="let drawer of items;"
+                [action]="drawer.action"
+                [density]="drawer.density"
+            >
+                <h3 style="padding: 12px 10px; margin: 0px 5px"> Basic Example </h3>
+                <atlas-list>
+                    <atlas-list-item *ngFor="let item of Listitems;"
+                        [item]="item"
+                        [action]="act.secondary"
+                        typography="typographyStyles-body-medium"
+                    >
+                    <atlas-icon style="margin-right: 34px;" [size]="isize.medium" [icon]="item.icon"></atlas-icon>
+                     {{item.label}}
+                        <h1 *ngIf="item.selected" class="typographyStyles-body-medium" style="margin-left:10px">(Selected)</h1>
+                    </atlas-list-item>
+                </atlas-list>
+            </atlas-drawer>
+
+        <atlas-drawer style="padding:30px;"
+                [action]="act.primary"
+                [density]="dense.condensed"
+            >
+                <h3 style="padding: 12px 10px; margin: 0px 5px"> BE </h3>
+                <atlas-list>
+                    <atlas-list-item *ngFor="let item of condensed;"
+                        [item]="item"
+                        [action]="act.secondary"
+                        typography="typographyStyles-body-medium"
+                    >
+                    <atlas-icon style="margin-right: 34px;" [size]="isize.medium" [icon]="item.icon"></atlas-icon>
+                        <h1 *ngIf="item.selected" class="typographyStyles-body-medium" style="margin-left:10px">(Selected)</h1>
+                    </atlas-list-item>
+                </atlas-list>
+            </atlas-drawer>
+    </div>
+
+    <div class="row">
+        <atlas-drawer style="padding:30px;" *ngFor="let drawer of items;"
+                [action]="drawer.action"
+                [density]="drawer.density"
+        >
+                <h3 style="padding: 12px 10px; margin: 0px 5px"> Basic Example </h3>
+        </atlas-drawer>
+    </div>
+</div>

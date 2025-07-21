@@ -1,0 +1,81 @@
+<div class="legacy-c-carousel" [class.legacy-c-carousel__arrows-outside]="innerArrowsOutside">
+  <!-- Inner Previous Arrow -->
+  <div class="legacy-c-carousel__prev-container" *ngIf="showInnerArrows && innerArrowsOutside">
+    <a (click)="prevSlide($event)" class="legacy-c-carousel__prev-inner" [title]="previousInnerIconAltText">
+      <span class="legacy-c-carousel__prev-inner-helper"></span>
+      <atlas-icon
+        [icon]="previousInnerIcon"
+        [size]="previousInnerIconSize"
+        [alt]="previousInnerIconAltText"
+      ></atlas-icon>
+    </a>
+  </div>
+  <div #content class="legacy-c-carousel-content">
+    <!-- Inner Previous Arrow -->
+    <div class="legacy-c-carousel__prev-container" *ngIf="showInnerArrows && !innerArrowsOutside">
+      <a (click)="prevSlide($event)" class="legacy-c-carousel__prev-inner" [title]="previousInnerIconAltText">
+        <span class="legacy-c-carousel__prev-inner-helper"></span>
+        <atlas-icon
+          [icon]="previousInnerIcon"
+          [size]="previousInnerIconSize"
+          [alt]="previousInnerIconAltText"
+        ></atlas-icon>
+      </a>
+    </div>
+    <div
+      class="legacy-c-carousel__slide-track"
+      [class.legacy-c-carousel__loop-slide]="looping"
+      (transitionend)="transitionEnd($event)"
+      (cdkObserveContent)="recalculateHeights()"
+      #slideTrack
+    >
+      <div
+        class="legacy-c-carousel__width-limiter"
+        [style.width.%]="slideWidth"
+        [style.margin-left.%]="slideTrackBalance"
+        (mousedown)="mouseSwipe($event, 'start')"
+        (dragstart)="preventImgDrag($event)"
+        (mouseup)="mouseSwipe($event, 'end')"
+        (touchstart)="touchSwipe($event, 'start')"
+        (touchend)="touchSwipe($event, 'end')"
+      >
+        <ng-content></ng-content>
+      </div>
+    </div>
+    <!-- Inner Next Arrow -->
+    <div class="legacy-c-carousel__next-container" *ngIf="showInnerArrows && !innerArrowsOutside">
+      <a (click)="nextSlide($event)" class="legacy-c-carousel__next-inner" [title]="nextInnerIconAltText">
+        <span class="legacy-c-carousel__next-inner-helper"></span>
+        <atlas-icon [icon]="nextInnerIcon" [size]="nextInnerIconSize" [alt]="nextInnerIconAltText"></atlas-icon>
+      </a>
+    </div>
+  </div>
+  <!-- Inner Next Arrow -->
+  <div class="legacy-c-carousel__next-container" *ngIf="showInnerArrows && innerArrowsOutside">
+    <a (click)="nextSlide($event)" class="legacy-c-carousel__next-inner" [title]="nextInnerIconAltText">
+      <span class="legacy-c-carousel__next-inner-helper"></span>
+      <atlas-icon [icon]="nextInnerIcon" [size]="nextInnerIconSize" [alt]="nextInnerIconAltText"></atlas-icon>
+    </a>
+  </div>
+</div>
+<div class="legacy-c-carousel__pagination">
+  <!-- Previous -->
+  <a *ngIf="showArrows" (click)="prevSlide($event)" class="legacy-c-carousel__prev" [title]="previousIconAltText">
+    <atlas-icon [icon]="previousIcon" [size]="previousIconSize" [alt]="previousIconAltText"></atlas-icon>
+  </a>
+  <!-- Dots -->
+  <ng-container *ngIf="showDots">
+    <a
+      *ngFor="let slide of _pages; let i = index"
+      (click)="goSlide(_pages[i])"
+      [class.active]="i === _roundUpFunc((go - slidePadding) / stepSize)"
+      class="legacy-c-carousel__page"
+    >
+      {{ i + 1 }}
+    </a>
+  </ng-container>
+  <!-- Next -->
+  <a *ngIf="showArrows" (click)="nextSlide($event)" class="legacy-c-carousel__next" [title]="nextIconAltText">
+    <atlas-icon [icon]="nextIcon" [size]="nextIconSize" [alt]="nextIconAltText"></atlas-icon>
+  </a>
+</div>

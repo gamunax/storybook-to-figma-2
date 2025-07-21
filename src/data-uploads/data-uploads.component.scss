@@ -1,0 +1,12 @@
+.data {
+    &-avatar {
+        &__hover:hover {
+            cursor: pointer;
+        }
+    }
+}
+
+
+::ng-deep .drawer {
+    height: 100vh;
+}

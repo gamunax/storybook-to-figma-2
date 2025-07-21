@@ -1,0 +1,68 @@
+@mixin cdk-high-contrast($target: active, $encapsulation: 'any') {
+  @if ($target != 'active' and $target != 'black-on-white' and $target != 'white-on-black') {
+    @error 'Unknown cdk-high-contrast value "#{$target}" provided. ' +
+           'Allowed values are "active", "black-on-white", and "white-on-black"';
+  }
+
+  @if ($encapsulation != 'on' and $encapsulation != 'off' and $encapsulation != 'any') {
+    @error 'Unknown cdk-high-contrast encapsulation "#{$encapsulation}" provided. ' +
+           'Allowed values are "on", "off", and "any"';
+  }
+
+  @at-root {
+    $selector-context: #{&};
+
+    @if ($encapsulation != 'on') {
+      .cdk-high-contrast-#{$target} {
+        @include _cdk-optionally-nest-content($selector-context) {
+          @content;
+        }
+      }
+    }
+
+    @if ($encapsulation != 'off') {
+      .cdk-high-contrast-#{$target} :host {
+        @include _cdk-optionally-nest-content($selector-context) {
+          @content;
+        }
+      }
+    }
+  }
+}
+
+@mixin _cdk-optionally-nest-content($selector-context) {
+  @if ($selector-context == '') {
+    @content;
+  }
+  @else {
+    #{$selector-context} {
+      @content;
+    }
+  }
+}
+
+.atlas-dialog-container {
+  @include cdk-high-contrast(active, off) {
+    outline: solid 1px;
+  }
+}
+
+.atlas-dialog-actions {
+  &[align='end'] {
+    justify-content: flex-end;
+  }
+
+  &[align='center'] {
+    justify-content: center;
+  }
+
+  atlas-button + atlas-button {
+    margin-left: 8px;
+
+    [dir='rtl'] & {
+      margin-left: 0;
+      margin-right:  8px;
+    }
+  }
+}
+

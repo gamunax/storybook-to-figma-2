@@ -1,0 +1,41 @@
+<div class="container padding-y-9 padding-x-9 page-bg">
+<!-- Chip Component Demo Header -->
+<h2>Accordion Component Demo</h2>
+<div class="header">
+  <atlas-theming-helper>
+    <label>Custom theme</label>
+  </atlas-theming-helper>
+</div>
+<div>
+  <h2>Accordion</h2>
+  <div class="section">
+
+        <atlas-accordion [expandedAll]="expandedAll" [elevation]="elevation">
+          <atlas-accordion-item
+            *ngFor="let item of accordion; let i = index"
+            [expanded]="item.expanded"
+            (onExpand)="changeExpandStatus($event, i)"
+          >
+            <atlas-accordion-heading>
+              <div class="padding-y-6">{{ item.heading }}</div>
+            </atlas-accordion-heading>
+            <atlas-accordion-subheading>
+              <div class="padding-y-6">{{ item.subheading }}</div>
+            </atlas-accordion-subheading>
+            <atlas-accordion-content>
+              <div
+                class="padding-y-10 padding-x-8"
+                [innerHTML]="item.content"
+              ></div>
+            </atlas-accordion-content>
+            <atlas-accordion-expand>
+              <div>
+                <atlas-icon-button
+                  [icon]="item.expanded ? 'icon-chevron-up-24' : 'icon-chevron-down-24'"
+                ></atlas-icon-button>
+              </div>
+            </atlas-accordion-expand>
+          </atlas-accordion-item>
+        </atlas-accordion>
+  </div>
+</div>

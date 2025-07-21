@@ -1,0 +1,182 @@
+<div class="container padding-y-9 padding-x-9 page-bg">
+<h2>Button Group Component Demo</h2>
+<div class="header">
+  <atlas-theming-helper>
+    <label>Custom theme</label>
+  </atlas-theming-helper>
+</div>
+<div>
+  <h2>Strong Button Group - old contained</h2>
+  <div class="section">
+    <h3>size medium</h3>
+    <div class="button-group">
+        <div class="button-container">
+          <atlas-button-group [vertical]="true" [buttonsConfig]="btnConfig" [action]="actions.primary" [size]="buttonSizings.medium" [variant]="buttonVariants.outlined">brand</atlas-button-group>
+          <div class="button-label">Brand</div>
+        </div>
+        <div class="button-container">
+          <atlas-button-group [vertical]="true" [buttonsConfig]="btnConfig" [action]="actions.default" [size]="buttonSizings.medium" [variant]="buttonVariants.outlined">neutral</atlas-button-group>
+          <div class="button-label">Neutral</div>
+        </div>
+        <div class="button-container">
+          <atlas-button-group [vertical]="true" [buttonsConfig]="btnConfig" [action]="actions.error" [size]="buttonSizings.medium" [variant]="buttonVariants.outlined">danger</atlas-button-group>
+          <div class="button-label">Danger</div>
+        </div>
+        <div class="button-container">
+          <atlas-button-group [vertical]="true" [buttonsConfig]="btnConfig" [action]="actions.success" [size]="buttonSizings.medium" [variant]="buttonVariants.outlined">success</atlas-button-group>
+          <div class="button-label">Success</div>
+        </div>
+        <div class="button-container">
+          <atlas-button-group [vertical]="true" [buttonsConfig]="btnConfig" [action]="actions.info" [size]="buttonSizings.medium" [variant]="buttonVariants.outlined">Info</atlas-button-group>
+          <div class="button-label">Info</div>
+        </div>
+      </div>
+  </div>
+  <div class="section">
+    <h3>size medium</h3>
+    <div class="button-group">
+        <div class="button-container">
+          <atlas-button-group [vertical]="false" [buttonsConfig]="btnConfig" [action]="actions.primary" [size]="buttonSizings.medium" [variant]="buttonVariants.outlined">brand</atlas-button-group>
+          <div class="button-label">Brand</div>
+        </div>
+        <div class="button-container">
+          <atlas-button-group [vertical]="false" [buttonsConfig]="btnConfig" [action]="actions.default" [size]="buttonSizings.medium" [variant]="buttonVariants.outlined">neutral</atlas-button-group>
+          <div class="button-label">Neutral</div>
+        </div>
+        <div class="button-container">
+          <atlas-button-group [vertical]="false" [buttonsConfig]="btnConfig" [action]="actions.error" [size]="buttonSizings.medium" [variant]="buttonVariants.outlined">danger</atlas-button-group>
+          <div class="button-label">Danger</div>
+        </div>
+        <div class="button-container">
+          <atlas-button-group [vertical]="false" [buttonsConfig]="btnConfig" [action]="actions.success" [size]="buttonSizings.medium" [variant]="buttonVariants.outlined">success</atlas-button-group>
+          <div class="button-label">Success</div>
+        </div>
+        <div class="button-container">
+          <atlas-button-group [vertical]="false" [buttonsConfig]="btnConfig" [action]="actions.info" [size]="buttonSizings.medium" [variant]="buttonVariants.outlined">Info</atlas-button-group>
+          <div class="button-label">Info</div>
+        </div>
+      </div>
+  </div>
+
+  <div class="section">
+    <h3>size large</h3>
+    <div class="button-group">
+      <div class="button-container">
+        <atlas-button-group [vertical]="true" [buttonsConfig]="btnConfig" [action]="actions.primary" [size]="buttonSizings.large" [variant]="buttonVariants.outlined">brand</atlas-button-group>
+        <div class="button-label">Brand</div>
+      </div>
+      <div class="button-container">
+        <atlas-button-group [vertical]="true" [buttonsConfig]="btnConfig" [action]="actions.default" [size]="buttonSizings.large" [variant]="buttonVariants.outlined">neutral</atlas-button-group>
+        <div class="button-label">Neutral</div>
+      </div>
+      <div class="button-container">
+        <atlas-button-group [vertical]="true" [buttonsConfig]="btnConfig" [action]="actions.error" [size]="buttonSizings.large" [variant]="buttonVariants.outlined">danger</atlas-button-group>
+        <div class="button-label">Danger</div>
+      </div>
+      <div class="button-container">
+        <atlas-button-group [vertical]="true" [buttonsConfig]="btnConfig" [action]="actions.success" [size]="buttonSizings.large" [variant]="buttonVariants.outlined">success</atlas-button-group>
+        <div class="button-label">Success</div>
+      </div>
+      <div class="button-container">
+        <atlas-button-group [vertical]="true" [buttonsConfig]="btnConfig" [action]="actions.info" [size]="buttonSizings.large" [variant]="buttonVariants.outlined">Info</atlas-button-group>
+        <div class="button-label">Info</div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="section">
+    <h3>size extra large</h3>
+    <div class="button-group">
+      <div class="button-container">
+        <atlas-button-group [vertical]="true" [buttonsConfig]="btnConfig" [action]="actions.primary" [size]="buttonSizings.xlarge" [variant]="buttonVariants.outlined">brand</atlas-button-group>
+        <div class="button-label">Brand</div>
+      </div>
+      <div class="button-container">
+        <atlas-button-group [vertical]="true" [buttonsConfig]="btnConfig" [action]="actions.default" [size]="buttonSizings.xlarge" [variant]="buttonVariants.outlined">neutral</atlas-button-group>
+        <div class="button-label">Neutral</div>
+      </div>
+      <div class="button-container">
+        <atlas-button-group [vertical]="true" [buttonsConfig]="btnConfig" [action]="actions.error" [size]="buttonSizings.xlarge" [variant]="buttonVariants.outlined">danger</atlas-button-group>
+        <div class="button-label">Danger</div>
+      </div>
+      <div class="button-container">
+        <atlas-button-group [vertical]="true" [buttonsConfig]="btnConfig" [action]="actions.success" [size]="buttonSizings.xlarge" [variant]="buttonVariants.outlined">success</atlas-button-group>
+        <div class="button-label">Success</div>
+      </div>
+      <div class="button-container">
+        <atlas-button-group [vertical]="true" [buttonsConfig]="btnConfig" [action]="actions.info" [size]="buttonSizings.xlarge" [variant]="buttonVariants.outlined">Info</atlas-button-group>
+        <div class="button-label">Info</div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="section">
+    <h3>size small</h3>
+    <div class="button-group">
+      <div class="button-container">
+        <atlas-button-group [vertical]="true" [buttonsConfig]="btnConfig" [action]="actions.primary" [size]="buttonSizings.small" [variant]="buttonVariants.outlined">brand</atlas-button-group>
+        <div class="button-label">Brand</div>
+      </div>
+      <div class="button-container">
+        <atlas-button-group [vertical]="true" [buttonsConfig]="btnConfig" [action]="actions.default" [size]="buttonSizings.small" [variant]="buttonVariants.outlined">neutral</atlas-button-group>
+        <div class="button-label">Neutral</div>
+      </div>
+      <div class="button-container">
+        <atlas-button-group [vertical]="true" [buttonsConfig]="btnConfig" [action]="actions.error" [size]="buttonSizings.small" [variant]="buttonVariants.outlined">danger</atlas-button-group>
+        <div class="button-label">Danger</div>
+      </div>
+      <div class="button-container">
+        <atlas-button-group [vertical]="true" [buttonsConfig]="btnConfig" [action]="actions.success" [size]="buttonSizings.small" [variant]="buttonVariants.outlined">success</atlas-button-group>
+        <div class="button-label">Success</div>
+      </div>
+      <div class="button-container">
+        <atlas-button-group [vertical]="true" [buttonsConfig]="btnConfig" [action]="actions.info" [size]="buttonSizings.small" [variant]="buttonVariants.outlined">Info</atlas-button-group>
+        <div class="button-label">Info</div>
+      </div>
+    </div>
+  </div>
+  
+ 
+
+
+<ng-template #iconTemplate1>
+    <atlas-icon [icon]="'icon-arrow-curved-left-24'"></atlas-icon>
+  </ng-template>
+  <ng-template #iconTemplate2>
+    <atlas-icon [icon]="'icon-arrow-download-24'"></atlas-icon>
+  </ng-template>
+  <ng-template #iconTemplate3>
+    <atlas-icon [icon]="'icon-arrow-curved-right-24'"></atlas-icon>
+  </ng-template>
+
+<!-- Buttons group with directive -->
+<div class="section">
+  <h3>Buttons with directive</h3>
+  <div class="button-group">
+    <div class="button-container">
+    <atlas-button-group [style]="style.outlined" [color]="colors.brand">
+      <button #buttonGroup [style.flex]="1" href="">One</button>
+      <button #buttonGroup [style.flex]="1" href="">Two</button>
+      <button #buttonGroup [style.flex]="1" href="">Three</button>
+      <button #buttonGroup [style.flex]="1" href="">Four</button>
+      <button #buttonGroup [style.flex]="1" href="">Five</button>
+    </atlas-button-group>
+  </div>
+</div>
+</div>
+
+<div class="align-middle mos-u-spacer--margin-bottom-md">
+  <div class="column">
+    <atlas-button-group [style]="style.outlined" [color]="colors.brand">
+      <a *ngFor="let item of menuItems" #buttonGroup routerLinkActive="active-link" [routerLink]="item.path" [style.flex]="1" href="">{{item?.name}}</a>
+    </atlas-button-group>
+  </div>
+</div>
+
+<div class="align-middle mos-u-spacer--margin-bottom-md">
+  <div class="column">
+    <atlas-button-group [style]="style.soft" [color]="colors.brand">
+      <a *ngFor="let item of menuItems" #buttonGroup [style.flex]="1" href="">{{item?.name}}</a>
+    </atlas-button-group>
+  </div>
+</div>

@@ -1,0 +1,9 @@
+<timepicker-face
+  [color]="color"
+  [faceTime]="minutesList"
+  [selectedTime]="selectedMinute"
+  [minutesGap]="minutesGap"
+  (timeChange)="onTimeChange($event)"
+  (timeSelected)="onTimeSelected($event)"
+  [unit]="timeUnit.MINUTE"
+></timepicker-face>

@@ -1,0 +1,373 @@
+<div class="container padding-y-9 padding-x-9 page-bg">
+    <!-- Field Component Demo Header -->
+    <h2>Field Component Demo</h2>
+    <div class="header">
+        <atlas-theming-helper>
+            <label>Custom theme</label>
+        </atlas-theming-helper>
+    </div>
+    <!-- Outlined Field -->
+    <h2>Outlined Field</h2>
+
+    <!-- Outlined Small -->
+    <div class="section">
+        <h3>Size Small</h3>
+        <div class="field-group">
+            <div class="field-container">
+                <atlas-field [style]="styles.outlined" [color]="Colors.neutral" [size]="fieldSize.small">
+                    <input type="text" atlasInput [disabled]="false" [required]="true" placeholder="Placeholder - Neutral" />
+                </atlas-field>
+                <div class="field-label">Small Neutral</div>
+            </div>
+
+            <div class="field-container">
+                <atlas-field [style]="styles.outlined" [color]="Colors.brand" [size]="fieldSize.small">
+                    <input type="text" atlasInput [disabled]="false" [required]="true" placeholder="Placeholder - Brand" />
+                </atlas-field>
+                <div class="field-label">Small Brand</div>
+            </div>
+
+            <div class="field-container">
+                <atlas-field [style]="styles.outlined" [color]="Colors.danger" [size]="fieldSize.small">
+                    <input type="text" atlasInput [disabled]="false" [required]="true" placeholder="Placeholder - Danger" />
+                </atlas-field>
+                <div class="field-label">Small Danger</div>
+            </div>
+
+            <div class="field-container">
+                <atlas-field [style]="styles.outlined" [color]="Colors.info" [size]="fieldSize.small">
+                    <input type="text" atlasInput [disabled]="false" [required]="true" placeholder="Placeholder - Info" />
+                </atlas-field>
+                <div class="field-label">Small Info</div>
+            </div>
+
+            <div class="field-container">
+                <atlas-field [style]="styles.outlined" [color]="Colors.caution" [size]="fieldSize.small">
+                    <input type="text" atlasInput [disabled]="false" [required]="true" placeholder="Placeholder - Caution" />
+                </atlas-field>
+                <div class="field-label">Small Caution</div>
+            </div>
+
+            <div class="field-container">
+                <atlas-field [style]="styles.outlined" [color]="Colors.success" [size]="fieldSize.small">
+                    <input type="text" atlasInput [disabled]="false" [required]="true" placeholder="Placeholder - Success" />
+                </atlas-field>
+                <div class="field-label">Small Success</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Outlined Medium -->
+    <div class="section">
+        <h3>Size Medium</h3>
+        <div class="field-group">
+            <div class="field-container">
+                <atlas-field [style]="styles.outlined" [color]="Colors.neutral" [size]="fieldSize.medium">
+                    <input type="text" atlasInput [disabled]="false" [required]="true" placeholder="Placeholder - Neutral" />
+                </atlas-field>
+                <div class="field-label">Medium Neutral</div>
+            </div>
+
+            <div class="field-container">
+                <atlas-field [style]="styles.outlined" [color]="Colors.brand" [size]="fieldSize.medium">
+                    <input type="text" atlasInput [disabled]="false" [required]="true" placeholder="Placeholder - Brand" />
+                </atlas-field>
+                <div class="field-label">Medium Brand</div>
+            </div>
+
+            <div class="field-container">
+                <atlas-field [style]="styles.outlined" [color]="Colors.danger" [size]="fieldSize.medium">
+                    <input type="text" atlasInput [disabled]="false" [required]="true" placeholder="Placeholder - Danger" />
+                </atlas-field>
+                <div class="field-label">Medium Danger</div>
+            </div>
+
+            <div class="field-container">
+                <atlas-field [style]="styles.outlined" [color]="Colors.info" [size]="fieldSize.medium">
+                    <input type="text" atlasInput [disabled]="false" [required]="true" placeholder="Placeholder - Info" />
+                </atlas-field>
+                <div class="field-label">Medium Info</div>
+            </div>
+
+            <div class="field-container">
+                <atlas-field [style]="styles.outlined" [color]="Colors.caution" [size]="fieldSize.medium">
+                    <input type="text" atlasInput [disabled]="false" [required]="true" placeholder="Placeholder - Caution" />
+                </atlas-field>
+                <div class="field-label">Medium Caution</div>
+            </div>
+
+            <div class="field-container">
+                <atlas-field [style]="styles.outlined" [color]="Colors.success" [size]="fieldSize.medium">
+                    <input type="text" atlasInput [disabled]="false" [required]="true" placeholder="Placeholder - Success" />
+                </atlas-field>
+                <div class="field-label">Medium Success</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Outlined Large -->
+    <div class="section">
+        <h3>Size Large</h3>
+        <div class="field-group">
+            <div class="field-container">
+                <atlas-field [style]="styles.outlined" [color]="Colors.neutral" [size]="fieldSize.large">
+                    <input type="text" atlasInput [disabled]="false" [required]="true" placeholder="Placeholder - Neutral" />
+                </atlas-field>
+                <div class="field-label">Large Neutral</div>
+            </div>
+
+            <div class="field-container">
+                <atlas-field [style]="styles.outlined" [color]="Colors.brand" [size]="fieldSize.large">
+                    <input type="text" atlasInput [disabled]="false" [required]="true" placeholder="Placeholder - Brand" />
+                </atlas-field>
+                <div class="field-label">Large Brand</div>
+            </div>
+
+            <div class="field-container">
+                <atlas-field [style]="styles.outlined" [color]="Colors.danger" [size]="fieldSize.large">
+                    <input type="text" atlasInput [disabled]="false" [required]="true" placeholder="Placeholder - Danger" />
+                </atlas-field>
+                <div class="field-label">Large Danger</div>
+            </div>
+
+            <div class="field-container">
+                <atlas-field [style]="styles.outlined" [color]="Colors.info" [size]="fieldSize.large">
+                    <input type="text" atlasInput [disabled]="false" [required]="true" placeholder="Placeholder - Info" />
+                </atlas-field>
+                <div class="field-label">Large Info</div>
+            </div>
+
+            <div class="field-container">
+                <atlas-field [style]="styles.outlined" [color]="Colors.caution" [size]="fieldSize.large">
+                    <input type="text" atlasInput [disabled]="false" [required]="true" placeholder="Placeholder - Caution" />
+                </atlas-field>
+                <div class="field-label">Large Caution</div>
+            </div>
+
+            <div class="field-container">
+                <atlas-field [style]="styles.outlined" [color]="Colors.success" [size]="fieldSize.large">
+                    <input type="text" atlasInput [disabled]="false" [required]="true" placeholder="Placeholder - Success" />
+                </atlas-field>
+                <div class="field-label">Large Success</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Filled Field -->
+    <h2>Filled Field</h2>
+
+    <!-- Filled Small -->
+    <div class="section">
+        <h3>Size Small</h3>
+        <div class="field-group">
+            <div class="field-container">
+                <atlas-field [style]="styles.filled" [color]="Colors.neutral" [size]="fieldSize.small">
+                    <input type="text" atlasInput [disabled]="false" [required]="true" placeholder="Placeholder - Neutral" />
+                </atlas-field>
+                <div class="field-label">Small Neutral</div>
+            </div>
+
+            <div class="field-container">
+                <atlas-field [style]="styles.filled" [color]="Colors.brand" [size]="fieldSize.small">
+                    <input type="text" atlasInput [disabled]="false" [required]="true" placeholder="Placeholder - Brand" />
+                </atlas-field>
+                <div class="field-label">Small Brand</div>
+            </div>
+
+            <div class="field-container">
+                <atlas-field [style]="styles.filled" [color]="Colors.danger" [size]="fieldSize.small">
+                    <input type="text" atlasInput [disabled]="false" [required]="true" placeholder="Placeholder - Danger" />
+                </atlas-field>
+                <div class="field-label">Small Danger</div>
+            </div>
+
+            <div class="field-container">
+                <atlas-field [style]="styles.filled" [color]="Colors.info" [size]="fieldSize.small">
+                    <input type="text" atlasInput [disabled]="false" [required]="true" placeholder="Placeholder - Info" />
+                </atlas-field>
+                <div class="field-label">Small Info</div>
+            </div>
+
+            <div class="field-container">
+                <atlas-field [style]="styles.filled" [color]="Colors.caution" [size]="fieldSize.small">
+                    <input type="text" atlasInput [disabled]="false" [required]="true" placeholder="Placeholder - Caution" />
+                </atlas-field>
+                <div class="field-label">Small Caution</div>
+            </div>
+
+            <div class="field-container">
+                <atlas-field [style]="styles.filled" [color]="Colors.success" [size]="fieldSize.small">
+                    <input type="text" atlasInput [disabled]="false" [required]="true" placeholder="Placeholder - Success" />
+                </atlas-field>
+                <div class="field-label">Small Success</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Filled Medium -->
+    <div class="section">
+        <h3>Size Medium</h3>
+        <div class="field-group">
+            <div class="field-container">
+                <atlas-field [style]="styles.filled" [color]="Colors.neutral" [size]="fieldSize.medium">
+                    <input type="text" atlasInput [disabled]="false" [required]="true" placeholder="Placeholder - Neutral" />
+                </atlas-field>
+                <div class="field-label">Medium Neutral</div>
+            </div>
+
+            <div class="field-container">
+                <atlas-field [style]="styles.filled" [color]="Colors.brand" [size]="fieldSize.medium">
+                    <input type="text" atlasInput [disabled]="false" [required]="true" placeholder="Placeholder - Brand" />
+                </atlas-field>
+                <div class="field-label">Medium Brand</div>
+            </div>
+
+            <div class="field-container">
+                <atlas-field [style]="styles.filled" [color]="Colors.danger" [size]="fieldSize.medium">
+                    <input type="text" atlasInput [disabled]="false" [required]="true" placeholder="Placeholder - Danger" />
+                </atlas-field>
+                <div class="field-label">Medium Danger</div>
+            </div>
+
+            <div class="field-container">
+                <atlas-field [style]="styles.filled" [color]="Colors.info" [size]="fieldSize.medium">
+                    <input type="text" atlasInput [disabled]="false" [required]="true" placeholder="Placeholder - Info" />
+                </atlas-field>
+                <div class="field-label">Medium Info</div>
+            </div>
+
+            <div class="field-container">
+                <atlas-field [style]="styles.filled" [color]="Colors.caution" [size]="fieldSize.medium">
+                    <input type="text" atlasInput [disabled]="false" [required]="true" placeholder="Placeholder - Caution" />
+                </atlas-field>
+                <div class="field-label">Medium Caution</div>
+            </div>
+
+            <div class="field-container">
+                <atlas-field [style]="styles.filled" [color]="Colors.success" [size]="fieldSize.medium">
+                    <input type="text" atlasInput [disabled]="false" [required]="true" placeholder="Placeholder - Success" />
+                </atlas-field>
+                <div class="field-label">Medium Success</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Filled Large -->
+    <div class="section">
+        <h3>Size Large</h3>
+        <div class="field-group">
+            <div class="field-container">
+                <atlas-field [style]="styles.filled" [color]="Colors.neutral" [size]="fieldSize.large">
+                    <input type="text" atlasInput [disabled]="false" [required]="true" placeholder="Placeholder - Neutral" />
+                </atlas-field>
+                <div class="field-label">Large Neutral</div>
+            </div>
+
+            <div class="field-container">
+                <atlas-field [style]="styles.filled" [color]="Colors.brand" [size]="fieldSize.large">
+                    <input type="text" atlasInput [disabled]="false" [required]="true" placeholder="Placeholder - Brand" />
+                </atlas-field>
+                <div class="field-label">Large Brand</div>
+            </div>
+
+            <div class="field-container">
+                <atlas-field [style]="styles.filled" [color]="Colors.danger" [size]="fieldSize.large">
+                    <input type="text" atlasInput [disabled]="false" [required]="true" placeholder="Placeholder - Danger" />
+                </atlas-field>
+                <div class="field-label">Large Danger</div>
+            </div>
+
+            <div class="field-container">
+                <atlas-field [style]="styles.filled" [color]="Colors.info" [size]="fieldSize.large">
+                    <input type="text" atlasInput [disabled]="false" [required]="true" placeholder="Placeholder - Info" />
+                </atlas-field>
+                <div class="field-label">Large Info</div>
+            </div>
+
+            <div class="field-container">
+                <atlas-field [style]="styles.filled" [color]="Colors.caution" [size]="fieldSize.large">
+                    <input type="text" atlasInput [disabled]="false" [required]="true" placeholder="Placeholder - Caution" />
+                </atlas-field>
+                <div class="field-label">Large Caution</div>
+            </div>
+
+            <div class="field-container">
+                <atlas-field [style]="styles.filled" [color]="Colors.success" [size]="fieldSize.large">
+                    <input type="text" atlasInput [disabled]="false" [required]="true" placeholder="Placeholder - Success" />
+                </atlas-field>
+                <div class="field-label">Large Success</div>
+            </div>
+        </div>
+    </div>
+    <h2> Error state</h2>
+    <div class="field-container">
+        <div class="center-align">
+            <atlas-field>
+                <atlas-field-label>Label</atlas-field-label>
+                <atlas-field-prefix> email: </atlas-field-prefix>
+                <input type="text" atlasInput [disabled]="false" [required]="true" placeholder="Type here..." value="Example"
+                    [formControl]="emailFormControl" />
+                <atlas-field-suffix>
+                    <atlas-icon [icon]="'icon-eye-24'" [size]="iconSizes.medium"> </atlas-icon>
+                    <atlas-icon [icon]="'icon-home-24'" [size]="iconSizes.medium"> </atlas-icon>
+                </atlas-field-suffix>
+                <atlas-field-error *ngIf="emailFormControl.hasError('email')">Email is wrong</atlas-field-error>
+                <atlas-field-hint>This is a hint</atlas-field-hint>
+            </atlas-field>
+        </div>
+    </div>
+
+
+    <h2>Email Validation Form</h2>
+    <form [formGroup]="step2PageForm">
+        <atlas-field [fullWidth]="true" [size]="inputSize">
+          <atlas-field-label class="text-helper-neutral">Company email</atlas-field-label>
+          <input formControlName="companyEmail" type="email" atlasInput placeholder="Enter your company email" />
+          @if (step2PageForm.get('companyEmail')?.touched && step2PageForm.get('companyEmail')?.hasError('email')) {
+            <atlas-field-error> Enter a valid email address </atlas-field-error>
+          } @else if (step2PageForm.get('companyEmail')?.touched && step2PageForm.get('companyEmail')?.hasError('required')) {
+            <atlas-field-error> Company email is required. </atlas-field-error>
+          }
+        </atlas-field>
+
+        <hr>
+      
+        <atlas-field [fullWidth]="true" [size]="inputSize">
+          <atlas-field-label class="text-helper-neutral">Confirm company email</atlas-field-label>
+          <input formControlName="confirmCompanyEmail" atlasInput type="email" placeholder="Confirm your company email" />
+        
+          @if (step2PageForm.get('confirmCompanyEmail')?.hasError('email')) {
+            <atlas-field-error> Enter a valid email address </atlas-field-error>
+          } @else if (step2PageForm.get('confirmCompanyEmail')?.hasError('emailMismatch')) {
+            <atlas-field-error> Emails do not match. </atlas-field-error>
+          }
+        </atlas-field>
+      
+        <atlas-button
+          class="margin-top-12"
+          [expand]="true"
+          [disabled]="step2PageForm.invalid"
+        >
+          Continue
+        </atlas-button>
+      
+        <atlas-button
+          class="margin-top-4"
+          [expand]="true"
+        >
+          Back
+        </atlas-button>
+      </form>
+
+    <h2>Email FormControl Disabled</h2>
+    <div class="field-container">
+        <div class="center-align">
+            <atlas-field>
+                <atlas-field-label>Disabled Email</atlas-field-label>
+                <input type="email" atlasInput placeholder="Disabled email" [formControl]="emailFormControlDisabled" />
+                <atlas-field-error *ngIf="emailFormControlDisabled.hasError('email')">Email is wrong</atlas-field-error>
+            </atlas-field>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,91 @@
+<div class="container padding-y-9 padding-x-9 page-bg">
+  <h2>Popover Component Demo</h2>
+  <div class="header">
+    <atlas-theming-helper>
+      <label>Custom theme</label>
+    </atlas-theming-helper>
+  </div>
+  <h2>Popover</h2>
+  <div>
+    <div class="section">
+      <div class="popover-group">
+        <div class="popover-container">
+          <atlas-button atlas-popover (hidePopover)="onHide($event)" [action]="actions.primary">
+            Open Popover
+            <atlas-popover-content
+              [popoverTitle]="popoverTitle"
+              [position]="position"
+              [elevation]="elevation"
+              [action]="actions.default"
+            >
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facilis dicta recusandae fugiat repudiandae
+                earum reprehenderit nobis obcaecati, neque dolorem minima vero facere libero aliquid commodi beatae,
+                corrupti, voluptas labore cumque!
+              </p>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facilis dicta recusandae fugiat repudiandae
+                earum reprehenderit nobis obcaecati, neque dolorem minima vero facere libero aliquid commodi beatae,
+                corrupti, voluptas labore cumque!
+              </p>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facilis dicta recusandae fugiat repudiandae
+                earum reprehenderit nobis obcaecati, neque dolorem minima vero facere libero aliquid commodi beatae,
+                corrupti, voluptas labore cumque!
+              </p>
+            </atlas-popover-content> </atlas-button
+          >`
+        </div>
+      </div>
+    </div>
+  </div>
+  <h2>Popover with datapicker</h2>
+  <div class="section">
+    <div class="popover-group">
+      <div class="popover-container">
+        <atlas-button atlas-popover [action]="actions.primary" (click)="onClickButtonPopover($event)">
+          Open Popover
+          <atlas-popover-content
+            [autoClose]="false"
+            [showCloseButton]="showCloseButton"
+            (hidePopover)="onHide($event)"
+            [popoverTitle]="popoverTitle"
+            [position]="position"
+            [elevation]="elevation"
+            [action]="actions.default"
+          >
+            <atlas-field>
+              <input
+                min="2024-10-01"
+                max="2024-10-10"
+                [Datepicker]="picker"
+                atlasInput
+                placeholder="Choose a date"
+                (dateChange)="onInputChange($event)"
+              />
+              <atlas-field-suffix>
+                <datepicker-toggle [datepicker]="picker"></datepicker-toggle>
+              </atlas-field-suffix>
+              <datepicker #picker> </datepicker>
+            </atlas-field>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facilis dicta recusandae fugiat repudiandae
+              earum reprehenderit nobis obcaecati, neque dolorem minima vero facere libero aliquid commodi beatae,
+              corrupti, voluptas labore cumque!
+            </p>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facilis dicta recusandae fugiat repudiandae
+              earum reprehenderit nobis obcaecati, neque dolorem minima vero facere libero aliquid commodi beatae,
+              corrupti, voluptas labore cumque!
+            </p>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facilis dicta recusandae fugiat repudiandae
+              earum reprehenderit nobis obcaecati, neque dolorem minima vero facere libero aliquid commodi beatae,
+              corrupti, voluptas labore cumque!
+            </p>
+          </atlas-popover-content> </atlas-button
+        >`
+      </div>
+    </div>
+  </div>
+</div>

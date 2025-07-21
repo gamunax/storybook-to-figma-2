@@ -1,0 +1,71 @@
+<div cdkOverlayOrigin class="field-select" (click)="toggle()" #trigger #origin="cdkOverlayOrigin">
+  <div class="field-infix" [ngSwitch]="empty">
+    <input
+      #typeahead
+      *ngIf="typeahead"
+      [style.display]="
+        typeahead && (panelOpen || ((!multiple && !selected) || (multiple && $any(selected).length === 0))) ? 'block' : 'none'
+      "
+      atlasInput
+      class="select-typeahead"
+      tabIndex="0"
+      [placeholder]="placeholder"
+      (click)="_handleInputClick($event)"
+      (focus)="_handleInputFocus()"
+      (blur)="_handleInputBlur()"
+      (input)="_handleInput($event)"
+      [disabled]="disabled"
+    />
+    <ng-container *ngSwitchCase="!typeahead || (typeaheadSelectedOption || (triggerValue && !readonly && clear))">
+      <span class="atlas-select__placeholder">{{placeholder || '\u00A0'}}</span>
+    </ng-container>
+    <ng-container *ngSwitchDefault>
+      <!--<span class="atlas-select__value__text" *ngSwitchCase="typeahead === false && empty === false">!-->
+      <span class="atlas-select__value__text">
+        <span [ngSwitch]="multiple && $any(selected).length > 1 && !readonly">
+          <ng-container *ngSwitchCase="true">{{($any(selected).length + ' ' + (customSelectedText?.length ? customSelectedText : 'selected')) || '\u00A0'}}</ng-container>
+          <ng-container *ngSwitchCase="false">{{triggerValue || '\u00A0'}}</ng-container>
+        </span>
+      </span>
+    </ng-container>
+  </div>
+
+  <div
+    class="field-suffix"
+    *ngIf="typeaheadSelectedOption || (triggerValue && !readonly && clear)" (click)="deselectAll($event)">
+    <atlas-icon
+      [icon]="'icon-remove-circle-24'"
+      [size]="iconSize">
+    </atlas-icon>
+  </div>
+
+  <div
+    class="field-suffix">
+    <atlas-icon
+      [icon]="'icon-chevron-down-24'"
+      [size]="iconSize">
+    </atlas-icon>
+  </div>
+</div>
+
+<ng-template
+  cdkConnectedOverlay
+  cdkConnectedOverlayLockPosition
+  cdkConnectedOverlayHasBackdrop
+  cdkConnectedOverlayBackdropClass="select-backdrop"
+  [cdkConnectedOverlayScrollStrategy]="_scrollStrategy"
+  [cdkConnectedOverlayOrigin]="origin"
+  [cdkConnectedOverlayOpen]="panelOpen"
+  [cdkConnectedOverlayPositions]="_positions"
+  [cdkConnectedOverlayWidth]="_triggerRect?.width + _haloControlInputWrapperPaddingX"
+  [cdkConnectedOverlayWidth]="typeahead ? _haloControlInputWrapperPaddingX + trigger.offsetWidth : (_triggerRect?.width + _haloControlInputWrapperPaddingX)"
+  (backdropClick)="close()"
+  (detach)="close()">
+  <div class="atlas-select-panel box-shadow-elevation-elevated">
+    <div #panel class="atlas-select-panel-content" [ngClass]="panelClass">
+      <atlas-menu [menuOpen]="true">
+        <ng-content></ng-content>
+      </atlas-menu>
+    </div>
+  </div>
+</ng-template>

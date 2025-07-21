@@ -1,0 +1,59 @@
+import { Meta } from '@storybook/addon-docs';
+import InputAnatomy from './assets/input_anatomy.png';
+import Code from './assets/code-brackets.svg';
+import Colors from './assets/colors.svg';
+import Comments from './assets/comments.svg';
+import Direction from './assets/direction.svg';
+import Flow from './assets/flow.svg';
+import Plugin from './assets/plugin.svg';
+import Repo from './assets/repo.svg';
+import StackAlt from './assets/stackalt.svg';
+import { BADGES } from '.storybook/constants';
+
+<Meta title="Adopters/Components/Field/UX Guide" parameters={{ badges: [ BADGES.BETA ], options: { isToolshown: true } }}/>
+
+# Input Fields
+Text fields let users enter and edit text. The component is a complete form control including a label, input, and help text. It comes with three variants: outlined (default), filled, and standard.
+
+## Anatomy
+
+<img src={InputAnatomy} alt="Stories" width="600"/>
+
+
+
+## Best Practices
+
+The visual impact of outlined text fields is less than that of filled text fields. Their reduced emphasis simplifies layouts in places like forms, where many text fields are grouped together.
+
+The visual impact of filled text fields is greater than outlined text fields, so they stand out when surrounded by other components and content.
+
+User input can be displayed in text fields in the following ways:
+
+- **Single line text fields** display only one line of text
+- **Multi-line text fields** grow to accommodate multiple lines of text
+- **Text areas** are fixed-height fields
+
+### **Label and Helper Text**
+
+There is no need to label a text field if the field's purpose is indicated by a separate, independent label.
+
+Helper text provides additional guidance about the input field, such as how to use the input field. It should only take up a single line, being persistently visible or visible only on focus.
+
+When appropriate, replace helper text with error text for text fields that validate their content (such as password fields). By replacing helper text with error text, new lines of text are prevented from being introduced into a layout, therefore bumping content to fit it.
+
+- If only one error is possible, error text describes how to avoid the error
+- If multiple errors are possible, error text describes how to avoid the most likely error
+
+To indicate that a field is required, display an asterisk (*) next to the label text and mention near the form that asterisks indicate required fields.
+
+- If some fields are required, indicate all required ones
+- If most fields are required, indicate optional fields by displaying the word “optional” in parentheses next to the label text
+- If required text is colored, that color should also be used for the asterisk
+
+In read-only text fields, the user cannot edit the prefilled text. Read-only text fields are styled the same as regular text fields but are clearly labeled as read-only.
+
+## Behavior
+
+### Scaling and adaptation
+
+Apply scalable container dimensions to text fields as layouts adjust for larger screens and form factors. When layouts adapt to larger screens and form factors, use flexible container dimensions for text fields. As layouts scale, set minimum and maximum values for margins, padding, and container dimensions so that typography fits better.

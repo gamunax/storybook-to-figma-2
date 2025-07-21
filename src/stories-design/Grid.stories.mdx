@@ -1,0 +1,176 @@
+import { Meta } from '@storybook/addon-docs';
+import Code from 'projects/cdk/assets/icons/code-brackets.svg';
+import Colors from 'projects/cdk/assets/icons/colors.svg';
+import Comments from 'projects/cdk/assets/icons/comments.svg';
+import Direction from 'projects/cdk/assets/icons/direction.svg';
+import Flow from 'projects/cdk/assets/icons/flow.svg';
+import Plugin from 'projects/cdk/assets/icons/plugin.svg';
+import Repo from 'projects/cdk/assets/icons/repo.svg';
+import StackAlt from 'projects/cdk/assets/icons/stackalt.svg';
+import { BADGES } from '.storybook/constants';
+
+<Meta title="Adopters/Design/Grid" parameters={{ badges: [ BADGES.STABLE ], options: { isToolshown: true } }}/>
+
+<style>
+    {`
+    .outer-table {
+            width: 100%;
+        }
+    `}
+</style>
+
+# Grid System
+
+Atlas's Grid is entirely customizable to fit the breakpoints and spacing you need to build your application.
+
+## Get Started
+
+Use the grid by including the generate-grid() mixin in your project's main scss file.
+
+```css
+@include generate-grid();
+```
+
+
+## Default Configuration
+
+These are the out of the box values. Simply calling the mixin without changing params loads this grid setup:
+
+<table class="outer-table">
+<tbody>
+<tr><th>Properties </th><th>Breakpoints</th></tr>
+<tr><td>
+
+| Property | Default Value |
+|--|--|
+| max-width | 1184px |
+| columns | 12 |
+| gutter | 19px |
+
+</td><td>
+
+| Breakpoint | Default Value |
+|--|--|
+| xsmall | 0 |
+| small  |  375px |
+| medium |  768px |
+| large  | 1280px |
+| xlarge | 1440px |
+
+</td></tr> 
+</tbody>
+</table>
+
+
+## The Basics
+
+
+Use the container class to contain your .row and column structure. This uses $max-width set by the `generate-grid` mixin. For full width, simply remove the outer `.container` div. The columns align up to the number of columns set in $grid-columns.
+
+```html
+<div class="container">
+    <div class="row">
+        <div class="column">
+            ...
+        </div>
+    </div>
+</div>
+```
+
+
+
+## Breakpoints
+
+
+Breakpoints are used throughout the system for column sizing, as well as in the respond-to and from media query helpers. In our core, the `$halo-breakpoints` map is flagged as a `!default` value only. Add this map to your `style.scss` to customize keys or breakpoint values.
+
+```css
+$atlas-breakpoints: (
+    xsmall : 0,
+    small : 375px,
+    medium : 768px,
+    large : 1280px,
+    xlarge : 1440px,
+);
+```
+
+
+## Utils
+
+
+#### Responsive Columns
+
+Our columns can be set to different values for each breakpoint. These each take up 1/3rd of the total column size (12 / 4) on medium up and are full width and stacked (12 / 12) on small up.
+
+```html
+<div class="row">
+    <div class="column medium-4 small-12">...</div>
+    <div class="column medium-4 small-12">...</div>
+    <div class="column medium-4 small-12">...</div>
+</div>
+```
+
+Using the breakpoint columnn classes will set the columns to use X columns at Y breakpoint and up. Multiple can be used together to define how the same column reacts to different breakpoints.
+
+#### Media Queries
+
+Our media queries are simple to use once along side the breakpoint mappings. Using the respond-to mixin creates CSS at Y breakpoint and DOWN.
+
+```css
+@include respond-to(breakpoint)
+```
+
+Using the respond-from mixin creates CSS at Y breakpoint and UP.
+
+```css
+@include respond-from(breakpoint)
+```
+
+
+#### Column offset
+
+Each column can directly be offset by a column value for each breakpoint.
+
+```css
+.breakpoint-up-offset-X
+```
+
+Using the offset-up classes creates an X column offset at Y breakpoint and UP.
+
+```css
+.breakpoint-down-offset-X
+```
+
+Using the offset-down classes creates an X column offset at Y breakpoint and DOWN.
+
+#### Hide content
+
+Use our breakpoint hiding classes to hide a div on a particular breakpoint.
+
+```css
+.hide-breakpoint-up
+```
+
+Using the offset-up classes hides the node at Y breakpoint and UP.
+
+```css
+.hide-breakpoint-down
+```
+
+Using the offset-down classes hides the node at Y breakpoint and DOWN.
+
+#### Align content
+
+```css
+.breakpoint-align-center
+```
+
+Using the align class on a column aligns it's contents at Y breakpoint and UP.
+
+#### Column utils
+
+```css
+.shrink
+```
+
+Using the shrink class sets the column to auto sizing based on it's contents using flex auto.

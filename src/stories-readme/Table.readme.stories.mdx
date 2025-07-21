@@ -1,0 +1,81 @@
+import { Meta, ArgsTable } from '@storybook/addon-docs';
+import { TableComponent } from 'atlas-table'
+
+<Meta title="Adopters/Components/Table/Readme" 
+parameters={{
+    options: {
+      isToolshown: true
+    },
+  }}
+ />
+
+# Table
+
+Table is a component that displays a list of items in a tabular format. It is a flexible component that can be used to display data in a variety of ways.
+
+## Usage
+
+To get order functionality on tables, please use the sort feature. This approach is necessary to ensure compatibility with the latest version of the component.
+
+Import dependencies for the library into your ```app.module.ts``` file
+
+```ts
+
+import {  TableModule } from 'atlas-table';
+import {  CdkModule } from 'atlas-cdk';
+
+```
+
+**Check HTML code: #header, columnDef, sort:header.sortOption**
+
+```html
+<atlas-table [dense]="dense">
+  <thead atlas-table-header #header>
+    <tr atlas-table-row>
+      <th
+        atlas-table-header-cell
+        *ngFor="let col of columnDef"
+        [columnDef]="col" [collection]="'arrows'" [icon]="'arrow-up'" iconSize="xsmall">>
+        {{ col.displayLabel }}
+      </th>
+    </tr>
+  </thead>
+  <tbody atlas-table-body>
+    <tr
+      atlas-table-row
+      *ngFor="let row of rows | sort:header.sortOption"
+      [border]="border"
+      [isSelected]="isSelected"
+    >
+      <td atlas-table-cell [cellType]="cellType" [align]="align">
+        {{ row.age }}
+      </td>
+      ...
+```
+
+**Check TS code: ColumnDef is required in the new version.**
+
+```ts
+import { ColumnDef, Sortable } from 'atlas-table';
+
+columnDef: ColumnDef[] = 
+  [ { displayLabel: ‘name’,  fieldKey: ‘name’, sortable: true },
+    { displayLabel: 'description', fieldKey: 'descr',
+      sortable: { direction: 'desc', sortOnLoad: false } as Sortable },
+    { displayLabel: 'age', fieldKey: 'age', sortable: true }
+  ]
+```
+# Logic for Table Example
+This is an example of a table with a row expansion logic:
+
+```ts
+const expandedRowIndexes = new Set&lt;number&gt;();
+function toggleRowAccordion(i: number) {
+  if (expandedRowIndexes.has(i)) {
+    expandedRowIndexes.delete(i);
+  } else {
+    expandedRowIndexes.add(i);
+  }
+}
+```
+        

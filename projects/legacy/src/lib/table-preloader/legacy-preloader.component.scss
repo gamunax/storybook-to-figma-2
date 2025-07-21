@@ -1,0 +1,21 @@
+.legacy-table-preloader {
+  .legacy-table-preloader__item {
+    display: inline-block;
+    border-radius: 4px;
+    background: #e6e6e6;
+    opacity: 1;
+  }
+  .legacy-table-preloader__table {
+    thead {
+      border-bottom: none;
+      .legacy-table-preloader__item {
+        width: 80%;
+        height: 10px;
+      }
+    }
+    tbody .legacy-table-preloader__item {
+      width: 100%;
+      height: 8px;
+    }
+  }
+}

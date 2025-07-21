@@ -1,0 +1,295 @@
+////
+/// Legacy Dropdown
+/// Use as reference only for migration from MOSUI to Atlas
+/// @group dropdowns
+////
+
+/// Dropdown base default color
+/// @type Color
+$legacy-dropdown-color: #000 !default;
+
+/// Dropdown base default background-color
+/// @type Color
+$legacy-dropdown-background-default-color: #fff !default;
+
+/// Dropdown base dark background-color
+/// @type Color
+$legacy-dropdown-background-dark-color: #f4f4f4 !default;
+
+/// Dropdown base default z-index
+/// @type Number
+$legacy-dropdown-z-index: 60;
+
+/// Dropdown base default margin
+/// @type Number
+$legacy-dropdown-margin: 0;
+
+/// Dropdown base default padding
+/// @type Number
+$legacy-dropdown-link-padding: 16px;
+
+/// Dropdown base default font size
+/// @type Number
+$legacy-dropdown-font-size: 16px;
+
+/// Dropdown base default text-transform
+/// @type Keyword
+$legacy-dropdown-text-transform: none;
+
+/// Dropdown base default border radius
+/// @type Number
+$legacy-dropdown-border-radius: 0.1875rem;
+
+/// Dropdown base default transition
+/// @type String
+$legacy-dropdown-transition: all 0.3s;
+
+/// Dropdown base default min-width
+/// @type Number
+$legacy-dropdown-min-width: 12.5rem;
+
+/// Dropdown base default max-width
+/// @type Number
+$legacy-dropdown-max-width: 15.625rem;
+
+/// Dropdown base default text-align
+/// @type Keyword
+$legacy-dropdown-text-align: left;
+
+/// Dropdown base default display
+/// @type Keyword
+$legacy-dropdown-display: block;
+
+/// Dropdown base default shadow depth
+/// @type Number
+$legacy-dropdown-shadow-depth: 2;
+
+/// Dropdown base default link color
+/// @type Color
+$legacy-dropdown-link-font-color: #005c96 !default;
+
+/// Dropdown base default border bottom
+/// @type String
+$legacy-dropdown-link-border: 1px solid transparent !default;
+
+/// Dropdown base default link font-size
+/// @type Number
+$legacy-dropdown-link-font-size: 16px;
+
+/// Dropdown base default link line-height
+/// @type Number
+$legacy-dropdown-link-line-height: 1.25;
+
+/// Dropdown base default link focus background color
+/// @type Color
+$legacy-dropdown-link-focus-background-color: rgba(0, 92, 150, 0.92);
+
+/// Dropdown base default link hover background color
+/// @type Color
+$legacy-dropdown-link-hover-background-color: #fff !default;
+
+/// Dropdown base default link icon margin
+/// @type Number
+$legacy-dropdown-link-icon-margin: 0 6px 0 0;
+
+/// Dropdown base default subtitle font color
+/// @type Color
+$legacy-dropdown-link-subtitle-font-color: #999999 !default;
+
+/// Dropdown base default subtitle font-size
+/// @type Number
+$legacy-dropdown-link-subtitle-font-size: 12px;
+
+/// Dropdown base default subtitle line-height
+/// @type Number
+$legacy-dropdown-link-subtitle-line-height: 1.25;
+
+/// Dropdown base default subtitle margin
+/// @type Number
+$legacy-dropdown-link-subtitle-margin: 0 0 6px 0;
+
+.legacy-c-dropdown {
+  box-shadow: 0 0 4px 0 rgba(black, 0.02), 0 1px 4px 0 rgba(black, 0.1), 0 0 6px 0 rgba(black, 0.06);
+  display: $legacy-dropdown-display;
+  min-width: $legacy-dropdown-min-width;
+  max-width: $legacy-dropdown-max-width;
+  text-align: $legacy-dropdown-text-align;
+  margin: $legacy-dropdown-margin;
+  border-radius: $legacy-dropdown-border-radius;
+  font-size: $legacy-dropdown-font-size;
+  transition: $legacy-dropdown-transition;
+  text-transform: $legacy-dropdown-text-transform;
+  color: $legacy-dropdown-color;
+  float: left;
+  position: fixed;
+  z-index: $legacy-dropdown-z-index;
+  // Default background-color
+  background-color: $legacy-dropdown-background-default-color;
+  // Dark background-color
+  &--dark {
+    background-color: $legacy-dropdown-background-dark-color;
+  }
+  // If maxHeight is set
+  &--max-height {
+    overflow-y: auto;
+  }
+
+  &__container {
+    display: inline-block;
+    position: relative;
+    width: auto;
+    &--expanded {
+      display: block;
+    }
+  }
+
+  &--fabMenu {
+    background-color: transparent;
+    min-width: 0;
+    max-width: 100%;
+    width: auto;
+    box-shadow: none;
+  }
+
+  &--open {
+    opacity: 1;
+    animation-duration: 0.25s;
+    animation-name: open-it;
+
+    &-reverse {
+      opacity: 1;
+      animation-duration: 0.25s;
+      animation-name: reverse-open;
+    }
+  }
+
+  &--close {
+    opacity: 0;
+    animation-duration: 0.25s;
+    animation-name: close-it;
+
+    &-reverse {
+      opacity: 0;
+      animation-duration: 0.25s;
+      animation-name: reverse-close;
+    }
+  }
+
+  @keyframes open-it {
+    from {
+      opacity: 0;
+      transform: translateY(-5%);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0%);
+    }
+  }
+
+  @keyframes close-it {
+    from {
+      opacity: 1;
+      transform: translateY(0%);
+    }
+
+    to {
+      opacity: 0;
+      transform: translateY(-5%);
+    }
+  }
+
+  @keyframes reverse-open {
+    from {
+      opacity: 0;
+      transform: translateY(5%);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0%);
+    }
+  }
+
+  @keyframes reverse-close {
+    from {
+      opacity: 1;
+      transform: translateY(0%);
+    }
+
+    to {
+      opacity: 0;
+      transform: translateY(5%);
+    }
+  }
+
+  &__form-element {
+    padding: $legacy-dropdown-link-padding;
+  }
+
+  // Dropdown subtitle
+  &--subtitle {
+    display: block;
+    color: $legacy-dropdown-link-subtitle-font-color;
+    font-size: $legacy-dropdown-link-subtitle-font-size;
+    line-height: $legacy-dropdown-link-subtitle-line-height;
+    margin: $legacy-dropdown-link-subtitle-margin;
+  }
+
+  // Dropdown subtext
+  &--subtext {
+    display: block;
+    color: $legacy-dropdown-link-font-color;
+    font-size: $legacy-dropdown-link-font-size;
+    line-height: $legacy-dropdown-link-line-height;
+  }
+
+  &__list {
+    padding: 0 !important;
+  }
+
+  ul {
+    list-style-type: none;
+    margin: 0;
+
+    li > a {
+      display: block;
+      color: $legacy-dropdown-link-font-color;
+      padding: $legacy-dropdown-link-padding;
+      text-decoration: none;
+      border-bottom: $legacy-dropdown-link-border;
+      font-size: $legacy-dropdown-link-font-size;
+      line-height: $legacy-dropdown-link-line-height;
+
+      &:focus,
+      &:active {
+        background-color: $legacy-dropdown-link-focus-background-color;
+      }
+
+      &:hover {
+        background-color: $legacy-dropdown-link-hover-background-color;
+      }
+
+      atlas-icon {
+        position: relative;
+        top: -2px;
+        margin: $legacy-dropdown-link-icon-margin;
+      }
+    }
+  }
+
+  &--fabMenu {
+    background-color: transparent;
+    scrollbar-width: thin;
+    scrollbar-color: transparent transparent;
+    ul {
+      button {
+        margin: 8px auto;
+      }
+      li > a {
+        background-color: transparent;
+        text-align: center;
+      }
+    }
+  }
+}

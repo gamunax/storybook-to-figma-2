@@ -1,0 +1,93 @@
+<hr>
+<h1>Field component tests</h1>
+<hr><br>
+
+<div class="container">
+    <!-- simple input field variants-->
+    <h1 class='typographyStyles-display-medium'> Input Field </h1>
+    <atlas-field-label class='typographyStyles-heading-small' >Without Validations</atlas-field-label>
+    <br/>
+    <br/>
+  
+      <!-- Outlined variant -->
+    <div class="row">
+      <div class="column"> <!-- style='max-width: 380px'-->
+        <atlas-field-label class='typographyStyles-heading-small' >Outlined Column</atlas-field-label>
+        <br/>
+        <atlas-field *ngFor="let item of items;"
+          [action]="item.action"  
+          [hideRequiredMarker]="item.hideRM" 
+          [size]="item.size" 
+          [variant]="item.variant">
+          <atlas-field-label ></atlas-field-label>
+          <input type="text" atlasInput [required]="true" placeholder="{{item.placeholder}}"/>
+          <br/>
+        </atlas-field>
+      </div>
+  
+      <!-- Filled Variant -->
+      <div class="column"> <!-- style='max-width: 380px'-->
+        <atlas-field-label class='typographyStyles-heading-small'> Filled Column </atlas-field-label>
+        <br/>
+        <atlas-field *ngFor="let item of items1;"
+          [action]="item.action"  
+          [hideRequiredMarker]="item.hideRM" 
+          [size]="item.size" 
+          [variant]="item.variant">
+          <atlas-field-label ></atlas-field-label>
+          <input type="text" atlasInput [required]="true" placeholder="{{item.placeholder}}"/>
+          <br/>
+        </atlas-field>    
+      </div>
+    </div>
+  <br/>
+  <br/>
+  
+  <atlas-field-label class='typographyStyles-heading-small' >With Validations</atlas-field-label>
+  <br/>
+  <br/>
+  <div class="row">
+    <div class="column">
+      <atlas-field *ngFor="let item of items2;"
+        [action]="item.action" 
+        [size]="item.size" 
+        [variant]="item.variant"
+        [hideRequiredMarker]="item.hideRM">
+        <atlas-field-label ></atlas-field-label> 
+        <atlas-field-prefix>
+          <atlas-icon
+            [icon]="item.icon"
+            [size]="item.isize">
+          </atlas-icon>
+        </atlas-field-prefix>
+        <input type="text" atlasInput [required]="true" placeholder="{{item.placeholder}}" [formControl]="item.emailFC"/>
+        <atlas-field-error *ngIf="item.emailFC.hasError('email')">Email is wrong</atlas-field-error>
+        <atlas-field-hint>This is a {{item.hint}} validation input field, write a wrong email to get an error</atlas-field-hint>
+        <br/>
+      </atlas-field>
+    </div>
+      
+      
+    <div class="column">
+      <atlas-field *ngFor="let item of items3;"
+        [action]="item.action" 
+        [size]="item.size" 
+        [variant]="item.variant"
+        [hideRequiredMarker] = "item.hideRM">
+        <atlas-field-label ></atlas-field-label>
+        <atlas-field-prefix>
+          <atlas-icon
+            [icon]="item.icon"
+            [size]="item.isize">
+          </atlas-icon>
+        </atlas-field-prefix>
+        <input type="text"  atlasInput [required]="true" placeholder="{{item.placeholder}}" [formControl]="item.emailFC"/>
+        <atlas-field-error *ngIf="item.emailFC.hasError('email')">Email is wrong</atlas-field-error>
+        <atlas-field-hint>This is a {{item.hint}} validation input field, write a wrong email to get an error</atlas-field-hint>
+      </atlas-field>
+      <br/>
+    </div>
+  </div>
+  <br/>
+  <br/>
+</div> 

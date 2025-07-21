@@ -1,0 +1,155 @@
+// Shadows
+// ----------------------------------------------------------------------------------------------------
+
+/// Add shadows to anything
+///
+/// A mixin that adds depth to elements according to the Google Material Design spec: http://www.google.com/design/spec/layout/layout-principles.html#layout-principles-dimensionality
+///
+/// [horizontal offset] [vertical offset] [blur radius] [optional spread radius] [color]
+///
+/// @param {Number} $level - Sets the depth level of the shadow for the element you are applying to
+/// @example scss
+///		@include set-box-shadow box-shadow(1);
+@mixin set-box-shadow ($level: 1, $shadow: #1E2022) {
+  @if $level == 1 {
+    box-shadow:
+      0 0 20px 0 rgba($shadow, 0.12),
+      0 0 6px 0 rgba($shadow, 0.12),
+  } @else if $level == 2 {
+    box-shadow:
+      0 0 12px 0 rgba($shadow, 0.1),
+      0 0 4px 0 rgba($shadow, 0.1),
+  } @else if $level == 3 {
+    box-shadow:
+      0 0 4px 0 rgba($shadow, 0.08),
+      0 0 4px 0 rgba($shadow, 0.08),
+  }
+}
+
+//-------------------------------------------------------------------------------------------
+// Mixins deprecated from Merceros for migration uses only
+//-------------------------------------------------------------------------------------------
+
+// Placeholder Text [DEPRECATED]
+// ------------------------------------------------------------------------------------------
+
+@mixin input-placeholder {
+  &.placeholder {
+    @content;
+  }
+  &:-moz-placeholder {
+    @content;
+  }
+  &::-moz-placeholder {
+    @content;
+  }
+  &:-ms-input-placeholder {
+    @content;
+  }
+  &::-webkit-input-placeholder {
+    @content;
+  }
+}
+
+// Font Declaration [DEPRECATED]
+// ------------------------------------------------------------------------------------------
+
+/// Defines a custom font face
+///
+/// @param {Font} $font-family - This is the font family of the custom font
+/// @param {String} $file-path - Path to font file
+/// @param {String} $weight [normal] - Default font weight
+/// @param {String} $style [normal] - Default font style
+/// @example scss
+///		@include font-face($font-regular-family, $font-regular-file-path, $font-regular-weight, $font-regular-style);
+@mixin set-font-face($font-family, $file-path, $weight: normal, $style: normal) {
+  @font-face {
+    font-family: '#{$font-family}';
+    src: url('#{$file-path}.woff') format('woff');
+    font-weight: $weight;
+    font-style: $style;
+  }
+}
+
+// Placeholder Text [DEPRECATED]
+// ------------------------------------------------------------------------------------------
+
+/// Defines a placeholder text color
+///
+/// @param {Color} $color - Placeholder text color
+/// @example scss
+///		@include placeholder(color(black));
+@mixin placeholder($placeholder-text-color) {
+  &::placeholder {
+    color: $placeholder-text-color;
+  }
+}
+
+// Text Overflow [DEPRECATED]
+// ------------------------------------------------------------------------------------------
+
+/// Adds text overflow to inline-block or block elements
+///
+/// @example scss
+///		@include text-overflow();
+@mixin text-overflow {
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+// Triangles [DEPRECATED]
+// ------------------------------------------------------------------------------------------
+
+/// Creates a CSS triangle, which can be used for dropdown arrows, dropdown pips, and more. Use this mixin inside a `&::before` or `&::after` selector, to attach the triangle to an existing element.
+///
+/// @param {Number} $triangle-size - Width of the triangle.
+/// @param {Color} $triangle-color - Color of the triangle.
+/// @param {Keyword} $triangle-direction - Direction the triangle points. Can be `up`, `right`, `down`, or `left`.
+@mixin css-triangle($triangle-size: 5px, $triangle-color: var(--on-primary), $triangle-direction: up) {
+  display: block;
+  width: 0;
+  height: 0;
+  border: inset $triangle-size;
+  content: '';
+
+  @if ($triangle-direction == down) {
+    border-bottom-width: 0;
+    border-top-style: solid;
+    border-color: $triangle-color transparent transparent;
+  }
+  @if ($triangle-direction == up) {
+    border-top-width: 0;
+    border-bottom-style: solid;
+    border-color: transparent transparent $triangle-color;
+  }
+  @if ($triangle-direction == right) {
+    border-right-width: 0;
+    border-left-style: solid;
+    border-color: transparent transparent transparent $triangle-color;
+  }
+  @if ($triangle-direction == left) {
+    border-left-width: 0;
+    border-right-style: solid;
+    border-color: transparent $triangle-color transparent transparent;
+  }
+}
+
+/// Adds a downward-facing triangle as a background image to an element. The image is formatted as an SVG, making it easy to change the color. Because Internet Explorer doesn't support encoded SVGs as background images, a PNG fallback is also included.
+/// There are two PNG fallbacks: a black triangle and a white triangle. The one used depends on the lightness of the input color.
+///
+/// @param {Color} $color [$black] - Color to use for the triangle.
+@mixin background-triangle($color: $black) {
+  $rgb: 'rgb%28#{round(red($color))}, #{round(green($color))}, #{round(blue($color))}%29';
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' version='1.1' width='32' height='24' viewBox='0 0 32 24'><polygon points='0,0 32,0 16,24' style='fill: #{$rgb}'></polygon></svg>");
+  @media screen and (min-width: 0\0) {
+    @if lightness($color) < 60% {
+      // White triangle
+      background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAYCAYAAACbU/80AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAIpJREFUeNrEkckNgDAMBBfRkEt0ObRBBdsGXUDgmQfK4XhH2m8czQAAy27R3tsw4Qfe2x8uOO6oYLb6GlOor3GF+swURAOmUJ+RwtEJs9WvTGEYxBXqI1MQAZhCfUQKRzDMVj+TwrAIV6jvSUEkYAr1LSkcyTBb/V+KYfX7xAeusq3sLDtGH3kEGACPWIflNZfhRQAAAABJRU5ErkJggg==');
+    } @else {
+      // Black triangle
+      background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAYCAYAAACbU/80AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAMBJREFUeNrEllsOhCAMRVszC9IlzU7KCmVHTJsoMWYMUtpyv9BgbuXQB5ZSdgBYYY4ycgBivk8KYFsQMfMiTTBP4o3nUzCKzOabLJbLy2/g31evGkAginR4/ZegKH5qX3bJCscA3t0x3kgO5tQFyhhFf50xRqFLbyMUNJQzgyjGS/wgCpvKqkRBpuWrE4V9d+1E4dPUXqIg107SQOE/2DRQxMwTDygIInVDET9T3lCoj/6j/VCmGjZOl2lKpZ8AAwDQP7zIimDGFQAAAABJRU5ErkJggg==');
+    }
+  }
+}

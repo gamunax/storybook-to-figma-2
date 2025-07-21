@@ -1,0 +1,45 @@
+import { Meta } from '@storybook/addon-docs';
+import Code from './assets/code-brackets.svg';
+import Colors from './assets/colors.svg';
+import Comments from './assets/comments.svg';
+import Direction from './assets/direction.svg';
+import Flow from './assets/flow.svg';
+import Plugin from './assets/plugin.svg';
+import Repo from './assets/repo.svg';
+import StackAlt from './assets/stackalt.svg';
+import { BADGE } from '@geometricpanda/storybook-addon-badges';
+import { withTheming } from '../../.storybook/halo-theming-addon';
+import { ThemingServiceGlobal, defaultConfig } from 'atlas-cdk';
+import { Source, Preview  } from '@storybook/addon-docs';
+import { HoverableCode } from '../../.storybook/hoverable-code';
+
+<Meta title="Adopters/Components/Switch/UX Guide" parameters={{ badges: [ BADGE.BETA ], options: { isToolshown: true } }} decorators={[withTheming]} />
+
+# Switch
+
+The Switch component display a toggle with label.
+
+## Anatomy
+
+1. Switch
+
+## Usage
+
+The Switch component is a component to display a toggle with label label.
+
+# Best Practices
+
+### Guiding
+
+--
+
+### Consistent
+
+--
+
+# Accessibility
+
+Some users cannot recognize color. Use the following color tokens for the best readability.
+
+- Primary/contrast colors for Switch components on primary/main colors.
+- Secondary/contrast colors for Switch components on secondary/main colors.

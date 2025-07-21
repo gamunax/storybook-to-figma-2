@@ -1,0 +1,14 @@
+<div class="custom-snackbar-wrapper">
+  <div class="custom-snackbar-wrapper-close-icon" (click)="closeSnackbar()">
+    <atlas-icon icon="icon-remove-24"></atlas-icon>
+  </div>
+  <div *ngIf="title" class="typography-desktop-title-3 bold-font">{{ title }}</div>
+  <p *ngIf="message">
+    <span class="typography-desktop-body-2" [innerHTML]="message"></span>&nbsp;<a
+      (click)="onClick()"
+      *ngIf="label"
+      class="typography-desktop-body-2"
+      >{{ label }}</a
+    >&nbsp;<span class="typography-desktop-body-2">{{ conclusion }}</span>
+  </p>
+</div>

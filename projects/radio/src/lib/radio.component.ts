@@ -15,11 +15,13 @@ import {
   HostBinding,
   Inject,
   Input,
+  OnChanges,
   OnDestroy,
   OnInit,
   Optional,
   Output,
   QueryList,
+  SimpleChanges,
   ViewChild,
   ViewEncapsulation,
 } from '@angular/core';
@@ -37,7 +39,7 @@ export class RadioButtonChange {
     /** The BrighterRadioButtonComponent that emits the change event. */
     public source: RadioComponent,
     /** The value of the BrighterRadioButtonComponent. */
-    public value: any
+    public value: any,
   ) {}
 }
 /**
@@ -48,10 +50,10 @@ export class RadioButtonChange {
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
   template: `
-  <div #radios *ngIf="_radios.length > 0" [class.atlas-radio-group--inline]="inline">
-    <ng-content></ng-content>
-  </div>
- `,
+    <div #radios *ngIf="_radios.length > 0" [class.atlas-radio-group--inline]="inline">
+      <ng-content></ng-content>
+    </div>
+  `,
   styleUrls: ['./radio.component.scss'],
   providers: [
     {
@@ -63,7 +65,7 @@ export class RadioButtonChange {
   host: {
     role: 'radiogroup',
     class: 'brighter-radio-group',
-    '[attr.aria-label]': 'ariaLabel'
+    '[attr.aria-label]': 'ariaLabel',
   },
 })
 export class RadioGroupComponent implements AfterContentInit, ControlValueAccessor {
@@ -76,14 +78,14 @@ export class RadioGroupComponent implements AfterContentInit, ControlValueAccess
   /**
    * @deprecated This property is deprecated and will be removed in a future version.
    * Use `color` instead.
-   * Set the radio action 
+   * Set the radio action
    */
-   @Input() action: Actions;
+  @Input() action: Actions;
 
   /**
-   * Set the radio color 
+   * Set the radio color
    */
-   @Input() color: Colors = Colors.brand;
+  @Input() color: Colors = Colors.brand;
 
   /**
    * Event emitted when the group value changes.
@@ -180,10 +182,7 @@ export class RadioGroupComponent implements AfterContentInit, ControlValueAccess
   }
   private _required = false;
 
-  constructor(
-    private _changeDetectorRef: ChangeDetectorRef,
-    private themingService: ThemingService
-  ) {
+  constructor(private _changeDetectorRef: ChangeDetectorRef, private themingService: ThemingService) {
     this.themingService.applyConfig(config);
   }
 
@@ -208,8 +207,8 @@ export class RadioGroupComponent implements AfterContentInit, ControlValueAccess
     // possibly be set by NgModel on BrighterRadioGroupComponent, and it is possible that the OnInit of the
     // NgModel occurs *after* the OnInit of the BrighterRadioGroupComponent.
     this._isInitialized = true;
-    this._radios?.forEach(child => { 
-      child.setCurrentAction((this.action ? this.action : this.color));
+    this._radios?.forEach((child) => {
+      child.setCurrentAction(this.action ? this.action : this.color);
     });
   }
 
@@ -310,7 +309,7 @@ export class RadioGroupComponent implements AfterContentInit, ControlValueAccess
   }
 
   clear() {
-    this._radios.forEach(radio => radio.unCheck());
+    this._radios.forEach((radio) => radio.unCheck());
     this._changeDetectorRef.markForCheck();
   }
 }
@@ -321,10 +320,14 @@ export class RadioGroupComponent implements AfterContentInit, ControlValueAccess
   selector: 'atlas-radio',
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
-  template: `
-  <label [for]="inputId" class="atlas-radio" [ngClass]="[labelTypography, labelCustomClass ? labelCustomClass : '']">
-    <input #input  
-      [name]="radioName" 
+  template: ` <label
+    [for]="inputId"
+    class="atlas-radio"
+    [ngClass]="[labelTypography, labelCustomClass ? labelCustomClass : '']"
+  >
+    <input
+      #input
+      [name]="radioName"
       [id]="inputId"
       [ngClass]="radioCustomClass ? radioCustomClass : ''"
       [checked]="checked"
@@ -339,18 +342,32 @@ export class RadioGroupComponent implements AfterContentInit, ControlValueAccess
       (change)="_onInputChange($event)"
       (focus)="_onInputFocus()"
       (blur)="_onInputBlur()"
-      type="radio" />
-    <span class="radio-container"
-    [ngClass]="[(action ? action : color) ? 'radio-' + (action ? action : color) : '', disabled ? 'radio-disabled' : '']"> 
+      type="radio"
+    />
+    'aaaxsxa'
+    {{action}}
+    {{color}}
+    {{currentIcon}}
+
+    <span
+      class="radio-container"
+      [ngClass]="[
+        (action ? action : color) ? 'radio-' + (action ? action : color) : '',
+        disabled ? 'radio-disabled' : ''
+      ]"
+    >
+
       <atlas-icon
-      [icon]="currentIcon"
-      [ngClass]="disabled ? 'radio-disabled' : ''"
-      [size]="size"
-      collection="user-interface-solid"
-      role="img"></atlas-icon>
-      <div *ngIf="!disabled" class="radio-hover-indicator"> </div>
-     </span>
-     <span [class.radio-disabled]="disabled" [class.radio-label]="!disabled">
+        [icon]="currentIcon"
+        [ngClass]="disabled ? 'radio-disabled' : ''"
+        [size]="size"
+        collection="user-interface-solid"
+        role="img"
+      ></atlas-icon>
+     
+      <div *ngIf="!disabled" class="radio-hover-indicator"></div>
+    </span>
+    <span [class.radio-disabled]="disabled" [class.radio-label]="!disabled">
       <ng-content></ng-content>
     </span>
   </label>`,
@@ -368,7 +385,7 @@ export class RadioGroupComponent implements AfterContentInit, ControlValueAccess
     '[class.radio-disabled]': 'disabled',
   },
 })
-export class RadioComponent implements OnInit, AfterViewInit, OnDestroy {
+export class RadioComponent implements OnInit, AfterViewInit, OnChanges, OnDestroy {
   /** @internal */
   private _uniqueId = `brighter-radio-button-${++nextUniqueId}`;
 
@@ -392,18 +409,18 @@ export class RadioComponent implements OnInit, AfterViewInit, OnDestroy {
   /** @internal */
   @HostBinding('attr.tabindex') get tabIndex(): string {
     return this.disabled ? '-1' : `${this.tabindex}`;
-  };
-  
+  }
+
   /**
    * @deprecated This property is deprecated and will be removed in a future version.
    * Use `color` instead.
-   * Set the radio action 
+   * Set the radio action
    */
   @Input() action: Actions;
 
   /**
-   * Set the radio color 
-  */
+   * Set the radio color
+   */
   @Input() color: Colors = Colors.brand;
 
   /** Create a custom class that gets added to the radio elem */
@@ -438,17 +455,19 @@ export class RadioComponent implements OnInit, AfterViewInit, OnDestroy {
       // Notify all radio buttons with the same name to un-check.
       this._radioDispatcher.notify(this.radioId, this.name);
       this._checked = newCheckedState;
-      
+
       // is checked when radiogroup.value or element.checked
-      if (newCheckedState && this.radioGroup && ((this.radioGroup.value === this.value) || this.radioGroup.value === null) ) {
-        this.radioGroup.selected = this;
+      if (newCheckedState) {
         this.currentIcon = RadioIcons.checked;
-      } else if (!newCheckedState && this.radioGroup && this.radioGroup.value !== this.value) {
+        
+        if (this.radioGroup && (this.radioGroup.value === this.value || this.radioGroup.value === null)) {
+          this.radioGroup.selected = this;
+        }
+      } else if (this.radioGroup && this.radioGroup.value !== this.value) {
         // When unchecking the selected radio button, update the selected radio
         // property on the group.
         this.radioGroup.selected = null;
       }
-
       this._changeDetectorRef.markForCheck();
     }
   }
@@ -538,18 +557,21 @@ export class RadioComponent implements OnInit, AfterViewInit, OnDestroy {
     @Host()
     // tslint:disable-next-line
     @Inject(RadioGroupComponent)
-    radioGroup: RadioGroupComponent
+    radioGroup: RadioGroupComponent,
   ) {
     this.radioGroup = radioGroup;
 
     this._removeUniqueSelectionListener = _radioDispatcher.listen((id: string, name: string) => {
       if (id !== this.radioId && name === this.name) {
         this.checked = false;
-        this.currentIcon = RadioIcons.default; 
+        this.currentIcon = RadioIcons.default;
       }
     });
   }
 
+  ngOnChanges(change: SimpleChanges): void {
+    this.currentIcon = change.checked.currentValue ? RadioIcons.checked : RadioIcons.default;
+  }
   /** Focuses the radio button. */
   focus(options?: FocusOptions): void {
     this._focusMonitor.focusVia(this._inputElement, 'keyboard', options);
@@ -577,11 +599,13 @@ export class RadioComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   ngAfterViewInit() {
-    this._subscription.add(this._focusMonitor.monitor(this._elementRef, true).subscribe((focusOrigin) => {
-      if (!focusOrigin && this.radioGroup) {
-        this.radioGroup._touch();
-      }
-    }));
+    this._subscription.add(
+      this._focusMonitor.monitor(this._elementRef, true).subscribe((focusOrigin) => {
+        if (!focusOrigin && this.radioGroup) {
+          this.radioGroup._touch();
+        }
+      }),
+    );
   }
 
   ngOnDestroy() {

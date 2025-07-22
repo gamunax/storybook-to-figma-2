@@ -1,2 +1,2 @@
 #!/usr/bin/env sh
-ggshield secret scan pre-commit "$@"
+. "$(dirname "$0")/h"

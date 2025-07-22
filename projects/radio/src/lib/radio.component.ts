@@ -344,11 +344,6 @@ export class RadioGroupComponent implements AfterContentInit, ControlValueAccess
       (blur)="_onInputBlur()"
       type="radio"
     />
-    'aaaxsxa'
-    {{action}}
-    {{color}}
-    {{currentIcon}}
-
     <span
       class="radio-container"
       [ngClass]="[

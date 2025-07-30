@@ -138,8 +138,9 @@ $legacy-preloader-loading-text-alignment-horizontal: center !default;
     width: 64px;
     height: 64px;
     border-radius: 50%;
-    position: absolute;
+    position: relative;
     animation: rotate 1s linear infinite;
+    margin-top: 16px;
 
     .atlas-primary-spinner, .atlas-secondary-spinner {
       content: "";

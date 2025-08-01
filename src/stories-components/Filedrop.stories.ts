@@ -45,13 +45,21 @@ export default {
     cancelButton: { defaultValue: 'Cancel', control: { type: 'text' } },
     accept: { defaultValue: '', control: { type: 'text' } },
     disabled: { option: false, control: 'boolean' },
-    onSelectedFilesToUpload: { action: 'writeValue' },
+    onSelectedFilesToUpload: { action: 'selectedFiles' },
+    onFileAdded: { action: 'fileAdded' },
+    onFileRemoved: { action: 'fileRemoved' },
+    addFiles: { 
+      description: 'Programmatically add files to the component. Usage: filedropRef.addFiles([file1, file2])', 
+      action: 'addFiles'
+    },
   },
 } as Meta;
 
 const BASIC_TEMPLATE_DOC = `
     <atlas-filedrop 
       (selectedFiles)="onSelectedFilesToUpload($event)" 
+      (fileAdded)="onFileAdded($event)"
+      (fileRemoved)="onFileRemoved($event)"
       [multipleFiles]="multipleFiles" 
       [accept]="accept"
       [disabled]="disabled"
@@ -69,6 +77,8 @@ const BASIC_TEMPLATE_DOC = `
 const BASIC_TEMPLATE= `
     <atlas-filedrop 
       (selectedFiles)="onSelectedFilesToUpload($event)" 
+      (fileAdded)="onFileAdded($event)"
+      (fileRemoved)="onFileRemoved($event)"
       [multipleFiles]="multipleFiles" 
       [accept]="accept"
       [disabled]="disabled"
@@ -86,6 +96,8 @@ const BASIC_TEMPLATE= `
 const ACCEPT_TEMPLATE= `
     <atlas-filedrop 
       (selectedFiles)="onSelectedFilesToUpload($event)" 
+      (fileAdded)="onFileAdded($event)"
+      (fileRemoved)="onFileRemoved($event)"
       [multipleFiles]="multipleFiles" 
       [accept]="accept"
       [disabled]="disabled"
@@ -97,6 +109,9 @@ const ACCEPT_TEMPLATE= `
       [typographyContent]="typographyContent"
       (canceledUpload)="onCanceledUpload()"
     ></atlas-filedrop>
+    
+    <!-- Example of programmatic file addition -->
+    <button (click)="filedropRef.addFiles([myFile])">Add File Programmatically</button>
 `;
 
 

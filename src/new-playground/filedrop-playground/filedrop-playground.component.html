@@ -6,23 +6,30 @@
       <label>Custom theme</label>
     </atlas-theming-helper>
   </div>
-  <h2>filedrop with list</h2>
-   <div>
-    <div class="section">
-      <div class="filedrop-group">
-        <div class="filedrop-container">
-          <atlas-filedrop #fileDropSimple
-          (canceledUpload)="onCanceledUpload()"
-          (selectedFiles)="onSelectedFilesToUpload($event)"
-          [updateProgressInfo]="files"
-          [multipleFiles]="false"
-          [style]="styles.strong"
-          [accept]="'.png, .jpg, .jpeg, .gif, .pdf, .docx, .xlsx'"
-        ></atlas-filedrop>
-        </div>    
-      </div>
-    </div>
 
+  <h2>filedrop with Programmatic File Addition</h2>
+  <p>Demonstrates the new <code>addFiles()</code> method and enhanced events.</p>
+  
+  <div class="section">
+    <h3>Single File Example</h3>
+    <p>Email forwarding scenario - programmatically add original attachments:</p>
+    <div class="filedrop-group">
+      <div class="filedrop-container">
+        <atlas-filedrop #fileDropSimple
+        (canceledUpload)="onCanceledUpload()"
+        (selectedFiles)="onSelectedFilesToUpload($event)"
+        (fileAdded)="onFileAdded($event)"
+        (fileRemoved)="onFileRemoved($event)"
+        [updateProgressInfo]="files"
+        [multipleFiles]="false"
+        [style]="styles.strong"
+        [accept]="'.png, .jpg, .jpeg, .gif, .pdf, .docx, .xlsx'"
+      ></atlas-filedrop>
+      </div>
+      <atlas-button [color]="'brand'" [style]="'strong'" (onClick)="addSingleEmailAttachment()">
+        Add Forwarded Document (Programmatic)
+      </atlas-button>    
+    </div>
   </div>
 
   <div class="section" *ngIf="filesList.length">Show List
@@ -36,17 +43,24 @@
   <h2>filedrop - multiple files</h2>
   <div>
     <div class="section">
+      <h3>Multiple Files Example</h3>
+      <p>Email reply scenario - carry over multiple original attachments:</p>
       <div class="filedrop-group">
         <div class="filedrop-container">
           <atlas-filedrop #fileDropMultiple
           (canceledUpload)="onCanceledUpload()"
           (selectedFiles)="onSelectedFilesToUploadMultiple($event)"
+          (fileAdded)="onFileAdded($event)"
+          (fileRemoved)="onFileRemoved($event)"
           [updateProgressInfo]="files"
           [multipleFiles]="true"
           [style]="styles.strong"
           [accept]="'.png, .jpg, .jpeg, .gif, .pdf, .docx, .xlsx'"
         ></atlas-filedrop>
-        </div>    
+        </div>
+        <atlas-button [color]="'brand'" [style]="'strong'" (onClick)="addEmailAttachments()">
+          Add Original Email Attachments (Programmatic)
+        </atlas-button>
       </div>
     </div>
     <div class="section" *ngIf="fileListMultiple.length">Show List
@@ -56,5 +70,15 @@
         <atlas-icon-button [icon]="'icon-remove-24'" (onClick)="onDeleteFileMultiple(i)"></atlas-icon-button>
       </div>
     </div>
+  </div>
+
+  <div class="section">
+    <h3>Enhanced Events</h3>
+    <p>Check the browser console to see the new <code>fileAdded</code> and <code>fileRemoved</code> events in action!</p>
+    <ul>
+      <li><strong>fileAdded:</strong> Emitted when a file is added (programmatically or via user interaction)</li>
+      <li><strong>fileRemoved:</strong> Emitted when a file is removed</li>
+      <li><strong>selectedFiles:</strong> Still emitted with the complete file list for backward compatibility</li>
+    </ul>
   </div>
 </div>

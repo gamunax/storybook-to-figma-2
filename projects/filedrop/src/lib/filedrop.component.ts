@@ -174,6 +174,16 @@ export class FiledropComponent implements ControlValueAccessor, AfterViewInit {
   @Output() selectedFiles: EventEmitter<ProgressFileInfo[]> = new EventEmitter();
 
   /**
+   * File added event - emitted when a new file is added
+   */
+  @Output() fileAdded: EventEmitter<ProgressFileInfo> = new EventEmitter();
+
+  /**
+   * File removed event - emitted when a file is removed
+   */
+  @Output() fileRemoved: EventEmitter<ProgressFileInfo> = new EventEmitter();
+
+  /**
    *  @internal
    *  Upload completed event .
    */
@@ -323,6 +333,7 @@ export class FiledropComponent implements ControlValueAccessor, AfterViewInit {
    * @internal
    */
   deleteFile(indexToRemove: number) {
+    const removedFile = this.files[indexToRemove];
     this.files = this.files.filter((item, index) => index !== indexToRemove);
     this.files = this.files.map((item, index) => {
       return { ...item, index: index };
@@ -332,7 +343,51 @@ export class FiledropComponent implements ControlValueAccessor, AfterViewInit {
     } else if (this.files.length === 0) {
       this.finishUpload = false;
     }
+    
+    // Emit events
+    if (removedFile) {
+      this.fileRemoved.emit(removedFile);
+    }
     this.selectedFiles.emit(this.files);
+  }
+
+  /**
+   * Programmatically add files to the filedrop component
+   * @param files Array of File objects to add
+   */
+  addFiles(files: File[]): void {
+    if (!files || files.length === 0) {
+      return;
+    }
+
+    // Check if multiple files are allowed
+    if (!this.multipleFiles && this.files.length >= 1) {
+      this.uploadFail.emit(files);
+      this.hasError = {
+        status: true,
+        message: "Can't upload more than one file",
+      };
+      throw new Error("Can't upload more than one file");
+    } else if (!this.multipleFiles && files.length > 1) {
+      this.uploadFail.emit(files);
+      this.hasError = {
+        status: true,
+        message: "Can't upload more than one file",
+      };
+      throw new Error("Can't upload more than one file");
+    }
+
+    // Validate file types
+    if (!this.validateFileTypes(files)) {
+      return;
+    }
+
+    // Clear error state
+    this.hasError.status = false;
+    this.hasError.message = '';
+
+    // Add files
+    this.prepareFilesListProgrammatically(files);
   }
 
   /** @internal */
@@ -378,9 +433,36 @@ export class FiledropComponent implements ControlValueAccessor, AfterViewInit {
       index = this.files.length;
     }
     for (const item of files) {
-      this.files.push({ file: item, index, progress: 0 });
+      const newFile = { file: item, index, progress: 0 };
+      this.files.push(newFile);
+      this.fileAdded.emit(newFile);
       index++;
     }
+    this.updateProgressFile(this.files);
+    this.selectedFiles.emit(this.files);
+  }
+
+  /**
+   * @internal
+   * Convert Files list to normal array list for programmatic addition
+   * @param files (Files Array)
+   */
+  private prepareFilesListProgrammatically(files: File[]) {
+    let index;
+    if (!this.multipleFiles) {
+      this.files = [];
+      index = 0;
+    } else {
+      index = this.files.length;
+    }
+    
+    for (const item of files) {
+      const newFile = { file: item, index, progress: 0 };
+      this.files.push(newFile);
+      this.fileAdded.emit(newFile);
+      index++;
+    }
+    
     this.updateProgressFile(this.files);
     this.selectedFiles.emit(this.files);
   }
